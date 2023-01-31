@@ -6,6 +6,8 @@ import Layout from "@components/layout/Layout";
 import Title from "@components/systems/Title";
 import Shimer from "@components/systems/Shimer";
 import nookies from "nookies";
+import Text from "@components/systems/Text";
+import Heading from "@components/systems/Heading";
 
 export async function getServerSideProps(context) {
   const { id } = context.params
@@ -51,7 +53,7 @@ export default function Director({ id }) {
       {data ?
         <div>
           <p className="text-lg">{data[0].gender == 1 ? "Male" : "Female"}</p>
-          <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-4">
+          <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
             {data[0]?.image_url &&
               <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4">
                 <Image
@@ -64,8 +66,10 @@ export default function Director({ id }) {
               </div>
             }
             <div className="sm:w-2/3 md:w-3/4">
-              <p className="text-lg mb-2">Biography</p>
-              <p className="font-light">{data[0].biography}</p>
+              <Heading className="-mt-1 mb-2">Biography</Heading>
+              <Text className="!text-[15px]">{data[0].biography}</Text>
+              <Heading className="mt-4 mb-2">Country</Heading>
+              <Text className="!text-[15px]">{data[0].countries?.name}</Text>
             </div>
           </div>
         </div>
