@@ -13,6 +13,7 @@ import LabeledInput from "@components/systems/LabeledInput";
 import ReactTable from "@components/systems/ReactTable";
 import LinkButton from "@components/systems/LinkButton";
 import nookies from "nookies";
+import moment from "moment";
 
 // export async function getServerSideProps(context) {
 //   const cookies = nookies.get(context)
@@ -102,10 +103,21 @@ export default function Actor() {
         accessor: 'countries.name',
         width: 300,
       },
+      // {
+      //   Header: 'Birthday',
+      //   accessor: 'birthday',
+      //   width: 300,
+      // },
       {
-        Header: 'Birthday',
+        Header: 'Age',
         accessor: 'birthday',
         width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            Number(moment().diff(values.birthday, 'years', false))
+          )
+        }
       },
       {
         Header: 'Action',
