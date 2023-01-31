@@ -14,6 +14,7 @@ import LabeledInput from "@components/systems/LabeledInput";
 import Select from "@components/systems/Select";
 import nookies from "nookies";
 import SearchBox from "@components/systems/SearchBox";
+import Image from "next/image";
 
 // export async function getServerSideProps(context) {
 //   const cookies = nookies.get(context)
@@ -269,6 +270,7 @@ export default function Studio() {
           head={
             <>
               <TableSimple.td small>No</TableSimple.td>
+              <TableSimple.td>Logo</TableSimple.td>
               <TableSimple.td>Name</TableSimple.td>
               <TableSimple.td>City</TableSimple.td>
               <TableSimple.td>Country</TableSimple.td>
@@ -280,6 +282,18 @@ export default function Studio() {
             return (
               <TableSimple.tr key={index}>
                 <TableSimple.td small>{index + 1}</TableSimple.td>
+                <TableSimple.td>
+                  {item.image_url &&
+                    <div className="overflow-hidden relative w-8 h-8">
+                      <Image
+                        alt={item?.name}
+                        src={item?.image_url}
+                        fill
+                        className={`rounded`}
+                      />
+                    </div>
+                  }
+                </TableSimple.td>
                 <TableSimple.td>
                   <Link href={`studio/detail/${item.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
                     {item.name}
