@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
-export default function Album({ id }) {
+export default function Director({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/artist?id=${id}`, fetcher)
   const [isLoading, setLoading] = useState(true)
   const { updateToast, pushToast, dismissToast } = useToast();

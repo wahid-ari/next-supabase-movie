@@ -11,7 +11,6 @@ import Shimer from "@components/systems/Shimer";
 import Dialog from "@components/systems/Dialog";
 import Button from "@components/systems/Button";
 import LabeledInput from "@components/systems/LabeledInput";
-import Select from "@components/systems/Select";
 import nookies from "nookies";
 import SearchBox from "@components/systems/SearchBox";
 import Radio from "@components/systems/Radio";
