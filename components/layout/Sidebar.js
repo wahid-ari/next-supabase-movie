@@ -19,6 +19,7 @@ import {
   ExternalLinkIcon,
   FlagIcon,
   UsersIcon,
+  FilmIcon,
 } from "@heroicons/react/outline";
 import NavLink from "@components/systems/NavLink";
 import NavAccordion from "@components/systems/NavAccordion";
@@ -100,8 +101,16 @@ export default function Sidebar() {
           Statistics
         </NavLink>
 
+        <NavLink href="/movie" icon={<FilmIcon className="w-4 h-4" />} className="mt-1">
+          Movie
+        </NavLink>
+
         <NavLink href="/actor" icon={<UserGroupIcon className="w-4 h-4" />} className="mt-1">
           Actor
+        </NavLink>
+
+        <NavLink href="/director" icon={<UsersIcon className="w-4 h-4" />} className="mt-1">
+          Director
         </NavLink>
 
         <NavLink href="/studio" icon={<CollectionIcon className="w-4 h-4" />} className="mt-1">
@@ -114,10 +123,6 @@ export default function Sidebar() {
         
         <NavLink href="/country" icon={<FlagIcon className="w-4 h-4" />} className="mt-1">
           Country
-        </NavLink>
-        
-        <NavLink href="/director" icon={<UsersIcon className="w-4 h-4" />} className="mt-1">
-          Director
         </NavLink>
 
         <NavLink href="/song" icon={<MusicNoteIcon className="w-4 h-4" />} className="mt-1">
