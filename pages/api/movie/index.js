@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     case "GET":
       if (!query.id) {
         const { data } = await supabase.from('movies')
-          .select(`*`)
+          .select(`*, directors (*), studios (*), movie_categories (*)`)
           .order('id');
         res.status(200).json(data);
       } else {
