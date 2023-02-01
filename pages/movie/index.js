@@ -13,7 +13,7 @@ import LabeledInput from "@components/systems/LabeledInput";
 import ReactTable from "@components/systems/ReactTable";
 import LinkButton from "@components/systems/LinkButton";
 import nookies from "nookies";
-import moment from "moment";
+import Badge from "@components/systems/Badge";
 
 // export async function getServerSideProps(context) {
 //   const cookies = nookies.get(context)
@@ -88,35 +88,39 @@ export default function Movie() {
         }
       },
       {
-        Header: 'Gender',
-        accessor: 'gender',
+        Header: 'Status',
+        accessor: 'status',
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
           return (
-            values.gender == 1 ? "Male" : "Female"
+            values.status == 1 ?
+              <Badge.red>Production</Badge.red>
+              :
+              <Badge.green>Released</Badge.green>
           )
         }
       },
       {
-        Header: 'Country',
-        accessor: 'countries.name',
-        width: 300,
-      },
-      // {
-      //   Header: 'Birthday',
-      //   accessor: 'birthday',
-      //   width: 300,
-      // },
-      {
-        Header: 'Age',
-        accessor: 'birthday',
+        Header: 'Director',
+        accessor: 'directors',
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
           return (
-            Number(moment().diff(values.birthday, 'years', false))
+            <Link href={`/director/detail/${original.directors?.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+              {original.directors?.name}
+            </Link>
           )
+        }
+      },
+      {
+        Header: 'Studio',
+        accessor: 'studios',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (original.studios?.name)
         }
       },
       {
