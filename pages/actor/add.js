@@ -140,7 +140,7 @@ export default function Actor() {
           onChange={(e) =>
             setCreateItem({ ...createItem, biography: e.target.value }
             )}
-          placeholder="Director Biography"
+          placeholder="Actor Biography"
         />
 
         <LabeledInput label="Birthday (Optional)" type="date" name="birthday"
