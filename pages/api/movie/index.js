@@ -7,12 +7,12 @@ export default async function handler(req, res) {
     case "GET":
       if (!query.id) {
         const { data } = await supabase.from('movies')
-          .select(`*, directors (*), studios (*), movie_categories (*)`)
+          .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .order('id');
         res.status(200).json(data);
       } else {
         const { data } = await supabase.from('movies')
-          .select(`*, directors (*), studios (*), movie_categories (*)`)
+          .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .eq('id', query.id)
           .order('id');
         res.status(200).json(data);
@@ -147,7 +147,7 @@ export default async function handler(req, res) {
           let actors = []
           body.actors.forEach(item => {
             actors.push({
-              movie_id: movieId,
+              movie_id: query.id,
               actor_id: item.value
             })
           })
