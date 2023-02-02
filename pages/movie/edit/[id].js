@@ -135,10 +135,6 @@ export default function Movie({ id }) {
     }
   }, [category, data])
 
-  useEffect(() => {
-    if (selectedCategory) setEditItem({ ...editItem, categories: selectedCategory })
-  }, [selectedCategory])
-  
   const [selectedActor, setSelectedActor] = useState()
   const [listOfActors, setListOfActors] = useState()
   useEffect(() => {
@@ -171,8 +167,14 @@ export default function Movie({ id }) {
   }, [actor, data])
 
   useEffect(() => {
-    if (selectedActor) setEditItem({ ...editItem, actors: selectedActor })
-  }, [selectedActor])
+    if (selectedActor || selectedCategory) {
+      setEditItem({
+        ...editItem,
+        actors: selectedActor,
+        categories: selectedCategory
+      })
+    }
+  }, [selectedActor, selectedCategory])
 
   async function handleEdit() {
     const toastId = pushToast({
@@ -204,7 +206,7 @@ export default function Movie({ id }) {
     }
   }
 
-  if (error || errorCategory || errorDirector || errorStudio) {
+  if (error || errorCategory || errorActor || errorDirector || errorStudio) {
     return (
       <Layout title="Edit Movie - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -226,7 +228,7 @@ export default function Movie({ id }) {
         <div className="max-w-lg rounded">
 
           <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
-            Actor
+            Actors
           </label>
           {listOfActors && selectedActor ?
             <Select
@@ -255,7 +257,7 @@ export default function Movie({ id }) {
           }
 
           <label htmlFor="category" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
-            Category
+            Categories
           </label>
           {listOfCategories && selectedCategory ?
             <Select
