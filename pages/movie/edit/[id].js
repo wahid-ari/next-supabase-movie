@@ -38,6 +38,7 @@ export default function Movie({ id }) {
   const router = useRouter()
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher)
   const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher)
+  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
   const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher)
   const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
   const { updateToast, pushToast, dismissToast } = useToast();
@@ -137,6 +138,41 @@ export default function Movie({ id }) {
   useEffect(() => {
     if (selectedCategory) setEditItem({ ...editItem, categories: selectedCategory })
   }, [selectedCategory])
+  
+  const [selectedActor, setSelectedActor] = useState()
+  const [listOfActors, setListOfActors] = useState()
+  useEffect(() => {
+    // list of all actors
+    if (actor) {
+      let listActors = []
+      actor?.forEach(item => {
+        listActors.push({
+          value: item.id,
+          label: item.name
+        })
+      });
+      setListOfActors(listActors)
+    }
+    // list current movie actors 
+    if (data && actor) {
+      let movieCurrentActors = []
+      for (const movieActor of data[0]?.movie_actors) {
+        for (const item of actor) {
+          if (item.id == movieActor.actor_id) {
+            movieCurrentActors.push({
+              value: item.id,
+              label: item.name,
+            })
+          }
+        }
+      }
+      setSelectedActor(movieCurrentActors)
+    }
+  }, [actor, data])
+
+  useEffect(() => {
+    if (selectedActor) setEditItem({ ...editItem, actors: selectedActor })
+  }, [selectedActor])
 
   async function handleEdit() {
     const toastId = pushToast({
@@ -188,6 +224,35 @@ export default function Movie({ id }) {
 
       {data ?
         <div className="max-w-lg rounded">
+
+          <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
+            Actor
+          </label>
+          {listOfActors && selectedActor ?
+            <Select
+              options={listOfActors}
+              isMulti
+              noOptionsMessage={() => "Not Found"}
+              value={selectedActor}
+              onChange={setSelectedActor}
+              placeholder="Search or Select"
+              name="actor"
+              className="rounded mb-4"
+              classNamePrefix="react-select"
+              theme={(theme) => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary: `#059669`,
+                  primary25: `#059669`,
+                  primary50: `#059669`,
+                  neutral40: `#EF4444`,
+                },
+              })}
+            />
+            :
+            <Shimer className="h-8" />
+          }
 
           <label htmlFor="category" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
             Category
