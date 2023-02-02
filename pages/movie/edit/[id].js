@@ -280,6 +280,16 @@ export default function Movie({ id }) {
             <Shimer className="h-8" />
           }
 
+          <LabeledInput label="Release Date (Optional)" type="date" name="release"
+            value={editItem.release_date}
+            onChange={(e) =>
+              setEditItem({ ...editItem, release_date: e.target.value }
+              )}
+            placeholder="dd-mm-yyyy"
+            min="1950-01-01"
+            max="2050-12-31"
+          />
+
           <LabeledInput label="Language (Optional)" type="text" name="language"
             value={editItem.language}
             onChange={(e) =>
