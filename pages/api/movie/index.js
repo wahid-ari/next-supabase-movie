@@ -70,7 +70,7 @@ export default async function handler(req, res) {
           body.actors.forEach(item => {
             actors.push({
               movie_id: movieId,
-              category_id: item.value
+              actor_id: item.value
             })
           })
           // insert actors of a movie to movie_actors table
@@ -148,7 +148,7 @@ export default async function handler(req, res) {
           body.actors.forEach(item => {
             actors.push({
               movie_id: movieId,
-              category_id: item.value
+              actor_id: item.value
             })
           })
           // insert actors of a edited movie to movie_actors table
