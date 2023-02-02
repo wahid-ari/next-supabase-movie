@@ -178,7 +178,7 @@ export default function Actor() {
             }}
           />
 
-          <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} />
+          <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[5, 10, 20, 50, 100]} />
         </>
         :
         <Shimer className="!h-60" />

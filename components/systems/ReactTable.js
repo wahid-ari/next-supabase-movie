@@ -8,7 +8,7 @@ import {
   useGlobalFilter,
 } from 'react-table';
 
-export const ReactTable = forwardRef(({ columns, data, page_size = 5, className, bordered }, ref) => {
+export const ReactTable = forwardRef(({ columns, data, page_size = 5, className, bordered, itemPerPage = [5, 10, 20] }, ref) => {
   // Use the state and functions returned from useTable to build your UI
   const defaultColumn = useMemo(
     () => ({
@@ -180,7 +180,7 @@ export const ReactTable = forwardRef(({ columns, data, page_size = 5, className,
             border border-gray-300 dark:border-neutral-700 
             focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 outline-none"
           >
-            {[5, 10, 20].map((pageSize) => (
+            {itemPerPage.map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 Show {pageSize}
               </option>
