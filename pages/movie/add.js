@@ -44,8 +44,8 @@ export default function Movie() {
     image_url: "",
     video_url: "",
     release_date: null,
-    language: "",
-    status: 1,
+    language: "English",
+    status: 2,
     director_id: null,
     studio_id: null
   })
@@ -179,6 +179,7 @@ export default function Movie() {
             setCreateItem({ ...createItem, description: e.target.value }
             )}
           placeholder="Movie Description"
+          height={5}
         />
 
         <LabeledInput label="Image URL" type="text" name="image"

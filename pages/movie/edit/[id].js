@@ -227,6 +227,39 @@ export default function Movie({ id }) {
       {data ?
         <div className="max-w-lg rounded">
 
+          <LabeledInput label="Name" type="text" name="name"
+            value={editItem.name}
+            onChange={(e) =>
+              setEditItem({ ...editItem, name: e.target.value }
+              )}
+            placeholder="Movie Name"
+          />
+
+          <TextArea label="Description" type="text" name="description"
+            value={editItem.description}
+            onChange={(e) =>
+              setEditItem({ ...editItem, description: e.target.value }
+              )}
+            placeholder="Movie Description"
+            height={5}
+          />
+
+          <LabeledInput label="Image URL" type="text" name="image"
+            value={editItem.image_url}
+            onChange={(e) =>
+              setEditItem({ ...editItem, image_url: e.target.value }
+              )}
+            placeholder="https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg"
+          />
+
+          <LabeledInput label="Video URL" type="text" name="video"
+            value={editItem.video_url}
+            onChange={(e) =>
+              setEditItem({ ...editItem, video_url: e.target.value }
+              )}
+            placeholder="https://www.youtube.com/watch?v=2m1drlOZSDw"
+          />
+
           <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
             Actors
           </label>
@@ -285,41 +318,9 @@ export default function Movie({ id }) {
             <Shimer className="h-8" />
           }
 
-          <LabeledInput label="Name" type="text" name="name"
-            value={editItem.name}
-            onChange={(e) =>
-              setEditItem({ ...editItem, name: e.target.value }
-              )}
-            placeholder="Movie Name"
-          />
-
-          <TextArea label="Description (Optional)" type="text" name="description"
-            value={editItem.description}
-            onChange={(e) =>
-              setEditItem({ ...editItem, description: e.target.value }
-              )}
-            placeholder="Movie Description"
-          />
-
-          <LabeledInput label="Image URL (Optional)" type="text" name="image"
-            value={editItem.image_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, image_url: e.target.value }
-              )}
-            placeholder="https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg"
-          />
-
-          <LabeledInput label="Video URL (Optional)" type="text" name="video"
-            value={editItem.video_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, video_url: e.target.value }
-              )}
-            placeholder="https://www.youtube.com/watch?v=2m1drlOZSDw"
-          />
-
           {filteredDirector ?
             <SearchBox
-              label="Director Name (Optional)"
+              label="Director Name"
               value={selectedDirector}
               placeholder="Search or Select"
               onChange={setSelectedDirector}
@@ -334,7 +335,7 @@ export default function Movie({ id }) {
 
           {filteredStudio ?
             <SearchBox
-              label="Studio Name (Optional)"
+              label="Studio Name"
               value={selectedStudio}
               placeholder="Search or Select"
               onChange={setSelectedStudio}
@@ -347,7 +348,7 @@ export default function Movie({ id }) {
             <Shimer className="h-8" />
           }
 
-          <LabeledInput label="Release Date (Optional)" type="date" name="release"
+          <LabeledInput label="Release Date" type="date" name="release"
             value={editItem.release_date}
             onChange={(e) =>
               setEditItem({ ...editItem, release_date: e.target.value }
@@ -357,7 +358,7 @@ export default function Movie({ id }) {
             max="2050-12-31"
           />
 
-          <LabeledInput label="Language (Optional)" type="text" name="language"
+          <LabeledInput label="Language" type="text" name="language"
             value={editItem.language}
             onChange={(e) =>
               setEditItem({ ...editItem, language: e.target.value }
