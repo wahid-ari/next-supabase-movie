@@ -165,8 +165,40 @@ export default function Movie() {
 
       <div className="max-w-lg shadow rounded">
 
+        <LabeledInput label="Name" type="text" name="name"
+          value={createItem.name}
+          onChange={(e) =>
+            setCreateItem({ ...createItem, name: e.target.value }
+            )}
+          placeholder="Movie Name"
+        />
+
+        <TextArea label="Description" type="text" name="description"
+          value={createItem.description}
+          onChange={(e) =>
+            setCreateItem({ ...createItem, description: e.target.value }
+            )}
+          placeholder="Movie Description"
+        />
+
+        <LabeledInput label="Image URL" type="text" name="image"
+          value={createItem.image_url}
+          onChange={(e) =>
+            setCreateItem({ ...createItem, image_url: e.target.value }
+            )}
+          placeholder="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg"
+        />
+
+        <LabeledInput label="Video URL" type="text" name="video"
+          value={createItem.video_url}
+          onChange={(e) =>
+            setCreateItem({ ...createItem, video_url: e.target.value }
+            )}
+          placeholder="https://www.youtube.com/watch?v=2m1drlOZSDw"
+        />
+
         <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
-          Actor
+          Actors
         </label>
         {listOfActors ?
           <Select
@@ -195,7 +227,7 @@ export default function Movie() {
         }
 
         <label htmlFor="category" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
-          Category
+          Categories
         </label>
         {listOfCategories ?
           <Select
@@ -223,41 +255,9 @@ export default function Movie() {
           <Shimer className="h-8" />
         }
 
-        <LabeledInput label="Name" type="text" name="name"
-          value={createItem.name}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, name: e.target.value }
-            )}
-          placeholder="Movie Name"
-        />
-
-        <TextArea label="Description (Optional)" type="text" name="description"
-          value={createItem.description}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, description: e.target.value }
-            )}
-          placeholder="Movie Description"
-        />
-
-        <LabeledInput label="Image URL (Optional)" type="text" name="image"
-          value={createItem.image_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, image_url: e.target.value }
-            )}
-          placeholder="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg"
-        />
-
-        <LabeledInput label="Video URL (Optional)" type="text" name="video"
-          value={createItem.video_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, video_url: e.target.value }
-            )}
-          placeholder="https://www.youtube.com/watch?v=2m1drlOZSDw"
-        />
-
         {filteredDirector ?
           <SearchBox
-            label="Director Name (Optional)"
+            label="Director Name"
             value={selectedDirector}
             placeholder="Search or Select"
             onChange={setSelectedDirector}
@@ -272,7 +272,7 @@ export default function Movie() {
 
         {filteredStudio ?
           <SearchBox
-            label="Studio Name (Optional)"
+            label="Studio Name"
             value={selectedStudio}
             placeholder="Search or Select"
             onChange={setSelectedStudio}
@@ -285,7 +285,7 @@ export default function Movie() {
           <Shimer className="h-8" />
         }
 
-        <LabeledInput label="Release Date (Optional)" type="date" name="release"
+        <LabeledInput label="Release Date" type="date" name="release"
           value={createItem.release_date}
           onChange={(e) =>
             setCreateItem({ ...createItem, release_date: e.target.value }
@@ -295,7 +295,7 @@ export default function Movie() {
           max="2050-12-31"
         />
 
-        <LabeledInput label="Language (Optional)" type="text" name="language"
+        <LabeledInput label="Language" type="text" name="language"
           value={createItem.language}
           onChange={(e) =>
             setCreateItem({ ...createItem, language: e.target.value }
