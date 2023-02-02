@@ -133,7 +133,7 @@ export default async function handler(req, res) {
           }
         }
 
-        // delete categories related to edited movie
+        // delete actors related to edited movie
         const { error: errorMovieActor } = await supabase.from('movie_actors')
           .delete()
           .eq('movie_id', query.id)
