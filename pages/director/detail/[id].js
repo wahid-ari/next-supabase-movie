@@ -55,7 +55,7 @@ export default function Director({ id }) {
         <div>
           <p className="text-lg">{data[0].gender == 1 ? "Male" : "Female"}</p>
           <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
-            {data[0]?.image_url ?
+            {data[0]?.image_url.startsWith("http") ?
               <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4">
                 <Image
                   alt={data[0]?.name}
