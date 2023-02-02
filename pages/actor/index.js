@@ -115,7 +115,10 @@ export default function Actor() {
         Cell: (row) => {
           const { values, original } = row.cell.row;
           return (
-            Number(moment().diff(values.birthday, 'years', false))
+            values.birthday ?
+              Number(moment().diff(values.birthday, 'years', false))
+              :
+              ""
           )
         }
       },
