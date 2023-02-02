@@ -124,6 +124,15 @@ export default function Movie() {
         }
       },
       {
+        Header: 'Release Date',
+        accessor: 'release_date',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (original.release_date)
+        }
+      },
+      {
         Header: 'Action',
         disableSortBy: true,
         width: 300,
