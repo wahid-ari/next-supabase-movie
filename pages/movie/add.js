@@ -34,6 +34,7 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Movie() {
   const router = useRouter()
   const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher)
+  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
   const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher)
   const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
   const { updateToast, pushToast, dismissToast } = useToast();
@@ -98,6 +99,25 @@ export default function Movie() {
   useEffect(() => {
     setCreateItem({ ...createItem, categories: selectedCategory })
   }, [selectedCategory])
+  
+  const [selectedActor, setSelectedActor] = useState()
+  const [listOfActors, setListOfActors] = useState()
+  useEffect(() => {
+    if (actor) {
+      let listActors = []
+      actor?.forEach(item => {
+        listActors.push({
+          value: item.id,
+          label: item.name
+        })
+      });
+      setListOfActors(listActors)
+    }
+  }, [actor])
+
+  useEffect(() => {
+    setCreateItem({ ...createItem, actors: selectedActor })
+  }, [selectedActor])
 
   async function handleCreate() {
     const toastId = pushToast({
@@ -129,7 +149,7 @@ export default function Movie() {
     }
   }
 
-  if (errorCategory || errorDirector || errorStudio) {
+  if (errorActor || errorCategory || errorDirector || errorStudio) {
     return (
       <Layout title="Add Movie - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -144,6 +164,35 @@ export default function Movie() {
       </div>
 
       <div className="max-w-lg shadow rounded">
+
+        <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
+          Actor
+        </label>
+        {listOfActors ?
+          <Select
+            options={listOfActors}
+            isMulti
+            noOptionsMessage={() => "Not Found"}
+            value={selectedActor}
+            onChange={setSelectedActor}
+            placeholder="Search or Select"
+            name="category"
+            className="rounded mb-4"
+            classNamePrefix="react-select"
+            theme={(theme) => ({
+              ...theme,
+              colors: {
+                ...theme.colors,
+                primary: `#059669`,
+                primary25: `#059669`,
+                primary50: `#059669`,
+                neutral40: `#EF4444`,
+              },
+            })}
+          />
+          :
+          <Shimer className="h-8" />
+        }
 
         <label htmlFor="category" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
           Category
