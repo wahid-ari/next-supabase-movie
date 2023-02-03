@@ -124,12 +124,13 @@ export default function Movie() {
         }
       },
       {
-        Header: 'Release Date',
+        Header: 'Year',
         accessor: 'release_date',
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return (original.release_date)
+          const year = original.release_date.split("-")[0]
+          return (year)
         }
       },
       {
