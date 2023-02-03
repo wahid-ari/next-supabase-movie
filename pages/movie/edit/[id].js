@@ -257,7 +257,7 @@ export default function Movie({ id }) {
             onChange={(e) =>
               setEditItem({ ...editItem, video_url: e.target.value }
               )}
-            placeholder="https://www.youtube.com/watch?v=2m1drlOZSDw"
+            placeholder="https://youtu.be/qSqVVswa420"
           />
 
           <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
