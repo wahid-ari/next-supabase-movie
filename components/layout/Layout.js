@@ -32,7 +32,7 @@ export default function Layout({ children, title, description }) {
 
         <Sidebar />
 
-        <div className="relative">
+        <div className="relative scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800">
 
           <Navbar />
 
