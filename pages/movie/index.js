@@ -129,7 +129,7 @@ export default function Movie() {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          const year = original.release_date.split("-")[0]
+          const year = original.release_date?.split("-")[0]
           return (year)
         }
       },
