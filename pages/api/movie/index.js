@@ -15,7 +15,34 @@ export default async function handler(req, res) {
           .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .eq('id', query.id)
           .order('id');
-        res.status(200).json(data);
+        const { data: categories } = await supabase.from('categories')
+          .select(`*`)
+          .order('id');
+        const { data: actors } = await supabase.from('actors')
+          .select(`*`)
+          .order('id');
+        const { movie_categories, movie_actors } = data[0]
+        let listDetailCategories = []
+        for (const a of movie_categories) {
+          for (const b of categories) {
+            if (a.category_id == b.id) {
+              listDetailCategories.push(
+                { id: b.id, name: b.name }
+              )
+            }
+          }
+        }
+        let listDetailActors = []
+        for (const a of movie_actors) {
+          for (const b of actors) {
+            if (a.actor_id == b.id) {
+              listDetailActors.push(
+                { id: b.id, name: b.name, image_url: b.image_url }
+              )
+            }
+          }
+        }
+        res.status(200).json({ ...data[0], categories: listDetailCategories, actors: listDetailActors });
       }
       break;
 
