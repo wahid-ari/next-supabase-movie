@@ -46,6 +46,17 @@ export default function Studio() {
   const [queryCountry, setQueryCountry] = useState('')
   const [selectedCountryEdit, setSelectedCountryEdit] = useState()
   const [queryCountryEdit, setQueryCountryEdit] = useState('')
+  const [query, setQuery] = useState('')
+
+  const filtered =
+    query === ''
+      ? data
+      : data.filter((item) =>
+        item.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.toLowerCase().replace(/\s+/g, ''))
+      )
 
   const filteredCountry =
     queryCountry === ''
@@ -265,6 +276,15 @@ export default function Studio() {
         </div>
       </Dialog>
 
+      <LabeledInput
+        label="Search Data"
+        id="caridata"
+        name="caridata"
+        placeholder="Keyword"
+        className="max-w-xs !py-2"
+        onChange={e => setQuery(e.target.value)}
+      />
+
       {data ?
         <TableSimple
           head={
@@ -278,7 +298,7 @@ export default function Studio() {
             </>
           }
         >
-          {data.map((item, index) => {
+          {filtered.map((item, index) => {
             return (
               <TableSimple.tr key={index}>
                 <TableSimple.td small>{index + 1}</TableSimple.td>
