@@ -133,8 +133,8 @@ export default function Movie() {
           image_url: "",
           video_url: "",
           release_date: null,
-          language: "",
-          status: 1,
+          language: "English",
+          status: 2,
           director_id: null,
           studio_id: null
         })
