@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Link from 'next/link';
 import useSWR, { mutate } from "swr";
 import axios from "axios";
@@ -16,6 +16,7 @@ import SearchBox from "@components/systems/SearchBox";
 import Radio from "@components/systems/Radio";
 import Label from "@components/systems/Label";
 import TextArea from "@components/systems/TextArea";
+import ReactTable from "@components/systems/ReactTable";
 
 // export async function getServerSideProps(context) {
 //   const cookies = nookies.get(context)
@@ -148,6 +149,72 @@ export default function Director() {
     setDeleteItem({ id: id, name: name })
     setOpenDeleteDialog(true)
   }
+
+  const column = useMemo(
+    () => [
+      {
+        Header: 'No',
+        accessor: 'id',
+        width: 300,
+        Cell: (row) => {
+          return (
+            row.cell.row.index + 1
+          )
+        }
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link href={`/director/detail/${values.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+              {values.name}
+            </Link>
+          )
+        }
+      },
+      {
+        Header: 'Gender',
+        accessor: 'gender',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return values.gender == 1 ? "Male" : "Female"
+        }
+      },
+      {
+        Header: 'Country',
+        accessor: 'countries.name',
+        width: 300,
+      },
+      {
+        Header: 'Action',
+        disableSortBy: true,
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row
+          return (
+            <div>
+              <Button className="!py-[2px] !px-[6px] mr-2"
+                onClick={() => handleShowEditModal(original.id, original.name, original.image_url, original.gender, original.biography, original.countries?.id)}>
+                Edit
+              </Button>
+              <Button.danger className="!py-[2px] !px-[6px]"
+                onClick={() => handleShowDeleteModal(original.id, original.name)}>
+                Delete
+              </Button.danger>
+            </div>
+          )
+        },
+        width: 200,
+      },
+    ],
+    []
+  );
+
+  const tableInstance = useRef(null);
 
   if (error || errorCountry) {
     return (
@@ -293,44 +360,20 @@ export default function Director() {
       </Dialog>
 
       {data ?
-        <TableSimple
-          head={
-            <>
-              <TableSimple.td small>No</TableSimple.td>
-              <TableSimple.td>Name</TableSimple.td>
-              <TableSimple.td>Gender</TableSimple.td>
-              <TableSimple.td>Country</TableSimple.td>
-              <TableSimple.td small>Action</TableSimple.td>
-            </>
-          }
-        >
-          {data.map((item, index) => {
-            return (
-              <TableSimple.tr key={index}>
-                <TableSimple.td small>{index + 1}</TableSimple.td>
-                <TableSimple.td>
-                  <Link href={`director/detail/${item.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
-                    {item.name}
-                  </Link>
-                </TableSimple.td>
-                <TableSimple.td>{item.gender == 1 ? "Male" : "Female"}</TableSimple.td>
-                <TableSimple.td>
-                  {item.countries?.name}
-                </TableSimple.td>
-                <TableSimple.td>
-                  <Button className="!py-[2px] !px-[6px] mr-2"
-                    onClick={() => handleShowEditModal(item.id, item.name, item.image_url, item.gender, item.biography, item.countries?.id)}>
-                    Edit
-                  </Button>
-                  <Button.danger className="!py-[2px] !px-[6px]"
-                    onClick={() => handleShowDeleteModal(item.id, item.name)}>
-                    Delete
-                  </Button.danger>
-                </TableSimple.td>
-              </TableSimple.tr>
-            );
-          })}
-        </TableSimple>
+        <>
+          <LabeledInput
+            label="Search Data"
+            id="caridata"
+            name="caridata"
+            placeholder="Keyword"
+            className="max-w-xs !py-2"
+            onChange={(e) => {
+              tableInstance.current.setGlobalFilter(e.target.value);
+            }}
+          />
+
+          <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[5, 10, 20, 50, 100]} />
+        </>
         :
         <Shimer className="!h-60" />
       }
