@@ -38,6 +38,17 @@ export default function Category() {
   const [name, setName] = useState("")
   const [editItem, setEditItem] = useState({ id: null, name: "" })
   const [deleteItem, setDeleteItem] = useState({ id: null, name: "" })
+  const [query, setQuery] = useState('')
+
+  const filtered =
+    query === ''
+      ? data
+      : data.filter((item) =>
+        item.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.toLowerCase().replace(/\s+/g, ''))
+      )
 
   async function handleCreate() {
     const toastId = pushToast({
@@ -176,6 +187,15 @@ export default function Category() {
         </div>
       </Dialog>
 
+      <LabeledInput
+        label="Search Data"
+        id="caridata"
+        name="caridata"
+        placeholder="Keyword"
+        className="max-w-xs !py-2"
+        onChange={e => setQuery(e.target.value)}
+      />
+
       {data ?
         <TableSimple
           head={
@@ -186,14 +206,14 @@ export default function Category() {
             </>
           }
         >
-          {data.map((item, index) => {
+          {filtered.map((item, index) => {
             return (
               <TableSimple.tr key={index}>
                 <TableSimple.td small>{index + 1}</TableSimple.td>
                 <TableSimple.td>
                   <Link href={`category/detail/${item.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
                     {item.name}
-                  </Link>  
+                  </Link>
                 </TableSimple.td>
                 <TableSimple.td>
                   <Button className="!py-[2px] !px-[6px] mr-2"
