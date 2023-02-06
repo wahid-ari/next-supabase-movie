@@ -57,18 +57,18 @@ export default function Movie({ id }) {
   useEffect(() => {
     if (data) {
       setEditItem({
-        name: data[0].name,
-        description: data[0].description,
-        image_url: data[0].image_url,
-        video_url: data[0].video_url,
-        release_date: data[0].release_date,
-        language: data[0].language,
-        status: data[0].status,
-        director_id: data[0].directors?.id,
-        studio_id: data[0].studios?.id
+        name: data.name,
+        description: data.description,
+        image_url: data.image_url,
+        video_url: data.video_url,
+        release_date: data.release_date,
+        language: data.language,
+        status: data.status,
+        director_id: data.directors?.id,
+        studio_id: data.studios?.id
       })
-      setSelectedDirector({ id: data[0].directors?.id, name: data[0].directors?.name })
-      setSelectedStudio({ id: data[0].studios?.id, name: data[0].studios?.name })
+      setSelectedDirector({ id: data.directors?.id, name: data.directors?.name })
+      setSelectedStudio({ id: data.studios?.id, name: data.studios?.name })
     }
   }, [data])
 
@@ -121,7 +121,7 @@ export default function Movie({ id }) {
     // list current movie categories 
     if (data && category) {
       let movieCurrentCategories = []
-      for (const movieCategory of data[0]?.movie_categories) {
+      for (const movieCategory of data?.movie_categories) {
         for (const item of category) {
           if (item.id == movieCategory.category_id) {
             movieCurrentCategories.push({
@@ -152,7 +152,7 @@ export default function Movie({ id }) {
     // list current movie actors 
     if (data && actor) {
       let movieCurrentActors = []
-      for (const movieActor of data[0]?.movie_actors) {
+      for (const movieActor of data?.movie_actors) {
         for (const item of actor) {
           if (item.id == movieActor.actor_id) {
             movieCurrentActors.push({
@@ -215,10 +215,10 @@ export default function Movie({ id }) {
   }
 
   return (
-    <Layout title={`Edit ${data ? data[0]?.name + " - MyMovie" : 'Edit Movie - MyMovie'}`}>
+    <Layout title={`Edit ${data ? data?.name + " - MyMovie" : 'Edit Movie - MyMovie'}`}>
       <div className="flex flex-wrap justify-between items-center mb-6 gap-y-3">
         {data ?
-          <Title>Edit {data[0]?.name}</Title>
+          <Title>Edit {data?.name}</Title>
           :
           <Title>Edit Movie</Title>
         }
