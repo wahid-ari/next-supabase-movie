@@ -67,7 +67,7 @@ export default function Director({ id }) {
               </div>
               :
               <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
-                <UserIcon className="w-32 h-32" />
+                <UserIcon className="w-32 h-32 text-neutral-500" />
               </div>
             }
             <div className="sm:w-2/3 md:w-3/4">
