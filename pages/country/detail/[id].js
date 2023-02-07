@@ -7,48 +7,48 @@ import Shimer from "@components/systems/Shimer";
 import TableSimple from "@components/systems/TableSimple";
 import nookies from "nookies";
 
-// export async function getServerSideProps(context) {
-//   const { id } = context.params
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {
-//       id: id
-//     }, // will be passed to the page component as props
-//   }
-// }
+export async function getServerSideProps(context) {
+  const { id } = context.params
+  // const cookies = nookies.get(context)
+  // if (!cookies.token) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login"
+  //     }
+  //   }
+  // }
+  return {
+    props: {
+      id: id
+    }, // will be passed to the page component as props
+  }
+}
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
-export default function Category({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category?id=${id}`, fetcher)
+export default function Country({ id }) {
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country?id=${id}`, fetcher)
 
   if (error) {
     return (
-      <Layout title="Category Detail - MyMovie">
+      <Layout title="Country Detail - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
       </Layout>
     )
   }
 
   return (
-    <Layout title={`${data ? data[0]?.name + " - MyMovie" : 'Category Detail - MyMovie'}`}>
+    <Layout title={`${data ? data?.name + " - MyMovie" : 'Country Detail - MyMovie'}`}>
       <div className="flex flex-wrap justify-between items-center mb-6 gap-y-3">
         {data ?
-          <Title>{data[0]?.name}</Title>
+          <Title>{data?.name}</Title>
           :
-          <Title>Category Detail</Title>
+          <Title>Country Detail</Title>
         }
       </div>
 
       {data ?
-        data[0]?.artists?.length > 0 ?
+        data?.artists?.length > 0 ?
           <TableSimple
             head={
               <>
@@ -57,7 +57,7 @@ export default function Category({ id }) {
               </>
             }
           >
-            {data[0]?.artists?.map((item, index) => {
+            {data?.artists?.map((item, index) => {
               return (
                 <TableSimple.tr key={index}>
                   <TableSimple.td small>{index + 1}</TableSimple.td>
@@ -72,7 +72,7 @@ export default function Category({ id }) {
           </TableSimple>
           :
           <div className="rounded border border-red-500 p-3">
-            <p className="text-red-500">No Movies in Category {data[0]?.name} </p>
+            <p className="text-red-500">No Movies in Country {data?.name} </p>
           </div>
         :
         <Shimer className="!h-60" />
