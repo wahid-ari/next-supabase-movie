@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         res.status(200).json(data);
       } else {
         const { data } = await supabase.from('countries')
-          .select(`*, artists (*)`)
+          .select(`*, actors (*), directors (*), studios (*)`)
           .eq('id', query.id)
           .order('id');
         res.status(200).json(data);
