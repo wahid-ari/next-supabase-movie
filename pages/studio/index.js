@@ -3,7 +3,7 @@ import Link from 'next/link';
 import useSWR, { mutate } from "swr";
 import axios from "axios";
 import useToast from "@utils/useToast";
-import { PlusSmIcon } from "@heroicons/react/outline";
+import { PhotographIcon, PlusSmIcon } from "@heroicons/react/outline";
 import Layout from "@components/layout/Layout";
 import TableSimple from "@components/systems/TableSimple";
 import Title from "@components/systems/Title";
@@ -11,7 +11,6 @@ import Shimer from "@components/systems/Shimer";
 import Dialog from "@components/systems/Dialog";
 import Button from "@components/systems/Button";
 import LabeledInput from "@components/systems/LabeledInput";
-import Select from "@components/systems/Select";
 import nookies from "nookies";
 import SearchBox from "@components/systems/SearchBox";
 import Image from "next/image";
@@ -303,14 +302,18 @@ export default function Studio() {
               <TableSimple.tr key={index}>
                 <TableSimple.td small>{index + 1}</TableSimple.td>
                 <TableSimple.td>
-                  {item.image_url &&
-                    <div className="overflow-hidden relative w-8 h-8">
+                  {item.image_url ?
+                    <div className="overflow-hidden relative h-8">
                       <Image
                         alt={item?.name}
                         src={item?.image_url}
                         fill
-                        className={`rounded`}
+                        className={`rounded object-contain`}
                       />
+                    </div>
+                    :
+                    <div className="mx-auto overflow-hidden relative h-10 w-10 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+                      <PhotographIcon className="w-8 h-8 text-neutral-500" />
                     </div>
                   }
                 </TableSimple.td>
