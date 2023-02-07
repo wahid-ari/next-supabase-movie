@@ -31,15 +31,11 @@ export const ReactTable = forwardRef(({ columns, data, page_size = 5, className,
             desc: false,
           },
           {
-            id: 'songs.id',
-            desc: false,
-          },
-          {
-            id: 'album.id',
-            desc: false,
-          },
-          {
             id: 'movies.id',
+            desc: false,
+          },
+          {
+            id: 'actors.id',
             desc: false,
           },
         ],
