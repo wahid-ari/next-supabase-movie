@@ -12,10 +12,10 @@ export default async function handler(req, res) {
         res.status(200).json(data);
       } else {
         const { data } = await supabase.from('studios')
-          .select(`*, countries (*)`)
+          .select(`*, countries (*), movies (*)`)
           .eq('id', query.id)
           .order('id');
-        res.status(200).json(data);
+        res.status(200).json(data[0]);
       }
       break;
 
