@@ -29,6 +29,8 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Country({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country?id=${id}`, fetcher)
 
+  // TODO show list actors, directors and studios from a country
+
   if (error) {
     return (
       <Layout title="Country Detail - MyMovie">

@@ -14,7 +14,7 @@ import { PhotographIcon } from "@heroicons/react/outline";
 
 export async function getServerSideProps(context) {
   const { id } = context.params
-  const cookies = nookies.get(context)
+  // const cookies = nookies.get(context)
   // if (!cookies.token) {
   //   return {
   //     redirect: {
@@ -34,6 +34,8 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Movie({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher)
   const [isLoading, setLoading] = useState(true)
+
+   // TODO show image and name from actors and director of movie
 
   // data.video_url maybe "https://youtu.be/qSqVVswa420" or "https://www.youtube.com/watch?v=2m1drlOZSDw" 
   // if data.video_url includes "watch" word, then url maybe like "https://www.youtube.com/watch?v=2m1drlOZSDw" 

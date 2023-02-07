@@ -12,7 +12,7 @@ import { UserIcon } from "@heroicons/react/outline";
 
 export async function getServerSideProps(context) {
   const { id } = context.params
-  const cookies = nookies.get(context)
+  // const cookies = nookies.get(context)
   // if (!cookies.token) {
   //   return {
   //     redirect: {
@@ -32,6 +32,8 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Director({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director?id=${id}`, fetcher)
   const [isLoading, setLoading] = useState(true)
+
+   // TODO show film with a director
 
   if (error) {
     return (
