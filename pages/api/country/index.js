@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           .select(`*, actors (*), directors (*), studios (*)`)
           .eq('id', query.id)
           .order('id');
-        res.status(200).json(data);
+        res.status(200).json(data[0]);
       }
       break;
 
