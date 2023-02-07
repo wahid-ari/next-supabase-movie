@@ -36,8 +36,6 @@ export default function Studio({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio?id=${id}`, fetcher)
   const [isLoading, setLoading] = useState(true)
 
-  console.log(data)
-
   const column = useMemo(
     () => [
       {
