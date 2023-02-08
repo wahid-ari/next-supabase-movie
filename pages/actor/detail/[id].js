@@ -169,7 +169,7 @@ export default function Actor({ id }) {
           </div>
         </div>
         :
-        <Shimer className="!h-72 !w-72" />
+        <Shimer className="mt-4 h-72 xl:h-96 !w-72" />
       }
 
       {data ?
@@ -194,7 +194,7 @@ export default function Actor({ id }) {
             <p className="text-red-500">No Movies From &quot;{data?.name}&quot; </p>
           </div>
         :
-        <Shimer className="!h-60" />
+        <Shimer className="mt-6 !h-60" />
       }
 
     </Layout>

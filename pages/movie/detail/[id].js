@@ -153,7 +153,7 @@ export default function Movie({ id }) {
           </div>
         </div>
         :
-        <Shimer className="!h-72 !w-72" />
+        <Shimer className="mt-4 h-72 xl:h-96 !w-72" />
       }
 
     </Layout>
