@@ -157,6 +157,9 @@ export const ReactTable = forwardRef(({ columns, data, page_size = 5, className,
             ${canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
             <ChevronDoubleRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
+          <span className="ml-2 hidden md:block text-sm text-neutral-800 dark:text-gray-200">
+            {data.length} records
+          </span>
         </div>
 
         <div className="flex items-center gap-2 justify-center sm:justify-end">
