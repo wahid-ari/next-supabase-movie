@@ -324,7 +324,9 @@ export default function Studio() {
                 </TableSimple.td>
                 <TableSimple.td>{item.city}</TableSimple.td>
                 <TableSimple.td>
-                  {item.countries?.name}
+                  <Link href={`/country/detail/${item.countries?.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+                    {item.countries?.name}
+                  </Link>
                 </TableSimple.td>
                 <TableSimple.td>
                   <Button className="!py-[2px] !px-[6px] mr-2"
