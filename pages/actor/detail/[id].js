@@ -145,7 +145,13 @@ export default function Actor({ id }) {
                 }
               </Text>
               <Heading className="mt-4 mb-2">Country</Heading>
-              <Text className="!text-[15px]">{data.countries?.name || "-"}</Text>
+              {data.countries ?
+                <Link href={`/country/detail/${data.countries?.id}`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+                  {data.countries?.name || "-"}
+                </Link>
+                :
+                "-"
+              }
               <Heading className="mt-4 mb-2">Social Media</Heading>
               {data.instagram_url == "" && data.twitter_url == "" ?
                 <span>-</span>
