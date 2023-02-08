@@ -11,11 +11,30 @@ export default async function handler(req, res) {
           .order('id');
         res.status(200).json(data);
       } else {
-        const { data } = await supabase.from('categories')
-          .select(`*, artists (*)`)
+        const { data: categories } = await supabase.from('categories')
+          .select(`*`)
           .eq('id', query.id)
           .order('id');
-        res.status(200).json(data);
+        const { data: movie_categories } = await supabase.from('movie_categories')
+          .select(`*`)
+          .eq('category_id', query.id)
+          .order('id');
+        const { data: movies } = await supabase.from('movies')
+          .select(`*`)
+          .order('id');
+
+        let movie_by_category = []
+        for (const a of movie_categories) {
+          for (const b of movies) {
+            if (a.movie_id == b.id) {
+              movie_by_category.push({
+                ...b
+              })
+            }
+          }
+        }
+        const data = categories[0]
+        res.status(200).json({ ...data, movies: movie_by_category });
       }
       break;
 
