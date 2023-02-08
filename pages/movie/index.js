@@ -120,7 +120,11 @@ export default function Movie() {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return (original.studios?.name)
+          return (
+            <Link href={`/studio/detail/${original.studios?.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+              {original.studios?.name}
+            </Link>
+          )
         }
       },
       {
