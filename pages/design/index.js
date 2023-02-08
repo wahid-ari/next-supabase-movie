@@ -31,6 +31,8 @@ import Dialog from "@components/systems/Dialog";
 import SearchBox from "@components/systems/SearchBox";
 import ReactTable from "@components/systems/ReactTable";
 import { tabledata } from "@utils/tableData";
+// import { default as ReactSelect } from 'react-select';
+import Select from 'react-select';
 
 const searchBoxData = [
   {
@@ -44,6 +46,21 @@ const searchBoxData = [
   {
     id: 3,
     name: "Option 3"
+  },
+]
+
+const reactSelectData = [
+  {
+    value: 1,
+    label: "Option 1"
+  },
+  {
+    value: 2,
+    label: "Option 2"
+  },
+  {
+    value: 3,
+    label: "Option 3"
   },
 ]
 
@@ -233,6 +250,8 @@ export default function Example() {
 
   const tableInstance = useRef(null);
 
+  const [reactSelect, setReactSelect] = useState()
+
   return (
     <Layout title="Design System - MyMovie">
       <Title>Example</Title>
@@ -253,6 +272,9 @@ export default function Example() {
           </span>
           <span className="underline block mb-3">
             <Link href="#searchbox">SearchBox</Link>
+          </span>
+          <span className="underline block mb-3">
+            <Link href="#reactselect">React Select</Link>
           </span>
           <span className="underline block mb-3">
             <Link href="#reacttable">React Table</Link>
@@ -434,6 +456,37 @@ export default function Example() {
           afterLeave={() => setQuerySearchBox('')}
           filtered={filteredSearchBox}
           query={querySearchBox}
+        />
+      </Wrapper>
+
+      <Wrapper
+        id="reactselect"
+        name="ReactSelect"
+        noClassName
+        noProps
+        noChildren
+        props={["options", "isMulti", "noOptionsMessage", "value", "onChange", "placeholder", "name", "className", "classNamePrefix", "theme"]}
+      >
+        <Select
+          options={reactSelectData}
+          isMulti
+          noOptionsMessage={() => "Not Found"}
+          value={reactSelect}
+          onChange={setReactSelect}
+          placeholder="Search or Select"
+          name="category"
+          className="rounded mb-4"
+          classNamePrefix="react-select"
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary: `#059669`,
+              primary25: `#059669`,
+              primary50: `#059669`,
+              neutral40: `#EF4444`,
+            },
+          })}
         />
       </Wrapper>
 
@@ -719,7 +772,7 @@ export default function Example() {
           type="password"
         />
       </Wrapper>
-      
+
       <Wrapper
         id="textarea"
         name="TextArea"
