@@ -188,6 +188,14 @@ export default function Director() {
         Header: 'Country',
         accessor: 'countries.name',
         width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link href={`/country/detail/${original.countries?.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+              {original.countries?.name}
+            </Link>
+          )
+        }
       },
       {
         Header: 'Action',
