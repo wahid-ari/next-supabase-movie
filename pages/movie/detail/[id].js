@@ -146,8 +146,13 @@ export default function Movie({ id }) {
           </div>
         </div>
         :
-        <div className="text-center sm:text-left">
-          <Shimer className="mt-4 h-80 sm:h-96 !w-60 sm:!w-64" />
+        <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
+          <div className="w-60 mx-auto sm:w-2/4 md:w-2/5 xl:w-1/4 2xl:w-1/5">
+            <Shimer className="h-80 sm:h-96" />
+          </div>
+          <div className="sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5">
+            <Shimer className="h-80 sm:h-96" />
+          </div>
         </div>
       }
 
@@ -174,7 +179,9 @@ export default function Movie({ id }) {
           </div>
         </>
         :
-        null
+        <div className="hidden sm:flex gap-3 mt-6">
+          <Shimer className="!h-[180px] !w-32" />
+        </div>
       }
 
       {data ?
@@ -194,7 +201,9 @@ export default function Movie({ id }) {
           </div>
         </>
         :
-        null
+        <div className="hidden sm:flex gap-3 mt-6">
+          <Shimer className="!h-[180px] !w-32" />
+        </div>
       }
 
       {data ?
