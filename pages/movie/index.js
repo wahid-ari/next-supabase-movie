@@ -103,7 +103,7 @@ export default function Movie() {
       },
       {
         Header: 'Director',
-        accessor: 'directors',
+        accessor: 'directors.name',
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
@@ -116,7 +116,7 @@ export default function Movie() {
       },
       {
         Header: 'Studio',
-        accessor: 'studios',
+        accessor: 'studios.name',
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
