@@ -181,6 +181,7 @@ export default function Movie({ id }) {
         :
         <div className="hidden sm:flex gap-3 mt-6">
           <Shimer className="!h-[180px] !w-32" />
+          <Shimer className="!h-[180px] !w-32" />
         </div>
       }
 
