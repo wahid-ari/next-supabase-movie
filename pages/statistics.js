@@ -16,17 +16,21 @@ const fetcher = url => axios.get(url).then(res => res.data)
 
 export default function Home() {
   const { theme } = useTheme()
-  const { data: artistByGenre, error: errorArtistByGenre } = useSWR(`${process.env.API_ROUTE}/api/statistics/artist-by-genre`, fetcher)
-  const { data: albumByArtist, error: errorAlbumByArtist } = useSWR(`${process.env.API_ROUTE}/api/statistics/album-by-artist`, fetcher)
-  const { data: songByAlbum, error: errorSongByAlbum } = useSWR(`${process.env.API_ROUTE}/api/statistics/song-by-album`, fetcher)
-  const { data: songByArtist, error: errorSongByArtist } = useSWR(`${process.env.API_ROUTE}/api/statistics/song-by-artist`, fetcher)
-  const { data: songByPlaylist, error: errorSongByPlaylist } = useSWR(`${process.env.API_ROUTE}/api/statistics/song-by-playlist`, fetcher)
+  const { data: actorByCountry, error: errorActorByCountry } = useSWR(`${process.env.API_ROUTE}/api/statistics/actor-by-country`, fetcher)
+  const { data: directorByCountry, error: errorDirectorByCountry } = useSWR(`${process.env.API_ROUTE}/api/statistics/director-by-country`, fetcher)
+  const { data: studioByCountry, error: errorStudioByCountry } = useSWR(`${process.env.API_ROUTE}/api/statistics/studio-by-country`, fetcher)
+  const { data: movieByActor, error: errorMovieByActor } = useSWR(`${process.env.API_ROUTE}/api/statistics/movie-by-actor`, fetcher)
+  const { data: movieByCategory, error: errorMovieByCategory } = useSWR(`${process.env.API_ROUTE}/api/statistics/movie-by-category`, fetcher)
+  const { data: movieByStudio, error: errorMovieByStudio } = useSWR(`${process.env.API_ROUTE}/api/statistics/movie-by-studio`, fetcher)
+  const { data: movieByDirector, error: errorMovieByDirector } = useSWR(`${process.env.API_ROUTE}/api/statistics/movie-by-director`, fetcher)
 
-  const [dataArtistByGenre, setDataArtistByGenre] = useState()
-  const [dataAlbumByArtist, setDataAlbumByArtist] = useState()
-  const [dataSongByAlbum, setDataSongByAlbum] = useState()
-  const [dataSongByArtist, setDataSongByArtist] = useState()
-  const [dataSongByPlaylist, setDataSongByPlaylist] = useState()
+  const [dataActorByCountry, setDataActorByCountry] = useState()
+  const [dataDirectorByCountry, setDataDirectorByCountry] = useState()
+  const [dataStudioByCountry, setDataStudioByCountry] = useState()
+  const [dataMovieByActor, setDataMovieByActor] = useState()
+  const [dataMovieByCategory, setDataMovieByCategory] = useState()
+  const [dataMovieByStudio, setDataMovieByStudio] = useState()
+  const [dataMovieByDirector, setDataMovieByDirector] = useState()
 
   const [windowWidth, setWindowWidth] = useState()
   useEffect(() => {
@@ -34,14 +38,16 @@ export default function Home() {
   }, [windowWidth])
 
   useEffect(() => {
-    if (artistByGenre !== undefined) setDataArtistByGenre(populateData(artistByGenre, "genre"))
-    if (albumByArtist !== undefined) setDataAlbumByArtist(populateData(albumByArtist, "album"))
-    if (songByAlbum !== undefined) setDataSongByAlbum(populateData(songByAlbum, "song"))
-    if (songByArtist !== undefined) setDataSongByArtist(populateData(songByArtist, "song"))
-    if (songByPlaylist !== undefined) setDataSongByPlaylist(populateData(songByPlaylist, "song"))
-  }, [artistByGenre, albumByArtist, songByAlbum, songByArtist, songByPlaylist])
+    if (actorByCountry !== undefined) setDataActorByCountry(populateData(actorByCountry, "actor"))
+    if (directorByCountry !== undefined) setDataDirectorByCountry(populateData(directorByCountry, "director"))
+    if (studioByCountry !== undefined) setDataStudioByCountry(populateData(studioByCountry, "studio"))
+    if (movieByActor !== undefined) setDataMovieByActor(populateData(movieByActor, "movie"))
+    if (movieByCategory !== undefined) setDataMovieByCategory(populateData(movieByCategory, "movie"))
+    if (movieByStudio !== undefined) setDataMovieByStudio(populateData(movieByStudio, "movie"))
+    if (movieByDirector !== undefined) setDataMovieByDirector(populateData(movieByDirector, "movie"))
+  }, [actorByCountry, directorByCountry, studioByCountry, movieByActor, movieByCategory, movieByStudio, movieByDirector])
 
-  if (errorArtistByGenre || errorAlbumByArtist || errorSongByAlbum || errorSongByArtist || errorSongByPlaylist) {
+  if (errorActorByCountry || errorDirectorByCountry || errorStudioByCountry || errorMovieByActor || errorMovieByCategory || errorMovieByStudio || errorMovieByDirector) {
     return (
       <Layout title="Statistics">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -53,70 +59,17 @@ export default function Home() {
     <Layout title="Statistics - MyMovie">
       <Titles>Statistics</Titles>
 
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
-        {dataArtistByGenre ?
-          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
-            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
-              <Text.medium className="!text-sm">Total Artis by Genre</Text.medium>
-            </div>
-            <div className="py-3 m-auto w-72">
-              <Pie
-                options={options}
-                data={dataArtistByGenre}
-              />
-            </div>
-          </div>
-          :
-          <Shimer className="w-full !h-[350px]" />
-        }
-
-        {dataAlbumByArtist ?
-          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
-            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
-              <Text.medium className="!text-sm">Total Album by Artist</Text.medium>
-            </div>
-            <div className="py-3 m-auto w-72">
-              <Doughnut
-                options={options}
-                data={dataAlbumByArtist}
-              />
-            </div>
-          </div>
-          :
-          <Shimer className="w-full !h-[350px]" />
-        }
-      </div>
-
       <div className="mt-5">
-        {dataSongByAlbum ?
+        {dataMovieByActor ?
           <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
             <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
-              <Text.medium className="!text-sm">Total Song by Album</Text.medium>
-            </div>
-            <div className="p-3">
-              <Bar
-                options={optionsBarChart(theme)}
-                data={dataSongByAlbum}
-                height={100}
-              />
-            </div>
-          </div>
-          :
-          <Shimer className="w-full !h-96" />
-        }
-      </div>
-
-      <div className="mt-5">
-        {dataSongByArtist ?
-          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
-            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
-              <Text.medium className="!text-sm">Total Song by Artist</Text.medium>
+              <Text.medium className="!text-sm">Total Movie by Actor</Text.medium>
             </div>
             <div className="p-3">
               <Bar
                 options={optionsHorizontalBarChart(theme, windowWidth)}
-                data={dataSongByArtist}
-                height={100}
+                data={dataMovieByActor}
+                height={windowWidth > 500 ? 100 : 250}
               />
             </div>
           </div>
@@ -126,22 +79,119 @@ export default function Home() {
       </div>
 
       <div className="mt-5">
-        {dataSongByPlaylist ?
+        {dataMovieByCategory ?
           <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
             <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
-              <Text.medium className="!text-sm">Total Song by Playlist</Text.medium>
+              <Text.medium className="!text-sm">Total Movie by Category</Text.medium>
             </div>
             <div className="p-3">
               {/* <Bar
                 options={optionsHorizontalBarChart(theme, windowWidth)}
-                data={dataSongByPlaylist}
+                data={dataMovieByCategory}
                 height={100}
               /> */}
 
               <Line
                 options={optionsLineChart(theme)}
-                data={dataSongByPlaylist}
+                data={dataMovieByCategory}
+                height={windowWidth > 500 ? 100 : 250}
+              />
+            </div>
+          </div>
+          :
+          <Shimer className="w-full !h-96" />
+        }
+      </div>
+
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+        {dataStudioByCountry ?
+          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
+            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
+              <Text.medium className="!text-sm">Total Studio by Country</Text.medium>
+            </div>
+            <div className="py-3 m-auto w-72">
+              <Pie
+                options={options}
+                data={dataStudioByCountry}
+              />
+            </div>
+          </div>
+          :
+          <Shimer className="w-full !h-[350px]" />
+        }
+
+        {dataDirectorByCountry ?
+          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
+            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
+              <Text.medium className="!text-sm">Total Director by Country</Text.medium>
+            </div>
+            <div className="py-3 m-auto w-72">
+              <Doughnut
+                options={options}
+                data={dataDirectorByCountry}
+              />
+            </div>
+          </div>
+          :
+          <Shimer className="w-full !h-[350px]" />
+        }
+      </div>
+
+      <div className="mt-5">
+        {dataActorByCountry ?
+          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
+            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
+              <Text.medium className="!text-sm">Total Actor by Country</Text.medium>
+            </div>
+            <div className="p-3">
+              <Bar
+                options={optionsBarChart(theme)}
+                data={dataActorByCountry}
+                height={windowWidth > 500 ? 100 : 250}
+              />
+            </div>
+          </div>
+          :
+          <Shimer className="w-full !h-96" />
+        }
+      </div>
+      
+      <div className="mt-5">
+        {dataMovieByStudio ?
+          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
+            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
+              <Text.medium className="!text-sm">Total Movie by Studio</Text.medium>
+            </div>
+            <div className="p-3">
+              <Bar
+                options={optionsHorizontalBarChart(theme, windowWidth)}
+                data={dataMovieByStudio}
+                height={windowWidth > 500 ? 100 : 250}
+              />
+            </div>
+          </div>
+          :
+          <Shimer className="w-full !h-96" />
+        }
+      </div>
+
+      <div className="mt-5">
+        {dataMovieByDirector ?
+          <div className="rounded-md border dark:border-neutral-800 bg-white dark:bg-[#1F1F1F]">
+            <div className="p-3 bg-neutral-100/80 dark:bg-neutral-800">
+              <Text.medium className="!text-sm">Total Movie by Director</Text.medium>
+            </div>
+            <div className="p-3">
+              {/* <Bar
+                options={optionsHorizontalBarChart(theme, windowWidth)}
+                data={dataMovieByDirector}
                 height={100}
+              /> */}
+
+              <Line
+                options={optionsLineChart(theme)}
+                data={dataMovieByDirector}
+                height={windowWidth > 500 ? 100 : 250}
               />
             </div>
           </div>
