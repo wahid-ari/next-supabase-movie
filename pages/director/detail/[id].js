@@ -112,40 +112,41 @@ export default function Director({ id }) {
       </div>
 
       {data ?
-        <div>
-          <p className="text-lg">{data.gender == 1 ? "Male" : "Female"}</p>
-          <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
-            {data?.image_url.startsWith("http") ?
-              <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4">
-                <Image
-                  alt={data?.name}
-                  src={data?.image_url}
-                  fill
-                  className={`rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}
-                  onLoadingComplete={() => setLoading(false)}
-                />
-              </div>
-              :
-              <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
-                <UserIcon className="w-32 h-32 text-neutral-500" />
-              </div>
-            }
-            <div className="sm:w-2/3 md:w-3/4">
-              <Heading className="-mt-1 mb-2">Biography</Heading>
-              <Text className="!text-[15px]">{data.biography || "-"}</Text>
-              <Heading className="mt-4 mb-2">Country</Heading>
-              {data.countries ?
-                <Link href={`/country/detail/${data.countries?.id}`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
-                  {data.countries?.name || "-"}
-                </Link>
-                :
-                "-"
-              }
+        <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
+          {data?.image_url.startsWith("http") ?
+            <div className="overflow-hidden relative h-80 sm:h-96 w-60 mx-auto sm:w-2/4 md:w-2/5 xl:w-1/4 2xl:w-1/5">
+              <Image
+                alt={data?.name}
+                src={data?.image_url}
+                fill
+                className={`rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}
+                onLoadingComplete={() => setLoading(false)}
+              />
             </div>
+            :
+            <div className="overflow-hidden relative h-72 xl:h-96 w-52 mx-auto sm:w-1/3 md:w-1/4 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+              <UserIcon className="w-32 h-32 text-neutral-500" />
+            </div>
+          }
+          <div className="sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5">
+            <Heading className="-mt-1 mb-2">Biography</Heading>
+            <Text className="!text-[15px]">{data.biography || "-"}</Text>
+            <Heading className="mt-4 mb-2">Gender</Heading>
+            <Text className="!text-[15px]">{data.gender == 1 ? "Male" : "Female"}</Text>
+            <Heading className="mt-4 mb-2">Country</Heading>
+            {data.countries ?
+              <Link href={`/country/detail/${data.countries?.id}`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
+                {data.countries?.name || "-"}
+              </Link>
+              :
+              "-"
+            }
           </div>
         </div>
         :
-        <Shimer className="mt-4 h-72 xl:h-96 !w-72" />
+        <div className="text-center sm:text-left">
+          <Shimer className="mt-4 h-80 sm:h-96 !w-60 sm:!w-64" />
+        </div>
       }
 
       {data?.movies.length > 0 ?

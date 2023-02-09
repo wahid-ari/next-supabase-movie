@@ -60,7 +60,7 @@ export default function Movie({ id }) {
         <div>
           <div className="flex flex-wrap sm:flex-nowrap mt-4 gap-5">
             {data?.image_url.startsWith("http") ?
-              <div className="overflow-hidden relative h-80 sm:h-96 w-60 mx-auto sm:w-2/4 md:w-2/5 xl:w-1/4">
+              <div className="overflow-hidden relative h-80 sm:h-96 w-60 mx-auto sm:w-2/4 md:w-2/5 xl:w-1/4 2xl:w-1/5">
                 <Image
                   alt={data?.name}
                   src={data?.image_url}
@@ -74,7 +74,7 @@ export default function Movie({ id }) {
                 <PhotographIcon className="w-32 h-32" />
               </div>
             }
-            <div className="sm:w-2/3 md:w-3/4 xl:w-3/4">
+            <div className="sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5">
               <Heading className="-mt-1 mb-2">Overview</Heading>
               <Text className="!text-[15px]">{data.description || "-"}</Text>
               <Heading className="mt-4 mb-2">Categories</Heading>
@@ -146,12 +146,14 @@ export default function Movie({ id }) {
           </div>
         </div>
         :
-        <Shimer className="mt-4 h-72 xl:h-96 !w-72" />
+        <div className="text-center sm:text-left">
+          <Shimer className="mt-4 h-80 sm:h-96 !w-60 sm:!w-64" />
+        </div>
       }
 
       {data ?
         <>
-          <Heading className="mt-4 mb-3">Actors</Heading>
+          <Heading className="mt-6 mb-3">Actors</Heading>
           <div className="flex gap-3 overflow-auto pb-4 px-0.5 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800">
             {data.actors.length > 0 ?
               data.actors?.map((actor, index) =>
@@ -177,7 +179,7 @@ export default function Movie({ id }) {
 
       {data ?
         <>
-          <Heading className="mb-3">Director</Heading>
+          <Heading className="mt-1 mb-3">Director</Heading>
           <div className="w-32 py-0.5 shadow rounded border border-transparent dark:border-neutral-800">
             <Link href={`/director/detail/${data.directors?.id}`} className="shadow rounded group ">
               <div className="relative overflow-hidden h-[180px]">
@@ -197,7 +199,7 @@ export default function Movie({ id }) {
 
       {data ?
         <>
-          <Heading className="mt-4 mb-3">Trailer</Heading>
+          <Heading className="mt-5 mb-3">Trailer</Heading>
           {data?.video_url?.startsWith("https") ?
             <div className="rounded">
               <iframe className="rounded w-full h-64 sm:h-72 md:w-3/4 xl:w-1/2 md:h-80"
