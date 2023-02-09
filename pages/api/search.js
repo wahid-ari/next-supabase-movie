@@ -8,45 +8,19 @@ export default async function handler(req, res) {
       if (!query.q) {
         res.status(200).json({ message: "Query Required" });
       }
-      const { data: songs, error: errorSongs } = await supabase.from('songs')
+      const { data: movies } = await supabase.from('movies')
         .select(`*`)
         .textSearch('name', `'${query.q}'`)
-      const { data: albums, error: errorAlbums } = await supabase.from('album')
+      const { data: actors } = await supabase.from('actors')
         .select(`*`)
         .textSearch('name', `'${query.q}'`)
-      const { data: artists, error: errorArtists } = await supabase.from('artists')
+      const { data: directors } = await supabase.from('directors')
         .select(`*`)
         .textSearch('name', `'${query.q}'`)
-      const { data: allArtists, error: errorAllArtists } = await supabase.from('artists')
+      const { data: studios } = await supabase.from('studios')
         .select(`*`)
-        .order('id');
-      const { data: playlists, error: errorPlaylists } = await supabase.from('playlist')
-        .select(`*, playlist_song (*)`)
         .textSearch('name', `'${query.q}'`)
-
-      let songArtist = []
-      for (const song of songs) {
-        for (const allArtist of allArtists) {
-          if (song.artist_id == allArtist.id) {
-            songArtist.push({
-              ...song,
-              artist_name: allArtist.name
-            })
-          }
-        }
-      }
-      let albumArtist = []
-      for (const album of albums) {
-        for (const allArtist of allArtists) {
-          if (album.artists_id == allArtist.id) {
-            albumArtist.push({
-              ...album,
-              artist_name: allArtist.name
-            })
-          }
-        }
-      }
-      res.status(200).json({ songs: songArtist, albums: albumArtist, artists, playlists });
+      res.status(200).json({ movies, actors, directors, studios });
       break;
 
     default:
