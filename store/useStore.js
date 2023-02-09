@@ -1,42 +1,42 @@
 import { create } from 'zustand';
 
 export const useSearchHistoryStore = create((set) => ({
-  songsHistory: [],
-  albumsHistory: [],
-  artistsHistory: [],
-  playlistsHistory: [],
-  setSongsHistory: (param) => {
+  movies: [],
+  actors: [],
+  directors: [],
+  studios: [],
+  setMovies: (param) => {
     set(state => ({
-      songsHistory: state.songsHistory.concat(param)
+      movies: state.movies.concat(param)
     }))
   },
-  setAlbumsHistory: (param) => {
+  setActors: (param) => {
     set((state) => ({
-      albumsHistory: state.albumsHistory.concat(param)
+      actors: state.actors.concat(param)
     }))
   },
-  setArtistsHistory: (param) => {
+  setDirectors: (param) => {
     set((state) => ({
-      artistsHistory: [
-        ...state.artistsHistory.concat(param)
+      directors: [
+        ...state.directors.concat(param)
       ]
     }))
   },
-  setPlaylistsHistory: (param) => {
+  setStudios: (param) => {
     set((state) => ({
-      playlistsHistory: [
-        ...state.playlistsHistory.concat(param)
+      studios: [
+        ...state.studios.concat(param)
       ]
     }))
   },
-  resetSongsHistory: () => set({ songsHistory: [] }),
-  resetAlbumsHistory: () => set({ albumsHistory: [] }),
-  resetArtistsHistory: () => set({ artistsHistory: [] }),
-  resetPlaylistsHistory: () => set({ playlistsHistory: [] }),
+  resetMovies: () => set({ movies: [] }),
+  resetActors: () => set({ actors: [] }),
+  resetDirectors: () => set({ directors: [] }),
+  resetStudios: () => set({ studios: [] }),
   resetAllSearchHistory: () => set({
-    songsHistory: [],
-    albumsHistory: [],
-    artistsHistory: [],
-    playlistsHistory: []
+    movies: [],
+    actors: [],
+    directors: [],
+    studios: []
   }),
 }))
