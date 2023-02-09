@@ -8,8 +8,8 @@ function populateData(param, type) {
   let borderColor = []
   let labelName = ''
   switch (type) {
-    // type genre = label & total
-    case "genre":
+    // type actor = label & total
+    case "actor":
       param.map(item =>
         labels.push(item.label)
       );
@@ -18,10 +18,10 @@ function populateData(param, type) {
       );
       bgColor = colors.slice(0, 13)
       borderColor = colors.slice(0, 13)
-      labelName = "Total Artist"
+      labelName = "Total Actors"
       break;
-    // type song = label & total
-    case "song":
+    // type movie = label & total
+    case "movie":
       param.map(item =>
         labels.push(item.label)
       );
@@ -30,10 +30,10 @@ function populateData(param, type) {
       );
       bgColor = colors.slice(1, 13)
       borderColor = colors.slice(1, 13)
-      labelName = "Total Song"
+      labelName = "Total Movie"
       break;
-    // type album = label & total
-    case "album":
+    // type director = label & total
+    case "director":
       param.map(item =>
         labels.push(item.label)
       );
@@ -42,7 +42,19 @@ function populateData(param, type) {
       );
       bgColor = colors.slice(2, 13)
       borderColor = colors.slice(2, 13)
-      labelName = "Total Album"
+      labelName = "Total Directors"
+      break;
+    // type studio = label & total
+    case "studio":
+      param.map(item =>
+        labels.push(item.label)
+      );
+      param.map(item =>
+        totals.push(item.total)
+      );
+      bgColor = colors.slice(3, 13)
+      borderColor = colors.slice(3, 13)
+      labelName = "Total Studios"
       break;
     default:
       param.map(item =>
