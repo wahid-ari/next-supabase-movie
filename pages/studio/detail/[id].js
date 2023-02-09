@@ -106,7 +106,7 @@ export default function Studio({ id }) {
           <Text className="!text-base mt-4">{data?.city}, {data?.countries?.name}</Text>
         </div>
         :
-        <Shimer className="!h-72 !w-72" />
+        <Shimer className="!h-40" />
       }
 
       {data ?

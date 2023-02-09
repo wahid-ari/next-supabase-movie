@@ -164,7 +164,7 @@ export default function Country({ id }) {
           }
         </div>
         :
-        <Shimer className="!h-60" />
+        <Shimer className="mt-4 !h-60" />
       }
       
       {data ?
@@ -190,7 +190,7 @@ export default function Country({ id }) {
           }
         </div>
         :
-        <Shimer className="!h-60" />
+        <Shimer className="mt-4 !h-60" />
       }
       
       {data ?
@@ -216,7 +216,7 @@ export default function Country({ id }) {
           }
         </div>
         :
-        <Shimer className="!h-60" />
+        <Shimer className="mt-4 !h-60" />
       }
 
     </Layout>
