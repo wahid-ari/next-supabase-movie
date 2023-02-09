@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         return unique;
       }, []);
       // console.log(data)
-      let sortedData = data.sort((a, b) => b.total - a.total).slice(0, 10)
+      let sortedData = data.sort((a, b) => b.total - a.total).slice(0, 4)
       res.status(200).json(sortedData);
       break;
 
