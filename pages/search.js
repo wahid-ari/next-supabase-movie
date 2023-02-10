@@ -41,14 +41,14 @@ export default function Search() {
 
   const resetAllSearchHistory = useSearchHistoryStore(state => state.resetAllSearchHistory)
 
-  function saveSearchResult(history, newResults) {
+  function compareSearchResult(history, newResults) {
     let newHistory = history
     // iterate each search result
-    for (const b of newResults) {
+    for (const newResult of newResults) {
       // check if new result already in the history
-      const exists = history.findIndex(item => item.id == b.id) > -1;
+      const exists = history.findIndex(item => item.id == newResult.id) > -1;
       if (!exists) {
-        newHistory.push(b)
+        newHistory.push(newResult)
       }
     }
     return newHistory
@@ -59,18 +59,18 @@ export default function Search() {
       // if already searching
       if (moviesHistory.length > 0) {
         // compare history with new search result
-        let newMovies = saveSearchResult(moviesHistory, data?.movies)
+        let newMovies = compareSearchResult(moviesHistory, data?.movies)
         if (newMovies != moviesHistory) {
           setMoviesHistory(newMovies)
         }
-      } else {
+      } else { // first time searching, set search result to search history directly
         setMoviesHistory(data?.movies)
       }
     }
     // Actors
     if (data?.actors?.length > 0) {
       if (actorsHistory.length > 0) {
-        let newActors = saveSearchResult(actorsHistory, data?.actors)
+        let newActors = compareSearchResult(actorsHistory, data?.actors)
         if (newActors != actorsHistory) {
           setActorsHistory(newActors)
         }
@@ -81,7 +81,7 @@ export default function Search() {
     // Directors
     if (data?.directors?.length > 0) {
       if (directorsHistory.length > 0) {
-        let newDirectors = saveSearchResult(directorsHistory, data?.directors)
+        let newDirectors = compareSearchResult(directorsHistory, data?.directors)
         if (newDirectors != directorsHistory) {
           setDirectorsHistory(newDirectors)
         }
@@ -92,7 +92,7 @@ export default function Search() {
     // Studio
     if (data?.studios?.length > 0) {
       if (studiosHistory.length > 0) {
-        let newStudios = saveSearchResult(studiosHistory, data?.studios)
+        let newStudios = compareSearchResult(studiosHistory, data?.studios)
         if (newStudios != studiosHistory) {
           setStudiosHistory(newStudios)
         }
