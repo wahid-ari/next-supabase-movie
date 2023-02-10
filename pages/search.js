@@ -9,11 +9,11 @@ import Text from "@components/systems/Text";
 import Button from "@components/systems/Button";
 import Heading from "@components/systems/Heading";
 import AlbumItem from "@components/dashboard/AlbumItem";
-import SongListItem from "@components/dashboard/SongListItem";
 import ArtistItem from "@components/dashboard/ArtistItem";
 import PlaylistItem from "@components/dashboard/PlaylistItem";
 import { BookmarkIcon, CollectionIcon, MusicNoteIcon, UserGroupIcon } from "@heroicons/react/outline";
 import { useSearchHistoryStore } from '@store/useStore';
+import MovieListItem from "@components/dashboard/MovieListItem";
 
 const fetcher = url => fetch(url).then(result => result.json())
 
@@ -23,25 +23,83 @@ export default function Search() {
   const query = useRef(search)
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/search?q=${search}`, fetcher)
 
-  const songsHistory = useSearchHistoryStore(state => state.songsHistory)
-  const setSongsHistory = useSearchHistoryStore(state => state.setSongsHistory)
-  const resetSongsHistory = useSearchHistoryStore(state => state.resetSongsHistory)
-  const albumsHistory = useSearchHistoryStore(state => state.albumsHistory)
-  const setAlbumsHistory = useSearchHistoryStore(state => state.setAlbumsHistory)
-  const resetAlbumsHistory = useSearchHistoryStore(state => state.resetAlbumsHistory)
-  const artistsHistory = useSearchHistoryStore(state => state.artistsHistory)
-  const setArtistsHistory = useSearchHistoryStore(state => state.setArtistsHistory)
-  const resetArtistsHistory = useSearchHistoryStore(state => state.resetArtistsHistory)
-  const playlistsHistory = useSearchHistoryStore(state => state.playlistsHistory)
-  const setPlaylistsHistory = useSearchHistoryStore(state => state.setPlaylistsHistory)
-  const resetPlaylistsHistory = useSearchHistoryStore(state => state.resetPlaylistsHistory)
+  const moviesHistory = useSearchHistoryStore(state => state.movies)
+  const setMoviesHistory = useSearchHistoryStore(state => state.setMovies)
+  const resetMoviesHistory = useSearchHistoryStore(state => state.resetMovies)
+
+  const actorsHistory = useSearchHistoryStore(state => state.actors)
+  const setActorsHistory = useSearchHistoryStore(state => state.setActors)
+  const resetActorsHistory = useSearchHistoryStore(state => state.resetActors)
+
+  const directorsHistory = useSearchHistoryStore(state => state.directors)
+  const setDirectorsHistory = useSearchHistoryStore(state => state.setDirectors)
+  const resetDirectorsHistory = useSearchHistoryStore(state => state.resetDirectors)
+
+  const studiosHistory = useSearchHistoryStore(state => state.studios)
+  const setStudiosHistory = useSearchHistoryStore(state => state.setStudios)
+  const resetStudiosHistory = useSearchHistoryStore(state => state.resetStudios)
+
   const resetAllSearchHistory = useSearchHistoryStore(state => state.resetAllSearchHistory)
 
+  function saveSearchResult(history, newResults) {
+    let newHistory = history
+    // iterate each search result
+    for (const b of newResults) {
+      // check if new result already in the history
+      const exists = history.findIndex(item => item.id == b.id) > -1;
+      if (!exists) {
+        newHistory.push(b)
+      }
+    }
+    return newHistory
+  }
+
   useEffect(() => {
-    if (data?.songs?.length > 0) setSongsHistory(data?.songs)
-    if (data?.albums?.length > 0) setAlbumsHistory(data?.albums)
-    if (data?.artists?.length > 0) setArtistsHistory(data?.artists)
-    if (data?.playlists?.length > 0) setPlaylistsHistory(data?.playlists)
+    if (data?.movies?.length > 0) {
+      // if already searching
+      if (moviesHistory.length > 0) {
+        // compare history with new search result
+        let newMovies = saveSearchResult(moviesHistory, data?.movies)
+        if (newMovies != moviesHistory) {
+          setMoviesHistory(newMovies)
+        }
+      } else {
+        setMoviesHistory(data?.movies)
+      }
+    }
+    // Actors
+    if (data?.actors?.length > 0) {
+      if (actorsHistory.length > 0) {
+        let newActors = saveSearchResult(actorsHistory, data?.actors)
+        if (newActors != actorsHistory) {
+          setActorsHistory(newActors)
+        }
+      } else {
+        setActorsHistory(data?.actors)
+      }
+    }
+    // Directors
+    if (data?.directors?.length > 0) {
+      if (directorsHistory.length > 0) {
+        let newDirectors = saveSearchResult(directorsHistory, data?.directors)
+        if (newDirectors != directorsHistory) {
+          setDirectorsHistory(newDirectors)
+        }
+      } else {
+        setDirectorsHistory(data?.directors)
+      }
+    }
+    // Studio
+    if (data?.studios?.length > 0) {
+      if (studiosHistory.length > 0) {
+        let newStudios = saveSearchResult(studiosHistory, data?.studios)
+        if (newStudios != studiosHistory) {
+          setStudiosHistory(newStudios)
+        }
+      } else {
+        setStudiosHistory(data?.studios)
+      }
+    }
   }, [data])
 
   function handleSubmit(e) {
@@ -70,7 +128,7 @@ export default function Search() {
           <LabeledInput
             wrapperClassName="w-full sm:max-w-sm"
             name="search"
-            placeholder="Search song, artist, album or playlist"
+            placeholder="Search movie, actor, director or studio"
             type="text"
             onChange={(e) => query.current = e.target.value}
           />
@@ -82,7 +140,7 @@ export default function Search() {
         <>
           {!data && <Text>Searching...</Text>}
 
-          {data?.songs.length < 1 && data?.albums.length < 1 && data?.artists.length < 1 && data?.playlists.length < 1 ?
+          {data?.movies?.length < 1 && data?.actors?.length < 1 && data?.directors?.length < 1 && data?.studios?.length < 1 ?
             <div className="rounded border border-red-500 p-3">
               <p className="text-red-500">{`No results for "${query.current || search}"`}</p>
             </div>
@@ -90,16 +148,16 @@ export default function Search() {
             null
           }
 
-          {data?.songs.length > 0 ?
+          {data?.movies.length > 0 ?
             <>
-              <Heading h3 className="mt-6">Songs</Heading>
-              <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 gap-4">
-                {data?.songs?.map((item, index) =>
-                  <SongListItem key={index} href={`dashboard/song/detail/${item.id}`}
-                    imageSrc={item.cover_url}
+              <Heading h3 className="mt-6">Movies</Heading>
+              <div className="mt-2 pb-4 flex flex-col gap-4">
+                {data?.movies?.map((item, index) =>
+                  <MovieListItem key={index} href={`dashboard/movie/detail/${item.id}`}
+                    imageSrc={item.image_url}
                     title={item.name}
-                    artist={item.artist_name}
-                    noPlayer
+                    description={item.description}
+                    date={item.release_date}
                   />
                 )}
               </div>
@@ -108,11 +166,11 @@ export default function Search() {
             null
           }
 
-          {data?.albums.length > 0 ?
+          {data?.actors.length > 0 ?
             <>
-              <Heading h3 className="mt-6">Albums</Heading>
+              <Heading h3 className="mt-6">Actors</Heading>
               <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
-                {data?.albums?.map((item, index) =>
+                {data?.actors?.map((item, index) =>
                   <AlbumItem key={index} href={`dashboard/album/detail/${item.id}`}
                     imageSrc={item.cover}
                     title={item.name}
@@ -125,15 +183,15 @@ export default function Search() {
             null
           }
 
-          {data?.artists.length > 0 ?
+          {data?.directors.length > 0 ?
             <>
-              <Heading h3 className="mt-6">Artists</Heading>
+              <Heading h3 className="mt-6">Directors</Heading>
               <div className="mt-2 pb-4 grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {data?.artists?.map((item, index) =>
+                {data?.directors?.map((item, index) =>
                   <ArtistItem
                     key={index}
                     href={`dashboard/artist/detail/${item.id}`}
-                    imageSrc={item.cover_url}
+                    imageSrc={item.image_url}
                     title={item.name}
                   />
                 )}
@@ -143,11 +201,11 @@ export default function Search() {
             null
           }
 
-          {data?.playlists.length > 0 ?
+          {data?.studios.length > 0 ?
             <>
-              <Heading h3 className="mt-6">Playlists</Heading>
+              <Heading h3 className="mt-6">Studios</Heading>
               <div className="mt-2 pb-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                {data?.playlists?.map((item, index) =>
+                {data?.studios?.map((item, index) =>
                   <PlaylistItem
                     key={index}
                     index={index}
@@ -163,7 +221,7 @@ export default function Search() {
         </>
         :
         <>
-          {songsHistory?.length > 0 || albumsHistory?.length > 0 || artistsHistory?.length > 0 || playlistsHistory?.length > 0 ?
+          {moviesHistory?.length > 0 || actorsHistory?.length > 0 || directorsHistory?.length > 0 || studiosHistory?.length > 0 ?
             <>
               <div className="mt-6 flex items-center justify-between">
                 <Heading h3 >Recent Search</Heading>
@@ -172,21 +230,21 @@ export default function Search() {
                 </button>
               </div>
 
-              {songsHistory?.length > 0 ?
+              {moviesHistory?.length > 0 ?
                 <>
                   <div className="mt-6 flex items-center justify-between">
-                    <Heading>Songs</Heading>
-                    <button onClick={resetSongsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
+                    <Heading>Movies</Heading>
+                    <button onClick={resetMoviesHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
                       Clear
                     </button>
                   </div>
-                  <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 gap-4">
-                    {songsHistory?.map((item, index) =>
-                      <SongListItem key={index} href={`dashboard/song/detail/${item.id}`}
-                        imageSrc={item.cover_url}
+                  <div className="mt-2 pb-4 flex flex-col gap-4">
+                    {moviesHistory?.map((item, index) =>
+                      <MovieListItem key={index} href={`dashboard/movie/detail/${item.id}`}
+                        imageSrc={item.image_url}
                         title={item.name}
-                        artist={item.artist_name}
-                        noPlayer
+                        description={item.description}
+                        date={item.release_date}
                       />
                     )}
                   </div>
@@ -194,16 +252,16 @@ export default function Search() {
                 : null
               }
 
-              {albumsHistory?.length > 0 ?
+              {actorsHistory?.length > 0 ?
                 <>
                   <div className="mt-6 flex items-center justify-between">
-                    <Heading>Albums</Heading>
-                    <button onClick={resetAlbumsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
+                    <Heading>Actors</Heading>
+                    <button onClick={resetActorsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
                       Clear
                     </button>
                   </div>
                   <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
-                    {albumsHistory?.map((item, index) =>
+                    {actorsHistory?.map((item, index) =>
                       <AlbumItem key={index} href={`dashboard/album/detail/${item.id}`}
                         imageSrc={item.cover}
                         title={item.name}
@@ -215,20 +273,20 @@ export default function Search() {
                 : null
               }
 
-              {artistsHistory?.length > 0 ?
+              {directorsHistory?.length > 0 ?
                 <>
                   <div className="mt-6 flex items-center justify-between">
-                    <Heading>Artists</Heading>
-                    <button onClick={resetArtistsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
+                    <Heading>Directors</Heading>
+                    <button onClick={resetDirectorsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
                       Clear
                     </button>
                   </div>
                   <div className="mt-2 pb-4 grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {artistsHistory?.map((item, index) =>
+                    {directorsHistory?.map((item, index) =>
                       <ArtistItem
                         key={index}
                         href={`dashboard/artist/detail/${item.id}`}
-                        imageSrc={item.cover_url}
+                        imageSrc={item.image_url}
                         title={item.name}
                       />
                     )}
@@ -237,16 +295,16 @@ export default function Search() {
                 : null
               }
 
-              {playlistsHistory?.length > 0 ?
+              {studiosHistory?.length > 0 ?
                 <>
                   <div className="mt-6 flex items-center justify-between">
-                    <Heading>Playlists</Heading>
-                    <button onClick={resetPlaylistsHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
+                    <Heading>Studios</Heading>
+                    <button onClick={resetStudiosHistory} className="text-red-500 hover:text-red-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded">
                       Clear
                     </button>
                   </div>
                   <div className="mt-2 pb-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                    {playlistsHistory?.map((item, index) =>
+                    {studiosHistory?.map((item, index) =>
                       <PlaylistItem
                         key={index}
                         index={index}
@@ -271,7 +329,7 @@ export default function Search() {
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <MusicNoteIcon className="w-8 h-8 text-cyan-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:text-white transition-all ease-in duration-300">
-              Songs
+              Movies
             </h2>
           </div>
         </Link>
@@ -279,7 +337,7 @@ export default function Search() {
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <CollectionIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 group-hover:text-white transition-all ease-in duration-300">
-              Albums
+              Actors
             </h2>
           </div>
         </Link>
@@ -287,7 +345,7 @@ export default function Search() {
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <UserGroupIcon className="w-8 h-8 text-emerald-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-500 group-hover:text-white transition-all ease-in duration-300">
-              Artists
+              Directors
             </h2>
           </div>
         </Link>
@@ -295,7 +353,7 @@ export default function Search() {
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <BookmarkIcon className="w-8 h-8 text-violet-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-pink-500 group-hover:text-white transition-all ease-in duration-300">
-              Playlists
+              Studios
             </h2>
           </div>
         </Link>
