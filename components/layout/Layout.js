@@ -7,7 +7,7 @@ import Menu from './Menu';
 import clsx from 'clsx';
 import nookies from "nookies";
 
-export default function Layout({ children, title, description }) {
+export default function Layout({ children, title, description, className }) {
   // Fix Warning: A title element received an array with more than 1 element as children.In browsers title Elements can only have Text Nodes as ldren.If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in
   // the title and hydration will likely fail and fall back to client rendering
   // https://github.com/vercel/next.js/discussions/38256#discussioncomment-3070196
@@ -56,7 +56,7 @@ export default function Layout({ children, title, description }) {
             }
           </div>
 
-          <div className="px-4 sm:px-5 py-4">
+          <div className={`px-4 sm:px-5 py-4 ${className}`}>
             {children}
           </div>
 

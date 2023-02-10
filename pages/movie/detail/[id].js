@@ -47,7 +47,8 @@ export default function Movie({ id }) {
   }
 
   return (
-    <Layout title={`${data ? data?.name + " - MyMovie" : 'Movie Detail - MyMovie'}`}>
+    <Layout title={`${data ? data?.name + " - MyMovie" : 'Movie Detail - MyMovie'}`}
+    className="max-w-[70rem]">
       <div className="flex flex-wrap justify-between items-center gap-y-3">
         {data ?
           <Title>{data?.name}</Title>
@@ -159,7 +160,7 @@ export default function Movie({ id }) {
       {data ?
         <>
           <Heading className="mt-6 mb-3">Actors</Heading>
-          <div className="flex gap-3 overflow-auto pb-4 px-0.5 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800">
+          <div className={`${data.actors.length > 8 && "mb-4"} flex gap-3 overflow-auto pb-4 px-0.5 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}>
             {data.actors.length > 0 ?
               data.actors?.map((actor, index) =>
                 <Link href={`/actor/detail/${actor.id}`} key={index} className="w-32 shadow rounded group border border-transparent dark:border-neutral-800">
