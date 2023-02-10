@@ -9,11 +9,12 @@ import Text from "@components/systems/Text";
 import Button from "@components/systems/Button";
 import Heading from "@components/systems/Heading";
 import AlbumItem from "@components/dashboard/AlbumItem";
-import ArtistItem from "@components/dashboard/ArtistItem";
-import PlaylistItem from "@components/dashboard/PlaylistItem";
+import DirectorGridItem from "@components/dashboard/DirectorGridItem";
+import StudioGridItem from "@components/dashboard/StudioGridItem";
 import { BookmarkIcon, CollectionIcon, MusicNoteIcon, UserGroupIcon } from "@heroicons/react/outline";
 import { useSearchHistoryStore } from '@store/useStore';
 import MovieListItem from "@components/dashboard/MovieListItem";
+import ActorGridItem from "@components/dashboard/ActorGridItem";
 
 const fetcher = url => fetch(url).then(result => result.json())
 
@@ -169,12 +170,11 @@ export default function Search() {
           {data?.actors.length > 0 ?
             <>
               <Heading h3 className="mt-6">Actors</Heading>
-              <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+              <div className="mt-2 pb-4 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8">
                 {data?.actors?.map((item, index) =>
-                  <AlbumItem key={index} href={`dashboard/album/detail/${item.id}`}
-                    imageSrc={item.cover}
-                    title={item.name}
-                    artist={item.artist_name}
+                  <ActorGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+                    imageSrc={item.image_url}
+                    name={item.name}
                   />
                 )}
               </div>
@@ -186,9 +186,9 @@ export default function Search() {
           {data?.directors.length > 0 ?
             <>
               <Heading h3 className="mt-6">Directors</Heading>
-              <div className="mt-2 pb-4 grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="mt-2 pb-4 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-8">
                 {data?.directors?.map((item, index) =>
-                  <ArtistItem
+                  <DirectorGridItem
                     key={index}
                     href={`dashboard/artist/detail/${item.id}`}
                     imageSrc={item.image_url}
@@ -204,9 +204,9 @@ export default function Search() {
           {data?.studios.length > 0 ?
             <>
               <Heading h3 className="mt-6">Studios</Heading>
-              <div className="mt-2 pb-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+              <div className="mt-2 pb-4 grid grid-cols-1 min-[450px]:grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4">
                 {data?.studios?.map((item, index) =>
-                  <PlaylistItem
+                  <StudioGridItem
                     key={index}
                     index={index}
                     href={`/dashboard/playlist/detail/${item.id}`}
@@ -260,12 +260,11 @@ export default function Search() {
                       Clear
                     </button>
                   </div>
-                  <div className="mt-2 pb-4 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                  <div className="mt-2 pb-4 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8">
                     {actorsHistory?.map((item, index) =>
-                      <AlbumItem key={index} href={`dashboard/album/detail/${item.id}`}
-                        imageSrc={item.cover}
-                        title={item.name}
-                        artist={item.artist_name}
+                      <ActorGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+                        imageSrc={item.image_url}
+                        name={item.name}
                       />
                     )}
                   </div>
@@ -281,9 +280,9 @@ export default function Search() {
                       Clear
                     </button>
                   </div>
-                  <div className="mt-2 pb-4 grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <div className="mt-2 pb-4 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-8">
                     {directorsHistory?.map((item, index) =>
-                      <ArtistItem
+                      <DirectorGridItem
                         key={index}
                         href={`dashboard/artist/detail/${item.id}`}
                         imageSrc={item.image_url}
@@ -303,9 +302,9 @@ export default function Search() {
                       Clear
                     </button>
                   </div>
-                  <div className="mt-2 pb-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                  <div className="mt-2 pb-4 grid grid-cols-1 min-[450px]:grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4">
                     {studiosHistory?.map((item, index) =>
-                      <PlaylistItem
+                      <StudioGridItem
                         key={index}
                         index={index}
                         href={`/dashboard/playlist/detail/${item.id}`}
