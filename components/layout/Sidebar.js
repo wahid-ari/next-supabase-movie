@@ -125,26 +125,6 @@ export default function Sidebar() {
           Country
         </NavLink>
 
-        <NavLink href="/song" icon={<MusicNoteIcon className="w-4 h-4" />} className="mt-1">
-          Song
-        </NavLink>
-
-        <NavLink href="/album" icon={<CollectionIcon className="w-4 h-4" />} className="mt-1">
-          Album
-        </NavLink>
-
-        <NavLink href="/artist" icon={<UserGroupIcon className="w-4 h-4" />} className="mt-1">
-          Artist
-        </NavLink>
-
-        <NavLink href="/genre" icon={<ColorSwatchIcon className="w-4 h-4" />} className="mt-1">
-          Genre
-        </NavLink>
-
-        <NavLink href="/playlist" icon={<BookmarkIcon className="w-4 h-4" />} className="mt-1">
-          Playlist
-        </NavLink>
-
         <NavLink href="/settings" icon={<CogIcon className="w-4 h-4" />} className="mt-1">
           Settings
         </NavLink>
@@ -159,14 +139,14 @@ export default function Sidebar() {
           Docs
         </a>
 
-        <NavAccordion title="Design" routeName="design" icon={<TemplateIcon className="w-4 h-4" />}>
+        {/* <NavAccordion title="Design" routeName="design" icon={<TemplateIcon className="w-4 h-4" />}>
           <NavLink
             href="/design"
             icon={<TemplateIcon className="w-4 h-4" />}
           >
             Example
           </NavLink>
-        </NavAccordion>
+        </NavAccordion> */}
         {/* </>
             :
             <>
