@@ -3,7 +3,7 @@ import useSWR from "swr";
 import Layout from "@components/layout/Layout";
 import Title from "@components/systems/Title";
 import Shimer from "@components/systems/Shimer";
-import ArtistItem from "@components/dashboard/ArtistItem";
+import ArtistItem from "@components/dashboard/DirectorGridItem";
 import LabeledInput from "@components/systems/LabeledInput";
 
 const fetcher = url => fetch(url).then(result => result.json())
