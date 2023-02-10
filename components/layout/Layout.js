@@ -27,7 +27,7 @@ export default function Layout({ children, title, description, className }) {
         <meta name="description" content={headDescription}></meta>
       </Head>
 
-      <div className="min-h-screen w-screen lg:grid text-sm font-inter bg-white dark:bg-neutral-900"
+      <div className="mx-auto max-w-[100rem] min-h-screen w-screen lg:grid text-sm font-inter bg-white dark:bg-neutral-900"
         style={{ gridTemplateColumns: "auto 1fr" }}>
 
         <Sidebar />
