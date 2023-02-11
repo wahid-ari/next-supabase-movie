@@ -84,7 +84,7 @@ export default function Movie({ id }) {
                   {data.categories?.map((category, index) =>
                     <Link key={category.id}
                       href={`/category/detail/${category.id}`}
-                      className="truncate text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300"
+                      className="font-medium truncate text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300"
                     >
                       {category.name}{index != data.categories.length - 1 ? "," : ""}
                     </Link>
