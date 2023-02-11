@@ -38,7 +38,7 @@ export default function Home() {
       {/* Movies Start*/}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Movies</Heading>
-        <Link href={`dashboard/album`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+        <Link href={`dashboard/movie`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
           View All
         </Link>
       </div>
@@ -58,7 +58,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-5 gap-4 p-1">
                     {movies?.slice(0, 5).map((item, index) =>
-                      <MovieGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+                      <MovieGridItem key={index} href={`dashboard/movie/detail/${item.id}`}
                         imageSrc={item.image_url}
                         title={item.name}
                         date={item.release_date}
@@ -69,7 +69,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-5 gap-4 p-1">
                     {movies?.slice(5, 10).map((item, index) =>
-                      <MovieGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+                      <MovieGridItem key={index} href={`dashboard/movie/detail/${item.id}`}
                         imageSrc={item.image_url}
                         title={item.name}
                         date={item.release_date}
@@ -91,7 +91,7 @@ export default function Home() {
           :
           <div className="grid xl:grid-cols-5 gap-4 p-1">
             {movies?.slice(0, 5).map((item, index) =>
-              <MovieGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+              <MovieGridItem key={index} href={`dashboard/movie/detail/${item.id}`}
                 imageSrc={item.image_url}
                 title={item.name}
                 date={item.release_date}
@@ -110,7 +110,7 @@ export default function Home() {
       <div className="xl:hidden mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 gap-4">
         {movies ?
           movies.slice(0, 12).map((item, index) =>
-            <MovieGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+            <MovieGridItem key={index} href={`dashboard/movie/detail/${item.id}`}
               imageSrc={item.image_url}
               title={item.name}
               date={item.release_date}
@@ -124,7 +124,7 @@ export default function Home() {
       {/* Actors Start */}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Actors</Heading>
-        <Link href={`dashboard/song`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+        <Link href={`dashboard/actor`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
           View All
         </Link>
       </div>
@@ -144,7 +144,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8 p-1">
                     {actors?.slice(0, 7).map((item, index) =>
-                      <ActorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+                      <ActorGridItem key={index} href={`/dashboard/actor/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -154,7 +154,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8 p-1">
                     {actors?.slice(7, 14).map((item, index) =>
-                      <ActorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+                      <ActorGridItem key={index} href={`/dashboard/actor/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -175,7 +175,7 @@ export default function Home() {
           :
           <div className="grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8 p-1">
             {actors?.slice(0, 7).map((item, index) =>
-              <ActorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+              <ActorGridItem key={index} href={`/dashboard/actor/detail/${item.id}`}
                 imageSrc={item.image_url}
                 name={item.name}
               />
@@ -195,7 +195,7 @@ export default function Home() {
       <div className="xl:hidden mt-2 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 p-1">
         {actors ?
           actors.slice(0, 12).map((item, index) =>
-            <ActorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+            <ActorGridItem key={index} href={`/dashboard/actor/detail/${item.id}`}
               imageSrc={item.image_url}
               name={item.name}
             />
@@ -208,7 +208,7 @@ export default function Home() {
       {/* Directors Start */}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Directors</Heading>
-        <Link href={`dashboard/song`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+        <Link href={`dashboard/director`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
           View All
         </Link>
       </div>
@@ -228,7 +228,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-6 gap-4 gap-y-8 p-1">
                     {directors?.slice(0, 6).map((item, index) =>
-                      <DirectorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+                      <DirectorGridItem key={index} href={`/dashboard/director/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -238,7 +238,7 @@ export default function Home() {
                 <SplideSlide>
                   <div className="grid xl:grid-cols-6 gap-4 gap-y-8 p-1">
                     {directors?.slice(6, 12).map((item, index) =>
-                      <DirectorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+                      <DirectorGridItem key={index} href={`/dashboard/director/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -259,7 +259,7 @@ export default function Home() {
           :
           <div className="grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8 p-1">
             {directors?.slice(0, 7).map((item, index) =>
-              <DirectorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+              <DirectorGridItem key={index} href={`/dashboard/director/detail/${item.id}`}
                 imageSrc={item.image_url}
                 name={item.name}
               />
@@ -290,7 +290,7 @@ export default function Home() {
       <div className="xl:hidden mt-2 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 p-1">
         {directors ?
           directors.slice(0, 6).map((item, index) =>
-            <DirectorGridItem key={index} href={`/dashboard/song/detail/${item.id}`}
+            <DirectorGridItem key={index} href={`/dashboard/director/detail/${item.id}`}
               imageSrc={item.image_url}
               name={item.name}
             />
@@ -303,7 +303,7 @@ export default function Home() {
       {/* Studio Start */}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Studios</Heading>
-        <Link href={`dashboard/playlist`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+        <Link href={`dashboard/studio`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
           View All
         </Link>
       </div>
@@ -313,7 +313,7 @@ export default function Home() {
             <StudioGridItem
               key={index}
               index={index}
-              href={`/dashboard/playlist/detail/${item.id}`}
+              href={`/dashboard/studio/detail/${item.id}`}
               name={item.name}
             />
           )
