@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import axios from "axios";
@@ -9,10 +9,7 @@ import moment from "moment";
 import Text from "@components/systems/Text";
 import Heading from "@components/systems/Heading";
 import { UserIcon } from "@heroicons/react/outline";
-import LabeledInput from "@components/systems/LabeledInput";
-import ReactTable from "@components/systems/ReactTable";
 import Link from "next/link";
-import Badge from "@components/systems/Badge";
 import MovieGridItem from "@components/dashboard/MovieGridItem";
 
 export async function getServerSideProps(context) {
@@ -29,61 +26,6 @@ const fetcher = url => axios.get(url).then(res => res.data)
 export default function Actor({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher)
   const [isLoading, setLoading] = useState(true)
-
-  const column = useMemo(
-    () => [
-      {
-        Header: 'No',
-        accessor: 'movies.id',
-        width: 300,
-        Cell: (row) => {
-          return (
-            row.cell.row.index + 1
-          )
-        }
-      },
-      {
-        Header: 'Name',
-        accessor: 'name',
-        width: 300,
-        Cell: (row) => {
-          const { values, original } = row.cell.row;
-          return (
-            <Link href={`/movie/detail/${original.id}`} className="text-emerald-500 hover:text-emerald-600 text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
-              {values.name}
-            </Link>
-          )
-        }
-      },
-      {
-        Header: 'Status',
-        accessor: 'status',
-        width: 300,
-        Cell: (row) => {
-          const { values, original } = row.cell.row;
-          return (
-            values.status == 1 ?
-              <Badge.red>Production</Badge.red>
-              :
-              <Badge.green>Released</Badge.green>
-          )
-        }
-      },
-      {
-        Header: 'Year',
-        accessor: 'release_date',
-        width: 300,
-        Cell: (row) => {
-          const { values, original } = row.cell.row;
-          const year = original.release_date?.split("-")[0]
-          return (year)
-        }
-      },
-    ],
-    []
-  );
-
-  const table = useRef(null);
 
   if (error) {
     return (
