@@ -6,7 +6,7 @@ import MovieGridItem from "@components/dashboard/MovieGridItem";
 
 const fetcher = url => fetch(url).then(result => result.json())
 
-export default function Home() {
+export default function Movies() {
   const { data: movies, error: errorMovies } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher)
 
   if (errorMovies) {

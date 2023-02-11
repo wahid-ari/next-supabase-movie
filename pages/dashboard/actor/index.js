@@ -6,7 +6,7 @@ import ActorGridItem from "@components/dashboard/ActorGridItem";
 
 const fetcher = url => fetch(url).then(result => result.json())
 
-export default function Home() {
+export default function Actors() {
   const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
 
   if (errorActors) {
