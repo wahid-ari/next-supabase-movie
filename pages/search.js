@@ -8,13 +8,12 @@ import Title from "@components/systems/Title";
 import Text from "@components/systems/Text";
 import Button from "@components/systems/Button";
 import Heading from "@components/systems/Heading";
-import AlbumItem from "@components/dashboard/AlbumItem";
 import DirectorGridItem from "@components/dashboard/DirectorGridItem";
 import StudioGridItem from "@components/dashboard/StudioGridItem";
-import { BookmarkIcon, CollectionIcon, MusicNoteIcon, UserGroupIcon } from "@heroicons/react/outline";
-import { useSearchHistoryStore } from '@store/useStore';
 import MovieListItem from "@components/dashboard/MovieListItem";
 import ActorGridItem from "@components/dashboard/ActorGridItem";
+import { FilmIcon, LibraryIcon, UserGroupIcon, UsersIcon } from "@heroicons/react/outline";
+import { useSearchHistoryStore } from '@store/useStore';
 
 const fetcher = url => fetch(url).then(result => result.json())
 
@@ -322,37 +321,37 @@ export default function Search() {
         </>
       }
 
-      <Heading className="mt-6">Browse Categories</Heading>
+      <Heading className="mt-6">Browse</Heading>
       <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <Link href="/dashboard/song" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500">
-          <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
-            <MusicNoteIcon className="w-8 h-8 text-cyan-500 group-hover:text-white transition-all ease-in duration-300" />
-            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:text-white transition-all ease-in duration-300">
-              Movies
-            </h2>
-          </div>
-        </Link>
         <Link href="/dashboard/album" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
-            <CollectionIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
+            <FilmIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 group-hover:text-white transition-all ease-in duration-300">
-              Actors
+              Movie
             </h2>
           </div>
         </Link>
-        <Link href="/dashboard/artist" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
+        <Link href="/dashboard/song" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
-            <UserGroupIcon className="w-8 h-8 text-emerald-500 group-hover:text-white transition-all ease-in duration-300" />
-            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-500 group-hover:text-white transition-all ease-in duration-300">
-              Directors
+            <UserGroupIcon className="w-8 h-8 text-cyan-500 group-hover:text-white transition-all ease-in duration-300" />
+            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:text-white transition-all ease-in duration-300">
+              Actor
             </h2>
           </div>
         </Link>
         <Link href="/dashboard/playlist" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-violet-500 to-pink-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
-            <BookmarkIcon className="w-8 h-8 text-violet-500 group-hover:text-white transition-all ease-in duration-300" />
+            <UsersIcon className="w-8 h-8 text-violet-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-pink-500 group-hover:text-white transition-all ease-in duration-300">
-              Studios
+              Director
+            </h2>
+          </div>
+        </Link>
+        <Link href="/dashboard/artist" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
+          <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
+            <LibraryIcon className="w-8 h-8 text-emerald-500 group-hover:text-white transition-all ease-in duration-300" />
+            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-500 group-hover:text-white transition-all ease-in duration-300">
+              Studio
             </h2>
           </div>
         </Link>

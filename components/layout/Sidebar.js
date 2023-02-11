@@ -8,11 +8,8 @@ import {
   ViewGridIcon,
   CogIcon,
   TemplateIcon,
-  CollectionIcon,
   UserGroupIcon,
-  MusicNoteIcon,
   ColorSwatchIcon,
-  BookmarkIcon,
   ChartPieIcon,
   SearchIcon,
   LoginIcon,
@@ -20,6 +17,7 @@ import {
   FlagIcon,
   UsersIcon,
   FilmIcon,
+  LibraryIcon,
 } from "@heroicons/react/outline";
 import NavLink from "@components/systems/NavLink";
 import NavAccordion from "@components/systems/NavAccordion";
@@ -113,7 +111,7 @@ export default function Sidebar() {
           Director
         </NavLink>
 
-        <NavLink href="/studio" icon={<CollectionIcon className="w-4 h-4" />} className="mt-1">
+        <NavLink href="/studio" icon={<LibraryIcon className="w-4 h-4" />} className="mt-1">
           Studio
         </NavLink>
 
