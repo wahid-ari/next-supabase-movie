@@ -156,7 +156,7 @@ export default function Search() {
                 {data?.movies?.map((item, index) =>
                   <MovieListItem key={index} href={`dashboard/movie/detail/${item.id}`}
                     imageSrc={item.image_url}
-                    title={item.name}
+                    name={item.name}
                     description={item.description}
                     date={item.release_date}
                   />
@@ -192,7 +192,7 @@ export default function Search() {
                     key={index}
                     href={`dashboard/artist/detail/${item.id}`}
                     imageSrc={item.image_url}
-                    title={item.name}
+                    name={item.name}
                   />
                 )}
               </div>
@@ -210,7 +210,7 @@ export default function Search() {
                     key={index}
                     index={index}
                     href={`/dashboard/playlist/detail/${item.id}`}
-                    title={item.name}
+                    name={item.name}
                   />
                 )}
               </div>
@@ -242,7 +242,7 @@ export default function Search() {
                     {moviesHistory?.map((item, index) =>
                       <MovieListItem key={index} href={`dashboard/movie/detail/${item.id}`}
                         imageSrc={item.image_url}
-                        title={item.name}
+                        name={item.name}
                         description={item.description}
                         date={item.release_date}
                       />
@@ -286,7 +286,7 @@ export default function Search() {
                         key={index}
                         href={`dashboard/artist/detail/${item.id}`}
                         imageSrc={item.image_url}
-                        title={item.name}
+                        name={item.name}
                       />
                     )}
                   </div>
@@ -308,7 +308,7 @@ export default function Search() {
                         key={index}
                         index={index}
                         href={`/dashboard/playlist/detail/${item.id}`}
-                        title={item.name}
+                        name={item.name}
                       />
                     )}
                   </div>
