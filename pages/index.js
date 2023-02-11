@@ -5,15 +5,13 @@ import Layout from "@components/layout/Layout";
 import Title from "@components/systems/Title";
 import Shimer from "@components/systems/Shimer";
 import Heading from "@components/systems/Heading";
-import ArtistItem from "@components/dashboard/DirectorGridItem";
-import AlbumItem from "@components/dashboard/AlbumItem";
-import PlaylistItem from "@components/dashboard/StudioGridItem";
-import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-import { ArrowRightIcon } from "@heroicons/react/outline";
 import ActorGridItem from "@components/dashboard/ActorGridItem";
 import MovieGridItem from "@components/dashboard/MovieGridItem";
 import DirectorGridItem from "@components/dashboard/DirectorGridItem";
+import StudioGridItem from "@components/dashboard/StudioGridItem";
+import { ArrowRightIcon } from "@heroicons/react/outline";
+import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 const fetcher = url => fetch(url).then(result => result.json())
 
@@ -23,9 +21,9 @@ export default function Home() {
   const { data: movies, error: errorMovies } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher)
   const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
   const { data: directors, error: errorDirectors } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher)
-  const { data: playlists, error: errorPlaylists } = useSWR(`${process.env.API_ROUTE}/api/playlist`, fetcher)
+  const { data: studios, error: errorStudios } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
 
-  if (errorMovies || errorActors || errorDirectors) {
+  if (errorMovies || errorActors || errorDirectors || errorStudios) {
     return (
       <Layout title="Dashboard - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -302,31 +300,33 @@ export default function Home() {
       </div>
       {/* Directors End */}
 
+      {/* Studio Start */}
       <div className="mt-10 flex items-center justify-between">
-        <Heading className="">Playlists</Heading>
+        <Heading className="">Studios</Heading>
         <Link href={`dashboard/playlist`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
           View All
         </Link>
       </div>
-      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        {playlists ?
-          playlists.slice(0, 4).map((item, index) =>
-            <PlaylistItem
+      <div className="mt-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {studios ?
+          studios.slice(0, 8).map((item, index) =>
+            <StudioGridItem
               key={index}
               index={index}
               href={`/dashboard/playlist/detail/${item.id}`}
-              title={item.name}
+              name={item.name}
             />
           )
           :
           <>
-            <Shimer className="w-full !h-36" />
-            <Shimer className="w-full !h-36" />
-            <Shimer className="w-full !h-36" />
-            <Shimer className="w-full !h-36" />
+            <Shimer className="w-full !h-24" />
+            <Shimer className="w-full !h-24" />
+            <Shimer className="w-full !h-24" />
+            <Shimer className="w-full !h-24" />
           </>
         }
       </div>
+      {/* Studio End */}
 
     </Layout>
   );
