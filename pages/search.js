@@ -323,7 +323,7 @@ export default function Search() {
 
       <Heading className="mt-6">Browse</Heading>
       <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <Link href="/dashboard/album" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500">
+        <Link href="/dashboard/movie" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <FilmIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500 group-hover:text-white transition-all ease-in duration-300">
@@ -331,7 +331,7 @@ export default function Search() {
             </h2>
           </div>
         </Link>
-        <Link href="/dashboard/song" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500">
+        <Link href="/dashboard/actor" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-cyan-500 to-purple-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <UserGroupIcon className="w-8 h-8 text-cyan-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:text-white transition-all ease-in duration-300">
@@ -339,7 +339,7 @@ export default function Search() {
             </h2>
           </div>
         </Link>
-        <Link href="/dashboard/playlist" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-violet-500 to-pink-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+        <Link href="/dashboard/director" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-violet-500 to-pink-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <UsersIcon className="w-8 h-8 text-violet-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-pink-500 group-hover:text-white transition-all ease-in duration-300">
@@ -347,7 +347,7 @@ export default function Search() {
             </h2>
           </div>
         </Link>
-        <Link href="/dashboard/artist" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
+        <Link href="/dashboard/studio" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-emerald-500 to-blue-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <LibraryIcon className="w-8 h-8 text-emerald-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-500 group-hover:text-white transition-all ease-in duration-300">
