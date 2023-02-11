@@ -100,11 +100,11 @@ export default function Home() {
           </div>
         :
         <div className="p-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-6">
-          <Shimer className="w-full h-64" />
-          <Shimer className="w-full h-64" />
-          <Shimer className="w-full h-64" />
-          <Shimer className="w-full h-64" />
-          <Shimer className="w-full h-64" />
+          <Shimer className="w-full !h-64" />
+          <Shimer className="w-full !h-64" />
+          <Shimer className="w-full !h-64" />
+          <Shimer className="w-full !h-64" />
+          <Shimer className="w-full !h-64" />
         </div>
       }
       <div className="xl:hidden mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 gap-4">
