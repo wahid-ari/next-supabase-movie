@@ -89,7 +89,7 @@ export default function Studio({ id }) {
       {data ?
         <div className="">
           {data?.image_url ?
-            <div className="overflow-hidden relative h-24">
+            <div className="overflow-hidden relative h-24 w-52">
               <Image
                 alt={data?.name}
                 src={data?.image_url}
@@ -99,7 +99,7 @@ export default function Studio({ id }) {
               />
             </div>
             :
-            <div className="mx-auto overflow-hidden relative h-28 w-28 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+            <div className="overflow-hidden relative h-28 w-28 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
               <PhotographIcon className="w-16 h-16 text-neutral-500" />
             </div>
           }
