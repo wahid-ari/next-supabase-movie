@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Text from "@components/systems/Text";
+import { PhotographIcon } from "@heroicons/react/outline";
 
 export default function MovieListItem({ href = "#", imageSrc, name, ...props }) {
   const [isLoading, setLoading] = useState(true)
@@ -10,15 +11,21 @@ export default function MovieListItem({ href = "#", imageSrc, name, ...props }) 
   return (
     <Link href={href} className="mx-auto w-32 group border dark:border-neutral-800 shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded" {...props}>
       <div className="relative h-[180px] overflow-hidden">
-        <Image
-          alt={name}
-          src={imageSrc}
-          className={`rounded-t duration-500 ease-in-out transform brightness-90 transition will-change-auto group-hover:brightness-110
+        {imageSrc ?
+          <Image
+            alt={name}
+            src={imageSrc}
+            className={`rounded-t duration-500 ease-in-out transform brightness-90 transition will-change-auto group-hover:brightness-110
             ${isLoading ? 'blur-2xl' : 'blur-0'}`}
-          fill
-          sizes={sizes}
-          onLoadingComplete={() => setLoading(false)}
-        />
+            fill
+            sizes={sizes}
+            onLoadingComplete={() => setLoading(false)}
+          />
+          :
+          <div className="h-full w-full rounded-t bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+            <PhotographIcon className="w-16 h-16 text-neutral-500" />
+          </div>
+        }
       </div>
       <div className="p-3 pb-2">
         <Text.medium className="!text-[15px] mb-1 line-clamp-2 group-hover:text-emerald-500 transition-all duration-500">{name}</Text.medium>
