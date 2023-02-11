@@ -32,7 +32,7 @@ export default function Home() {
           )
           :
           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(item =>
-            <Shimer key={item} className="w-full h-64" />
+            <Shimer key={item} className="w-full !h-64" />
           )
         }
       </div>
