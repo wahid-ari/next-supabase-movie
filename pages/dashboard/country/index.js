@@ -24,7 +24,7 @@ export default function Countries() {
       <div className="mt-8 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8">
         {data ?
           data.map((item, index) =>
-            <Link key={index} href={`/dashboard/category/detail/${item.id}`}
+            <Link key={index} href={`/dashboard/country/detail/${item.id}`}
               className="flex items-center justify-between p-3 rounded text-[15px] shadow dark:bg-[#1a1919] border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 dark:hover:text-emerald-500 hover:text-emerald-500 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               {item.name}
             </Link>
