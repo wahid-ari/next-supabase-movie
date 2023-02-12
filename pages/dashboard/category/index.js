@@ -25,7 +25,7 @@ export default function Category() {
         {data ?
           data.map((item, index) =>
             <Link key={index} href={`/dashboard/category/detail/${item.id}`}
-              className="flex items-center justify-between p-4 rounded text-base border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 hover:text-white dark:hover:text-white hover:bg-emerald-500 transition-all duration-300 font-medium">
+              className="flex items-center justify-between p-4 rounded text-base border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 hover:text-white dark:hover:text-white hover:bg-emerald-500 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               <span>{item.name}</span>  
               {item.total}
             </Link>

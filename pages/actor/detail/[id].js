@@ -163,13 +163,13 @@ export default function Actor({ id }) {
                   <div className="flex gap-4">
                     {data.instagram_url &&
                       <a href={data.instagram_url} target="_blank" rel="noreferrer"
-                        className="font-medium text-[15px] text-emerald-500 hover:text-emerald-600 hover:underline transition-all duration-300">
+                        className="font-medium text-[15px] text-emerald-500 hover:text-emerald-600 hover:underline transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
                         Instagram
                       </a>
                     }
                     {data.twitter_url &&
                       <a href={data.twitter_url} target="_blank" rel="noreferrer"
-                        className="font-medium text-[15px] text-emerald-500 hover:text-emerald-600 hover:underline transition-all duration-300">
+                        className="font-medium text-[15px] text-emerald-500 hover:text-emerald-600 hover:underline transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded">
                         Twitter
                       </a>
                     }

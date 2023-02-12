@@ -78,7 +78,7 @@ export default function Studio({ id }) {
 
   return (
     <Layout title={`${data ? data?.name + " - MyMovie" : 'Studio Detail - MyMovie'}`}>
-      <div className="flex flex-wrap justify-between items-center mb-6 gap-y-3">
+      <div className="flex flex-wrap justify-between items-center gap-y-3">
         {data ?
           <Title>{data?.name}</Title>
           :
@@ -87,7 +87,7 @@ export default function Studio({ id }) {
       </div>
 
       {data ?
-        <div className="">
+        <div className="my-4">
           {data?.image_url ?
             <div className="overflow-hidden relative h-24 w-52">
               <Image

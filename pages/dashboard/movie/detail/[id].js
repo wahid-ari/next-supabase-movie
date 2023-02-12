@@ -75,7 +75,7 @@ export default function Movie({ id }) {
                   {data.categories?.map((category, index) =>
                     <Link key={category.id}
                       href={`/dashboard/category/detail/${category.id}`}
-                      className="font-medium truncate text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300"
+                      className="font-medium truncate text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 rounded"
                     >
                       {category.name}{index != data.categories.length - 1 ? "," : ""}
                     </Link>
@@ -154,7 +154,7 @@ export default function Movie({ id }) {
           <div className={`${data.actors.length > 8 && "mb-4"} flex gap-3 overflow-auto pb-4 px-0.5 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}>
             {data.actors.length > 0 ?
               data.actors?.map((actor, index) =>
-                <Link href={`/dashboard/actor/detail/${actor.id}`} key={index} className="w-32 shadow rounded group border border-transparent dark:border-neutral-800">
+                <Link href={`/dashboard/actor/detail/${actor.id}`} key={index} className="mt-1 shadow rounded group border border-transparent dark:border-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
                   <div className="relative overflow-hidden h-[180px] w-32">
                     <Image alt={actor.name} src={actor.image_url} fill className="rounded-t group-hover:cursor-pointer brightness-90 group-hover:brightness-100 transition-all duration-300" />
                   </div>
@@ -180,13 +180,13 @@ export default function Movie({ id }) {
       {data ?
         <>
           <Heading className="mt-1 mb-3">Director</Heading>
-          <div className="w-32 py-0.5 shadow rounded border border-transparent dark:border-neutral-800">
-            <Link href={`/dashboard/director/detail/${data.directors?.id}`} className="shadow rounded group ">
+          <div className="flex pb-4 px-0.5">
+            <Link href={`/dashboard/director/detail/${data.directors?.id}`} className="w-32 mt-1 shadow rounded group border border-transparent dark:border-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               <div className="relative overflow-hidden h-[180px]">
                 <Image alt={data.directors?.name} src={data.directors?.image_url} fill className="rounded-t group-hover:cursor-pointer brightness-90 group-hover:brightness-100 transition-all duration-300" />
               </div>
               <div className="p-2">
-                <p className="group-hover:text-emerald-500 transition-all duration-300">
+                <p className="group-hover:text-emerald-500 transition-all duration-300 text-ellipsis overflow-hidden">
                   {data.directors?.name}
                 </p>
               </div>
