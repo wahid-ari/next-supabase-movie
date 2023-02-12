@@ -64,16 +64,6 @@ export default function Home() {
     <Layout title='Dashboard - MyMovie'>
       <Title>Dashboard</Title>
 
-      {/* <!-- Before --> */}
-      <button class='bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3 '>
-        ...
-      </button>
-
-      {/* <!-- After --> */}
-      <button class='bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3'>
-        ...
-      </button>
-
       {/* Movies Start*/}
       <div className='mt-10 flex items-center justify-between'>
         <Heading className=''>Movies</Heading>
