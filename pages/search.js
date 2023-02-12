@@ -322,7 +322,7 @@ export default function Search() {
       }
 
       <Heading className="mt-6">Browse</Heading>
-      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="mt-2 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 gap-6">
         <Link href="/dashboard/movie" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <FilmIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />

@@ -329,7 +329,7 @@ export default function Home() {
         }
       </div>
       {/* Studio End */}
-      
+
       {/* Category Start */}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Categories</Heading>
@@ -339,7 +339,7 @@ export default function Home() {
       </div>
       <div className="mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
         {categories ?
-          categories.map((item, index) =>
+          categories.slice(0, 10).map((item, index) =>
             <Link key={index} href={`/dashboard/category/detail/${item.id}`}
               className="flex items-center justify-between p-4 rounded text-base border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-emerald-500 hover:to-emerald-700 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               <span>{item.name}</span>
@@ -353,7 +353,7 @@ export default function Home() {
         }
       </div>
       {/* Category End */}
-     
+
       {/* Country Start */}
       <div className="mt-10 flex items-center justify-between">
         <Heading className="">Countries</Heading>
@@ -363,8 +363,8 @@ export default function Home() {
       </div>
       <div className="mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
         {countries ?
-          countries.map((item, index) =>
-            <Link key={index} href={`/dashboard/category/detail/${item.id}`}
+          countries.slice(0, 20).map((item, index) =>
+            <Link key={index} href={`/dashboard/country/detail/${item.id}`}
               className="flex items-center justify-between p-3 rounded text-[15px] shadow dark:bg-[#1a1919] border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 dark:hover:text-emerald-500 hover:text-emerald-500 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               {item.name}
             </Link>
