@@ -1,6 +1,6 @@
 import { useState, useRef, useMemo } from "react";
-import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import useSWR from "swr";
 import axios from "axios";
 import Layout from "@components/layout/Layout";
@@ -11,7 +11,6 @@ import nookies from "nookies";
 import Text from "@components/systems/Text";
 import Heading from "@components/systems/Heading";
 import { UserIcon } from "@heroicons/react/outline";
-import Link from "next/link";
 import LabeledInput from "@components/systems/LabeledInput";
 import Badge from "@components/systems/Badge";
 

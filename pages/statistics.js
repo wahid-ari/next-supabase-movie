@@ -14,7 +14,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineEleme
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
-export default function Home() {
+export default function Statistics() {
   const { theme } = useTheme()
   const { data: actorByCountry, error: errorActorByCountry } = useSWR(`${process.env.API_ROUTE}/api/statistics/actor-by-country`, fetcher)
   const { data: directorByCountry, error: errorDirectorByCountry } = useSWR(`${process.env.API_ROUTE}/api/statistics/director-by-country`, fetcher)

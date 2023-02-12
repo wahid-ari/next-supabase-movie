@@ -5,7 +5,6 @@ import axios from "axios";
 import useToast from "@utils/useToast";
 import { PlusSmIcon } from "@heroicons/react/outline";
 import Layout from "@components/layout/Layout";
-import TableSimple from "@components/systems/TableSimple";
 import Title from "@components/systems/Title";
 import Shimer from "@components/systems/Shimer";
 import Dialog from "@components/systems/Dialog";
