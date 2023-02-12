@@ -1,8 +1,8 @@
 module.exports = {
-  darkMode: "class",
+  darkMode: 'class',
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -15,12 +15,12 @@ module.exports = {
     },
   },
   variants: {
-    scrollbar: ["dark", "rounded"],
+    scrollbar: ['dark', 'rounded'],
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require("tailwind-scrollbar"),
-    require("tailwindcss-radix")(),
+    require('tailwind-scrollbar'),
+    require('tailwindcss-radix')(),
     require('@tailwindcss/line-clamp'),
   ],
 };

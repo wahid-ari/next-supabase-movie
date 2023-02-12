@@ -3,7 +3,7 @@ export default function Text({ className, children, ...rest }) {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}
@@ -16,7 +16,7 @@ Text.light = ({ className, children, ...rest }) => {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }font-light text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}
@@ -29,7 +29,7 @@ Text.medium = ({ className, children, ...rest }) => {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }font-medium text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}
@@ -42,7 +42,7 @@ Text.semibold = ({ className, children, ...rest }) => {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }font-semibold text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}
@@ -55,7 +55,7 @@ Text.bold = ({ className, children, ...rest }) => {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }font-bold text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}
@@ -68,7 +68,7 @@ Text.extrabold = ({ className, children, ...rest }) => {
     <p
       {...rest}
       className={`${
-        className ? className + " " : ""
+        className ? className + ' ' : ''
       }font-extrabold text-sm text-neutral-700 dark:text-neutral-200`}
     >
       {children}

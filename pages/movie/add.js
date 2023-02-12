@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router"
-import useSWR, { mutate } from "swr";
-import axios from "axios";
-import useToast from "@utils/useToast";
-import Layout from "@components/layout/Layout";
-import Title from "@components/systems/Title";
-import LabeledInput from "@components/systems/LabeledInput";
-import Button from "@components/systems/Button";
-import Shimer from "@components/systems/Shimer";
-import Label from "@components/systems/Label";
-import nookies from "nookies";
-import SearchBox from "@components/systems/SearchBox";
-import TextArea from "@components/systems/TextArea";
-import Radio from "@components/systems/Radio";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import useSWR, { mutate } from 'swr';
+import axios from 'axios';
+import useToast from '@utils/useToast';
+import Layout from '@components/layout/Layout';
+import Title from '@components/systems/Title';
+import LabeledInput from '@components/systems/LabeledInput';
+import Button from '@components/systems/Button';
+import Shimer from '@components/systems/Shimer';
+import Label from '@components/systems/Label';
+import nookies from 'nookies';
+import SearchBox from '@components/systems/SearchBox';
+import TextArea from '@components/systems/TextArea';
+import Radio from '@components/systems/Radio';
 import Select from 'react-select';
 
 // export async function getServerSideProps(context) {
@@ -29,189 +29,226 @@ import Select from 'react-select';
 //   }
 // }
 
-const fetcher = url => axios.get(url).then(res => res.data)
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Movie() {
-  const router = useRouter()
-  const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher)
-  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
-  const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher)
-  const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
+  const router = useRouter();
+  const { data: category, error: errorCategory } = useSWR(
+    `${process.env.API_ROUTE}/api/category`,
+    fetcher
+  );
+  const { data: actor, error: errorActor } = useSWR(
+    `${process.env.API_ROUTE}/api/actor`,
+    fetcher
+  );
+  const { data: director, error: errorDirector } = useSWR(
+    `${process.env.API_ROUTE}/api/director`,
+    fetcher
+  );
+  const { data: studio, error: errorStudio } = useSWR(
+    `${process.env.API_ROUTE}/api/studio`,
+    fetcher
+  );
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
-    name: "",
-    description: "",
-    image_url: "",
-    video_url: "",
+    name: '',
+    description: '',
+    image_url: '',
+    video_url: '',
     release_date: null,
-    language: "English",
+    language: 'English',
     status: 2,
     director_id: null,
-    studio_id: null
-  })
-  const [selectedDirector, setSelectedDirector] = useState()
-  const [queryDirector, setQueryDirector] = useState('')
+    studio_id: null,
+  });
+  const [selectedDirector, setSelectedDirector] = useState();
+  const [queryDirector, setQueryDirector] = useState('');
   const filteredDirector =
     queryDirector === ''
       ? director
       : director.filter((item) =>
-        item.name
-          .toLowerCase()
-          .replace(/\s+/g, '')
-          .includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
-      )
+          item.name
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
+        );
 
   useEffect(() => {
-    if (selectedDirector) setCreateItem({ ...createItem, director_id: selectedDirector.id })
-  }, [selectedDirector])
+    if (selectedDirector)
+      setCreateItem({ ...createItem, director_id: selectedDirector.id });
+  }, [selectedDirector]);
 
-  const [selectedStudio, setSelectedStudio] = useState()
-  const [queryStudio, setQueryStudio] = useState('')
+  const [selectedStudio, setSelectedStudio] = useState();
+  const [queryStudio, setQueryStudio] = useState('');
   const filteredStudio =
     queryStudio === ''
       ? studio
       : studio.filter((item) =>
-        item.name
-          .toLowerCase()
-          .replace(/\s+/g, '')
-          .includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
-      )
+          item.name
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
+        );
 
   useEffect(() => {
-    if (selectedStudio) setCreateItem({ ...createItem, studio_id: selectedStudio.id })
-  }, [selectedStudio])
+    if (selectedStudio)
+      setCreateItem({ ...createItem, studio_id: selectedStudio.id });
+  }, [selectedStudio]);
 
-  const [selectedCategory, setSelectedCategory] = useState()
-  const [listOfCategories, setListOfCategories] = useState()
+  const [selectedCategory, setSelectedCategory] = useState();
+  const [listOfCategories, setListOfCategories] = useState();
   useEffect(() => {
     if (category) {
-      let listCategories = []
-      category?.forEach(item => {
+      let listCategories = [];
+      category?.forEach((item) => {
         listCategories.push({
           value: item.id,
-          label: item.name
-        })
+          label: item.name,
+        });
       });
-      setListOfCategories(listCategories)
+      setListOfCategories(listCategories);
     }
-  }, [category])
+  }, [category]);
 
   useEffect(() => {
-    setCreateItem({ ...createItem, categories: selectedCategory })
-  }, [selectedCategory])
-  
-  const [selectedActor, setSelectedActor] = useState()
-  const [listOfActors, setListOfActors] = useState()
+    setCreateItem({ ...createItem, categories: selectedCategory });
+  }, [selectedCategory]);
+
+  const [selectedActor, setSelectedActor] = useState();
+  const [listOfActors, setListOfActors] = useState();
   useEffect(() => {
     if (actor) {
-      let listActors = []
-      actor?.forEach(item => {
+      let listActors = [];
+      actor?.forEach((item) => {
         listActors.push({
           value: item.id,
-          label: item.name
-        })
+          label: item.name,
+        });
       });
-      setListOfActors(listActors)
+      setListOfActors(listActors);
     }
-  }, [actor])
+  }, [actor]);
 
   useEffect(() => {
-    setCreateItem({ ...createItem, actors: selectedActor })
-  }, [selectedActor])
+    setCreateItem({ ...createItem, actors: selectedActor });
+  }, [selectedActor]);
 
   async function handleCreate() {
     const toastId = pushToast({
-      message: "Saving Movie...",
+      message: 'Saving Movie...',
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/movie`, createItem)
+      const res = await axios.post(
+        `${process.env.API_ROUTE}/api/movie`,
+        createItem
+      );
       if (res.status == 200) {
         setCreateItem({
-          name: "",
-          description: "",
-          image_url: "",
-          video_url: "",
+          name: '',
+          description: '',
+          image_url: '',
+          video_url: '',
           release_date: null,
-          language: "English",
+          language: 'English',
           status: 2,
           director_id: null,
-          studio_id: null
-        })
+          studio_id: null,
+        });
         updateToast({ toastId, message: res.data.message, isError: false });
-        router.push("/movie")
+        router.push('/movie');
       }
     } catch (error) {
-      console.error(error)
-      updateToast({ toastId, message: error.response.data.error, isError: true });
+      console.error(error);
+      updateToast({
+        toastId,
+        message: error.response.data.error,
+        isError: true,
+      });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/movie`)
+      mutate(`${process.env.API_ROUTE}/api/movie`);
     }
   }
 
   if (errorActor || errorCategory || errorDirector || errorStudio) {
     return (
-      <Layout title="Add Movie - MyMovie">
-        <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
+      <Layout title='Add Movie - MyMovie'>
+        <div className='flex h-[36rem] items-center justify-center text-base'>
+          Failed to load
+        </div>
       </Layout>
-    )
+    );
   }
 
   return (
-    <Layout title="Add Movie - MyMovie">
-      <div className="flex flex-wrap justify-between items-center mb-6 gap-y-3">
+    <Layout title='Add Movie - MyMovie'>
+      <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Add Movie</Title>
       </div>
 
-      <div className="max-w-lg shadow rounded">
-
-        <LabeledInput label="Name" type="text" name="name"
+      <div className='max-w-lg rounded shadow'>
+        <LabeledInput
+          label='Name'
+          type='text'
+          name='name'
           value={createItem.name}
           onChange={(e) =>
-            setCreateItem({ ...createItem, name: e.target.value }
-            )}
-          placeholder="Movie Name"
+            setCreateItem({ ...createItem, name: e.target.value })
+          }
+          placeholder='Movie Name'
         />
 
-        <TextArea label="Description" type="text" name="description"
+        <TextArea
+          label='Description'
+          type='text'
+          name='description'
           value={createItem.description}
           onChange={(e) =>
-            setCreateItem({ ...createItem, description: e.target.value }
-            )}
-          placeholder="Movie Description"
+            setCreateItem({ ...createItem, description: e.target.value })
+          }
+          placeholder='Movie Description'
           height={5}
         />
 
-        <LabeledInput label="Image URL" type="text" name="image"
+        <LabeledInput
+          label='Image URL'
+          type='text'
+          name='image'
           value={createItem.image_url}
           onChange={(e) =>
-            setCreateItem({ ...createItem, image_url: e.target.value }
-            )}
-          placeholder="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg"
+            setCreateItem({ ...createItem, image_url: e.target.value })
+          }
+          placeholder='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg'
         />
 
-        <LabeledInput label="Video URL" type="text" name="video"
+        <LabeledInput
+          label='Video URL'
+          type='text'
+          name='video'
           value={createItem.video_url}
           onChange={(e) =>
-            setCreateItem({ ...createItem, video_url: e.target.value }
-            )}
-          placeholder="https://youtu.be/qSqVVswa420"
+            setCreateItem({ ...createItem, video_url: e.target.value })
+          }
+          placeholder='https://youtu.be/qSqVVswa420'
         />
 
-        <label htmlFor="actor" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
+        <label
+          htmlFor='actor'
+          className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
+        >
           Actors
         </label>
-        {listOfActors ?
+        {listOfActors ? (
           <Select
             options={listOfActors}
             isMulti
-            noOptionsMessage={() => "Not Found"}
+            noOptionsMessage={() => 'Not Found'}
             value={selectedActor}
             onChange={setSelectedActor}
-            placeholder="Search or Select"
-            name="category"
-            className="rounded mb-4"
-            classNamePrefix="react-select"
+            placeholder='Search or Select'
+            name='category'
+            className='mb-4 rounded'
+            classNamePrefix='react-select'
             theme={(theme) => ({
               ...theme,
               colors: {
@@ -223,24 +260,27 @@ export default function Movie() {
               },
             })}
           />
-          :
-          <Shimer className="h-8" />
-        }
+        ) : (
+          <Shimer className='h-8' />
+        )}
 
-        <label htmlFor="category" className="block text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
+        <label
+          htmlFor='category'
+          className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
+        >
           Categories
         </label>
-        {listOfCategories ?
+        {listOfCategories ? (
           <Select
             options={listOfCategories}
             isMulti
-            noOptionsMessage={() => "Not Found"}
+            noOptionsMessage={() => 'Not Found'}
             value={selectedCategory}
             onChange={setSelectedCategory}
-            placeholder="Search or Select"
-            name="category"
-            className="rounded mb-4"
-            classNamePrefix="react-select"
+            placeholder='Search or Select'
+            name='category'
+            className='mb-4 rounded'
+            classNamePrefix='react-select'
             theme={(theme) => ({
               ...theme,
               colors: {
@@ -252,75 +292,96 @@ export default function Movie() {
               },
             })}
           />
-          :
-          <Shimer className="h-8" />
-        }
+        ) : (
+          <Shimer className='h-8' />
+        )}
 
-        {filteredDirector ?
+        {filteredDirector ? (
           <SearchBox
-            label="Director Name"
+            label='Director Name'
             value={selectedDirector}
-            placeholder="Search or Select"
+            placeholder='Search or Select'
             onChange={setSelectedDirector}
             onChangeQuery={(e) => setQueryDirector(e.target.value)}
             afterLeave={() => setQueryDirector('')}
             filtered={filteredDirector}
             query={queryDirector}
           />
-          :
-          <Shimer className="h-8" />
-        }
+        ) : (
+          <Shimer className='h-8' />
+        )}
 
-        {filteredStudio ?
+        {filteredStudio ? (
           <SearchBox
-            label="Studio Name"
+            label='Studio Name'
             value={selectedStudio}
-            placeholder="Search or Select"
+            placeholder='Search or Select'
             onChange={setSelectedStudio}
             onChangeQuery={(e) => setQueryStudio(e.target.value)}
             afterLeave={() => setQueryStudio('')}
             filtered={filteredStudio}
             query={queryStudio}
           />
-          :
-          <Shimer className="h-8" />
-        }
+        ) : (
+          <Shimer className='h-8' />
+        )}
 
-        <LabeledInput label="Release Date" type="date" name="release"
+        <LabeledInput
+          label='Release Date'
+          type='date'
+          name='release'
           value={createItem.release_date}
           onChange={(e) =>
-            setCreateItem({ ...createItem, release_date: e.target.value }
-            )}
-          placeholder="dd-mm-yyyy"
-          min="1950-01-01"
-          max="2050-12-31"
+            setCreateItem({ ...createItem, release_date: e.target.value })
+          }
+          placeholder='dd-mm-yyyy'
+          min='1950-01-01'
+          max='2050-12-31'
         />
 
-        <LabeledInput label="Language" type="text" name="language"
+        <LabeledInput
+          label='Language'
+          type='text'
+          name='language'
           value={createItem.language}
           onChange={(e) =>
-            setCreateItem({ ...createItem, language: e.target.value }
-            )}
-          placeholder="Movie Language"
+            setCreateItem({ ...createItem, language: e.target.value })
+          }
+          placeholder='Movie Language'
         />
 
-        <div className="mb-2">
-          <Label htmlFor="status" className="mb-3">Status</Label>
-          <div className="flex gap-4">
-            <Radio value={1} checked={createItem.status == 1}
-              name="status" label="Production" className="!mb-2"
-              onChange={(e) => setCreateItem({ ...createItem, status: Number(e.target.value) })}
+        <div className='mb-2'>
+          <Label htmlFor='status' className='mb-3'>
+            Status
+          </Label>
+          <div className='flex gap-4'>
+            <Radio
+              value={1}
+              checked={createItem.status == 1}
+              name='status'
+              label='Production'
+              className='!mb-2'
+              onChange={(e) =>
+                setCreateItem({ ...createItem, status: Number(e.target.value) })
+              }
             />
-            <Radio value={2} checked={createItem.status == 2}
-              name="status" label="Released" className="!mb-2"
-              onChange={(e) => setCreateItem({ ...createItem, status: Number(e.target.value) })}
+            <Radio
+              value={2}
+              checked={createItem.status == 2}
+              name='status'
+              label='Released'
+              className='!mb-2'
+              onChange={(e) =>
+                setCreateItem({ ...createItem, status: Number(e.target.value) })
+              }
             />
           </div>
         </div>
 
-        <Button.success onClick={handleCreate} className="w-full">Save</Button.success>
+        <Button.success onClick={handleCreate} className='w-full'>
+          Save
+        </Button.success>
       </div>
-
     </Layout>
   );
 }

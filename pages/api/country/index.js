@@ -1,17 +1,19 @@
 import { supabase } from '@libs/supabase';
 
 export default async function handler(req, res) {
-  const { method, body, query } = req
+  const { method, body, query } = req;
 
   switch (method) {
-    case "GET":
+    case 'GET':
       if (!query.id) {
-        const { data } = await supabase.from('countries')
+        const { data } = await supabase
+          .from('countries')
           .select(`*`)
           .order('id');
         res.status(200).json(data);
       } else {
-        const { data } = await supabase.from('countries')
+        const { data } = await supabase
+          .from('countries')
           .select(`*, actors (*), directors (*), studios (*)`)
           .eq('id', query.id)
           .order('id');
@@ -19,49 +21,52 @@ export default async function handler(req, res) {
       }
       break;
 
-    case "POST":
+    case 'POST':
       if (!body.name) {
-        res.status(422).json({ error: "Name required" })
+        res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase.from('countries')
-          .insert([{ name: body.name }])
+        const { error } = await supabase
+          .from('countries')
+          .insert([{ name: body.name }]);
         if (error) {
-          res.status(422).json({ error: error.message })
+          res.status(422).json({ error: error.message });
         }
-        res.status(200).json({ message: "Success add countries" });
+        res.status(200).json({ message: 'Success add countries' });
       }
       break;
 
-    case "PUT":
+    case 'PUT':
       if (!body.name) {
-        res.status(422).json({ error: "Name required" })
+        res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase.from('countries')
+        const { error } = await supabase
+          .from('countries')
           .update({ name: body.name })
-          .eq('id', body.id)
+          .eq('id', body.id);
         if (error) {
-          res.status(422).json({ error: error.message })
+          res.status(422).json({ error: error.message });
         }
-        res.status(201).json({ message: "Success update countries" });
+        res.status(201).json({ message: 'Success update countries' });
       }
       break;
 
-    case "DELETE":
+    case 'DELETE':
       if (!query.id) {
-        res.status(422).json({ error: "Id required" })
+        res.status(422).json({ error: 'Id required' });
       } else {
-        const { error } = await supabase.from('countries')
+        const { error } = await supabase
+          .from('countries')
           .delete()
-          .eq('id', query.id)
+          .eq('id', query.id);
         if (error) {
-          res.status(422).json({ error: error.message })
+          res.status(422).json({ error: error.message });
         }
-        res.status(200).json({ message: "Success delete countries" });
+        res.status(200).json({ message: 'Success delete countries' });
       }
       break;
 
     default:
-      res.status(200).json("Method required");
+      res.status(200).json('Method required');
       break;
   }
 }

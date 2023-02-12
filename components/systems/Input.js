@@ -8,7 +8,7 @@ export default function Input({
   ...rest
 }) {
   return (
-    <div className="mb-4">
+    <div className='mb-4'>
       <input
         {...rest}
         type={type}
@@ -17,9 +17,9 @@ export default function Input({
         value={value}
         onChange={onChange}
         className={`${
-          className ? className + " " : ""
-        }text-sm transition-all font-medium dark:text-neutral-100 bg-white dark:bg-neutral-900 w-full px-4 py-[0.6rem] rounded-md mt-2 border focus:ring-1 ring-gray-300 dark:ring-neutral-600 focus:ring-emerald-600 dark:focus:ring-emerald-600 border-gray-300 dark:border-neutral-800 focus:border-emerald-600 dark:focus:border-emerald-400 outline-none`}
-        autoComplete="off"
+          className ? className + ' ' : ''
+        }text-sm mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] font-medium outline-none ring-gray-300 transition-all focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-emerald-400 dark:focus:ring-emerald-600`}
+        autoComplete='off'
         required
       />
     </div>
@@ -35,7 +35,7 @@ Input.disabled = ({
   ...rest
 }) => {
   return (
-    <div className="mb-4">
+    <div className='mb-4'>
       <input
         {...rest}
         type={type}
@@ -43,8 +43,8 @@ Input.disabled = ({
         placeholder={placeholder}
         defaultValue={defaultValue}
         className={`${
-          className ? className + " " : ""
-        }text-sm transition-all font-medium dark:text-neutral-500 bg-gray-100 dark:bg-neutral-800 w-full px-4 py-[0.6rem] rounded-md mt-2 border border-gray-300 dark:border-neutral-800 outline-none cursor-not-allowed`}
+          className ? className + ' ' : ''
+        }text-sm mt-2 w-full cursor-not-allowed rounded-md border border-gray-300 bg-gray-100 px-4 py-[0.6rem] font-medium outline-none transition-all dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-500`}
         disabled
       />
     </div>

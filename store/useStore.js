@@ -6,37 +6,34 @@ export const useSearchHistoryStore = create((set) => ({
   directors: [],
   studios: [],
   setMovies: (param) => {
-    set(state => ({
-      movies: state.movies.concat(param)
-    }))
+    set((state) => ({
+      movies: state.movies.concat(param),
+    }));
   },
   setActors: (param) => {
     set((state) => ({
-      actors: state.actors.concat(param)
-    }))
+      actors: state.actors.concat(param),
+    }));
   },
   setDirectors: (param) => {
     set((state) => ({
-      directors: [
-        ...state.directors.concat(param)
-      ]
-    }))
+      directors: [...state.directors.concat(param)],
+    }));
   },
   setStudios: (param) => {
     set((state) => ({
-      studios: [
-        ...state.studios.concat(param)
-      ]
-    }))
+      studios: [...state.studios.concat(param)],
+    }));
   },
   resetMovies: () => set({ movies: [] }),
   resetActors: () => set({ actors: [] }),
   resetDirectors: () => set({ directors: [] }),
   resetStudios: () => set({ studios: [] }),
-  resetAllSearchHistory: () => set({
-    movies: [],
-    actors: [],
-    directors: [],
-    studios: []
-  }),
-}))
+  resetAllSearchHistory: () =>
+    set({
+      movies: [],
+      actors: [],
+      directors: [],
+      studios: [],
+    }),
+}));
