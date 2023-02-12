@@ -12,7 +12,7 @@ import DirectorGridItem from "@components/dashboard/DirectorGridItem";
 import StudioGridItem from "@components/dashboard/StudioGridItem";
 import MovieListItem from "@components/dashboard/MovieListItem";
 import ActorGridItem from "@components/dashboard/ActorGridItem";
-import { FilmIcon, LibraryIcon, UserGroupIcon, UsersIcon } from "@heroicons/react/outline";
+import { ColorSwatchIcon, FilmIcon, FlagIcon, LibraryIcon, UserGroupIcon, UsersIcon } from "@heroicons/react/outline";
 import { useSearchHistoryStore } from '@store/useStore';
 
 const fetcher = url => fetch(url).then(result => result.json())
@@ -261,7 +261,7 @@ export default function Search() {
                   </div>
                   <div className="mt-2 pb-4 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-8">
                     {actorsHistory?.map((item, index) =>
-                      <ActorGridItem key={index} href={`dashboard/album/detail/${item.id}`}
+                      <ActorGridItem key={index} href={`dashboard/actor/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -283,7 +283,7 @@ export default function Search() {
                     {directorsHistory?.map((item, index) =>
                       <DirectorGridItem
                         key={index}
-                        href={`dashboard/artist/detail/${item.id}`}
+                        href={`dashboard/director/detail/${item.id}`}
                         imageSrc={item.image_url}
                         name={item.name}
                       />
@@ -306,7 +306,7 @@ export default function Search() {
                       <StudioGridItem
                         key={index}
                         index={index}
-                        href={`/dashboard/playlist/detail/${item.id}`}
+                        href={`/dashboard/studio/detail/${item.id}`}
                         name={item.name}
                       />
                     )}
@@ -322,7 +322,7 @@ export default function Search() {
       }
 
       <Heading className="mt-6">Browse</Heading>
-      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
         <Link href="/dashboard/movie" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-yellow-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500">
           <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
             <FilmIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
@@ -352,6 +352,22 @@ export default function Search() {
             <LibraryIcon className="w-8 h-8 text-emerald-500 group-hover:text-white transition-all ease-in duration-300" />
             <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-500 group-hover:text-white transition-all ease-in duration-300">
               Studio
+            </h2>
+          </div>
+        </Link>
+        <Link href="/dashboard/category" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-red-500 to-sky-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
+          <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
+            <ColorSwatchIcon className="w-8 h-8 text-red-500 group-hover:text-white transition-all ease-in duration-300" />
+            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500 group-hover:text-white transition-all ease-in duration-300">
+              Category
+            </h2>
+          </div>
+        </Link>
+        <Link href="/dashboard/country" className="h-20 p-0.5 rounded-lg group bg-gradient-to-br from-orange-500 to-lime-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
+          <div className="flex items-center gap-2 px-4 py-2 transition-all ease-in duration-300 bg-white dark:bg-neutral-900 rounded-md group-hover:bg-opacity-0 w-full h-full">
+            <FlagIcon className="w-8 h-8 text-orange-500 group-hover:text-white transition-all ease-in duration-300" />
+            <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-lime-500 group-hover:text-white transition-all ease-in duration-300">
+              Country
             </h2>
           </div>
         </Link>
