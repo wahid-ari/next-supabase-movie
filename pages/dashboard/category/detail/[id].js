@@ -51,8 +51,8 @@ export default function Category({ id }) {
             </div>
           </>
           :
-          <div className="rounded border border-red-500 p-3">
-            <p className="text-red-500">No Movies From &quot;{data?.name}&quot; </p>
+          <div className="mt-8 rounded border border-red-500 p-3">
+            <p className="text-red-500">No Movies in &quot;{data?.name}&quot; </p>
           </div>
         :
         <div className="mt-8 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8">
