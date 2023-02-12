@@ -41,6 +41,8 @@ export default async function handler(req, res) {
         }
         return unique;
       }, []);
+
+      data.sort((a, b) => b.total - a.total)
       
       res.status(200).json(data);
 
