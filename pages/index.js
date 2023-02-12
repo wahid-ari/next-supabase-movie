@@ -22,8 +22,10 @@ export default function Home() {
   const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
   const { data: directors, error: errorDirectors } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher)
   const { data: studios, error: errorStudios } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
+  const { data: categories, error: errorCategories } = useSWR(`${process.env.API_ROUTE}/api/category/total-movie`, fetcher)
+  const { data: countries, error: errorCountries } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher)
 
-  if (errorMovies || errorActors || errorDirectors || errorStudios) {
+  if (errorMovies || errorActors || errorDirectors || errorStudios || errorCategories || errorCountries) {
     return (
       <Layout title="Dashboard - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -327,6 +329,53 @@ export default function Home() {
         }
       </div>
       {/* Studio End */}
+      
+      {/* Category Start */}
+      <div className="mt-10 flex items-center justify-between">
+        <Heading className="">Categories</Heading>
+        <Link href={`dashboard/category`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+          View All
+        </Link>
+      </div>
+      <div className="mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+        {categories ?
+          categories.map((item, index) =>
+            <Link key={index} href={`/dashboard/category/detail/${item.id}`}
+              className="flex items-center justify-between p-4 rounded text-base border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-emerald-500 hover:to-emerald-700 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
+              <span>{item.name}</span>
+              {item.total}
+            </Link>
+          )
+          :
+          [0, 1, 2, 3, 4].map(item =>
+            <Shimer key={item} className="w-full !h-16" />
+          )
+        }
+      </div>
+      {/* Category End */}
+     
+      {/* Country Start */}
+      <div className="mt-10 flex items-center justify-between">
+        <Heading className="">Countries</Heading>
+        <Link href={`dashboard/country`} className="text-emerald-500 hover:text-emerald-600 text-[15px] font-medium focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 rounded">
+          View All
+        </Link>
+      </div>
+      <div className="mt-2 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+        {countries ?
+          countries.map((item, index) =>
+            <Link key={index} href={`/dashboard/category/detail/${item.id}`}
+              className="flex items-center justify-between p-3 rounded text-[15px] shadow dark:bg-[#1a1919] border dark:border-neutral-800 text-neutral-600 dark:text-neutral-200 dark:hover:text-emerald-500 hover:text-emerald-500 transition-all duration-300 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
+              {item.name}
+            </Link>
+          )
+          :
+          [0, 1, 2, 3, 4].map(item =>
+            <Shimer key={item} className="w-full !h-16" />
+          )
+        }
+      </div>
+      {/* Country End */}
 
     </Layout>
   );

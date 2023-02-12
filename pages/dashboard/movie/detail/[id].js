@@ -179,7 +179,7 @@ export default function Movie({ id }) {
 
       {data ?
         <>
-          <Heading className="mt-1 mb-3">Director</Heading>
+          <Heading className="mt-3 mb-3">Director</Heading>
           <div className="flex pb-4 px-0.5">
             <Link href={`/dashboard/director/detail/${data.directors?.id}`} className="w-32 mt-1 shadow rounded group border border-transparent dark:border-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">
               <div className="relative overflow-hidden h-[180px]">
@@ -201,7 +201,7 @@ export default function Movie({ id }) {
 
       {data ?
         <>
-          <Heading className="mt-5 mb-3">Trailer</Heading>
+          <Heading className="mt-3 mb-3">Trailer</Heading>
           {data?.video_url?.startsWith("https") ?
             <div className="rounded">
               <iframe className="rounded w-full h-64 sm:h-72 md:w-3/4 xl:w-1/2 md:h-80"
