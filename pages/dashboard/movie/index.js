@@ -7,9 +7,9 @@ import MovieGridItem from "@components/dashboard/MovieGridItem";
 const fetcher = url => fetch(url).then(result => result.json())
 
 export default function Movies() {
-  const { data: movies, error: errorMovies } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher)
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher)
 
-  if (errorMovies) {
+  if (error) {
     return (
       <Layout title="Dashboard - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -22,8 +22,8 @@ export default function Movies() {
       <Title>Movies</Title>
 
       <div className="mt-8 grid grid-cols-2 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-8">
-        {movies ?
-          movies.map((item, index) =>
+        {data ?
+          data.map((item, index) =>
             <MovieGridItem key={index} href={`/dashboard/movie/detail/${item.id}`}
               imageSrc={item.image_url}
               title={item.name}

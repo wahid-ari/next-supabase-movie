@@ -7,9 +7,9 @@ import ActorGridItem from "@components/dashboard/ActorGridItem";
 const fetcher = url => fetch(url).then(result => result.json())
 
 export default function Actors() {
-  const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher)
 
-  if (errorActors) {
+  if (error) {
     return (
       <Layout title="Dashboard - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -22,8 +22,8 @@ export default function Actors() {
       <Title>Actors</Title>
 
       <div className="mt-8 grid grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-8">
-        {actors ?
-          actors.map((item, index) =>
+        {data ?
+          data.map((item, index) =>
             <ActorGridItem key={index} href={`/dashboard/actor/detail/${item.id}`}
               imageSrc={item.image_url}
               name={item.name}

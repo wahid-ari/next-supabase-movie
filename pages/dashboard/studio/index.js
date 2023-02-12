@@ -7,9 +7,9 @@ import StudioGridItem from "@components/dashboard/StudioGridItem";
 const fetcher = url => fetch(url).then(result => result.json())
 
 export default function Studios() {
-  const { data: studios, error: errorStudios } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher)
 
-  if (errorStudios) {
+  if (error) {
     return (
       <Layout title="Studios - MyMovie">
         <div className="flex h-[36rem] text-base items-center justify-center">Failed to load</div>
@@ -22,8 +22,8 @@ export default function Studios() {
       <Title>Studios</Title>
 
       <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {studios ?
-          studios.map((item, index) =>
+        {data ?
+          data.map((item, index) =>
             <StudioGridItem
               key={index}
               index={index}

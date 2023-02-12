@@ -2,14 +2,12 @@ import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import axios from "axios";
+import { PhotographIcon } from "@heroicons/react/outline";
 import Layout from "@components/layout/Layout";
 import Title from "@components/systems/Title";
 import Shimer from "@components/systems/Shimer";
-import moment from "moment";
 import Text from "@components/systems/Text";
 import Heading from "@components/systems/Heading";
-import { PhotographIcon, UserIcon } from "@heroicons/react/outline";
-import Link from "next/link";
 import MovieGridItem from "@components/dashboard/MovieGridItem";
 
 export async function getServerSideProps(context) {
