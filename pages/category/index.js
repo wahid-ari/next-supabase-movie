@@ -86,7 +86,7 @@ export default function Category() {
     });
     try {
       const res = await axios.put(
-        `${process.env.API_ROUTE}/api/category`,
+        `${process.env.API_ROUTE}/api/category?id=${editItem.id}`,
         editItem
       );
       if (res.status == 201) {

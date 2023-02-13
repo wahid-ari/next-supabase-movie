@@ -52,7 +52,7 @@ export default async function handler(req, res) {
             city: body.city,
             country_id: body.country_id,
           })
-          .eq('id', body.id);
+          .eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

@@ -143,7 +143,7 @@ export default function Director() {
     });
     try {
       const res = await axios.put(
-        `${process.env.API_ROUTE}/api/director`,
+        `${process.env.API_ROUTE}/api/director?id=${editItem.id}`,
         editItem
       );
       if (res.status == 201) {

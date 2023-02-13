@@ -63,7 +63,7 @@ export default async function handler(req, res) {
         const { error } = await supabase
           .from('categories')
           .update({ name: body.name })
-          .eq('id', body.id);
+          .eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

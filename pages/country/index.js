@@ -75,7 +75,7 @@ export default function Country() {
     });
     try {
       const res = await axios.put(
-        `${process.env.API_ROUTE}/api/country`,
+        `${process.env.API_ROUTE}/api/country?id=${editItem.id}`,
         editItem
       );
       if (res.status == 201) {

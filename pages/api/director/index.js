@@ -54,7 +54,7 @@ export default async function handler(req, res) {
             biography: body.biography,
             country_id: body.country_id,
           })
-          .eq('id', body.id);
+          .eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

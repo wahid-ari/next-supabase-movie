@@ -143,7 +143,7 @@ export default function Studio() {
     });
     try {
       const res = await axios.put(
-        `${process.env.API_ROUTE}/api/studio`,
+        `${process.env.API_ROUTE}/api/studio?id=${editItem.id}`,
         editItem
       );
       if (res.status == 201) {
