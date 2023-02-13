@@ -246,7 +246,7 @@ export default function Search() {
               <Heading h3 className='mt-6'>
                 Studios
               </Heading>
-              <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-4 xl:grid-cols-6'>
+              <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[450px]:grid-cols-2 md:grid-cols-4'>
                 {data?.studios?.map((item, index) => (
                   <StudioGridItem
                     key={index}
@@ -361,7 +361,7 @@ export default function Search() {
                       Clear
                     </button>
                   </div>
-                  <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[450px]:grid-cols-2 sm:grid-cols-4 xl:grid-cols-6'>
+                  <div className='mt-2 grid grid-cols-1 gap-4 pb-4 min-[450px]:grid-cols-2 md:grid-cols-4'>
                     {studiosHistory?.map((item, index) => (
                       <StudioGridItem
                         key={index}
