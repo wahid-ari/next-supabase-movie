@@ -75,18 +75,18 @@ export default function Actor({ id }) {
   useEffect(() => {
     if (data) {
       setEditItem({
-        name: data[0].name,
-        image_url: data[0].image_url,
-        gender: data[0].gender,
-        biography: data[0].biography,
-        birthday: data[0].birthday,
-        instagram_url: data[0].instagram_url,
-        twitter_url: data[0].twitter_url,
-        country_id: data[0].countries?.id,
+        name: data.name,
+        image_url: data.image_url,
+        gender: data.gender,
+        biography: data.biography,
+        birthday: data.birthday,
+        instagram_url: data.instagram_url,
+        twitter_url: data.twitter_url,
+        country_id: data.countries?.id,
       });
       setSelectedCountry({
-        id: data[0].countries?.id,
-        name: data[0].countries?.name,
+        id: data.countries?.id,
+        name: data.countries?.name,
       });
     }
   }, [data]);
@@ -140,11 +140,11 @@ export default function Actor({ id }) {
   return (
     <Layout
       title={`Edit ${
-        data ? data[0]?.name + ' - MyMovie' : 'Edit Actor - MyMovie'
+        data ? data?.name + ' - MyMovie' : 'Edit Actor - MyMovie'
       }`}
     >
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
-        {data ? <Title>Edit {data[0]?.name}</Title> : <Title>Edit Actor</Title>}
+        {data ? <Title>Edit {data?.name}</Title> : <Title>Edit Actor</Title>}
       </div>
 
       {data ? (
