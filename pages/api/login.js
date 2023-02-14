@@ -32,7 +32,7 @@ export default async function handler(req, res) {
         res.status(422).json({ error: 'Password required' });
       } else {
         const { data, error } = await supabase
-          .from('admin')
+          .from('admins')
           .select(`*`)
           .eq('username', body.username)
           .limit(1)

@@ -116,7 +116,7 @@ export default function Actor({ id }) {
 
       {data ? (
         <div className='mt-4 flex flex-wrap gap-5 sm:flex-nowrap'>
-          {data?.image_url.startsWith('http') ? (
+          {data?.image_url?.startsWith('http') ? (
             <div className='relative mx-auto h-80 w-60 overflow-hidden sm:h-96 sm:w-2/4 md:w-2/5 xl:w-1/4 2xl:w-1/5'>
               <Image
                 alt={data?.name}
@@ -230,7 +230,7 @@ export default function Actor({ id }) {
             />
           </>
         ) : (
-          <div className='rounded border border-red-500 p-3'>
+          <div className='mt-6 rounded border border-red-500 p-3'>
             <p className='text-red-500'>
               No Movies From &quot;{data?.name}&quot;{' '}
             </p>
