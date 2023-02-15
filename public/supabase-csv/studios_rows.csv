@@ -4,10 +4,12 @@ id,name,image_url,city,country_id,created_at
 26,Screenplay Films,https://upload.wikimedia.org/wikipedia/id/thumb/5/56/Logo_Screenplay_Films_%282022%29.png/220px-Logo_Screenplay_Films_%282022%29.png,Jakarta,2,2023-02-06 08:26:22.547128+00
 27,Lucasfilm,https://upload.wikimedia.org/wikipedia/id/thumb/2/2c/Lucasfilm_Ltd._logo.svg/220px-Lucasfilm_Ltd._logo.svg.png,California,1,2023-02-06 13:45:43.493241+00
 28, Golden Harvest,https://upload.wikimedia.org/wikipedia/commons/d/d3/Goldenharvestlogo.jpg,Hong Kongq,9,2023-02-06 14:00:21.418726+00
+20,Amazon Prime,https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_Prime_Video_logo.svg/225px-Amazon_Prime_Video_logo.svg.png,Washington,1,2023-02-04 03:19:27.436954+00
 2,Summit Entertainment,"https://www.themoviedb.org/t/p/h50_filter(negate,000,666)/rUp0lLKa1pr4UsPm8fgzmnNGxtq.svg",Santa Monica,1,2023-01-30 11:57:24+00
 4,Falcon Pictures,https://upload.wikimedia.org/wikipedia/id/thumb/a/af/Logo_Falcon_Pictures.png/220px-Logo_Falcon_Pictures.png,Jakarta,2,2023-01-30 12:10:35+00
 5,MD Pictures,https://upload.wikimedia.org/wikipedia/id/thumb/f/f8/Logo_MD_Pictures.png/220px-Logo_MD_Pictures.png,Jakarta,2,2023-01-30 12:12:45+00
 6,Miles Films,https://upload.wikimedia.org/wikipedia/id/thumb/7/7b/Logo_Miles_Films.png/100px-Logo_Miles_Films.png,Jakarta,2,2023-01-30 12:14:53+00
+30, Columbia Pictures,https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Columbia_Pictures_Logo.svg/220px-Columbia_Pictures_Logo.svg.png,Los Angeles,1,2023-02-14 14:30:39.427283+00
 8,Sony Pictures,https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sony_Pictures_logo.svg/100px-Sony_Pictures_logo.svg.png,California,1,2023-02-01 22:35:06.393434+00
 9,Marvel Studios,https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Marvel_Studios_logo.svg/220px-Marvel_Studios_logo.svg.png,California,1,2023-02-01 22:36:18.911251+00
 10,DC Studios,https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/220px-DC_Comics_logo.svg.png,California,1,2023-02-01 22:39:00.784331+00
@@ -23,7 +25,11 @@ id,name,image_url,city,country_id,created_at
 17,Voltage Pictures,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Voltage_Pictures_Logo.png/175px-Voltage_Pictures_Logo.png,California,1,2023-02-03 12:28:42.700621+00
 18,Acacia Filmed Entertainment,,Arizona,1,2023-02-03 12:34:04.808869+00
 19,Lionsgate,https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lionsgate_Logo.svg/220px-Lionsgate_Logo.svg.png,California,1,2023-02-04 03:09:14.334184+00
-20, Amazon Prime Video,https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_Prime_Video_logo.svg/225px-Amazon_Prime_Video_logo.svg.png,Washington,1,2023-02-04 03:19:27.436954+00
 21,Walt Disney,https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/The_Walt_Disney_Company_Logo.svg/220px-The_Walt_Disney_Company_Logo.svg.png,California,1,2023-02-04 08:43:47.734905+00
 22,EuropaCorp,https://upload.wikimedia.org/wikipedia/en/thumb/0/0a/EuropaCorp_logo.svg/220px-EuropaCorp_logo.svg.png,Île-de-France,19,2023-02-06 02:38:19.82415+00
 23,CBS Films,https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/CBS_Films.svg/220px-CBS_Films.svg.png,Los Angeles,1,2023-02-06 02:49:56.51201+00
+31, Open Road Films,https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Open-road-logo.png/220px-Open-road-logo.png,California,1,2023-02-15 06:54:59.663052+00
+32,Starvision Plus,https://upload.wikimedia.org/wikipedia/id/thumb/f/f1/Starvisionplus.png/220px-Starvisionplus.png,Jakarta,2,2023-02-15 07:57:54.315652+00
+33,Max Pictures,,Jakarta,2,2023-02-15 08:24:41.191521+00
+34,Bumilangit,https://upload.wikimedia.org/wikipedia/commons/5/53/Bl_%282%29.png,Jakarta,2,2023-02-15 08:41:36.692584+00
+35,Rapi Films,https://upload.wikimedia.org/wikipedia/id/thumb/b/b0/Rapi_Films_%28logo_2013%29.jpg/220px-Rapi_Films_%28logo_2013%29.jpg,Jakarta,2,2023-02-15 08:47:04.300708+00
