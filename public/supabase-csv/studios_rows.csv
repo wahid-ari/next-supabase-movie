@@ -33,3 +33,4 @@ id,name,image_url,city,country_id,created_at
 33,Max Pictures,,Jakarta,2,2023-02-15 08:24:41.191521+00
 34,Bumilangit,https://upload.wikimedia.org/wikipedia/commons/5/53/Bl_%282%29.png,Jakarta,2,2023-02-15 08:41:36.692584+00
 35,Rapi Films,https://upload.wikimedia.org/wikipedia/id/thumb/b/b0/Rapi_Films_%28logo_2013%29.jpg/220px-Rapi_Films_%28logo_2013%29.jpg,Jakarta,2,2023-02-15 08:47:04.300708+00
+36,DreamWorks Animation,https://upload.wikimedia.org/wikipedia/id/thumb/f/ff/DreamWorks_Animation_SKG_logo_with_fishing_boy.svg/220px-DreamWorks_Animation_SKG_logo_with_fishing_boy.svg.png,California,1,2023-02-16 05:28:31.658347+00
