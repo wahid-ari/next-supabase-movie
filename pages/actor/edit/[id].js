@@ -34,14 +34,8 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Actor({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/actor?id=${id}`,
-    fetcher
-  );
-  const { data: country, error: errorCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/country`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
+  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     name: '',
@@ -61,15 +55,11 @@ export default function Actor({ id }) {
     queryCountry === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedCountry)
-      setEditItem({ ...editItem, country_id: selectedCountry.id });
+    if (selectedCountry) setEditItem({ ...editItem, country_id: selectedCountry.id });
   }, [selectedCountry]);
 
   useEffect(() => {
@@ -97,10 +87,7 @@ export default function Actor({ id }) {
       isLoading: true,
     });
     try {
-      const res = await axios.put(
-        `${process.env.API_ROUTE}/api/actor?id=${id}`,
-        editItem
-      );
+      const res = await axios.put(`${process.env.API_ROUTE}/api/actor?id=${id}`, editItem);
       if (res.status == 201) {
         setEditItem({
           name: '',
@@ -130,19 +117,13 @@ export default function Actor({ id }) {
   if (error || errorCountry) {
     return (
       <Layout title='Edit Actor - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`Edit ${
-        data ? data?.name + ' - MyMovie' : 'Edit Actor - MyMovie'
-      }`}
-    >
+    <Layout title={`Edit ${data ? data?.name + ' - MyMovie' : 'Edit Actor - MyMovie'}`}>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>Edit {data?.name}</Title> : <Title>Edit Actor</Title>}
       </div>
@@ -163,9 +144,7 @@ export default function Actor({ id }) {
             type='text'
             name='image'
             value={editItem.image_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, image_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
 
@@ -180,9 +159,7 @@ export default function Actor({ id }) {
                 name='gender'
                 label='Male'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, gender: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, gender: Number(e.target.value) })}
               />
               <Radio
                 value={2}
@@ -190,9 +167,7 @@ export default function Actor({ id }) {
                 name='gender'
                 label='Female'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, gender: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, gender: Number(e.target.value) })}
               />
             </div>
           </div>
@@ -202,9 +177,7 @@ export default function Actor({ id }) {
             type='text'
             name='biography'
             value={editItem.biography}
-            onChange={(e) =>
-              setEditItem({ ...editItem, biography: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, biography: e.target.value })}
             placeholder='Director Biography'
           />
 
@@ -213,9 +186,7 @@ export default function Actor({ id }) {
             type='date'
             name='birthday'
             value={editItem.birthday}
-            onChange={(e) =>
-              setEditItem({ ...editItem, birthday: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, birthday: e.target.value })}
             placeholder='dd-mm-yyyy'
             min='1950-01-01'
             max='2022-12-31'
@@ -241,9 +212,7 @@ export default function Actor({ id }) {
             type='text'
             name='instagram'
             value={editItem.instagram_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, instagram_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, instagram_url: e.target.value })}
             placeholder='https://www.instagram.com/tomcruise'
           />
 
@@ -252,9 +221,7 @@ export default function Actor({ id }) {
             type='text'
             name='twitter'
             value={editItem.twitter_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, twitter_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, twitter_url: e.target.value })}
             placeholder='https://twitter.com/TomCruise'
           />
 

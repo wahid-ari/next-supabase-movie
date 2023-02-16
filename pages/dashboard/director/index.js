@@ -7,17 +7,12 @@ import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Director() {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/director`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
 
   if (error) {
     return (
       <Layout title='Dashboard - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -36,13 +31,11 @@ export default function Director() {
                 name={item.name}
               />
             ))
-          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(
-              (item) => (
-                <div key={item} className='flex items-center justify-center'>
-                  <Shimer className='!mx-8 !h-32 !w-32 !rounded-full' />
-                </div>
-              )
-            )}
+          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map((item) => (
+              <div key={item} className='flex items-center justify-center'>
+                <Shimer className='!mx-8 !h-32 !w-32 !rounded-full' />
+              </div>
+            ))}
       </div>
     </Layout>
   );

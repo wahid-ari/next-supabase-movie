@@ -31,10 +31,6 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: [
-      'images.unsplash.com',
-      'www.themoviedb.org',
-      'upload.wikimedia.org',
-    ],
+    domains: ['images.unsplash.com', 'www.themoviedb.org', 'upload.wikimedia.org'],
   },
 };

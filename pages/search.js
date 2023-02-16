@@ -12,14 +12,7 @@ import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import StudioGridItem from '@components/dashboard/StudioGridItem';
 import MovieListItem from '@components/dashboard/MovieListItem';
 import ActorGridItem from '@components/dashboard/ActorGridItem';
-import {
-  ColorSwatchIcon,
-  FilmIcon,
-  FlagIcon,
-  LibraryIcon,
-  UserGroupIcon,
-  UsersIcon,
-} from '@heroicons/react/outline';
+import { ColorSwatchIcon, FilmIcon, FlagIcon, LibraryIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
 import { useSearchHistoryStore } from '@store/useStore';
 
 const fetcher = (url) => fetch(url).then((result) => result.json());
@@ -28,40 +21,25 @@ export default function Search() {
   const router = useRouter();
   const search = router.query.q;
   const query = useRef(search);
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/search?q=${search}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/search?q=${search}`, fetcher);
 
   const moviesHistory = useSearchHistoryStore((state) => state.movies);
   const setMoviesHistory = useSearchHistoryStore((state) => state.setMovies);
-  const resetMoviesHistory = useSearchHistoryStore(
-    (state) => state.resetMovies
-  );
+  const resetMoviesHistory = useSearchHistoryStore((state) => state.resetMovies);
 
   const actorsHistory = useSearchHistoryStore((state) => state.actors);
   const setActorsHistory = useSearchHistoryStore((state) => state.setActors);
-  const resetActorsHistory = useSearchHistoryStore(
-    (state) => state.resetActors
-  );
+  const resetActorsHistory = useSearchHistoryStore((state) => state.resetActors);
 
   const directorsHistory = useSearchHistoryStore((state) => state.directors);
-  const setDirectorsHistory = useSearchHistoryStore(
-    (state) => state.setDirectors
-  );
-  const resetDirectorsHistory = useSearchHistoryStore(
-    (state) => state.resetDirectors
-  );
+  const setDirectorsHistory = useSearchHistoryStore((state) => state.setDirectors);
+  const resetDirectorsHistory = useSearchHistoryStore((state) => state.resetDirectors);
 
   const studiosHistory = useSearchHistoryStore((state) => state.studios);
   const setStudiosHistory = useSearchHistoryStore((state) => state.setStudios);
-  const resetStudiosHistory = useSearchHistoryStore(
-    (state) => state.resetStudios
-  );
+  const resetStudiosHistory = useSearchHistoryStore((state) => state.resetStudios);
 
-  const resetAllSearchHistory = useSearchHistoryStore(
-    (state) => state.resetAllSearchHistory
-  );
+  const resetAllSearchHistory = useSearchHistoryStore((state) => state.resetAllSearchHistory);
 
   function compareSearchResult(history, newResults) {
     let newHistory = history;
@@ -104,10 +82,7 @@ export default function Search() {
     // Directors
     if (data?.directors?.length > 0) {
       if (directorsHistory.length > 0) {
-        let newDirectors = compareSearchResult(
-          directorsHistory,
-          data?.directors
-        );
+        let newDirectors = compareSearchResult(directorsHistory, data?.directors);
         if (newDirectors != directorsHistory) {
           setDirectorsHistory(newDirectors);
         }
@@ -140,9 +115,7 @@ export default function Search() {
   if (error) {
     return (
       <Layout title='Search - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -160,11 +133,7 @@ export default function Search() {
             type='text'
             onChange={(e) => (query.current = e.target.value)}
           />
-          <Button.success
-            type='submit'
-            value='Submit'
-            className='mb-4 !py-2.5 px-5'
-          >
+          <Button.success type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
             Search
           </Button.success>
         </div>
@@ -179,9 +148,7 @@ export default function Search() {
           data?.directors?.length < 1 &&
           data?.studios?.length < 1 ? (
             <div className='rounded border border-red-500 p-3'>
-              <p className='text-red-500'>{`No results for "${
-                query.current || search
-              }"`}</p>
+              <p className='text-red-500'>{`No results for "${query.current || search}"`}</p>
             </div>
           ) : null}
 

@@ -20,13 +20,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line, Bar, Doughnut, Pie } from 'react-chartjs-2';
-import {
-  populateData,
-  options,
-  optionsLineChart,
-  optionsBarChart,
-  optionsHorizontalBarChart,
-} from '@utils/chartSetup';
+import { populateData, options, optionsLineChart, optionsBarChart, optionsHorizontalBarChart } from '@utils/chartSetup';
 
 ChartJS.register(
   CategoryScale,
@@ -88,20 +82,13 @@ export default function Statistics() {
   }, [windowWidth]);
 
   useEffect(() => {
-    if (actorByCountry !== undefined)
-      setDataActorByCountry(populateData(actorByCountry, 'actor'));
-    if (directorByCountry !== undefined)
-      setDataDirectorByCountry(populateData(directorByCountry, 'director'));
-    if (studioByCountry !== undefined)
-      setDataStudioByCountry(populateData(studioByCountry, 'studio'));
-    if (movieByActor !== undefined)
-      setDataMovieByActor(populateData(movieByActor, 'movie'));
-    if (movieByCategory !== undefined)
-      setDataMovieByCategory(populateData(movieByCategory, 'movie'));
-    if (movieByStudio !== undefined)
-      setDataMovieByStudio(populateData(movieByStudio, 'movie'));
-    if (movieByDirector !== undefined)
-      setDataMovieByDirector(populateData(movieByDirector, 'movie'));
+    if (actorByCountry !== undefined) setDataActorByCountry(populateData(actorByCountry, 'actor'));
+    if (directorByCountry !== undefined) setDataDirectorByCountry(populateData(directorByCountry, 'director'));
+    if (studioByCountry !== undefined) setDataStudioByCountry(populateData(studioByCountry, 'studio'));
+    if (movieByActor !== undefined) setDataMovieByActor(populateData(movieByActor, 'movie'));
+    if (movieByCategory !== undefined) setDataMovieByCategory(populateData(movieByCategory, 'movie'));
+    if (movieByStudio !== undefined) setDataMovieByStudio(populateData(movieByStudio, 'movie'));
+    if (movieByDirector !== undefined) setDataMovieByDirector(populateData(movieByDirector, 'movie'));
   }, [
     actorByCountry,
     directorByCountry,
@@ -123,9 +110,7 @@ export default function Statistics() {
   ) {
     return (
       <Layout title='Statistics'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -138,9 +123,7 @@ export default function Statistics() {
         {dataMovieByActor ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Movie by Actor
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Movie by Actor</Text.medium>
             </div>
             <div className='p-3'>
               <Bar
@@ -159,9 +142,7 @@ export default function Statistics() {
         {dataMovieByCategory ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Movie by Category
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Movie by Category</Text.medium>
             </div>
             <div className='p-3'>
               {/* <Bar
@@ -186,9 +167,7 @@ export default function Statistics() {
         {dataStudioByCountry ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Studio by Country
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Studio by Country</Text.medium>
             </div>
             <div className='m-auto w-72 py-3'>
               <Pie options={options} data={dataStudioByCountry} />
@@ -201,9 +180,7 @@ export default function Statistics() {
         {dataDirectorByCountry ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Director by Country
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Director by Country</Text.medium>
             </div>
             <div className='m-auto w-72 py-3'>
               <Doughnut options={options} data={dataDirectorByCountry} />
@@ -218,16 +195,10 @@ export default function Statistics() {
         {dataActorByCountry ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Actor by Country
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Actor by Country</Text.medium>
             </div>
             <div className='p-3'>
-              <Bar
-                options={optionsBarChart(theme)}
-                data={dataActorByCountry}
-                height={windowWidth > 500 ? 100 : 250}
-              />
+              <Bar options={optionsBarChart(theme)} data={dataActorByCountry} height={windowWidth > 500 ? 100 : 250} />
             </div>
           </div>
         ) : (
@@ -239,9 +210,7 @@ export default function Statistics() {
         {dataMovieByStudio ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Movie by Studio
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Movie by Studio</Text.medium>
             </div>
             <div className='p-3'>
               <Bar
@@ -260,9 +229,7 @@ export default function Statistics() {
         {dataMovieByDirector ? (
           <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-[#1F1F1F]'>
             <div className='bg-neutral-100/80 p-3 dark:bg-neutral-800'>
-              <Text.medium className='!text-sm'>
-                Total Movie by Director
-              </Text.medium>
+              <Text.medium className='!text-sm'>Total Movie by Director</Text.medium>
             </div>
             <div className='p-3'>
               {/* <Bar

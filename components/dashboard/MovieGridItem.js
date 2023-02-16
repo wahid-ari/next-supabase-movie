@@ -4,14 +4,7 @@ import Image from 'next/image';
 import Text from '@components/systems/Text';
 import { PhotographIcon } from '@heroicons/react/outline';
 
-export default function MovieGridItem({
-  href = '#',
-  imageSrc,
-  title,
-  description,
-  date,
-  ...props
-}) {
+export default function MovieGridItem({ href = '#', imageSrc, title, description, date, ...props }) {
   const [isLoading, setLoading] = useState(true);
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 
@@ -42,9 +35,7 @@ export default function MovieGridItem({
         <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-emerald-500'>
           {title}
         </Text.semibold>
-        <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>
-          {date}
-        </span>
+        <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
       </div>
     </Link>
   );

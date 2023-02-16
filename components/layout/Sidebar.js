@@ -54,8 +54,7 @@ export default function Sidebar() {
     nookies.destroy(null, 'token');
     // so try this, seems work
     document.cookie = 'id=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
-    document.cookie =
-      'username=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+    document.cookie = 'username=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'name=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'type=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
@@ -98,75 +97,39 @@ export default function Sidebar() {
           Dashboard
         </NavLink>
 
-        <NavLink
-          href='/search'
-          icon={<SearchIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/search' icon={<SearchIcon className='h-4 w-4' />} className='mt-1'>
           Search
         </NavLink>
 
-        <NavLink
-          href='/statistics'
-          icon={<ChartPieIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/statistics' icon={<ChartPieIcon className='h-4 w-4' />} className='mt-1'>
           Statistics
         </NavLink>
 
-        <NavLink
-          href='/movie'
-          icon={<FilmIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
           Movie
         </NavLink>
 
-        <NavLink
-          href='/actor'
-          icon={<UserGroupIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
           Actor
         </NavLink>
 
-        <NavLink
-          href='/director'
-          icon={<UsersIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
           Director
         </NavLink>
 
-        <NavLink
-          href='/studio'
-          icon={<LibraryIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
           Studio
         </NavLink>
 
-        <NavLink
-          href='/category'
-          icon={<ColorSwatchIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
           Category
         </NavLink>
 
-        <NavLink
-          href='/country'
-          icon={<FlagIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
           Country
         </NavLink>
 
-        <NavLink
-          href='/settings'
-          icon={<CogIcon className='h-4 w-4' />}
-          className='mt-1'
-        >
+        <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
           Settings
         </NavLink>
 

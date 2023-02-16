@@ -1,12 +1,4 @@
-export default function Button({
-  className,
-  type,
-  value,
-  onClick,
-  disabled,
-  children,
-  ...rest
-}) {
+export default function Button({ className, type, value, onClick, disabled, children, ...rest }) {
   return (
     <button
       {...rest}
@@ -24,15 +16,7 @@ export default function Button({
   );
 }
 
-Button.secondary = ({
-  className,
-  type,
-  value,
-  onClick,
-  disabled,
-  children,
-  ...rest
-}) => {
+Button.secondary = ({ className, type, value, onClick, disabled, children, ...rest }) => {
   return (
     <button
       {...rest}
@@ -43,9 +27,7 @@ Button.secondary = ({
       className={`${
         className ? className + ' ' : ''
       }text-sm rounded bg-gray-50 px-3 py-1.5 font-medium text-neutral-800 outline-none transition-all duration-300 dark:bg-neutral-800 dark:text-neutral-300 ${
-        disabled
-          ? 'cursor-not-allowed'
-          : 'hover:bg-gray-100 dark:hover:bg-neutral-900'
+        disabled ? 'cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-neutral-900'
       } border border-neutral-300 dark:border-neutral-800`}
     >
       {children}
@@ -53,15 +35,7 @@ Button.secondary = ({
   );
 };
 
-Button.tertary = ({
-  className,
-  type,
-  value,
-  onClick,
-  disabled,
-  children,
-  ...rest
-}) => {
+Button.tertary = ({ className, type, value, onClick, disabled, children, ...rest }) => {
   return (
     <button
       {...rest}
@@ -72,9 +46,7 @@ Button.tertary = ({
       className={`${
         className ? className + ' ' : ''
       }text-sm rounded px-3 py-1.5 font-medium text-neutral-600 outline-none transition-all duration-300 ${
-        disabled
-          ? 'cursor-not-allowed'
-          : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+        disabled ? 'cursor-not-allowed' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
       } dark:text-neutral-300`}
     >
       {children}
@@ -82,15 +54,7 @@ Button.tertary = ({
   );
 };
 
-Button.success = ({
-  className,
-  type,
-  value,
-  onClick,
-  disabled,
-  children,
-  ...rest
-}) => {
+Button.success = ({ className, type, value, onClick, disabled, children, ...rest }) => {
   return (
     <button
       {...rest}
@@ -108,15 +72,7 @@ Button.success = ({
   );
 };
 
-Button.danger = ({
-  className,
-  type,
-  value,
-  onClick,
-  disabled,
-  children,
-  ...rest
-}) => {
+Button.danger = ({ className, type, value, onClick, disabled, children, ...rest }) => {
   return (
     <button
       {...rest}

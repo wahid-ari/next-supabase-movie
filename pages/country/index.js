@@ -30,10 +30,7 @@ import nookies from 'nookies';
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Country() {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/country`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -74,10 +71,7 @@ export default function Country() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(
-        `${process.env.API_ROUTE}/api/country?id=${editItem.id}`,
-        editItem
-      );
+      const res = await axios.put(`${process.env.API_ROUTE}/api/country?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({ id: null, name: '' });
@@ -101,9 +95,7 @@ export default function Country() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(
-        `${process.env.API_ROUTE}/api/country?id=${deleteItem.id}`
-      );
+      const res = await axios.delete(`${process.env.API_ROUTE}/api/country?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -173,9 +165,7 @@ export default function Country() {
               </Button>
               <Button.danger
                 className='!py-[2px] !px-[6px]'
-                onClick={() =>
-                  handleShowDeleteModal(original.id, original.name)
-                }
+                onClick={() => handleShowDeleteModal(original.id, original.name)}
               >
                 Delete
               </Button.danger>
@@ -193,9 +183,7 @@ export default function Country() {
   if (error) {
     return (
       <Layout title='Country - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -204,10 +192,7 @@ export default function Country() {
     <Layout title='Country - MyMovie'>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Country</Title>
-        <Button.success
-          onClick={() => setOpenCreateDialog(true)}
-          className='flex items-center gap-2'
-        >
+        <Button.success onClick={() => setOpenCreateDialog(true)} className='flex items-center gap-2'>
           <PlusSmIcon className='h-5 w-5' />
           Add Country
         </Button.success>
@@ -262,8 +247,7 @@ export default function Country() {
         onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
-          Are you sure want to delete country{' '}
-          <span className='font-semibold'>{deleteItem.name}</span> ?
+          Are you sure want to delete country <span className='font-semibold'>{deleteItem.name}</span> ?
         </div>
       </Dialog>
 

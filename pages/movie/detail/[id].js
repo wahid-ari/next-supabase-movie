@@ -31,10 +31,7 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Movie({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/movie?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher);
   const [isLoading, setLoading] = useState(true);
 
   // data.video_url maybe "https://youtu.be/qSqVVswa420" or "https://www.youtube.com/watch?v=2m1drlOZSDw"
@@ -46,18 +43,13 @@ export default function Movie({ id }) {
   if (error) {
     return (
       <Layout title='Movie Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${data ? data?.name + ' - MyMovie' : 'Movie Detail - MyMovie'}`}
-      className='max-w-[70rem]'
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Movie Detail - MyMovie'}`} className='max-w-[70rem]'>
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Movie Detail</Title>}
       </div>
@@ -132,9 +124,7 @@ export default function Movie({ id }) {
               <div className='flex flex-wrap gap-x-12'>
                 <div>
                   <Heading className='mt-4 mb-2'>Release Date</Heading>
-                  <Text className='!text-[15px]'>
-                    {data.release_date || '-'}
-                  </Text>
+                  <Text className='!text-[15px]'>{data.release_date || '-'}</Text>
                   <Heading className='mt-4 mb-2'>Studio</Heading>
                   {data.studios ? (
                     <Link
@@ -151,9 +141,7 @@ export default function Movie({ id }) {
                   <Heading className='mt-4 mb-2'>Language</Heading>
                   <Text className='!text-[15px]'>{data.language || '-'}</Text>
                   <Heading className='mt-4 mb-2'>Status</Heading>
-                  <Text className='!text-[15px]'>
-                    {data.status == 1 ? 'Production' : 'Released'}
-                  </Text>
+                  <Text className='!text-[15px]'>{data.status == 1 ? 'Production' : 'Released'}</Text>
                 </div>
               </div>
             </div>

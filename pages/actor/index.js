@@ -43,9 +43,7 @@ export default function Actor() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(
-        `${process.env.API_ROUTE}/api/actor?id=${deleteItem.id}`
-      );
+      const res = await axios.delete(`${process.env.API_ROUTE}/api/actor?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -109,9 +107,7 @@ export default function Actor() {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return values.birthday
-            ? Number(moment().diff(values.birthday, 'years', false))
-            : '';
+          return values.birthday ? Number(moment().diff(values.birthday, 'years', false)) : '';
         },
       },
       {
@@ -164,9 +160,7 @@ export default function Actor() {
   if (error) {
     return (
       <Layout title='Actor - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -215,8 +209,7 @@ export default function Actor() {
         onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
-          Are you sure want to delete actor{' '}
-          <span className='font-semibold'>{deleteItem.name}</span> ?
+          Are you sure want to delete actor <span className='font-semibold'>{deleteItem.name}</span> ?
         </div>
       </Dialog>
     </Layout>

@@ -8,27 +8,17 @@ export default async function handler(req, res) {
       if (!query.id) {
         const { data } = await supabase
           .from('movies')
-          .select(
-            `*, directors (*), studios (*), movie_categories (*), movie_actors (*)`
-          )
+          .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .order('id');
         res.status(200).json(data);
       } else {
         const { data } = await supabase
           .from('movies')
-          .select(
-            `*, directors (*), studios (*), movie_categories (*), movie_actors (*)`
-          )
+          .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .eq('id', query.id)
           .order('id');
-        const { data: categories } = await supabase
-          .from('categories')
-          .select(`*`)
-          .order('id');
-        const { data: actors } = await supabase
-          .from('actors')
-          .select(`*`)
-          .order('id');
+        const { data: categories } = await supabase.from('categories').select(`*`).order('id');
+        const { data: actors } = await supabase.from('actors').select(`*`).order('id');
         const { movie_categories, movie_actors } = data[0];
         let listDetailCategories = [];
         for (const a of movie_categories) {
@@ -96,9 +86,7 @@ export default async function handler(req, res) {
             });
           });
           // insert categories of a movie to movie_categories table
-          const { error } = await supabase
-            .from('movie_categories')
-            .insert(categories);
+          const { error } = await supabase.from('movie_categories').insert(categories);
           if (error) {
             res.status(422).json({ error: error.message });
           }
@@ -149,10 +137,7 @@ export default async function handler(req, res) {
         }
 
         // delete categories related to edited movie
-        const { error: errorMovieCategory } = await supabase
-          .from('movie_categories')
-          .delete()
-          .eq('movie_id', query.id);
+        const { error: errorMovieCategory } = await supabase.from('movie_categories').delete().eq('movie_id', query.id);
         if (errorMovieCategory) {
           res.status(422).json({ error: errorMovieCategory.message });
         }
@@ -168,19 +153,14 @@ export default async function handler(req, res) {
             });
           });
           // insert categories of a edited movie to movie_categories table
-          const { error } = await supabase
-            .from('movie_categories')
-            .insert(categories);
+          const { error } = await supabase.from('movie_categories').insert(categories);
           if (error) {
             res.status(422).json({ error: error.message });
           }
         }
 
         // delete actors related to edited movie
-        const { error: errorMovieActor } = await supabase
-          .from('movie_actors')
-          .delete()
-          .eq('movie_id', query.id);
+        const { error: errorMovieActor } = await supabase.from('movie_actors').delete().eq('movie_id', query.id);
         if (errorMovieActor) {
           res.status(422).json({ error: errorMovieActor.message });
         }
@@ -211,20 +191,11 @@ export default async function handler(req, res) {
         res.status(422).json({ error: 'Id required' });
       } else {
         // delete categories related to movie in movie_categories table
-        const { error: errorMovieCategory } = await supabase
-          .from('movie_categories')
-          .delete()
-          .eq('movie_id', query.id);
+        const { error: errorMovieCategory } = await supabase.from('movie_categories').delete().eq('movie_id', query.id);
         // delete actors related to movie in movie_actors table
-        const { error: errorMovieActor } = await supabase
-          .from('movie_actors')
-          .delete()
-          .eq('movie_id', query.id);
+        const { error: errorMovieActor } = await supabase.from('movie_actors').delete().eq('movie_id', query.id);
         // finally delete movie
-        const { error } = await supabase
-          .from('movies')
-          .delete()
-          .eq('id', query.id);
+        const { error } = await supabase.from('movies').delete().eq('id', query.id);
         if (error || errorMovieCategory || errorMovieActor) {
           res.status(422).json({ error: error.message });
         }

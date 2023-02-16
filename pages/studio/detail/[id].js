@@ -33,10 +33,7 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Studio({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/studio?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio?id=${id}`, fetcher);
   const [isLoading, setLoading] = useState(true);
 
   const column = useMemo(
@@ -75,17 +72,13 @@ export default function Studio({ id }) {
   if (error) {
     return (
       <Layout title='Studio Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${data ? data?.name + ' - MyMovie' : 'Studio Detail - MyMovie'}`}
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Studio Detail - MyMovie'}`}>
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Studio Detail</Title>}
       </div>
@@ -98,9 +91,7 @@ export default function Studio({ id }) {
                 alt={data?.name}
                 src={data?.image_url}
                 fill
-                className={`rounded object-contain ${
-                  isLoading ? 'blur-2xl' : 'blur-0'
-                }`}
+                className={`rounded object-contain ${isLoading ? 'blur-2xl' : 'blur-0'}`}
                 onLoadingComplete={() => setLoading(false)}
               />
             </div>
@@ -133,12 +124,7 @@ export default function Studio({ id }) {
                 }}
               />
 
-              <ReactTable
-                columns={column}
-                data={data.movies}
-                ref={tableInstance}
-                page_size={10}
-              />
+              <ReactTable columns={column} data={data.movies} ref={tableInstance} page_size={10} />
             </>
           ) : (
             <Text className='!text-red-500'>There are no movies</Text>

@@ -12,8 +12,7 @@ export default function Logout() {
   // so try this, seems work
   useEffect(() => {
     document.cookie = 'id=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
-    document.cookie =
-      'username=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+    document.cookie = 'username=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'name=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'type=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
     document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';

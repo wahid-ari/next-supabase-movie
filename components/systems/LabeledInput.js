@@ -12,10 +12,7 @@ export default function LabeledInput({
 }) {
   return (
     <div className={`mb-4 ${wrapperClassName}`}>
-      <label
-        className='block text-sm text-gray-800 dark:text-neutral-300'
-        htmlFor={name}
-      >
+      <label className='block text-sm text-gray-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <input
@@ -36,21 +33,10 @@ export default function LabeledInput({
   );
 }
 
-LabeledInput.disabled = ({
-  className,
-  label,
-  type,
-  name,
-  placeholder,
-  defaultValue,
-  ...rest
-}) => {
+LabeledInput.disabled = ({ className, label, type, name, placeholder, defaultValue, ...rest }) => {
   return (
     <div className='mb-4'>
-      <label
-        className='block text-sm text-gray-500 dark:text-neutral-300'
-        htmlFor={name}
-      >
+      <label className='block text-sm text-gray-500 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <input

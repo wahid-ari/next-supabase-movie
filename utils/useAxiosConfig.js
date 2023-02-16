@@ -16,9 +16,5 @@ export const AxiosConfigProvider = ({ children }) => {
     // console.log("Axios Header Auth UNSET: ", token.token)
   }
 
-  return (
-    <AxiosConfigContext.Provider value={{ token }}>
-      {children}
-    </AxiosConfigContext.Provider>
-  );
+  return <AxiosConfigContext.Provider value={{ token }}>{children}</AxiosConfigContext.Provider>;
 };

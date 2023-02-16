@@ -1,21 +1,8 @@
-export default function TextArea({
-  label,
-  className,
-  id,
-  name,
-  placeholder,
-  value,
-  onChange,
-  height,
-  ...rest
-}) {
+export default function TextArea({ label, className, id, name, placeholder, value, onChange, height, ...rest }) {
   return (
     <div className='mb-4'>
       {label && (
-        <label
-          htmlFor={name}
-          className='block text-sm font-medium text-neutral-800 dark:text-gray-200'
-        >
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
@@ -38,24 +25,11 @@ export default function TextArea({
   );
 }
 
-TextArea.disabled = ({
-  label,
-  className,
-  id,
-  name,
-  placeholder,
-  value,
-  onChange,
-  height,
-  ...rest
-}) => {
+TextArea.disabled = ({ label, className, id, name, placeholder, value, onChange, height, ...rest }) => {
   return (
     <div className='mb-4'>
       {label && (
-        <label
-          htmlFor={name}
-          className='block text-sm font-medium text-neutral-800 dark:text-gray-200'
-        >
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}

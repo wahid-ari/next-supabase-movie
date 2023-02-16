@@ -36,26 +36,11 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Movie({ id }) {
   const router = useRouter();
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/movie?id=${id}`,
-    fetcher
-  );
-  const { data: category, error: errorCategory } = useSWR(
-    `${process.env.API_ROUTE}/api/category`,
-    fetcher
-  );
-  const { data: actor, error: errorActor } = useSWR(
-    `${process.env.API_ROUTE}/api/actor`,
-    fetcher
-  );
-  const { data: director, error: errorDirector } = useSWR(
-    `${process.env.API_ROUTE}/api/director`,
-    fetcher
-  );
-  const { data: studio, error: errorStudio } = useSWR(
-    `${process.env.API_ROUTE}/api/studio`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher);
+  const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher);
+  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
+  const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
+  const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     name: '',
@@ -96,15 +81,11 @@ export default function Movie({ id }) {
     queryDirector === ''
       ? director
       : director.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedDirector)
-      setEditItem({ ...editItem, director_id: selectedDirector.id });
+    if (selectedDirector) setEditItem({ ...editItem, director_id: selectedDirector.id });
   }, [selectedDirector]);
 
   const [selectedStudio, setSelectedStudio] = useState();
@@ -113,15 +94,11 @@ export default function Movie({ id }) {
     queryStudio === ''
       ? studio
       : studio.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedStudio)
-      setEditItem({ ...editItem, studio_id: selectedStudio.id });
+    if (selectedStudio) setEditItem({ ...editItem, studio_id: selectedStudio.id });
   }, [selectedStudio]);
 
   const [selectedCategory, setSelectedCategory] = useState();
@@ -202,10 +179,7 @@ export default function Movie({ id }) {
       isLoading: true,
     });
     try {
-      const res = await axios.put(
-        `${process.env.API_ROUTE}/api/movie?id=${id}`,
-        editItem
-      );
+      const res = await axios.put(`${process.env.API_ROUTE}/api/movie?id=${id}`, editItem);
       if (res.status == 201) {
         setEditItem({
           name: '',
@@ -236,19 +210,13 @@ export default function Movie({ id }) {
   if (error || errorCategory || errorActor || errorDirector || errorStudio) {
     return (
       <Layout title='Edit Movie - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`Edit ${
-        data ? data?.name + ' - MyMovie' : 'Edit Movie - MyMovie'
-      }`}
-    >
+    <Layout title={`Edit ${data ? data?.name + ' - MyMovie' : 'Edit Movie - MyMovie'}`}>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>Edit {data?.name}</Title> : <Title>Edit Movie</Title>}
       </div>
@@ -269,9 +237,7 @@ export default function Movie({ id }) {
             type='text'
             name='description'
             value={editItem.description}
-            onChange={(e) =>
-              setEditItem({ ...editItem, description: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, description: e.target.value })}
             placeholder='Movie Description'
             height={5}
           />
@@ -281,9 +247,7 @@ export default function Movie({ id }) {
             type='text'
             name='image'
             value={editItem.image_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, image_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
 
@@ -292,16 +256,11 @@ export default function Movie({ id }) {
             type='text'
             name='video'
             value={editItem.video_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, video_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, video_url: e.target.value })}
             placeholder='https://youtu.be/qSqVVswa420'
           />
 
-          <label
-            htmlFor='actor'
-            className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
-          >
+          <label htmlFor='actor' className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'>
             Actors
           </label>
           {listOfActors && selectedActor ? (
@@ -330,10 +289,7 @@ export default function Movie({ id }) {
             <Shimer className='h-8' />
           )}
 
-          <label
-            htmlFor='category'
-            className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
-          >
+          <label htmlFor='category' className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'>
             Categories
           </label>
           {listOfCategories && selectedCategory ? (
@@ -397,9 +353,7 @@ export default function Movie({ id }) {
             type='date'
             name='release'
             value={editItem.release_date}
-            onChange={(e) =>
-              setEditItem({ ...editItem, release_date: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, release_date: e.target.value })}
             placeholder='dd-mm-yyyy'
             min='1950-01-01'
             max='2050-12-31'
@@ -410,9 +364,7 @@ export default function Movie({ id }) {
             type='text'
             name='language'
             value={editItem.language}
-            onChange={(e) =>
-              setEditItem({ ...editItem, language: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, language: e.target.value })}
             placeholder='Movie Language'
           />
 
@@ -427,9 +379,7 @@ export default function Movie({ id }) {
                 name='status'
                 label='Production'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, status: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, status: Number(e.target.value) })}
               />
               <Radio
                 value={2}
@@ -437,9 +387,7 @@ export default function Movie({ id }) {
                 name='status'
                 label='Released'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, status: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, status: Number(e.target.value) })}
               />
             </div>
           </div>

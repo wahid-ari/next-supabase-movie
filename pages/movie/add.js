@@ -33,22 +33,10 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Movie() {
   const router = useRouter();
-  const { data: category, error: errorCategory } = useSWR(
-    `${process.env.API_ROUTE}/api/category`,
-    fetcher
-  );
-  const { data: actor, error: errorActor } = useSWR(
-    `${process.env.API_ROUTE}/api/actor`,
-    fetcher
-  );
-  const { data: director, error: errorDirector } = useSWR(
-    `${process.env.API_ROUTE}/api/director`,
-    fetcher
-  );
-  const { data: studio, error: errorStudio } = useSWR(
-    `${process.env.API_ROUTE}/api/studio`,
-    fetcher
-  );
+  const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher);
+  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
+  const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
+  const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',
@@ -67,15 +55,11 @@ export default function Movie() {
     queryDirector === ''
       ? director
       : director.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryDirector.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedDirector)
-      setCreateItem({ ...createItem, director_id: selectedDirector.id });
+    if (selectedDirector) setCreateItem({ ...createItem, director_id: selectedDirector.id });
   }, [selectedDirector]);
 
   const [selectedStudio, setSelectedStudio] = useState();
@@ -84,15 +68,11 @@ export default function Movie() {
     queryStudio === ''
       ? studio
       : studio.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryStudio.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedStudio)
-      setCreateItem({ ...createItem, studio_id: selectedStudio.id });
+    if (selectedStudio) setCreateItem({ ...createItem, studio_id: selectedStudio.id });
   }, [selectedStudio]);
 
   const [selectedCategory, setSelectedCategory] = useState();
@@ -139,10 +119,7 @@ export default function Movie() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(
-        `${process.env.API_ROUTE}/api/movie`,
-        createItem
-      );
+      const res = await axios.post(`${process.env.API_ROUTE}/api/movie`, createItem);
       if (res.status == 200) {
         setCreateItem({
           name: '',
@@ -173,9 +150,7 @@ export default function Movie() {
   if (errorActor || errorCategory || errorDirector || errorStudio) {
     return (
       <Layout title='Add Movie - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -192,9 +167,7 @@ export default function Movie() {
           type='text'
           name='name'
           value={createItem.name}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, name: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, name: e.target.value })}
           placeholder='Movie Name'
         />
 
@@ -203,9 +176,7 @@ export default function Movie() {
           type='text'
           name='description'
           value={createItem.description}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, description: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, description: e.target.value })}
           placeholder='Movie Description'
           height={5}
         />
@@ -215,9 +186,7 @@ export default function Movie() {
           type='text'
           name='image'
           value={createItem.image_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, image_url: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
           placeholder='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg'
         />
 
@@ -226,16 +195,11 @@ export default function Movie() {
           type='text'
           name='video'
           value={createItem.video_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, video_url: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, video_url: e.target.value })}
           placeholder='https://youtu.be/qSqVVswa420'
         />
 
-        <label
-          htmlFor='actor'
-          className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
-        >
+        <label htmlFor='actor' className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'>
           Actors
         </label>
         {listOfActors ? (
@@ -264,10 +228,7 @@ export default function Movie() {
           <Shimer className='h-8' />
         )}
 
-        <label
-          htmlFor='category'
-          className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'
-        >
+        <label htmlFor='category' className='mt-4 mb-2 block text-sm text-neutral-800 dark:text-gray-200'>
           Categories
         </label>
         {listOfCategories ? (
@@ -331,9 +292,7 @@ export default function Movie() {
           type='date'
           name='release'
           value={createItem.release_date}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, release_date: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, release_date: e.target.value })}
           placeholder='dd-mm-yyyy'
           min='1950-01-01'
           max='2050-12-31'
@@ -344,9 +303,7 @@ export default function Movie() {
           type='text'
           name='language'
           value={createItem.language}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, language: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, language: e.target.value })}
           placeholder='Movie Language'
         />
 
@@ -361,9 +318,7 @@ export default function Movie() {
               name='status'
               label='Production'
               className='!mb-2'
-              onChange={(e) =>
-                setCreateItem({ ...createItem, status: Number(e.target.value) })
-              }
+              onChange={(e) => setCreateItem({ ...createItem, status: Number(e.target.value) })}
             />
             <Radio
               value={2}
@@ -371,9 +326,7 @@ export default function Movie() {
               name='status'
               label='Released'
               className='!mb-2'
-              onChange={(e) =>
-                setCreateItem({ ...createItem, status: Number(e.target.value) })
-              }
+              onChange={(e) => setCreateItem({ ...createItem, status: Number(e.target.value) })}
             />
           </div>
         </div>

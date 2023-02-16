@@ -4,12 +4,7 @@ import Image from 'next/image';
 import Text from '@components/systems/Text';
 import { PhotographIcon } from '@heroicons/react/outline';
 
-export default function MovieListItem({
-  href = '#',
-  imageSrc,
-  name,
-  ...props
-}) {
+export default function MovieListItem({ href = '#', imageSrc, name, ...props }) {
   const [isLoading, setLoading] = useState(true);
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 

@@ -13,12 +13,9 @@ export default function useToast() {
         position: 'top-right',
       });
     } else {
-      return toast.loading(
-        <span className='text-sm font-medium'>{message}</span>,
-        {
-          position: 'top-right',
-        }
-      );
+      return toast.loading(<span className='text-sm font-medium'>{message}</span>, {
+        position: 'top-right',
+      });
     }
   };
 

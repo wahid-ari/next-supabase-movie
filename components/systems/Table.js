@@ -39,9 +39,8 @@ export default function Table({
                 <p className='whitespace-nowrap'>Tidak ada data</p>
               ) : (
                 <p className='whitespace-nowrap'>
-                  Menampilkan{' '}
-                  <span className='font-bold'>{(currentPage - 1) * 5 + 1}</span>{' '}
-                  - <span className='font-bold'>{currentPage * 5}</span>{' '}
+                  Menampilkan <span className='font-bold'>{(currentPage - 1) * 5 + 1}</span> -{' '}
+                  <span className='font-bold'>{currentPage * 5}</span>{' '}
                   {/* dari <span className="font-bold">{totalData}</span> data */}
                 </p>
               )
@@ -49,13 +48,9 @@ export default function Table({
               <p className='whitespace-nowrap'>Tidak ada data</p>
             ) : (
               <p className='whitespace-nowrap'>
-                Menampilkan{' '}
-                <span className='font-bold'>{(currentPage - 1) * 10 + 1}</span>{' '}
-                -{' '}
-                <span className='font-bold'>
-                  {currentPage !== totalPage ? currentPage * 10 : totalData}
-                </span>{' '}
-                dari <span className='font-bold'>{totalData}</span> data
+                Menampilkan <span className='font-bold'>{(currentPage - 1) * 10 + 1}</span> -{' '}
+                <span className='font-bold'>{currentPage !== totalPage ? currentPage * 10 : totalData}</span> dari{' '}
+                <span className='font-bold'>{totalData}</span> data
               </p>
             )}
             <div className='flex items-center justify-end gap-2'>
@@ -100,12 +95,7 @@ Table.tr = ({ className, children, ...rest }) => {
 
 Table.td = ({ className, shrink, children, ...rest }) => {
   return (
-    <td
-      {...rest}
-      className={`${className ? className + ' ' : ''}p-4 ${
-        shrink ? 'w-1' : ''
-      }`}
-    >
+    <td {...rest} className={`${className ? className + ' ' : ''}p-4 ${shrink ? 'w-1' : ''}`}>
       {children}
     </td>
   );

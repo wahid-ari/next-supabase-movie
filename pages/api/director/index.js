@@ -6,10 +6,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       if (!query.id) {
-        const { data } = await supabase
-          .from('directors')
-          .select(`*, countries (*)`)
-          .order('id');
+        const { data } = await supabase.from('directors').select(`*, countries (*)`).order('id');
         res.status(200).json(data);
       } else {
         const { data } = await supabase
@@ -66,10 +63,7 @@ export default async function handler(req, res) {
       if (!query.id) {
         res.status(422).json({ error: 'Id required' });
       } else {
-        const { error } = await supabase
-          .from('directors')
-          .delete()
-          .eq('id', query.id);
+        const { error } = await supabase.from('directors').delete().eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

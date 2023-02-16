@@ -32,14 +32,8 @@ import Image from 'next/image';
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Studio() {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/studio`,
-    fetcher
-  );
-  const { data: country, error: errorCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/country`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
+  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -72,40 +66,29 @@ export default function Studio() {
     query === ''
       ? data
       : data.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
         );
 
   const filteredCountry =
     queryCountry === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
         );
 
   const filteredCountryEdit =
     queryCountryEdit === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedCountry)
-      setCreateItem({ ...createItem, country_id: selectedCountry.id });
+    if (selectedCountry) setCreateItem({ ...createItem, country_id: selectedCountry.id });
   }, [selectedCountry]);
 
   useEffect(() => {
-    if (selectedCountryEdit)
-      setEditItem({ ...editItem, country_id: selectedCountryEdit.id });
+    if (selectedCountryEdit) setEditItem({ ...editItem, country_id: selectedCountryEdit.id });
   }, [selectedCountryEdit]);
 
   async function handleCreate() {
@@ -114,10 +97,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(
-        `${process.env.API_ROUTE}/api/studio`,
-        createItem
-      );
+      const res = await axios.post(`${process.env.API_ROUTE}/api/studio`, createItem);
       if (res.status == 200) {
         setOpenCreateDialog(false);
         setCreateItem({ name: '', image_url: '', city: '', country_id: null });
@@ -142,10 +122,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(
-        `${process.env.API_ROUTE}/api/studio?id=${editItem.id}`,
-        editItem
-      );
+      const res = await axios.put(`${process.env.API_ROUTE}/api/studio?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({ name: '', image_url: '', city: '', country_id: null });
@@ -169,9 +146,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(
-        `${process.env.API_ROUTE}/api/studio?id=${deleteItem.id}`
-      );
+      const res = await axios.delete(`${process.env.API_ROUTE}/api/studio?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ name: '', image_url: '', city: '', country_id: null });
@@ -213,9 +188,7 @@ export default function Studio() {
   if (error || errorCountry) {
     return (
       <Layout title='Studio - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -224,10 +197,7 @@ export default function Studio() {
     <Layout title='Studio - MyMovie'>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Studio</Title>
-        <Button.success
-          onClick={() => setOpenCreateDialog(true)}
-          className='flex items-center gap-2'
-        >
+        <Button.success onClick={() => setOpenCreateDialog(true)} className='flex items-center gap-2'>
           <PlusSmIcon className='h-5 w-5' />
           Add Studio
         </Button.success>
@@ -247,9 +217,7 @@ export default function Studio() {
             type='text'
             name='name'
             value={createItem.name}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, name: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, name: e.target.value })}
             placeholder='Studio Name'
           />
           <LabeledInput
@@ -257,9 +225,7 @@ export default function Studio() {
             type='text'
             name='image'
             value={createItem.image_url}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, image_url: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
           <LabeledInput
@@ -267,9 +233,7 @@ export default function Studio() {
             type='text'
             name='city'
             value={createItem.city}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, city: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, city: e.target.value })}
             placeholder='Los Angles'
           />
           <SearchBox
@@ -307,9 +271,7 @@ export default function Studio() {
             type='text'
             name='image'
             value={editItem.image_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, image_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
           <LabeledInput
@@ -342,8 +304,7 @@ export default function Studio() {
         onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
-          Are you sure want to delete studio{' '}
-          <span className='font-semibold'>{deleteItem.name}</span> ?
+          Are you sure want to delete studio <span className='font-semibold'>{deleteItem.name}</span> ?
         </div>
       </Dialog>
 
@@ -376,12 +337,7 @@ export default function Studio() {
                 <TableSimple.td>
                   {item.image_url ? (
                     <div className='relative h-8 overflow-hidden'>
-                      <Image
-                        alt={item?.name}
-                        src={item?.image_url}
-                        fill
-                        className={`rounded object-contain`}
-                      />
+                      <Image alt={item?.name} src={item?.image_url} fill className={`rounded object-contain`} />
                     </div>
                   ) : (
                     <div className='relative mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800'>
@@ -410,13 +366,7 @@ export default function Studio() {
                   <Button
                     className='mr-2 !py-[2px] !px-[6px]'
                     onClick={() =>
-                      handleShowEditModal(
-                        item.id,
-                        item.name,
-                        item.image_url,
-                        item.city,
-                        item.countries?.id
-                      )
+                      handleShowEditModal(item.id, item.name, item.image_url, item.city, item.countries?.id)
                     }
                   >
                     Edit

@@ -35,12 +35,7 @@ body {
       rgba(5, 150, 105, 0.5) 64%,
       rgba(5, 150, 105, 0.5) 100%
     ),
-    linear-gradient(
-      40deg,
-      rgb(4, 120, 87) 0%,
-      /* rgb(4, 120, 87) 62%, */ rgb(16, 185, 129) 62%,
-      rgb(16, 185, 129) 100%
-    );
+    linear-gradient(40deg, rgb(4, 120, 87) 0%, /* rgb(4, 120, 87) 62%, */ rgb(16, 185, 129) 62%, rgb(16, 185, 129) 100%);
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
@@ -80,46 +75,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .splide.is-focus-in .splide__arrow:focus {
   outline: 3px solid rgba(0, 187, 255, 0) !important;
   outline-offset: 3px;
-}
-
-.rhap_main-controls {
-  margin-left: 64px;
-}
-
-@media (max-width: 575.98px) {
-  .rhap_main-controls {
-    margin-left: 0px;
-  }
-
-  #rhap_current-time {
-    display: none;
-  }
-
-  .rhap_time.rhap_total-time {
-    display: none;
-  }
-
-  .rhap_progress-container {
-    margin: 0 !important;
-  }
-}
-
-#rhap_current-time {
-  color: var(--primary-text-color);
-  font-size: 14px !important;
-}
-
-.rhap_time.rhap_total-time {
-  color: var(--primary-text-color);
-  font-size: 14px !important;
-}
-
-.rhap_additional-controls {
-  display: none !important;
-}
-
-.rhap_header {
-  font-size: 15px !important;
 }
 
 /* REACT MULTI SELECT  */

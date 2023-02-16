@@ -35,9 +35,7 @@ export default function Tabs({ items, children, className }) {
 Tabs.panel = ({ children, className }) => {
   return (
     <>
-      <Tab.Panel
-        className={`rounded-xl py-2 text-neutral-700 dark:text-neutral-200 ${className}`}
-      >
+      <Tab.Panel className={`rounded-xl py-2 text-neutral-700 dark:text-neutral-200 ${className}`}>
         {children}
       </Tab.Panel>
     </>

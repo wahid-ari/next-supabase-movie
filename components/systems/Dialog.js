@@ -1,11 +1,7 @@
 import { Fragment } from 'react';
 import { Transition } from '@headlessui/react';
 import * as DialogRadix from '@radix-ui/react-dialog';
-import {
-  ExclamationIcon,
-  InformationCircleIcon,
-  XIcon,
-} from '@heroicons/react/outline';
+import { ExclamationIcon, InformationCircleIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import Button from './Button';
 
@@ -68,17 +64,11 @@ export default function Dialog({
               {showIcon ? (
                 isDanger ? (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0'>
-                    <ExclamationIcon
-                      className='h-6 w-6 text-red-600'
-                      aria-hidden='true'
-                    />
+                    <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                   </div>
                 ) : (
                   <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0'>
-                    <InformationCircleIcon
-                      className='h-6 w-6 text-blue-600'
-                      aria-hidden='true'
-                    />
+                    <InformationCircleIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
                   </div>
                 )
               ) : null}
@@ -93,10 +83,7 @@ export default function Dialog({
             </div>
 
             <div className='justify-end gap-3 px-5 pb-5 sm:flex'>
-              <Button.secondary
-                className='mb-2 w-full focus:ring-2 sm:mb-0 sm:w-auto'
-                onClick={onClose}
-              >
+              <Button.secondary className='mb-2 w-full focus:ring-2 sm:mb-0 sm:w-auto' onClick={onClose}>
                 Cancel
               </Button.secondary>
               {isDanger ? (
@@ -108,10 +95,7 @@ export default function Dialog({
                   {confirmText}
                 </Button>
               ) : (
-                <Button.success
-                  className='w-full sm:w-auto'
-                  onClick={onConfirm}
-                >
+                <Button.success className='w-full sm:w-auto' onClick={onConfirm}>
                   {confirmText}
                 </Button.success>
               )}

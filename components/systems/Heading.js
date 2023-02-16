@@ -24,9 +24,7 @@ export default function Heading({ className, h1, h2, h3, children, ...rest }) {
   } else if (h3) {
     return (
       <h3
-        className={`${
-          className ? className + ' ' : ''
-        }text-neutral-800 mb-4 text-xl font-medium dark:text-neutral-100`}
+        className={`${className ? className + ' ' : ''}text-neutral-800 mb-4 text-xl font-medium dark:text-neutral-100`}
         {...rest}
       >
         {children}
@@ -35,9 +33,7 @@ export default function Heading({ className, h1, h2, h3, children, ...rest }) {
   }
   return (
     <h4
-      className={`${
-        className ? className + ' ' : ''
-      }text-neutral-800 mb-4 text-lg font-medium dark:text-neutral-100`}
+      className={`${className ? className + ' ' : ''}text-neutral-800 mb-4 text-lg font-medium dark:text-neutral-100`}
       {...rest}
     >
       {children}

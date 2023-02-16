@@ -2,11 +2,7 @@ export default function TableSimple({ className, head, bordered, children }) {
   return (
     <div
       className={`${className ? className + ' ' : ''}w-full rounded 
-    ${
-      bordered
-        ? 'border-t dark:border-t-neutral-800'
-        : 'border dark:border-neutral-800'
-    }
+    ${bordered ? 'border-t dark:border-t-neutral-800' : 'border dark:border-neutral-800'}
     `}
     >
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
@@ -37,9 +33,9 @@ TableSimple.tr = ({ className, children }) => {
 TableSimple.td = ({ className, small, bordered, children }) => {
   return (
     <td
-      className={`${className ? className + ' ' : ''}p-3 ${
-        bordered ? 'border-x dark:border-x-neutral-800' : ''
-      } ${small ? 'w-1' : ''}`}
+      className={`${className ? className + ' ' : ''}p-3 ${bordered ? 'border-x dark:border-x-neutral-800' : ''} ${
+        small ? 'w-1' : ''
+      }`}
     >
       {children}
     </td>

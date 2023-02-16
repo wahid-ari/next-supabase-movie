@@ -2,24 +2,11 @@ import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
 
-export default function SearchBox({
-  label,
-  value,
-  placeholder,
-  onChange,
-  query,
-  onChangeQuery,
-  afterLeave,
-  filtered,
-}) {
+export default function SearchBox({ label, value, placeholder, onChange, query, onChangeQuery, afterLeave, filtered }) {
   return (
     <Combobox value={value} by='id' onChange={onChange}>
       <div className='relative mt-1 pb-1'>
-        {label && (
-          <Combobox.Label className='text-gray-800 dark:text-neutral-300'>
-            {label}
-          </Combobox.Label>
-        )}
+        {label && <Combobox.Label className='text-gray-800 dark:text-neutral-300'>{label}</Combobox.Label>}
         <div className='relative my-2 w-full cursor-default overflow-hidden rounded-md border border-neutral-300 text-left text-sm dark:border-neutral-600'>
           <Combobox.Input
             className='w-full rounded-md border-2 border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900 outline-none focus:border-emerald-600 dark:bg-neutral-900 dark:text-white'
@@ -28,10 +15,7 @@ export default function SearchBox({
             onChange={onChangeQuery}
           />
           <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <ChevronDownIcon
-              className='h-5 w-5 text-gray-400'
-              aria-hidden='true'
-            />
+            <ChevronDownIcon className='h-5 w-5 text-gray-400' aria-hidden='true' />
           </Combobox.Button>
         </div>
         <Transition
@@ -52,22 +36,14 @@ export default function SearchBox({
                   key={item.id}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active
-                        ? 'bg-emerald-600 text-white'
-                        : 'text-gray-900 dark:text-white'
+                      active ? 'bg-emerald-600 text-white' : 'text-gray-900 dark:text-white'
                     }`
                   }
                   value={item}
                 >
                   {({ selected, active }) => (
                     <>
-                      <span
-                        className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
-                        }`}
-                      >
-                        {item.name}
-                      </span>
+                      <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>{item.name}</span>
                       {selected ? (
                         <span
                           className={`absolute inset-y-0 left-0 flex items-center pl-3 ${

@@ -5,14 +5,8 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-      const { data: studios } = await supabase
-        .from('studios')
-        .select(`*`)
-        .order('id');
-      const { data: countries } = await supabase
-        .from('countries')
-        .select(`*`)
-        .order('id');
+      const { data: studios } = await supabase.from('studios').select(`*`).order('id');
+      const { data: countries } = await supabase.from('countries').select(`*`).order('id');
       // Make an array of object structure
       let items = [];
       for (const country of countries) {

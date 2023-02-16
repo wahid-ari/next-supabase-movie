@@ -189,10 +189,4 @@ function optionsHorizontalBarChart(theme, windowWidth) {
   };
 }
 
-export {
-  populateData,
-  options,
-  optionsLineChart,
-  optionsBarChart,
-  optionsHorizontalBarChart,
-};
+export { populateData, options, optionsLineChart, optionsBarChart, optionsHorizontalBarChart };

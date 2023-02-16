@@ -21,25 +21,18 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Country({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/country?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country?id=${id}`, fetcher);
 
   if (error) {
     return (
       <Layout title='Country Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${data ? data?.name + ' - MyMovie' : 'Country Detail - MyMovie'}`}
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Country Detail - MyMovie'}`}>
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Country Detail</Title>}
       </div>

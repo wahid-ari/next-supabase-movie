@@ -5,14 +5,8 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-      const { data: movie_actors } = await supabase
-        .from('movie_actors')
-        .select(`*`)
-        .order('id');
-      const { data: actors } = await supabase
-        .from('actors')
-        .select(`*`)
-        .order('id');
+      const { data: movie_actors } = await supabase.from('movie_actors').select(`*`).order('id');
+      const { data: actors } = await supabase.from('actors').select(`*`).order('id');
       // Make an array of object structure
       let items = [];
       for (const actor of actors) {

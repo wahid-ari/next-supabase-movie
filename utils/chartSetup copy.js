@@ -137,10 +137,4 @@ const optionsHorizontalBarChart = {
   },
 };
 
-export {
-  colors,
-  populateData,
-  options,
-  optionsBarChart,
-  optionsHorizontalBarChart,
-};
+export { colors, populateData, options, optionsBarChart, optionsHorizontalBarChart };

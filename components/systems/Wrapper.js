@@ -1,17 +1,7 @@
 import Link from 'next/link';
 import Badge from './Badge';
 import Heading from './Heading';
-export default function Wrapper({
-  id,
-  name,
-  props,
-  variant,
-  noClassName,
-  noChildren,
-  noProps,
-  noWrap,
-  children,
-}) {
+export default function Wrapper({ id, name, props, variant, noClassName, noChildren, noProps, noWrap, children }) {
   return (
     <section id={id} className='pt-8'>
       <Heading className='group transition-all duration-500'>
@@ -23,9 +13,7 @@ export default function Wrapper({
       {noWrap ? (
         <div className='mb-2'>{children}</div>
       ) : (
-        <div className='relative mb-2 rounded-md border p-8 dark:border-neutral-800'>
-          {children}
-        </div>
+        <div className='relative mb-2 rounded-md border p-8 dark:border-neutral-800'>{children}</div>
       )}
       {variant && variant.length > 0 ? (
         <div className='mb-2 flex flex-wrap items-center gap-y-2'>

@@ -2,16 +2,7 @@ import { PlusIcon } from '@heroicons/react/solid';
 import { useRef } from 'react';
 import Button from './Button';
 
-export default function FileInput({
-  id,
-  className,
-  label,
-  type = 'file',
-  name,
-  value,
-  onChange,
-  ...rest
-}) {
+export default function FileInput({ id, className, label, type = 'file', name, value, onChange, ...rest }) {
   const ref = useRef();
 
   const handleClick = () => {
@@ -20,10 +11,7 @@ export default function FileInput({
 
   return (
     <div className='mb-4'>
-      <label
-        className='block text-sm text-gray-800 dark:text-neutral-300'
-        htmlFor={name}
-      >
+      <label className='block text-sm text-gray-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <Button.secondary onClick={handleClick} className='mt-2 w-full truncate'>

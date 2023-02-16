@@ -31,10 +31,7 @@ import Radio from '@components/systems/Radio';
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Actor() {
-  const { data: country, error: errorCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/country`,
-    fetcher
-  );
+  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',
@@ -54,15 +51,11 @@ export default function Actor() {
     queryCountry === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedCountry)
-      setCreateItem({ ...createItem, country_id: selectedCountry.id });
+    if (selectedCountry) setCreateItem({ ...createItem, country_id: selectedCountry.id });
   }, [selectedCountry]);
 
   async function handleCreate() {
@@ -71,10 +64,7 @@ export default function Actor() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(
-        `${process.env.API_ROUTE}/api/actor`,
-        createItem
-      );
+      const res = await axios.post(`${process.env.API_ROUTE}/api/actor`, createItem);
       if (res.status == 200) {
         setCreateItem({
           name: '',
@@ -104,9 +94,7 @@ export default function Actor() {
   if (errorCountry) {
     return (
       <Layout title='Add Actor - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -123,9 +111,7 @@ export default function Actor() {
           type='text'
           name='name'
           value={createItem.name}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, name: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, name: e.target.value })}
           placeholder='Actor Name'
         />
 
@@ -134,9 +120,7 @@ export default function Actor() {
           type='text'
           name='image'
           value={createItem.image_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, image_url: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
           placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
         />
 
@@ -151,9 +135,7 @@ export default function Actor() {
               name='gender'
               label='Male'
               className='!mb-2'
-              onChange={(e) =>
-                setCreateItem({ ...createItem, gender: Number(e.target.value) })
-              }
+              onChange={(e) => setCreateItem({ ...createItem, gender: Number(e.target.value) })}
             />
             <Radio
               value={2}
@@ -161,9 +143,7 @@ export default function Actor() {
               name='gender'
               label='Female'
               className='!mb-2'
-              onChange={(e) =>
-                setCreateItem({ ...createItem, gender: Number(e.target.value) })
-              }
+              onChange={(e) => setCreateItem({ ...createItem, gender: Number(e.target.value) })}
             />
           </div>
         </div>
@@ -173,9 +153,7 @@ export default function Actor() {
           type='text'
           name='biography'
           value={createItem.biography}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, biography: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, biography: e.target.value })}
           placeholder='Actor Biography'
         />
 
@@ -184,9 +162,7 @@ export default function Actor() {
           type='date'
           name='birthday'
           value={createItem.birthday}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, birthday: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, birthday: e.target.value })}
           placeholder='dd-mm-yyyy'
           min='1950-01-01'
           max='2022-12-31'
@@ -212,9 +188,7 @@ export default function Actor() {
           type='text'
           name='instagram'
           value={createItem.instagram_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, instagram_url: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, instagram_url: e.target.value })}
           placeholder='https://www.instagram.com/tomcruise'
         />
 
@@ -223,9 +197,7 @@ export default function Actor() {
           type='text'
           name='twitter'
           value={createItem.twitter_url}
-          onChange={(e) =>
-            setCreateItem({ ...createItem, twitter_url: e.target.value })
-          }
+          onChange={(e) => setCreateItem({ ...createItem, twitter_url: e.target.value })}
           placeholder='https://twitter.com/TomCruise'
         />
 

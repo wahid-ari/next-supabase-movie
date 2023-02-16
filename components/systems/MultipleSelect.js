@@ -1,14 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 
-export default function MultipleSelect({
-  label,
-  show,
-  value,
-  onClick,
-  onBlur,
-  children,
-}) {
+export default function MultipleSelect({ label, show, value, onClick, onBlur, children }) {
   const buttonRef = useRef(null);
   const ref = useRef(null);
   const setBlur = (e) => {
@@ -28,9 +21,7 @@ export default function MultipleSelect({
   return (
     <div className='relative mb-4' ref={ref}>
       <div className='mb-1'>
-        <label className='block text-gray-800 dark:text-neutral-300'>
-          {label}
-        </label>
+        <label className='block text-gray-800 dark:text-neutral-300'>{label}</label>
         <button
           aria-label='multiple select'
           ref={buttonRef}
@@ -40,17 +31,13 @@ export default function MultipleSelect({
         >
           <div className='flex flex-wrap gap-y-2 text-sm'>{value}</div>
           <ChevronDownIcon
-            className={`h-4 w-4 text-gray-400 transition-all dark:text-neutral-600 ${
-              show ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`h-4 w-4 text-gray-400 transition-all dark:text-neutral-600 ${show ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
       </div>
       <div
         className={`${
-          show
-            ? 'max-h-64 border dark:border-neutral-800'
-            : 'max-h-0 border-transparent'
+          show ? 'max-h-64 border dark:border-neutral-800' : 'max-h-0 border-transparent'
         } absolute z-50 w-full overflow-y-auto rounded-md bg-white shadow-sm transition-all scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-800`}
       >
         {children}

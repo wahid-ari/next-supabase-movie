@@ -7,26 +7,10 @@ import {
   ChevronRightIcon,
   ChevronUpIcon,
 } from '@heroicons/react/outline';
-import {
-  useTable,
-  usePagination,
-  useSortBy,
-  useFilters,
-  useGlobalFilter,
-} from 'react-table';
+import { useTable, usePagination, useSortBy, useFilters, useGlobalFilter } from 'react-table';
 
 export const ReactTable = forwardRef(
-  (
-    {
-      columns,
-      data,
-      page_size = 5,
-      className,
-      bordered,
-      itemPerPage = [5, 10, 20],
-    },
-    ref
-  ) => {
+  ({ columns, data, page_size = 5, className, bordered, itemPerPage = [5, 10, 20] }, ref) => {
     // Use the state and functions returned from useTable to build your UI
     const defaultColumn = useMemo(
       () => ({
@@ -92,16 +76,9 @@ export const ReactTable = forwardRef(
     useImperativeHandle(ref, () => instance);
 
     return (
-      <div
-        className={`w-full rounded border dark:border-neutral-800 ${
-          className ? className + ' ' : ''
-        }`}
-      >
+      <div className={`w-full rounded border dark:border-neutral-800 ${className ? className + ' ' : ''}`}>
         <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
-          <table
-            {...getTableProps()}
-            className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'
-          >
+          <table {...getTableProps()} className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'>
             <thead>
               {headerGroups.map((headerGroup, i) => (
                 <tr
@@ -113,13 +90,8 @@ export const ReactTable = forwardRef(
                     <th
                       key={i + 1}
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className={`p-3 font-semibold first:w-1 ${
-                        column.Header == 'Action' && 'w-1'
-                      }
-                    ${
-                      bordered &&
-                      'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800'
-                    }`}
+                      className={`p-3 font-semibold first:w-1 ${column.Header == 'Action' && 'w-1'}
+                    ${bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800'}`}
                     >
                       <span className='flex items-center gap-1.5'>
                         {column.render('Header')}
@@ -168,8 +140,7 @@ export const ReactTable = forwardRef(
                           key={i + 1}
                           {...cell.getCellProps()}
                           className={`p-3 ${
-                            bordered &&
-                            'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800'
+                            bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800'
                           }`}
                         >
                           {cell.render('Cell')}
@@ -192,10 +163,7 @@ export const ReactTable = forwardRef(
               className={`rounded border border-transparent p-1 transition-all duration-200 ${
                 !canPreviousPage && 'cursor-not-allowed'
               } 
-            ${
-              canPreviousPage &&
-              'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-            }`}
+            ${canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
             >
               <ChevronDoubleLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
@@ -206,10 +174,7 @@ export const ReactTable = forwardRef(
               className={`rounded border border-transparent p-1 transition-all duration-200 ${
                 !canPreviousPage && 'cursor-not-allowed'
               } 
-            ${
-              canPreviousPage &&
-              'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-            }`}
+            ${canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
             >
               <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
             </button>{' '}
@@ -223,10 +188,7 @@ export const ReactTable = forwardRef(
               className={`rounded border border-transparent p-1 transition-all duration-200 ${
                 !canNextPage && 'cursor-not-allowed'
               } 
-            ${
-              canNextPage &&
-              'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-            }`}
+            ${canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
             >
               <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
@@ -237,10 +199,7 @@ export const ReactTable = forwardRef(
               className={`rounded border border-transparent p-1 transition-all duration-200 ${
                 !canNextPage && 'cursor-not-allowed'
               } 
-            ${
-              canNextPage &&
-              'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
-            }`}
+            ${canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
             >
               <ChevronDoubleRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
@@ -250,9 +209,7 @@ export const ReactTable = forwardRef(
           </div>
 
           <div className='flex items-center justify-center gap-2 sm:justify-end'>
-            <span className='text-sm text-neutral-800 dark:text-gray-200'>
-              Go to page
-            </span>
+            <span className='text-sm text-neutral-800 dark:text-gray-200'>Go to page</span>
             <input
               type='number'
               min={1}

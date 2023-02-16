@@ -1,28 +1,12 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import {
-  ExclamationIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/outline';
+import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
 import Button from '@components/systems/Button';
 
-export default function Modal({
-  open,
-  title,
-  children,
-  isDanger,
-  onClose,
-  onConfirm,
-  showIcon,
-}) {
+export default function Modal({ open, title, children, isDanger, onClose, onConfirm, showIcon }) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog
-        as='div'
-        className='fixed inset-0 z-50 overflow-y-auto'
-        open={open}
-        onClose={onClose}
-      >
+      <Dialog as='div' className='fixed inset-0 z-50 overflow-y-auto' open={open} onClose={onClose}>
         <div className='px-4 pt-4 text-center sm:block sm:p-0'>
           <Transition.Child
             as={Fragment}
@@ -37,10 +21,7 @@ export default function Modal({
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span
-            className='inline-block h-screen align-middle'
-            aria-hidden='true'
-          >
+          <span className='inline-block h-screen align-middle' aria-hidden='true'>
             &#8203;
           </span>
           <Transition.Child
@@ -57,17 +38,11 @@ export default function Modal({
                 {showIcon ? (
                   isDanger ? (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
-                      <ExclamationIcon
-                        className='h-6 w-6 text-red-600'
-                        aria-hidden='true'
-                      />
+                      <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                     </div>
                   ) : (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100'>
-                      <InformationCircleIcon
-                        className='h-6 w-6 text-blue-600'
-                        aria-hidden='true'
-                      />
+                      <InformationCircleIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
                     </div>
                   )
                 ) : null}
@@ -78,25 +53,17 @@ export default function Modal({
                   >
                     {title}
                   </Dialog.Title>
-                  <div className='mt-2 text-neutral-700 dark:text-neutral-300'>
-                    {children}
-                  </div>
+                  <div className='mt-2 text-neutral-700 dark:text-neutral-300'>{children}</div>
                 </div>
               </div>
 
               <div className='justify-end gap-3 px-5 pb-5 sm:flex'>
-                <Button.secondary
-                  className='mb-2 w-full sm:mb-0 sm:w-auto'
-                  onClick={onClose}
-                >
+                <Button.secondary className='mb-2 w-full sm:mb-0 sm:w-auto' onClick={onClose}>
                   Cancel
                 </Button.secondary>
 
                 {isDanger ? (
-                  <Button.danger
-                    className='w-full sm:w-auto'
-                    onClick={onConfirm}
-                  >
+                  <Button.danger className='w-full sm:w-auto' onClick={onConfirm}>
                     Delete
                   </Button.danger>
                 ) : (

@@ -34,10 +34,7 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Director({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/director?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director?id=${id}`, fetcher);
   const [isLoading, setLoading] = useState(true);
 
   const column = useMemo(
@@ -72,11 +69,7 @@ export default function Director({ id }) {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return values.status == 1 ? (
-            <Badge.red>Production</Badge.red>
-          ) : (
-            <Badge.green>Released</Badge.green>
-          );
+          return values.status == 1 ? <Badge.red>Production</Badge.red> : <Badge.green>Released</Badge.green>;
         },
       },
       {
@@ -98,19 +91,13 @@ export default function Director({ id }) {
   if (error) {
     return (
       <Layout title='Director Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${
-        data ? data?.name + ' - MyMovie' : 'Director Detail - MyMovie'
-      }`}
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Director Detail - MyMovie'}`}>
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Director Detail</Title>}
       </div>
@@ -136,9 +123,7 @@ export default function Director({ id }) {
             <Heading className='-mt-1 mb-2'>Biography</Heading>
             <Text className='!text-[15px]'>{data.biography || '-'}</Text>
             <Heading className='mt-4 mb-2'>Gender</Heading>
-            <Text className='!text-[15px]'>
-              {data.gender == 1 ? 'Male' : 'Female'}
-            </Text>
+            <Text className='!text-[15px]'>{data.gender == 1 ? 'Male' : 'Female'}</Text>
             <Heading className='mt-4 mb-2'>Country</Heading>
             {data.countries ? (
               <Link

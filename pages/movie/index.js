@@ -43,9 +43,7 @@ export default function Movie() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(
-        `${process.env.API_ROUTE}/api/movie?id=${deleteItem.id}`
-      );
+      const res = await axios.delete(`${process.env.API_ROUTE}/api/movie?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -100,11 +98,7 @@ export default function Movie() {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return values.status == 1 ? (
-            <Badge.red>Production</Badge.red>
-          ) : (
-            <Badge.green>Released</Badge.green>
-          );
+          return values.status == 1 ? <Badge.red>Production</Badge.red> : <Badge.green>Released</Badge.green>;
         },
       },
       {
@@ -183,9 +177,7 @@ export default function Movie() {
   if (error) {
     return (
       <Layout title='Movie - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -213,12 +205,7 @@ export default function Movie() {
             }}
           />
 
-          <ReactTable
-            columns={column}
-            data={data}
-            ref={tableInstance}
-            page_size={20}
-          />
+          <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} />
         </>
       ) : (
         <Shimer className='!h-60' />
@@ -233,8 +220,7 @@ export default function Movie() {
         onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
-          Are you sure want to delete movie{' '}
-          <span className='font-semibold'>{deleteItem.name}</span> ?
+          Are you sure want to delete movie <span className='font-semibold'>{deleteItem.name}</span> ?
         </div>
       </Dialog>
     </Layout>

@@ -6,10 +6,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       if (!query.id) {
-        const { data } = await supabase
-          .from('countries')
-          .select(`*`)
-          .order('id');
+        const { data } = await supabase.from('countries').select(`*`).order('id');
         res.status(200).json(data);
       } else {
         const { data } = await supabase
@@ -25,9 +22,7 @@ export default async function handler(req, res) {
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase
-          .from('countries')
-          .insert([{ name: body.name }]);
+        const { error } = await supabase.from('countries').insert([{ name: body.name }]);
         if (error) {
           res.status(422).json({ error: error.message });
         }
@@ -39,10 +34,7 @@ export default async function handler(req, res) {
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase
-          .from('countries')
-          .update({ name: body.name })
-          .eq('id', query.id);
+        const { error } = await supabase.from('countries').update({ name: body.name }).eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }
@@ -54,10 +46,7 @@ export default async function handler(req, res) {
       if (!query.id) {
         res.status(422).json({ error: 'Id required' });
       } else {
-        const { error } = await supabase
-          .from('countries')
-          .delete()
-          .eq('id', query.id);
+        const { error } = await supabase.from('countries').delete().eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

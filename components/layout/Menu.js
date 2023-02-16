@@ -27,9 +27,7 @@ export default function Akun({ className }) {
             {mounted && admin?.name}
 
             <ChevronDownIcon
-              className={`${
-                open ? 'rotate-180' : 'rotate-0'
-              } ml-1 h-5 w-4 pb-0.5 transition-all duration-200`}
+              className={`${open ? 'rotate-180' : 'rotate-0'} ml-1 h-5 w-4 pb-0.5 transition-all duration-200`}
               aria-hidden='true'
             />
           </Menu.Button>

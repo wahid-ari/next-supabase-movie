@@ -6,26 +6,16 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       if (!query.id) {
-        const { data } = await supabase
-          .from('categories')
-          .select(`*`)
-          .order('id');
+        const { data } = await supabase.from('categories').select(`*`).order('id');
         res.status(200).json(data);
       } else {
-        const { data: categories } = await supabase
-          .from('categories')
-          .select(`*`)
-          .eq('id', query.id)
-          .order('id');
+        const { data: categories } = await supabase.from('categories').select(`*`).eq('id', query.id).order('id');
         const { data: movie_categories } = await supabase
           .from('movie_categories')
           .select(`*`)
           .eq('category_id', query.id)
           .order('id');
-        const { data: movies } = await supabase
-          .from('movies')
-          .select(`*`)
-          .order('id');
+        const { data: movies } = await supabase.from('movies').select(`*`).order('id');
 
         let movie_by_category = [];
         for (const a of movie_categories) {
@@ -46,9 +36,7 @@ export default async function handler(req, res) {
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase
-          .from('categories')
-          .insert([{ name: body.name }]);
+        const { error } = await supabase.from('categories').insert([{ name: body.name }]);
         if (error) {
           res.status(422).json({ error: error.message });
         }
@@ -60,10 +48,7 @@ export default async function handler(req, res) {
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
       } else {
-        const { error } = await supabase
-          .from('categories')
-          .update({ name: body.name })
-          .eq('id', query.id);
+        const { error } = await supabase.from('categories').update({ name: body.name }).eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }
@@ -75,10 +60,7 @@ export default async function handler(req, res) {
       if (!query.id) {
         res.status(422).json({ error: 'Id required' });
       } else {
-        const { error } = await supabase
-          .from('categories')
-          .delete()
-          .eq('id', query.id);
+        const { error } = await supabase.from('categories').delete().eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
         }

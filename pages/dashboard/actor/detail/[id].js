@@ -24,26 +24,19 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Actor({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/actor?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
   const [isLoading, setLoading] = useState(true);
 
   if (error) {
     return (
       <Layout title='Actor Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${data ? data?.name + ' - MyMovie' : 'Actor Detail - MyMovie'}`}
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Actor Detail - MyMovie'}`}>
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Actor Detail</Title>}
       </div>
@@ -71,9 +64,7 @@ export default function Actor({ id }) {
             <div className='flex flex-wrap gap-x-12'>
               <div>
                 <Heading className='mt-4 mb-2'>Gender</Heading>
-                <Text className='!text-[15px]'>
-                  {data.gender == 1 ? 'Male' : 'Female'}
-                </Text>
+                <Text className='!text-[15px]'>{data.gender == 1 ? 'Male' : 'Female'}</Text>
                 <Heading className='mt-4 mb-2'>Country</Heading>
                 {data.countries ? (
                   <Link
@@ -91,8 +82,7 @@ export default function Actor({ id }) {
                 <Text className='!text-[15px]'>
                   {data.birthday ? (
                     <>
-                      {data.birthday} (
-                      {moment().diff(data.birthday, 'years', false)} years old)
+                      {data.birthday} ({moment().diff(data.birthday, 'years', false)} years old)
                     </>
                   ) : (
                     <span>-</span>
@@ -158,9 +148,7 @@ export default function Actor({ id }) {
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
-            <p className='text-red-500'>
-              No Movies From &quot;{data?.name}&quot;{' '}
-            </p>
+            <p className='text-red-500'>No Movies From &quot;{data?.name}&quot; </p>
           </div>
         )
       ) : (

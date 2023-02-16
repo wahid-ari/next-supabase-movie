@@ -1,14 +1,7 @@
 export default function Progress({ className, percent }) {
   return (
-    <div
-      className={`${
-        className ? className + ' ' : ''
-      }w-full h-1 rounded-full bg-gray-200 dark:bg-neutral-800`}
-    >
-      <div
-        className='h-1 rounded-full bg-emerald-600 dark:bg-emerald-500'
-        style={{ width: `${percent}%` }}
-      ></div>
+    <div className={`${className ? className + ' ' : ''}w-full h-1 rounded-full bg-gray-200 dark:bg-neutral-800`}>
+      <div className='h-1 rounded-full bg-emerald-600 dark:bg-emerald-500' style={{ width: `${percent}%` }}></div>
     </div>
   );
 }

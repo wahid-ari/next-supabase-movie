@@ -92,11 +92,7 @@ export default function Example() {
   const multiSelectPopItem = (e) => {
     // prevent clickable parent get clicked
     e.stopPropagation();
-    setMultiSelect(
-      multiSelect.filter(
-        (p, i) => i !== parseInt(e.currentTarget.getAttribute('value'))
-      )
-    );
+    setMultiSelect(multiSelect.filter((p, i) => i !== parseInt(e.currentTarget.getAttribute('value'))));
   };
 
   const handleDropdownShow = () => {
@@ -130,11 +126,7 @@ export default function Example() {
       .string()
       .required('Username harus diisi')
       .matches(/^[A-Za-z]+$/, 'Username harus berupa huruf'),
-    email: yup
-      .string()
-      .email('Email harus valid')
-      .required('Email harus diisi')
-      .typeError('Email harus validwetewt'),
+    email: yup.string().email('Email harus valid').required('Email harus diisi').typeError('Email harus validwetewt'),
     angka: yup
       .number()
       .required('Angka harus diisi')
@@ -186,10 +178,7 @@ export default function Example() {
     querySearchBox === ''
       ? searchBoxData
       : searchBoxData.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(querySearchBox.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(querySearchBox.toLowerCase().replace(/\s+/g, ''))
         );
 
   const column = useMemo(
@@ -209,10 +198,7 @@ export default function Example() {
         Cell: (row) => {
           const { values, original } = row.cell.row;
           return (
-            <Link
-              href={`#`}
-              className='text-sm font-medium text-emerald-500 hover:text-emerald-600'
-            >
+            <Link href={`#`} className='text-sm font-medium text-emerald-500 hover:text-emerald-600'>
               {values.name}
             </Link>
           );
@@ -261,13 +247,7 @@ export default function Example() {
     <Layout title='Design System - MyMovie'>
       <Title>Example</Title>
 
-      <Wrapper
-        id='tableofcontent'
-        name='Table of Content'
-        noChildren
-        noClassName
-        noProps
-      >
+      <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
         <div className='columns-2 text-emerald-600 dark:text-emerald-500 sm:columns-3'>
           <span className='mb-3 block underline'>
             <Link href='#validation'>Validation (yup)</Link>
@@ -379,20 +359,8 @@ export default function Example() {
           placeholder='Username'
           onChange={handleUserChange}
         />
-        <LabeledInput
-          label='Email'
-          name='email'
-          value={user.email}
-          placeholder='Email'
-          onChange={handleUserChange}
-        />
-        <LabeledInput
-          label='Angka'
-          name='angka'
-          value={user.angka}
-          placeholder='Angka'
-          onChange={handleUserChange}
-        />
+        <LabeledInput label='Email' name='email' value={user.email} placeholder='Email' onChange={handleUserChange} />
+        <LabeledInput label='Angka' name='angka' value={user.angka} placeholder='Angka' onChange={handleUserChange} />
         <LabeledInput
           label='Angka Positif'
           name='angka_positif'
@@ -408,16 +376,7 @@ export default function Example() {
         name='Dialog'
         noClassName
         noProps
-        props={[
-          'open',
-          'setOpen',
-          'title',
-          'children',
-          'isDanger',
-          'onClose',
-          'onConfirm',
-          'showIcon',
-        ]}
+        props={['open', 'setOpen', 'title', 'children', 'isDanger', 'onClose', 'onConfirm', 'showIcon']}
       >
         <Button onClick={() => setOpenDialog(true)}>Open Dialog</Button>
         <br />
@@ -431,14 +390,11 @@ export default function Example() {
           onClose={() => setOpenDialog(false)}
           onConfirm={() => setOpenDialog(false)}
         >
-          Mollit incididunt ex exercitation sunt incididunt culpa reprehenderit
-          esse magna laborum. Do velit ipsum consectetur aliquip mollit nisi
-          irure quis Lorem eu non sit.
+          Mollit incididunt ex exercitation sunt incididunt culpa reprehenderit esse magna laborum. Do velit ipsum
+          consectetur aliquip mollit nisi irure quis Lorem eu non sit.
         </Dialog>
 
-        <Button.danger onClick={() => setOpenDangerDialog(true)}>
-          Open Danger Dialog
-        </Button.danger>
+        <Button.danger onClick={() => setOpenDangerDialog(true)}>Open Danger Dialog</Button.danger>
 
         <Dialog
           title='Delete Confirmation'
@@ -449,8 +405,7 @@ export default function Example() {
           onClose={() => setOpenDangerDialog(false)}
           onConfirm={() => setOpenDangerDialog(false)}
         >
-          Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum
-          dolore eiusmod Lorem ipsum fugiat.
+          Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.
         </Dialog>
       </Wrapper>
 
@@ -460,16 +415,7 @@ export default function Example() {
         noClassName
         noProps
         noChildren
-        props={[
-          'label',
-          'value',
-          'placeholder',
-          'onChange',
-          'query',
-          'onChangeQuery',
-          'afterLeave',
-          'filtered',
-        ]}
+        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
       >
         <SearchBox
           label='Search Box'
@@ -525,13 +471,7 @@ export default function Example() {
         />
       </Wrapper>
 
-      <Wrapper
-        id='reacttable'
-        name='React Table'
-        props={['columns', 'data', 'page_size', 'bordered']}
-        noProps
-        noWrap
-      >
+      <Wrapper id='reacttable' name='React Table' props={['columns', 'data', 'page_size', 'bordered']} noProps noWrap>
         <LabeledInput
           label='Search Data'
           id='caridata'
@@ -542,21 +482,10 @@ export default function Example() {
             tableInstance.current.setGlobalFilter(e.target.value);
           }}
         />
-        <ReactTable
-          columns={column}
-          data={tabledata}
-          ref={tableInstance}
-          page_size={5}
-        />
+        <ReactTable columns={column} data={tabledata} ref={tableInstance} page_size={5} />
       </Wrapper>
 
-      <Wrapper
-        id='usetoast'
-        name='useToast (hook)'
-        noProps
-        noChildren
-        noClassName
-      >
+      <Wrapper id='usetoast' name='useToast (hook)' noProps noChildren noClassName>
         <code className='dark:text-white'>
           {`// pushToast({message, isError})`}
           <br />
@@ -672,20 +601,13 @@ export default function Example() {
         </div>
       </Wrapper>
 
-      <Wrapper
-        id='linkbutton'
-        name='LinkButton'
-        variant={['secondary', 'tertary']}
-        props={['href']}
-      >
+      <Wrapper id='linkbutton' name='LinkButton' variant={['secondary', 'tertary']} props={['href']}>
         <div className='flex flex-wrap items-center gap-2'>
           <LinkButton href='/' className='flex items-center gap-2'>
             <ArrowSmRightIcon className='h-5 w-5' />
             TambahLink to some page
           </LinkButton>
-          <LinkButton.secondary href='/'>
-            Link to some page
-          </LinkButton.secondary>
+          <LinkButton.secondary href='/'>Link to some page</LinkButton.secondary>
           <LinkButton.tertary href='/'>Link to some page</LinkButton.tertary>
         </div>
       </Wrapper>
@@ -709,11 +631,7 @@ export default function Example() {
         </Container>
       </Wrapper>
 
-      <Wrapper
-        id='dropdown'
-        name='Dropdown'
-        props={['id', 'name', 'label', 'show', 'value', 'onClick', 'onBlur']}
-      >
+      <Wrapper id='dropdown' name='Dropdown' props={['id', 'name', 'label', 'show', 'value', 'onClick', 'onBlur']}>
         <Dropdown
           label='Dropdown'
           show={popOver.show}
@@ -723,11 +641,7 @@ export default function Example() {
         >
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((e, i) => {
             return (
-              <Dropdown.item
-                key={i}
-                value={`Item ${i}`}
-                onClick={handleValueDropdown}
-              >
+              <Dropdown.item key={i} value={`Item ${i}`} onClick={handleValueDropdown}>
                 Item {i}
               </Dropdown.item>
             );
@@ -744,24 +658,12 @@ export default function Example() {
         <Heading>Heading 4 (default)</Heading>
       </Wrapper>
 
-      <Wrapper
-        id='input'
-        name='Input'
-        props={['type', 'name', 'placeholder', 'value', 'onChange']}
-      >
+      <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'onChange']}>
         <Input name='input' placeholder='Input default' />
       </Wrapper>
 
-      <Wrapper
-        id='inputdisabled'
-        name='Input.disabled'
-        props={['type', 'name', 'placeholder', 'defaultValue']}
-      >
-        <Input.disabled
-          name='input'
-          placeholder='Input default'
-          defaultValue='Has a value'
-        />
+      <Wrapper id='inputdisabled' name='Input.disabled' props={['type', 'name', 'placeholder', 'defaultValue']}>
+        <Input.disabled name='input' placeholder='Input default' defaultValue='Has a value' />
       </Wrapper>
 
       <Wrapper id='label' name='Label'>
@@ -771,28 +673,10 @@ export default function Example() {
       <Wrapper
         id='labeledinput'
         name='LabeledInput'
-        props={[
-          'id',
-          'label',
-          'name',
-          'type',
-          'placeholder',
-          'value',
-          'onChange',
-        ]}
+        props={['id', 'label', 'name', 'type', 'placeholder', 'value', 'onChange']}
       >
-        <LabeledInput
-          label='Email'
-          name='email'
-          placeholder='Email'
-          type='text'
-        />
-        <LabeledInput
-          label='Password'
-          name='password'
-          placeholder='Your Password'
-          type='password'
-        />
+        <LabeledInput label='Email' name='email' placeholder='Email' type='text' />
+        <LabeledInput label='Password' name='password' placeholder='Your Password' type='password' />
       </Wrapper>
 
       <Wrapper
@@ -811,17 +695,7 @@ export default function Example() {
       <Wrapper
         id='textarea'
         name='TextArea'
-        props={[
-          'label',
-          'className',
-          'id',
-          'name',
-          'placeholder',
-          'value',
-          'onChange',
-          'height',
-          '...rest',
-        ]}
+        props={['label', 'className', 'id', 'name', 'placeholder', 'value', 'onChange', 'height', '...rest']}
       >
         <TextArea label='TextArea' name='textarea' placeholder='text area' />
       </Wrapper>
@@ -874,21 +748,9 @@ export default function Example() {
         </MultipleSelect>
       </Wrapper>
 
-      <Wrapper
-        id='multipleselectitem'
-        name='MultipleSelect.item'
-        noClassName
-        noWrap
-      />
+      <Wrapper id='multipleselectitem' name='MultipleSelect.item' noClassName noWrap />
 
-      <Wrapper
-        id='progress'
-        name='Progress'
-        variant={['percentage']}
-        props={['percent']}
-        noChildren
-        noProps
-      >
+      <Wrapper id='progress' name='Progress' variant={['percentage']} props={['percent']} noChildren noProps>
         <Progress percent={45} />
         <br />
         <Progress.percentage percent={0} />
@@ -940,14 +802,7 @@ export default function Example() {
       <Wrapper
         id='table'
         name='Table'
-        props={[
-          'head',
-          'totalPage',
-          'totalData',
-          'currentPage',
-          'next',
-          'prev',
-        ]}
+        props={['head', 'totalPage', 'totalData', 'currentPage', 'next', 'prev']}
         noProps
         noWrap
       >
@@ -1009,11 +864,7 @@ export default function Example() {
 
       <Wrapper id='tabletd' name='Table.td' props={['shrink']} noWrap />
 
-      <Wrapper
-        id='text'
-        name='Text'
-        variant={['light', 'medium', 'semibold', 'bold', 'extrabold']}
-      >
+      <Wrapper id='text' name='Text' variant={['light', 'medium', 'semibold', 'bold', 'extrabold']}>
         <Text.light className='mb-2'>Light</Text.light>
         <Text className='mb-2'>Default</Text>
         <Text.medium className='mb-2'>Medium</Text.medium>

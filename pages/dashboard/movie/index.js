@@ -12,9 +12,7 @@ export default function Movies() {
   if (error) {
     return (
       <Layout title='Dashboard - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -34,9 +32,7 @@ export default function Movies() {
                 date={item.release_date}
               />
             ))
-          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-              <Shimer key={item} className='!h-64 w-full' />
-            ))}
+          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => <Shimer key={item} className='!h-64 w-full' />)}
       </div>
     </Layout>
   );

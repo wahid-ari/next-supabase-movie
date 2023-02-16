@@ -44,11 +44,7 @@ export default function Breadcrumb() {
           paths.map((path, index) => {
             if (index === paths.length - 1) {
               return (
-                <li
-                  aria-current='page'
-                  key={index}
-                  className='flex items-center'
-                >
+                <li aria-current='page' key={index} className='flex items-center'>
                   <ChevronRightIcon className='h-5 w-5 text-gray-500 dark:text-neutral-400' />
                   <span className='ml-1 mr-4 text-emerald-600 dark:text-emerald-500'>
                     {capitalizeFirstLetter(path)}
@@ -61,12 +57,7 @@ export default function Breadcrumb() {
                 <div className='flex items-center'>
                   <ChevronRightIcon className='h-5 w-5 text-gray-400' />
                   <Link
-                    href={
-                      (index !== 0 ? '/' : '') +
-                      paths.slice(0, index).join('/') +
-                      '/' +
-                      path
-                    }
+                    href={(index !== 0 ? '/' : '') + paths.slice(0, index).join('/') + '/' + path}
                     className='ml-1 rounded text-gray-600 transition-all hover:text-gray-800 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:text-neutral-300 dark:hover:text-neutral-200'
                   >
                     {capitalizeFirstLetter(path)}

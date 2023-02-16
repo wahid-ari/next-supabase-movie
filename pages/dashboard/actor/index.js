@@ -12,9 +12,7 @@ export default function Actors() {
   if (error) {
     return (
       <Layout title='Dashboard - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }

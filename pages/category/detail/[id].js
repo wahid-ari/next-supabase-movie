@@ -31,10 +31,7 @@ export async function getServerSideProps(context) {
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Category({ id }) {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/category?id=${id}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category?id=${id}`, fetcher);
 
   const column = useMemo(
     () => [
@@ -68,11 +65,7 @@ export default function Category({ id }) {
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return values.status == 1 ? (
-            <Badge.red>Production</Badge.red>
-          ) : (
-            <Badge.green>Released</Badge.green>
-          );
+          return values.status == 1 ? <Badge.red>Production</Badge.red> : <Badge.green>Released</Badge.green>;
         },
       },
       {
@@ -94,19 +87,13 @@ export default function Category({ id }) {
   if (error) {
     return (
       <Layout title='Category Detail - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
 
   return (
-    <Layout
-      title={`${
-        data ? data?.name + ' - MyMovie' : 'Category Detail - MyMovie'
-      }`}
-    >
+    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Category Detail - MyMovie'}`}>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Category Detail</Title>}
       </div>
@@ -136,9 +123,7 @@ export default function Category({ id }) {
           </>
         ) : (
           <div className='rounded border border-red-500 p-3'>
-            <p className='text-red-500'>
-              No Movies With Category &quot;{data?.name}&quot;{' '}
-            </p>
+            <p className='text-red-500'>No Movies With Category &quot;{data?.name}&quot; </p>
           </div>
         )
       ) : (

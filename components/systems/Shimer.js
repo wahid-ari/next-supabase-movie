@@ -16,11 +16,7 @@ export default function Shimer({ className }) {
   }
 
   return theme == 'dark' ? (
-    <Skeleton
-      className={`${className ? className + ' ' : ''}h-10 mb-2`}
-      baseColor='#262626'
-      highlightColor='#404040'
-    />
+    <Skeleton className={`${className ? className + ' ' : ''}h-10 mb-2`} baseColor='#262626' highlightColor='#404040' />
   ) : (
     <Skeleton className={`${className ? className + ' ' : ''}h-10 mb-2`} />
   );

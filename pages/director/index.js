@@ -34,14 +34,8 @@ import ReactTable from '@components/systems/ReactTable';
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Director() {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/director`,
-    fetcher
-  );
-  const { data: country, error: errorCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/country`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
+  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -76,30 +70,22 @@ export default function Director() {
     queryCountry === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
         );
 
   const filteredCountryEdit =
     queryCountryEdit === ''
       ? country
       : country.filter((item) =>
-          item.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
         );
 
   useEffect(() => {
-    if (selectedCountry)
-      setCreateItem({ ...createItem, country_id: selectedCountry.id });
+    if (selectedCountry) setCreateItem({ ...createItem, country_id: selectedCountry.id });
   }, [selectedCountry]);
 
   useEffect(() => {
-    if (selectedCountryEdit)
-      setEditItem({ ...editItem, country_id: selectedCountryEdit.id });
+    if (selectedCountryEdit) setEditItem({ ...editItem, country_id: selectedCountryEdit.id });
   }, [selectedCountryEdit]);
 
   async function handleCreate() {
@@ -108,10 +94,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(
-        `${process.env.API_ROUTE}/api/director`,
-        createItem
-      );
+      const res = await axios.post(`${process.env.API_ROUTE}/api/director`, createItem);
       if (res.status == 200) {
         setOpenCreateDialog(false);
         setCreateItem({
@@ -142,10 +125,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(
-        `${process.env.API_ROUTE}/api/director?id=${editItem.id}`,
-        editItem
-      );
+      const res = await axios.put(`${process.env.API_ROUTE}/api/director?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({
@@ -175,9 +155,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(
-        `${process.env.API_ROUTE}/api/director?id=${deleteItem.id}`
-      );
+      const res = await axios.delete(`${process.env.API_ROUTE}/api/director?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({
@@ -201,14 +179,7 @@ export default function Director() {
     }
   }
 
-  function handleShowEditModal(
-    id,
-    name,
-    image_url,
-    gender,
-    biography,
-    country_id
-  ) {
+  function handleShowEditModal(id, name, image_url, gender, biography, country_id) {
     setEditItem({
       id: id,
       name: name,
@@ -306,9 +277,7 @@ export default function Director() {
               </Button>
               <Button.danger
                 className='!py-[2px] !px-[6px]'
-                onClick={() =>
-                  handleShowDeleteModal(original.id, original.name)
-                }
+                onClick={() => handleShowDeleteModal(original.id, original.name)}
               >
                 Delete
               </Button.danger>
@@ -326,9 +295,7 @@ export default function Director() {
   if (error || errorCountry) {
     return (
       <Layout title='Director - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -337,10 +304,7 @@ export default function Director() {
     <Layout title='Director - MyMovie'>
       <div className='mb-6 flex flex-wrap items-center justify-between gap-y-3'>
         <Title>Director</Title>
-        <Button.success
-          onClick={() => setOpenCreateDialog(true)}
-          className='flex items-center gap-2'
-        >
+        <Button.success onClick={() => setOpenCreateDialog(true)} className='flex items-center gap-2'>
           <PlusSmIcon className='h-5 w-5' />
           Add Director
         </Button.success>
@@ -360,9 +324,7 @@ export default function Director() {
             type='text'
             name='name'
             value={createItem.name}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, name: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, name: e.target.value })}
             placeholder='Director Name'
           />
           <LabeledInput
@@ -370,9 +332,7 @@ export default function Director() {
             type='text'
             name='image'
             value={createItem.image_url}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, image_url: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
           <div className='mb-2'>
@@ -413,9 +373,7 @@ export default function Director() {
             type='text'
             name='biography'
             value={createItem.biography}
-            onChange={(e) =>
-              setCreateItem({ ...createItem, biography: e.target.value })
-            }
+            onChange={(e) => setCreateItem({ ...createItem, biography: e.target.value })}
             placeholder='Director Biography'
           />
           <SearchBox
@@ -453,9 +411,7 @@ export default function Director() {
             type='text'
             name='image'
             value={editItem.image_url}
-            onChange={(e) =>
-              setEditItem({ ...editItem, image_url: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
           <div className='mb-2'>
@@ -469,9 +425,7 @@ export default function Director() {
                 name='gender'
                 label='Male'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, gender: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, gender: Number(e.target.value) })}
               />
               <Radio
                 value={2}
@@ -479,9 +433,7 @@ export default function Director() {
                 name='gender'
                 label='Female'
                 className='!mb-2'
-                onChange={(e) =>
-                  setEditItem({ ...editItem, gender: Number(e.target.value) })
-                }
+                onChange={(e) => setEditItem({ ...editItem, gender: Number(e.target.value) })}
               />
             </div>
           </div>
@@ -490,9 +442,7 @@ export default function Director() {
             type='text'
             name='biography'
             value={editItem.biography}
-            onChange={(e) =>
-              setEditItem({ ...editItem, biography: e.target.value })
-            }
+            onChange={(e) => setEditItem({ ...editItem, biography: e.target.value })}
             placeholder='Director Biography'
           />
           <SearchBox
@@ -517,8 +467,7 @@ export default function Director() {
         onConfirm={handleDelete}
       >
         <div className='mt-5 text-center sm:text-left'>
-          Are you sure want to delete director{' '}
-          <span className='font-semibold'>{deleteItem.name}</span> ?
+          Are you sure want to delete director <span className='font-semibold'>{deleteItem.name}</span> ?
         </div>
       </Dialog>
 

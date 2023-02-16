@@ -26,11 +26,7 @@ export default function OldNavAccordion({ routeName, title, children }) {
         className={`flex w-full items-center justify-start gap-2 rounded-lg px-4 py-3 font-bold text-gray-500 outline-none transition-all hover:text-blue-800 dark:text-neutral-500 dark:hover:text-neutral-400`}
       >
         <span className='flex-grow text-left text-sm font-bold'>{title}</span>
-        <ChevronRightIcon
-          className={`${
-            expand ? 'rotate-90' : 'rotate-0'
-          } h-5 w-5 transition-all`}
-        />
+        <ChevronRightIcon className={`${expand ? 'rotate-90' : 'rotate-0'} h-5 w-5 transition-all`} />
       </button>
       <div
         ref={boxRef}

@@ -58,10 +58,7 @@ export default function Login() {
         isLoading: true,
       });
       try {
-        const res = await axios.post(
-          `${process.env.API_ROUTE}/api/login`,
-          form
-        );
+        const res = await axios.post(`${process.env.API_ROUTE}/api/login`, form);
         if (res.status == 200) {
           nookies.set(null, 'id', res.data.id, { path: '/' });
           nookies.set(null, 'username', res.data.username, { path: '/' });
@@ -99,21 +96,19 @@ export default function Login() {
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
           <p className='text-base font-normal text-white'>
-            With MyMovie, it&apos;s easy to find the right music for every
-            moment - on your phone, your computer, your tablet and more.
+            With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
+            tablet and more.
           </p>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
 
         <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
           <div>
-            <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>
-              MyMovie
-            </h1>
+            <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
             <br />
             <p className='text-base font-normal text-white'>
-              With MyMovie, it&apos;s easy to find the right music for every
-              moment - on your phone, your computer, your tablet and more.
+              With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
+              tablet and more.
             </p>
           </div>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>
@@ -121,13 +116,7 @@ export default function Login() {
 
         <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
           <div className='w-full sm:max-w-md'>
-            <Image
-              alt='Logo'
-              src='/icon.jpg'
-              width={100}
-              height={100}
-              className='mx-auto mb-16 hidden sm:block'
-            />
+            <Image alt='Logo' src='/icon.jpg' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
 
             <Heading h1 className='mb-6 font-semibold !text-neutral-800'>
               Login

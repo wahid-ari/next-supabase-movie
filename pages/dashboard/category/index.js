@@ -7,17 +7,12 @@ import Link from 'next/link';
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Categories() {
-  const { data, error } = useSWR(
-    `${process.env.API_ROUTE}/api/category/total-movie`,
-    fetcher
-  );
+  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category/total-movie`, fetcher);
 
   if (error) {
     return (
       <Layout title='Categories - MyMovie'>
-        <div className='flex h-[36rem] items-center justify-center text-base'>
-          Failed to load
-        </div>
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
       </Layout>
     );
   }
@@ -38,9 +33,7 @@ export default function Categories() {
                 {item.total}
               </Link>
             ))
-          : [0, 1, 2, 3, 4].map((item) => (
-              <Shimer key={item} className='!h-16 w-full' />
-            ))}
+          : [0, 1, 2, 3, 4].map((item) => <Shimer key={item} className='!h-16 w-full' />)}
       </div>
     </Layout>
   );

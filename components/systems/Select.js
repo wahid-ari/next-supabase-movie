@@ -1,20 +1,8 @@
-export default function Select({
-  label,
-  id,
-  name,
-  className,
-  defaultValue,
-  onChange,
-  children,
-  ...rest
-}) {
+export default function Select({ label, id, name, className, defaultValue, onChange, children, ...rest }) {
   return (
     <div className=''>
       {label && (
-        <label
-          htmlFor={name}
-          className='block text-sm text-neutral-800 dark:text-gray-300'
-        >
+        <label htmlFor={name} className='block text-sm text-neutral-800 dark:text-gray-300'>
           {label}
         </label>
       )}
