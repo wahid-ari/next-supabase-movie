@@ -82,7 +82,7 @@ export default function Movie({ id }) {
                     <Link
                       key={category.id}
                       href={`/category/detail/${category.id}`}
-                      className='truncate rounded text-[15px] font-medium text-emerald-500 transition-all duration-300 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+                      className='truncate rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                     >
                       {category.name}
                       {index != data.categories.length - 1 ? ',' : ''}
@@ -99,7 +99,7 @@ export default function Movie({ id }) {
                   {data.actors?.map((actor, index) =>
                     <Link key={actor.id}
                       href={`/actor/detail/${actor.id}`}
-                      className="truncate text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300"
+                      className="truncate text-[15px] text-sky-500 hover:text-sky-600 transition-all duration-300"
                     >
                       {actor.name}{index != data.actors.length - 1 ? "," : ""}
                     </Link>
@@ -113,7 +113,7 @@ export default function Movie({ id }) {
               {data.directors?.id ?
                 <Link
                   href={`/director/detail/${data.directors?.id}`}
-                  className="text-[15px] text-emerald-500 hover:text-emerald-600 transition-all duration-300"
+                  className="text-[15px] text-sky-500 hover:text-sky-600 transition-all duration-300"
                 >
                   {data.directors?.name}
                 </Link>
@@ -129,7 +129,7 @@ export default function Movie({ id }) {
                   {data.studios ? (
                     <Link
                       href={`/studio/detail/${data.studios?.id}`}
-                      className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+                      className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
                     >
                       {data.studios?.name || '-'}
                     </Link>
@@ -171,7 +171,7 @@ export default function Movie({ id }) {
                 <Link
                   href={`/actor/detail/${actor.id}`}
                   key={index}
-                  className='group mt-1 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-neutral-800'
+                  className='group mt-1 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
                 >
                   <div className='relative h-[180px] w-32 overflow-hidden'>
                     <Image
@@ -182,7 +182,7 @@ export default function Movie({ id }) {
                     />
                   </div>
                   <div className='p-2'>
-                    <p className='overflow-hidden text-ellipsis transition-all duration-300 group-hover:text-emerald-500'>
+                    <p className='overflow-hidden text-ellipsis transition-all duration-300 group-hover:text-sky-500'>
                       {actor.name}
                     </p>
                   </div>
@@ -206,7 +206,7 @@ export default function Movie({ id }) {
           <div className='flex px-0.5 pb-4'>
             <Link
               href={`/director/detail/${data.directors?.id}`}
-              className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-neutral-800'
+              className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
             >
               <div className='relative h-[180px] overflow-hidden'>
                 <Image
@@ -217,7 +217,7 @@ export default function Movie({ id }) {
                 />
               </div>
               <div className='p-2'>
-                <p className='overflow-hidden text-ellipsis transition-all duration-300 group-hover:text-emerald-500'>
+                <p className='overflow-hidden text-ellipsis transition-all duration-300 group-hover:text-sky-500'>
                   {data.directors?.name}
                 </p>
               </div>

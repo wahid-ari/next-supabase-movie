@@ -133,9 +133,9 @@ export default function Search() {
             type='text'
             onChange={(e) => (query.current = e.target.value)}
           />
-          <Button.success type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
+          <Button type='submit' value='Submit' className='mb-4 !py-2.5 px-5'>
             Search
-          </Button.success>
+          </Button>
         </div>
       </form>
 
@@ -152,7 +152,7 @@ export default function Search() {
             </div>
           ) : null}
 
-          {data?.movies.length > 0 ? (
+          {data?.movies?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
                 Movies
@@ -172,7 +172,7 @@ export default function Search() {
             </>
           ) : null}
 
-          {data?.actors.length > 0 ? (
+          {data?.actors?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
                 Actors
@@ -190,7 +190,7 @@ export default function Search() {
             </>
           ) : null}
 
-          {data?.directors.length > 0 ? (
+          {data?.directors?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
                 Directors
@@ -208,7 +208,7 @@ export default function Search() {
             </>
           ) : null}
 
-          {data?.studios.length > 0 ? (
+          {data?.studios?.length > 0 ? (
             <>
               <Heading h3 className='mt-6'>
                 Studios

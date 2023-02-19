@@ -220,7 +220,7 @@ export default function Director() {
           return (
             <Link
               href={`/director/detail/${values.id}`}
-              className='rounded text-sm font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
             >
               {values.name}
             </Link>
@@ -245,7 +245,7 @@ export default function Director() {
           return (
             <Link
               href={`/country/detail/${original.countries?.id}`}
-              className='rounded text-sm font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
             >
               {original.countries?.name}
             </Link>

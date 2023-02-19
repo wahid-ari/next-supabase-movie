@@ -102,18 +102,6 @@ export default function Login() {
           <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
 
-        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
-          <div>
-            <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
-            <br />
-            <p className='text-base font-normal text-white'>
-              With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
-              tablet and more.
-            </p>
-          </div>
-          <p className='font-semibold text-white'>© MyMovie - 2023</p>
-        </div>
-
         <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
           <div className='w-full sm:max-w-md'>
             <Image alt='Logo' src='/icon.jpg' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
@@ -132,7 +120,7 @@ export default function Login() {
                 placeholder='Username'
                 value={form.username}
                 onChange={handleChange}
-                className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 dark:bg-white dark:text-neutral-800'
+                className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
                 autoComplete='off'
                 required
               />
@@ -149,13 +137,13 @@ export default function Login() {
                   placeholder='Password'
                   value={form.password}
                   onChange={handleChange}
-                  className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 dark:bg-white dark:text-neutral-800'
+                  className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
                   autoComplete='off'
                   required
                 />
                 <button
                   onClick={() => setShowPassword(!showPassword)}
-                  className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-gray-300 p-1.5 outline-none ring-gray-300 backdrop-blur-lg focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600'
+                  className='absolute right-0 z-10 mr-0.5 mt-2 rounded-md border-gray-300 p-1.5 outline-none ring-gray-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
                 >
                   {showPassword ? (
                     <EyeIcon className='h-5 w-5 text-gray-600' />
@@ -166,20 +154,32 @@ export default function Login() {
               </div>
             </div>
 
-            <Button.success onClick={handleLogin} className='w-full !text-base'>
+            <Button onClick={handleLogin} className='w-full !text-base'>
               {loading ? 'Logging in...' : 'Login'}
-            </Button.success>
+            </Button>
 
             <p className='mt-4 text-center font-normal dark:text-neutral-800'>
               Dont have an account?{' '}
               <Link
                 href='/register'
-                className='rounded font-medium text-emerald-600 transition-all duration-300 hover:text-emerald-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+                className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
               >
                 Register Now
               </Link>
             </p>
           </div>
+        </div>
+
+        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
+          <div>
+            <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
+            <br />
+            <p className='text-base font-normal text-white'>
+              With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
+              tablet and more.
+            </p>
+          </div>
+          <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
       </div>
     </div>

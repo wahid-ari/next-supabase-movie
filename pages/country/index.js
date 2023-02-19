@@ -142,7 +142,7 @@ export default function Country() {
           return (
             <Link
               href={`/country/detail/${values.id}`}
-              className='rounded text-sm font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
             >
               {values.name}
             </Link>
@@ -213,7 +213,7 @@ export default function Country() {
             name='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder='Action'
+            placeholder='United States'
           />
         </div>
       </Dialog>

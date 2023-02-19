@@ -278,9 +278,9 @@ export default function Movie({ id }) {
                 ...theme,
                 colors: {
                   ...theme.colors,
-                  primary: `#059669`,
-                  primary25: `#059669`,
-                  primary50: `#059669`,
+                  primary: `#09a2c9`,
+                  primary25: `#09a2c9`,
+                  primary50: `#09a2c9`,
                   neutral40: `#EF4444`,
                 },
               })}
@@ -307,9 +307,9 @@ export default function Movie({ id }) {
                 ...theme,
                 colors: {
                   ...theme.colors,
-                  primary: `#059669`,
-                  primary25: `#059669`,
-                  primary50: `#059669`,
+                  primary: `#09a2c9`,
+                  primary25: `#09a2c9`,
+                  primary50: `#09a2c9`,
                   neutral40: `#EF4444`,
                 },
               })}

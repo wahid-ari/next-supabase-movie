@@ -11,7 +11,7 @@ export default function DirectorGridItem({ href = '#', imageSrc, name, ...props 
   return (
     <Link
       href={href}
-      className='group mx-auto w-32 max-w-[8rem] rounded text-center focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+      className='group mx-auto w-32 max-w-[8rem] rounded text-center focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
       {...props}
     >
       <div className='relative mx-auto mb-3 h-32 w-32 max-w-[8rem] overflow-hidden'>
@@ -31,7 +31,7 @@ export default function DirectorGridItem({ href = '#', imageSrc, name, ...props 
           </div>
         )}
       </div>
-      <Text.medium className='transition-all duration-500 group-hover:text-emerald-500'>{name}</Text.medium>
+      <Text.medium className='transition-all duration-500 group-hover:text-sky-500'>{name}</Text.medium>
     </Link>
   );
 }

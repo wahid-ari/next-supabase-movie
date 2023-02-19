@@ -29,13 +29,18 @@ body {
 .banner {
   background: linear-gradient(
       145deg,
-      rgba(4, 120, 87, 0.5) 34%,
+      rgba(4, 107, 120, 0.5) 34%,
       transparent 34%,
       transparent 64%,
-      rgba(5, 150, 105, 0.5) 64%,
-      rgba(5, 150, 105, 0.5) 100%
+      rgba(5, 145, 150, 0.5) 64%,
+      rgba(5, 145, 150, 0.5) 100%
     ),
-    linear-gradient(40deg, rgb(4, 120, 87) 0%, /* rgb(4, 120, 87) 62%, */ rgb(16, 185, 129) 62%, rgb(16, 185, 129) 100%);
+    linear-gradient(
+      40deg,
+      rgb(4, 103, 120) 0%,
+      /* rgb(4, 103, 120) 62%, */ rgb(16, 160, 185) 62%,
+      rgb(16, 160, 185) 100%
+    );
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
@@ -60,7 +65,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .splide__arrow:hover {
   transition: all;
   transition-duration: 300ms;
-  color: rgb(11, 173, 79) !important;
+  color: rgb(17, 166, 192) !important;
 }
 
 .splide__arrow:disabled {
@@ -108,11 +113,11 @@ html {
 }
 
 .react-select__control--is-focused {
-  @apply !outline-none !ring-2 !ring-emerald-600;
+  @apply !outline-none !ring-2 !ring-sky-600;
 }
 
 .react-select__multi-value {
-  background-color: #059669 !important;
+  background-color: #09a2c9 !important;
   border-radius: 4px !important;
   margin-right: 4px !important;
   color: white !important;

@@ -198,7 +198,7 @@ export default function Example() {
         Cell: (row) => {
           const { values, original } = row.cell.row;
           return (
-            <Link href={`#`} className='text-sm font-medium text-emerald-500 hover:text-emerald-600'>
+            <Link href={`#`} className='text-sm font-medium text-sky-500 hover:text-sky-600'>
               {values.name}
             </Link>
           );
@@ -248,7 +248,7 @@ export default function Example() {
       <Title>Example</Title>
 
       <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
-        <div className='columns-2 text-emerald-600 dark:text-emerald-500 sm:columns-3'>
+        <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
             <Link href='#validation'>Validation (yup)</Link>
           </span>
@@ -462,9 +462,9 @@ export default function Example() {
             ...theme,
             colors: {
               ...theme.colors,
-              primary: `#059669`,
-              primary25: `#059669`,
-              primary50: `#059669`,
+              primary: `#09a2c9`,
+              primary25: `#09a2c9`,
+              primary50: `#09a2c9`,
               neutral40: `#EF4444`,
             },
           })}

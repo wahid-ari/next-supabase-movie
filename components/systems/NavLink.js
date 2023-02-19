@@ -12,10 +12,10 @@ export default function NavLink({ className, href, icon, isHome, children }) {
         href={href}
         className={clsx(
           className,
-          'flex w-full items-center justify-start gap-2 rounded px-3 py-2 text-sm transition-all focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500',
-          isHome && 'bg-gray-100 font-medium text-emerald-600 dark:bg-neutral-800 dark:text-emerald-500',
+          'flex w-full items-center justify-start gap-2 rounded px-3 py-2 text-sm transition-all focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500',
+          isHome && 'bg-gray-100 font-medium text-sky-600 dark:bg-neutral-800 dark:text-sky-500',
           !isHome &&
-            'text-gray-700 hover:bg-gray-100 hover:text-emerald-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-emerald-500'
+            'text-gray-700 hover:bg-gray-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500'
         )}
       >
         {icon}
@@ -28,16 +28,16 @@ export default function NavLink({ className, href, icon, isHome, children }) {
     <Link
       passHref
       href={href}
-      className={`${className} flex w-full items-center justify-start gap-2 rounded px-3 py-2 text-sm transition-all focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500
+      className={`${className} flex w-full items-center justify-start gap-2 rounded px-3 py-2 text-sm transition-all focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500
        ${
          router.pathname.includes(href) && !isHome
            ? // current route that not home
-             'bg-gray-100 font-medium text-emerald-600 dark:bg-neutral-800 dark:text-emerald-500'
+             'bg-gray-100 font-medium text-sky-600 dark:bg-neutral-800 dark:text-sky-500'
            : router.pathname === href && isHome
            ? // current route that home
-             'bg-gray-100 font-medium text-emerald-600 dark:bg-neutral-800 dark:text-emerald-500 dark:hover:text-emerald-500'
+             'bg-gray-100 font-medium text-sky-600 dark:bg-neutral-800 dark:text-sky-500 dark:hover:text-sky-500'
            : // not current route
-             'text-gray-700 hover:bg-gray-100 hover:text-emerald-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-emerald-500'
+             'text-gray-700 hover:bg-gray-100 hover:text-sky-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-sky-500'
        }`}
     >
       {icon}

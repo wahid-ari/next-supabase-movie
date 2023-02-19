@@ -45,7 +45,7 @@ export default function Home() {
         <Heading className=''>Movies</Heading>
         <Link
           href={`dashboard/movie`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -95,13 +95,13 @@ export default function Home() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--prev !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--next !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -152,7 +152,7 @@ export default function Home() {
         <Heading className=''>Actors</Heading>
         <Link
           href={`dashboard/actor`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -200,13 +200,13 @@ export default function Home() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -257,7 +257,7 @@ export default function Home() {
         <Heading className=''>Directors</Heading>
         <Link
           href={`dashboard/director`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -305,13 +305,13 @@ export default function Home() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -373,7 +373,7 @@ export default function Home() {
         <Heading className=''>Studios</Heading>
         <Link
           href={`dashboard/studio`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -401,7 +401,7 @@ export default function Home() {
         <Heading className=''>Categories</Heading>
         <Link
           href={`dashboard/category`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -412,7 +412,7 @@ export default function Home() {
               <Link
                 key={index}
                 href={`/dashboard/category/detail/${item.id}`}
-                className='flex items-center justify-between rounded border p-4 text-base font-medium text-neutral-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-emerald-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-neutral-800 dark:text-neutral-200 dark:hover:text-white'
+                className='flex items-center justify-between rounded border p-4 text-base font-medium text-neutral-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 dark:text-neutral-200 dark:hover:text-white'
               >
                 <span>{item.name}</span>
                 {item.total}
@@ -427,7 +427,7 @@ export default function Home() {
         <Heading className=''>Countries</Heading>
         <Link
           href={`dashboard/country`}
-          className='rounded text-[15px] font-medium text-emerald-500 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -438,7 +438,7 @@ export default function Home() {
               <Link
                 key={index}
                 href={`/dashboard/country/detail/${item.id}`}
-                className='flex items-center justify-between rounded border p-3 text-[15px] font-medium text-neutral-600 shadow transition-all duration-300 hover:text-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-neutral-800 dark:bg-[#1a1919] dark:text-neutral-200 dark:hover:text-emerald-500'
+                className='flex items-center justify-between rounded border p-3 text-[15px] font-medium text-neutral-600 shadow transition-all duration-300 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 dark:bg-[#1a1919] dark:text-neutral-200 dark:hover:text-sky-500'
               >
                 {item.name}
               </Link>

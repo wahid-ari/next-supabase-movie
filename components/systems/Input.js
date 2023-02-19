@@ -10,7 +10,7 @@ export default function Input({ className, type, name, placeholder, value, onCha
         onChange={onChange}
         className={`${
           className ? className + ' ' : ''
-        }text-sm mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] font-medium outline-none ring-gray-300 transition-all focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-emerald-400 dark:focus:ring-emerald-600`}
+        }text-sm mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-sky-400 dark:focus:ring-sky-600`}
         autoComplete='off'
         required
       />

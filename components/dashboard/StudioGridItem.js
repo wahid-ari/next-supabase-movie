@@ -69,7 +69,7 @@ export default function StudioGridItem({ href = '#', name, index, ...props }) {
   return (
     <Link
       href={href}
-      className='group rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+      className='group rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
       {...props}
     >
       {/* <div style={{ backgroundColor: "#" + color }} className={`brightness-90 group-hover:brightness-110 transition-all duration-500 h-40 rounded flex items-center justify-center mb-2`}> */}

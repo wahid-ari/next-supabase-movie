@@ -17,8 +17,8 @@ export default function TextArea({ label, className, id, name, placeholder, valu
         className={`${className ? className + ' ' : ''}
           mt-2 w-full rounded-md border border-gray-300 bg-white
           p-3 text-sm outline-none 
-          transition-all focus:border-emerald-500 focus:ring-1
-          focus:ring-emerald-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
+          transition-all focus:border-sky-500 focus:ring-1
+          focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
         `}
       />
     </div>

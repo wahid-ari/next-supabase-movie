@@ -25,7 +25,7 @@ export default function LabeledInput({
         onChange={onChange}
         className={`${
           className ? className + ' ' : ''
-        }text-sm mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] font-medium outline-none ring-gray-300 transition-all focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-emerald-300 dark:focus:ring-emerald-900`}
+        }text-sm mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-600 dark:focus:border-sky-300 dark:focus:ring-sky-900`}
         autoComplete='off'
         required
       />

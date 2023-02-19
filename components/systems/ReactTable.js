@@ -160,7 +160,7 @@ export const ReactTable = forwardRef(
               onClick={() => gotoPage(0)}
               disabled={!canPreviousPage}
               aria-label='First'
-              className={`rounded border border-transparent p-1 transition-all duration-200 ${
+              className={`rounded border border-transparent p-1 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                 !canPreviousPage && 'cursor-not-allowed'
               } 
             ${canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
@@ -171,7 +171,7 @@ export const ReactTable = forwardRef(
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
               aria-label='Prev'
-              className={`rounded border border-transparent p-1 transition-all duration-200 ${
+              className={`rounded border border-transparent p-1 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                 !canPreviousPage && 'cursor-not-allowed'
               } 
             ${canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
@@ -185,7 +185,7 @@ export const ReactTable = forwardRef(
               onClick={() => nextPage()}
               disabled={!canNextPage}
               aria-label='Next'
-              className={`rounded border border-transparent p-1 transition-all duration-200 ${
+              className={`rounded border border-transparent p-1 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                 !canNextPage && 'cursor-not-allowed'
               } 
             ${canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}
@@ -196,7 +196,7 @@ export const ReactTable = forwardRef(
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
               aria-label='Last'
-              className={`rounded border border-transparent p-1 transition-all duration-200 ${
+              className={`rounded border border-transparent p-1 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
                 !canNextPage && 'cursor-not-allowed'
               } 
             ${canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'}`}

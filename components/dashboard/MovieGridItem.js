@@ -11,7 +11,7 @@ export default function MovieGridItem({ href = '#', imageSrc, title, description
   return (
     <Link
       href={href}
-      className='group mx-auto w-40 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:border-neutral-800 sm:w-[12rem]'
+      className='group mx-auto w-40 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:border-neutral-800 sm:w-[12rem]'
       {...props}
     >
       <div className='relative h-56 w-full overflow-hidden sm:h-64'>
@@ -32,7 +32,7 @@ export default function MovieGridItem({ href = '#', imageSrc, title, description
         )}
       </div>
       <div className='p-3.5'>
-        <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-emerald-500'>
+        <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
           {title}
         </Text.semibold>
         <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>

@@ -16,9 +16,7 @@ export default function Tabs({ items, children, className }) {
                   'w-full py-2 text-sm font-semibold tracking-wide transition-all',
                   'text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200',
                   'border-b-2 border-transparent',
-                  selected
-                    ? 'border-b-2 !border-emerald-600 !text-emerald-600 dark:!border-emerald-500 dark:!text-emerald-500'
-                    : ''
+                  selected ? 'border-b-2 !border-sky-600 !text-sky-600 dark:!border-sky-500 dark:!text-sky-500' : ''
                 )
               }
             >

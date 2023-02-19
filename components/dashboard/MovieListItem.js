@@ -11,7 +11,7 @@ export default function MovieListItem({ href = '#', imageSrc, name, description,
   return (
     <Link
       href={href}
-      className='group flex gap-4 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:border-neutral-800'
+      className='group flex gap-4 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:border-neutral-800'
       {...props}
     >
       <div className='w-[88px]'>
@@ -34,7 +34,7 @@ export default function MovieListItem({ href = '#', imageSrc, name, description,
         </div>
       </div>
       <div className='pt-3.5 pr-3'>
-        <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-emerald-500'>
+        <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
           {name}
         </Text.semibold>
         <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
