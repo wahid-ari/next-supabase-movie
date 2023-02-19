@@ -351,66 +351,66 @@ export default function Search() {
           href='/dashboard/movie'
           className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <FilmIcon className='h-8 w-8 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Movie
             </h2>
+            <FilmIcon className='h-10 w-10 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
           href='/dashboard/actor'
           className='group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <UserGroupIcon className='h-8 w-8 text-cyan-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Actor
             </h2>
+            <UserGroupIcon className='h-10 w-10 text-cyan-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
           href='/dashboard/director'
           className='group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-pink-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <UsersIcon className='h-8 w-8 text-violet-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Director
             </h2>
+            <UsersIcon className='h-10 w-10 text-violet-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
           href='/dashboard/studio'
           className='group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <LibraryIcon className='h-8 w-8 text-emerald-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Studio
             </h2>
+            <LibraryIcon className='h-10 w-10 text-emerald-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
           href='/dashboard/category'
           className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-sky-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <ColorSwatchIcon className='h-8 w-8 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Category
             </h2>
+            <ColorSwatchIcon className='h-10 w-10 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
           href='/dashboard/country'
           className='group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-lime-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
         >
-          <div className='flex h-full w-full items-center gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
-            <FlagIcon className='h-8 w-8 text-orange-500 transition-all duration-300 ease-in group-hover:text-white' />
+          <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-orange-500 to-lime-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Country
             </h2>
+            <FlagIcon className='h-10 w-10 text-orange-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
       </div>
