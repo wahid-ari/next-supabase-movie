@@ -28,6 +28,8 @@ export default async function handler(req, res) {
           }
         }
         const data = categories[0];
+        // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
+        res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
         res.status(200).json({ ...data, movies: movie_by_category });
       }
       break;
