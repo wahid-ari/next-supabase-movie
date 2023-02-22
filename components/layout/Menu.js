@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
+import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import nookies from 'nookies';
