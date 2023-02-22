@@ -49,7 +49,10 @@ function Page({ id }) {
   }
 
   return (
-    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Director Detail - MyMovie'}`}>
+    <Layout
+      title={`${data ? data?.name + ' - MyMovie' : 'Director Detail - MyMovie'}`}
+      description={`${data ? data?.biography : 'Director Detail - MyMovie'}`}
+    >
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Director Detail</Title>}
       </div>

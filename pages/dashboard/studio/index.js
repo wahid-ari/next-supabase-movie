@@ -18,7 +18,7 @@ export default function Studios() {
   }
 
   return (
-    <Layout title='Studios - MyMovie'>
+    <Layout title='Studios - MyMovie' description='Browse Studios - MyMovie'>
       <Title>Studios</Title>
 
       <div className='mt-8 grid grid-cols-2 gap-4 md:grid-cols-4'>

@@ -18,7 +18,7 @@ export default function Actors() {
   }
 
   return (
-    <Layout title='Actors - MyMovie'>
+    <Layout title='Actors - MyMovie' description='Browse Actors - MyMovie'>
       <Title>Actors</Title>
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8'>

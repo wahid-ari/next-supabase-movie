@@ -18,7 +18,7 @@ export default function Movies() {
   }
 
   return (
-    <Layout title='Movies - MyMovie'>
+    <Layout title='Movies - MyMovie' description='Browse Movies - MyMovie'>
       <Title>Movies</Title>
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>

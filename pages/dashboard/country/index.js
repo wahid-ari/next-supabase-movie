@@ -18,7 +18,7 @@ export default function Countries() {
   }
 
   return (
-    <Layout title='Countries - MyMovie'>
+    <Layout title='Countries - MyMovie' description='Browse Countries - MyMovie'>
       <Title>Countries</Title>
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>

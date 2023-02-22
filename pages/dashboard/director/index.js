@@ -18,7 +18,7 @@ export default function Director() {
   }
 
   return (
-    <Layout title='Directors - MyMovie'>
+    <Layout title='Directors - MyMovie' description='Browse Directors - MyMovie'>
       <Title>Directors</Title>
 
       <div className='mt-8 grid grid-cols-2 gap-6 gap-y-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-6'>

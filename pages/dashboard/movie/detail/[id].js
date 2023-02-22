@@ -54,7 +54,11 @@ function Page({ id }) {
   }
 
   return (
-    <Layout title={`${data ? data?.name + ' - MyMovie' : 'Movie Detail - MyMovie'}`} className='max-w-[70rem]'>
+    <Layout
+      title={`${data ? data?.name + ' - MyMovie' : 'Movie Detail - MyMovie'}`}
+      description={`${data ? data?.description : 'Movie Detail - MyMovie'}`}
+      className='max-w-[70rem]'
+    >
       <div className='flex flex-wrap items-center justify-between gap-y-3'>
         {data ? <Title>{data?.name}</Title> : <Title>Movie Detail</Title>}
       </div>
@@ -167,9 +171,8 @@ function Page({ id }) {
         <>
           <Heading className='mt-6 mb-3'>Actors</Heading>
           <div
-            className={`${
-              data.actors.length > 8 && 'mb-4'
-            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}
+            className={`${data.actors.length > 8 && 'mb-4'
+              } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}
           >
             {data.actors.length > 0 ? (
               data.actors?.map((actor, index) => (
