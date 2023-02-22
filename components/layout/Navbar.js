@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className='flex gap-x-2'>
         <button
-          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
           id='menu'
           aria-label='Menu'
         >
@@ -40,7 +40,7 @@ export default function Navbar() {
         </button>
         <Link
           href='/'
-          className='rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:text-neutral-100 lg:text-2xl'
+          className='rounded text-center text-base font-semibold tracking-wide text-neutral-800 no-underline focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:text-neutral-100 lg:text-2xl'
         >
           MyMovie
         </Link>

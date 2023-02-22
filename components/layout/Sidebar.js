@@ -69,7 +69,7 @@ export default function Sidebar() {
     >
       <div className='flex items-center justify-between gap-2 px-4'>
         <button
-          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 lg:hidden'
+          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
           onClick={hideMenu}
           id='closemenu'
           aria-label='Close Menu'
