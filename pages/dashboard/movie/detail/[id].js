@@ -171,8 +171,9 @@ function Page({ id }) {
         <>
           <Heading className='mt-6 mb-3'>Actors</Heading>
           <div
-            className={`${data.actors.length > 8 && 'mb-4'
-              } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}
+            className={`${
+              data.actors.length > 8 && 'mb-4'
+            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}
           >
             {data.actors.length > 0 ? (
               data.actors?.map((actor, index) => (

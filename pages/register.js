@@ -10,6 +10,7 @@ import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import nookies from 'nookies';
 import Link from 'next/link';
 import { validateRegister } from '@validations/register';
+import HeadSeo from '@components/layout/HeadSeo';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -75,9 +76,7 @@ export default function Register() {
 
   return (
     <div className='text-sm font-medium dark:bg-white'>
-      <Head>
-        <title>Register - MyMovie</title>
-      </Head>
+      <HeadSeo title='Register - MyMovie' description='Register - MyMovie' />
 
       <div className='min-h-screen w-screen sm:grid sm:grid-cols-2'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
@@ -85,8 +84,8 @@ export default function Register() {
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
           <p className='text-base font-normal text-white'>
-            With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
-            tablet and more.
+            With MyMovie, it&apos;s easy to find Information and statistics about movies, TV shows as well as actors,
+            directors and other film industry professionals.
           </p>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
@@ -180,8 +179,8 @@ export default function Register() {
             <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
             <br />
             <p className='text-base font-normal text-white'>
-              With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
-              tablet and more.
+              With MyMovie, it&apos;s easy to find Information and statistics about movies, TV shows as well as actors,
+              directors and other film industry professionals.
             </p>
           </div>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>

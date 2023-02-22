@@ -9,6 +9,7 @@ import Heading from '@components/systems/Heading';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import nookies from 'nookies';
 import Link from 'next/link';
+import HeadSeo from '@components/layout/HeadSeo';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -86,9 +87,7 @@ export default function Login() {
 
   return (
     <div className='text-sm font-medium dark:bg-white'>
-      <Head>
-        <title>Login - MyMovie</title>
-      </Head>
+      <HeadSeo title='Login - MyMovie' description='Login - MyMovie' />
 
       <div className='min-h-screen w-screen sm:grid sm:grid-cols-2'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
@@ -96,8 +95,8 @@ export default function Login() {
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
           <p className='text-base font-normal text-white'>
-            With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
-            tablet and more.
+            With MyMovie, it&apos;s easy to find Information and statistics about movies, TV shows as well as actors,
+            directors and other film industry professionals.
           </p>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
@@ -158,7 +157,7 @@ export default function Login() {
               {loading ? 'Logging in...' : 'Login'}
             </Button>
 
-            <p className='mt-4 text-center font-normal dark:text-neutral-800'>
+            {/* <p className='mt-4 text-center font-normal dark:text-neutral-800'>
               Dont have an account?{' '}
               <Link
                 href='/register'
@@ -166,7 +165,7 @@ export default function Login() {
               >
                 Register Now
               </Link>
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -175,8 +174,8 @@ export default function Login() {
             <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
             <br />
             <p className='text-base font-normal text-white'>
-              With MyMovie, it&apos;s easy to find the right music for every moment - on your phone, your computer, your
-              tablet and more.
+              With MyMovie, it&apos;s easy to find Information and statistics about movies, TV shows as well as actors,
+              directors and other film industry professionals.
             </p>
           </div>
           <p className='font-semibold text-white'>© MyMovie - 2023</p>

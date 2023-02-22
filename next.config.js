@@ -23,7 +23,7 @@ module.exports = {
   },
   env: {
     API_ROUTE: 'http://localhost:3000',
-    // API_ROUTE: "https://my-musicc.vercel.app",
+    // API_ROUTE: "https://my-movie.vercel.app",
     SUPABASE_URL: 'https://dmkikqhgaiwprdgcvftb.supabase.co',
     SUPABASE_ANON_KEY:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRta2lrcWhnYWl3cHJkZ2N2ZnRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTcxMDIyMTAsImV4cCI6MTk3MjY3ODIxMH0.rZaJ7xkceVGl8Z--FLEP2VuLBAC9qze6QHQIdP14sBM',

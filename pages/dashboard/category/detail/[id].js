@@ -42,7 +42,7 @@ function Page({ id }) {
   }
 
   return (
-    <Layout 
+    <Layout
       title={`${data ? data?.name + ' Movies - MyMovie' : 'Category Detail - MyMovie'}`}
       description={`${data ? 'Browse ' + data?.name + ' Movies - MyMovie' : 'Category Detail - MyMovie'}`}
     >
