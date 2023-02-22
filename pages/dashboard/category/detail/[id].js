@@ -1,22 +1,36 @@
-import useSWR from 'swr';
+import useSWR, { SWRConfig } from 'swr';
 import axios from 'axios';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 export async function getServerSideProps(context) {
+  // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
+  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
+  const res = await fetcher(`${process.env.API_ROUTE}/api/category?id=${id}`);
   return {
     props: {
       id: id,
+      fallback: {
+        [`${process.env.API_ROUTE}/api/category?id=${id}`]: res,
+      },
     }, // will be passed to the page component as props
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+export default function Category({ id, fallback }) {
+  return (
+    <SWRConfig value={{ fallback }}>
+      <Page id={id} />
+    </SWRConfig>
+  );
+}
 
-export default function Category({ id }) {
+function Page({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category?id=${id}`, fetcher);
 
   if (error) {

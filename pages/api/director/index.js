@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           .eq('id', query.id)
           .order('id');
         // https://nextjs.org/docs/api-reference/next.config.js/headers#cache-control
-        res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
+        res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
         res.status(200).json(data[0]);
       }
       break;

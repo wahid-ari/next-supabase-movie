@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import useSWR from 'swr';
+import useSWR, { SWRConfig } from 'swr';
 import axios from 'axios';
 import { UserIcon } from '@heroicons/react/outline';
 import moment from 'moment';
@@ -12,18 +12,32 @@ import Text from '@components/systems/Text';
 import Heading from '@components/systems/Heading';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 export async function getServerSideProps(context) {
+  // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
+  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
+  const res = await fetcher(`${process.env.API_ROUTE}/api/actor?id=${id}`);
   return {
     props: {
       id: id,
+      fallback: {
+        [`${process.env.API_ROUTE}/api/actor?id=${id}`]: res,
+      },
     }, // will be passed to the page component as props
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+export default function Actor({ id, fallback }) {
+  return (
+    <SWRConfig value={{ fallback }}>
+      <Page id={id} />
+    </SWRConfig>
+  );
+}
 
-export default function Actor({ id }) {
+function Page({ id }) {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
   const [isLoading, setLoading] = useState(true);
 
