@@ -64,6 +64,7 @@ function Page({ id }) {
             <div className='relative mx-auto h-80 w-60 overflow-hidden sm:h-96 sm:w-2/4 md:w-2/5 xl:w-1/4 2xl:w-1/5'>
               <Image
                 alt={data?.name}
+                title={data?.name}
                 src={data?.image_url}
                 fill
                 className={`rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}

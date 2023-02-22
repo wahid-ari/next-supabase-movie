@@ -62,6 +62,7 @@ function Page({ id }) {
             <div className='relative h-24 w-52 overflow-hidden'>
               <Image
                 alt={data?.name}
+                title={data?.name}
                 src={data?.image_url}
                 fill
                 className={`rounded object-contain ${isLoading ? 'blur-2xl' : 'blur-0'}`}
