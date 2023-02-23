@@ -23,13 +23,15 @@ export default function Navbar() {
   return (
     <div
       className={clsx(
-        'sticky top-0 z-40 h-11 bg-white dark:bg-neutral-900 dark:text-neutral-50 lg:hidden',
-        'flex w-full items-center justify-between gap-4 border-b p-3 dark:border-neutral-800 sm:px-4'
+        'sticky top-0 z-40 h-11 dark:text-neutral-50 lg:hidden',
+        'flex w-full items-center justify-between gap-4 border-b p-3 px-5 dark:border-neutral-800',
+        'bg-white/50 dark:bg-neutral-900/30',
+        'backdrop-blur-md backdrop-filter'
       )}
     >
-      <div className='flex gap-x-2'>
+      <div className='flex gap-x-3'>
         <button
-          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='-ml-0.5 rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
           id='menu'
           aria-label='Menu'
         >

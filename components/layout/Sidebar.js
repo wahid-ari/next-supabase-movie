@@ -67,7 +67,7 @@ export default function Sidebar() {
         showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
       } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
     >
-      <div className='flex items-center justify-between gap-2 px-4'>
+      <div className='flex items-center justify-between gap-2 px-5'>
         <button
           className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
           onClick={hideMenu}

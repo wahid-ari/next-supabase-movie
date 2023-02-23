@@ -30,13 +30,13 @@ export default function Breadcrumb() {
   return (
     <nav className='flex w-full text-sm' aria-label='Breadcrumb'>
       <ol className='inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1'>
-        <li className='inline-flex items-center'>
+        <li className='-ml-0.5 inline-flex items-center'>
           <Link
             href='/'
             passHref
-            className='inline-flex items-center rounded text-gray-600 transition-all hover:text-gray-800 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-neutral-200'
+            className='inline-flex items-center rounded text-gray-700 transition-all hover:text-gray-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-neutral-100'
           >
-            <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-500 dark:text-neutral-400' />
+            <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-400' />
             Home
           </Link>
         </li>

@@ -20,18 +20,18 @@ export default function Layout({ children, title, description, className }) {
       <HeadSeo title={title} description={description} />
 
       <div
-        className='font-inter mx-auto min-h-screen w-screen max-w-[100rem] bg-white text-sm dark:bg-neutral-900 lg:grid'
+        className='mx-auto min-h-screen w-full max-w-[100rem] bg-white text-sm dark:bg-neutral-900 lg:grid'
         style={{ gridTemplateColumns: 'auto 1fr' }}
       >
         <Sidebar />
 
-        <div className='relative scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'>
+        <div className='relative'>
           <Navbar />
 
           {/* Show on Mobile */}
           <div
             className={clsx(
-              'flex items-center justify-between gap-x-4 border-b px-2 py-3 dark:border-neutral-800 sm:px-3 lg:hidden',
+              'flex items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:hidden',
               'overflow-x-auto bg-white/95 dark:bg-neutral-900/90',
               'scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
             )}
@@ -42,8 +42,10 @@ export default function Layout({ children, title, description, className }) {
           {/* Show on Desktop */}
           <div
             className={clsx(
-              'hidden items-center justify-between gap-x-4 border-b px-2 py-3 dark:border-neutral-800 sm:px-3 lg:flex',
-              'sticky top-0 z-40 bg-white/95 supports-[backdrop-filter]:backdrop-blur-sm dark:bg-neutral-900/90'
+              'hidden items-center justify-between gap-x-4 border-b py-3 px-4 dark:border-neutral-800 lg:flex',
+              'sticky top-0 z-40',
+              'bg-white/50 dark:bg-neutral-900/30',
+              'backdrop-blur-md backdrop-filter'
             )}
           >
             <Breadcrumb />
@@ -51,7 +53,7 @@ export default function Layout({ children, title, description, className }) {
             {mounted && admin.name ? <Menu /> : null}
           </div>
 
-          <div className={`px-4 py-4 sm:px-5 ${className}`}>{children}</div>
+          <div className={`py-5 px-5 ${className}`}>{children}</div>
         </div>
       </div>
     </>
