@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import useSWR from 'swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
+import InputDebounce from '@components/systems/InputDebounce';
 
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Director() {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
+  const [query, setQuery] = useState('');
+
+  const filtered =
+    query === ''
+      ? data
+      : data.filter((item) =>
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -21,9 +31,21 @@ export default function Director() {
     <Layout title='Directors - MyMovie' description='Browse Directors - MyMovie'>
       <Title>Directors</Title>
 
+      <InputDebounce
+        label='Search Director'
+        id='search'
+        name='search'
+        placeholder='Director Name'
+        className='max-w-xs !py-2'
+        wrapperClassName='mt-6'
+        debounce={500}
+        value={query}
+        onChange={(value) => setQuery(value)}
+      />
+
       <div className='mt-8 grid grid-cols-2 gap-6 gap-y-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-6'>
         {data
-          ? data.map((item, index) => (
+          ? filtered.map((item, index) => (
               <DirectorGridItem
                 key={index}
                 href={`/dashboard/director/detail/${item.id}`}

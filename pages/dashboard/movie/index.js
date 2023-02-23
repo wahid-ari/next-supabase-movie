@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import useSWR from 'swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
+import InputDebounce from '@components/systems/InputDebounce';
 
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Movies() {
   const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher);
+  const [query, setQuery] = useState('');
+
+  const filtered =
+    query === ''
+      ? data
+      : data.filter((item) =>
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -21,9 +31,21 @@ export default function Movies() {
     <Layout title='Movies - MyMovie' description='Browse Movies - MyMovie'>
       <Title>Movies</Title>
 
+      <InputDebounce
+        label='Search Movie'
+        id='search'
+        name='search'
+        placeholder='Movie Name'
+        className='max-w-xs !py-2'
+        wrapperClassName='mt-6'
+        debounce={500}
+        value={query}
+        onChange={(value) => setQuery(value)}
+      />
+
       <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
         {data
-          ? data.map((item, index) => (
+          ? filtered.map((item, index) => (
               <MovieGridItem
                 key={index}
                 href={`/dashboard/movie/detail/${item.id}`}

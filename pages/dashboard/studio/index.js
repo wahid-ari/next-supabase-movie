@@ -4,7 +4,7 @@ import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import StudioGridItem from '@components/dashboard/StudioGridItem';
-import LabeledInput from '@components/systems/LabeledInput';
+import InputDebounce from '@components/systems/InputDebounce';
 
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
@@ -16,8 +16,8 @@ export default function Studios() {
     query === ''
       ? data
       : data.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -31,14 +31,16 @@ export default function Studios() {
     <Layout title='Studios - MyMovie' description='Browse Studios - MyMovie'>
       <Title>Studios</Title>
 
-      <LabeledInput
+      <InputDebounce
         label='Search Studio'
         id='search'
         name='search'
         placeholder='Studio Name'
         className='max-w-xs !py-2'
         wrapperClassName='mt-6'
-        onChange={(e) => setQuery(e.target.value)}
+        debounce={500}
+        value={query}
+        onChange={(value) => setQuery(value)}
       />
 
       <div className='mt-8 grid grid-cols-2 gap-4 md:grid-cols-4'>

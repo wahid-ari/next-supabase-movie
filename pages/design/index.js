@@ -33,6 +33,7 @@ import ReactTable from '@components/systems/ReactTable';
 import { tabledata } from '@utils/tableData';
 // import { default as ReactSelect } from 'react-select';
 import Select from 'react-select';
+import InputDebounce from '@components/systems/InputDebounce';
 
 const searchBoxData = [
   {
@@ -65,6 +66,7 @@ const reactSelectData = [
 ];
 
 export default function Example() {
+  const [inputDebounceValue, setInputDebounceValue] = useState();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDangerDialog, setOpenDangerDialog] = useState(false);
   const [showMultiSelect, setShowMultiSelect] = useState(false);
@@ -305,6 +307,9 @@ export default function Example() {
           </span>
           <span className='mb-3 block underline'>
             <Link href='#labeledinputdisabled'>LabeledInput.disabled</Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link href='#inputdebounce'>InputDebounce</Link>
           </span>
           <span className='mb-3 block underline'>
             <Link href='#textarea'>TextArea</Link>
@@ -693,9 +698,37 @@ export default function Example() {
       </Wrapper>
 
       <Wrapper
+        id='inputdebounce'
+        name='InputDebounce'
+        props={[
+          'id',
+          'label',
+          'type',
+          'name',
+          'placeholder',
+          'value',
+          'onChange',
+          'className',
+          'wrapperClassName',
+          'debounce',
+        ]}
+        noChildren
+      >
+        <InputDebounce
+          label='Input Debounce'
+          name='inputdebounce'
+          placeholder='Input Debounce'
+          value={inputDebounceValue}
+          onChange={(value) => setInputDebounceValue(value)}
+        />
+        <Text>{inputDebounceValue}</Text>
+      </Wrapper>
+
+      <Wrapper
         id='textarea'
         name='TextArea'
         props={['label', 'className', 'id', 'name', 'placeholder', 'value', 'onChange', 'height', '...rest']}
+        noChildren
       >
         <TextArea label='TextArea' name='textarea' placeholder='text area' />
       </Wrapper>
