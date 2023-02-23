@@ -155,3 +155,22 @@ html {
   height: 100% !important;
   background-size: contain;
 }
+
+/* NProgress */
+/* Progress Bar on Top of Page  */
+html[class='light'] {
+  --nprogress-color: #0cc2da;
+}
+
+html[class='dark'] {
+  --nprogress-color: #0cc2da;
+}
+
+#nprogress .bar {
+  /* background: var(--nprogress-color) !important; */
+  @apply !bg-sky-500 !shadow-sky-500/50 dark:!bg-sky-400 dark:!shadow-sky-400/50;
+}
+
+#nprogress .spinner-icon {
+  display: none;
+}
