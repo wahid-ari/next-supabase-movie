@@ -9,6 +9,8 @@ import Shimer from '@components/systems/Shimer';
 import Text from '@components/systems/Text';
 import Heading from '@components/systems/Heading';
 import { PhotographIcon } from '@heroicons/react/outline';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -244,15 +246,16 @@ function Page({ id }) {
         <>
           <Heading className='mt-3 mb-3'>Trailer</Heading>
           {data?.video_url?.startsWith('https') ? (
-            <div className='rounded'>
-              <iframe
+            <div className='aspect-video w-full sm:w-2/3 md:w-1/2'>
+              {/* <iframe
                 className='h-64 w-full rounded sm:h-72 md:h-80 md:w-3/4 xl:w-1/2'
                 src={`https://www.youtube.com/embed/${youtube_url}`}
                 title='YouTube video player'
                 frameborder='0'
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowfullscreen
-              ></iframe>
+              ></iframe> */}
+              <LiteYouTubeEmbed id={youtube_url} title='Youtube Video' wrapperClass='yt-lite rounded my-5' />
             </div>
           ) : (
             <span>-</span>
