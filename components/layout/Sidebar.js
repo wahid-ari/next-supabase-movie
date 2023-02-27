@@ -63,9 +63,8 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`${
-        showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
-      } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
+      className={`${showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
+        } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
     >
       <div className='flex items-center justify-between gap-2 px-5'>
         <button
@@ -90,9 +89,7 @@ export default function Sidebar() {
           'scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
         )}
       >
-        {/* {mounted ?
-          admin.type == "admin" ?
-            <> */}
+
         <NavLink isHome href='/' icon={<ViewGridIcon className='h-4 w-4' />}>
           Dashboard
         </NavLink>
@@ -105,29 +102,34 @@ export default function Sidebar() {
           Statistics
         </NavLink>
 
-        <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
-          Movie
-        </NavLink>
+        {mounted && admin.type == "admin" ? (
+          <>
+            <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
+              Movie
+            </NavLink>
 
-        <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
-          Actor
-        </NavLink>
+            <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
+              Actor
+            </NavLink>
 
-        <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
-          Director
-        </NavLink>
+            <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
+              Director
+            </NavLink>
 
-        <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
-          Studio
-        </NavLink>
+            <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
+              Studio
+            </NavLink>
 
-        <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
-          Category
-        </NavLink>
+            <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
+              Category
+            </NavLink>
 
-        <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
-          Country
-        </NavLink>
+            <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
+              Country
+            </NavLink>
+          </>
+        ) : null
+        }
 
         <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
           Settings
@@ -156,44 +158,6 @@ export default function Sidebar() {
             Example
           </NavLink>
         </NavAccordion> */}
-        {/* </>
-            :
-            <>
-              <NavLink isHome href="/" icon={<ViewGridIcon className="w-4 h-4" />}>
-                Dashboard
-              </NavLink>
-
-              <NavLink href="/search" icon={<SearchIcon className="w-4 h-4" />} className="mt-1">
-                Search
-              </NavLink>
-
-              <NavLink href="/statistics" icon={<ChartPieIcon className="w-4 h-4" />} className="mt-1">
-                Statistics
-              </NavLink>
-
-              {admin.type == "user" &&
-                <NavLink href="/my-playlist" icon={<BookmarkIcon className="w-4 h-4" />} className="mt-1">
-                  My Playlist
-                </NavLink>
-              }
-
-              <NavLink href="/settings" icon={<CogIcon className="w-4 h-4" />} className="mt-1">
-                Settings
-              </NavLink>
-
-              <a href="https://my-movie-docs.vercel.app"
-                className={clsx("mt-1 transition-all w-full px-3 py-2 mb-1 flex justify-start items-center gap-2",
-                  "rounded text-sm font-medium text-gray-600 dark:text-neutral-300 hover:text-emerald-600",
-                  "dark:hover:text-emerald-500 hover:bg-gray-100 dark:hover:bg-neutral-800",
-                  "focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500")}
-                target="_blank" rel="noopener noreferrer">
-                <ExternalLinkIcon className="w-4 h-4" />
-                Docs
-              </a>
-            </>
-          :
-          null
-        } */}
       </div>
 
       <hr className='mt-2 dark:border-neutral-800' />
@@ -224,6 +188,6 @@ export default function Sidebar() {
           </Link>
         )}
       </div>
-    </div>
+    </div >
   );
 }
