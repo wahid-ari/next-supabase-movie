@@ -204,8 +204,9 @@ export default function Movie() {
               tableInstance.current.setGlobalFilter(e.target.value);
             }}
           />
-
-          <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} />
+          <div className="lg:max-w-[51rem] xl:max-w-full overflow-auto">
+            <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} />
+          </div>
         </>
       ) : (
         <Shimer className='!h-60' />
