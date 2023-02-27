@@ -63,8 +63,9 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`${showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
-        } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
+      className={`${
+        showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
+      } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
     >
       <div className='flex items-center justify-between gap-2 px-5'>
         <button
@@ -89,7 +90,6 @@ export default function Sidebar() {
           'scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
         )}
       >
-
         <NavLink isHome href='/' icon={<ViewGridIcon className='h-4 w-4' />}>
           Dashboard
         </NavLink>
@@ -102,7 +102,7 @@ export default function Sidebar() {
           Statistics
         </NavLink>
 
-        {mounted && admin.type == "admin" ? (
+        {mounted && admin.type == 'admin' ? (
           <>
             <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
               Movie
@@ -128,8 +128,7 @@ export default function Sidebar() {
               Country
             </NavLink>
           </>
-        ) : null
-        }
+        ) : null}
 
         <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
           Settings
@@ -188,6 +187,6 @@ export default function Sidebar() {
           </Link>
         )}
       </div>
-    </div >
+    </div>
   );
 }

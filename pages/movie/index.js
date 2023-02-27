@@ -204,7 +204,7 @@ export default function Movie() {
               tableInstance.current.setGlobalFilter(e.target.value);
             }}
           />
-          <div className="lg:max-w-[51rem] xl:max-w-full overflow-auto">
+          <div className='overflow-auto lg:max-w-[51rem] xl:max-w-full'>
             <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} />
           </div>
         </>
