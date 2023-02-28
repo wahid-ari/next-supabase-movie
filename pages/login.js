@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Head from 'next/head';
 import Router from 'next/router';
 import axios from 'axios';
 import useToast from '@utils/useToast';
@@ -8,7 +7,6 @@ import Button from '@components/systems/Button';
 import Heading from '@components/systems/Heading';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import nookies from 'nookies';
-import Link from 'next/link';
 import HeadSeo from '@components/layout/HeadSeo';
 
 export async function getServerSideProps(context) {
@@ -89,19 +87,19 @@ export default function Login() {
     <div className='text-sm font-medium dark:bg-white'>
       <HeadSeo title='Login - MyMovie' description='Login - MyMovie' />
 
-      <div className='min-h-screen w-screen sm:grid sm:grid-cols-2'>
+      <div className='min-h-screen w-screen sm:grid sm:grid-cols-12'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
-          <div>
+          <div className="flex items-center gap-4 mb-2">
+            <Image alt='Logo' src='/icon.jpg' width={50} height={50} className='rounded-[17px]' />
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
           <p className='text-base font-normal text-white'>
             With MyMovie, it&apos;s easy to find Information and statistics about movies, TV shows as well as actors,
             directors and other film industry professionals.
           </p>
-          <p className='font-semibold text-white'>© MyMovie - 2023</p>
         </div>
 
-        <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0'>
+        <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0 sm:col-span-6 md:col-span-5'>
           <div className='w-full sm:max-w-md'>
             <Image alt='Logo' src='/icon.jpg' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
 
@@ -169,7 +167,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex'>
+        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex sm:col-span-6 md:col-span-7'>
           <div>
             <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
             <br />
