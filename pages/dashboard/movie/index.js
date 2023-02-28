@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useMovieData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Movies() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher);
+  const { data, error } = useMovieData();
   const [query, setQuery] = useState('');
 
   const filtered =

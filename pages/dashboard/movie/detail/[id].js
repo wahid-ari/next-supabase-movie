@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
 import axios from 'axios';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
@@ -11,6 +11,7 @@ import Heading from '@components/systems/Heading';
 import { PhotographIcon } from '@heroicons/react/outline';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import { useMovieData } from '@libs/swr';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -38,7 +39,7 @@ export default function Movie({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher);
+  const { data, error } = useMovieData(id);
   const [isLoading, setLoading] = useState(true);
 
   // data.video_url maybe "https://youtu.be/qSqVVswa420" or "https://www.youtube.com/watch?v=2m1drlOZSDw"

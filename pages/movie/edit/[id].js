@@ -14,6 +14,7 @@ import Radio from '@components/systems/Radio';
 import TextArea from '@components/systems/TextArea';
 import SearchBox from '@components/systems/SearchBox';
 import Select from 'react-select';
+import { useMovieData } from '@libs/swr';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -36,7 +37,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function Movie({ id }) {
   const router = useRouter();
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher);
+  const { data, error } = useMovieData(id);
   const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher);
   const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
   const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);

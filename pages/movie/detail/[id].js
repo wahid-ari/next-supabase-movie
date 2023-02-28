@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useSWR from 'swr';
-import axios from 'axios';
+import { useMovieData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -30,10 +29,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Movie({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie?id=${id}`, fetcher);
+  const { data, error } = useMovieData(id);
   const [isLoading, setLoading] = useState(true);
 
   // data.video_url maybe "https://youtu.be/qSqVVswa420" or "https://www.youtube.com/watch?v=2m1drlOZSDw"

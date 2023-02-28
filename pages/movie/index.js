@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useMovieData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import { PlusSmIcon } from '@heroicons/react/outline';
@@ -29,10 +30,8 @@ import Badge from '@components/systems/Badge';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Movie() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher);
+  const { data, error } = useMovieData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deleteItem, setDeleteItem] = useState({ id: null, name: '' });

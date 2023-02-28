@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import useSWR from 'swr';
+import { useMovieData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -15,7 +16,7 @@ import '@splidejs/react-splide/css';
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Home() {
-  const { data: movies, error: errorMovies } = useSWR(`${process.env.API_ROUTE}/api/movie`, fetcher);
+  const { data: movies, error: errorMovies } = useMovieData();
   const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
   const { data: directors, error: errorDirectors } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
   const { data: studios, error: errorStudios } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
