@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import useSWR from 'swr';
-import { useMovieData } from '@libs/swr';
+import { useActorData, useCategoryTotalData, useCountryData, useDirectorData, useMovieData, useStudioData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -13,18 +12,13 @@ import { ArrowRightIcon } from '@heroicons/react/outline';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Home() {
   const { data: movies, error: errorMovies } = useMovieData();
-  const { data: actors, error: errorActors } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
-  const { data: directors, error: errorDirectors } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
-  const { data: studios, error: errorStudios } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
-  const { data: categories, error: errorCategories } = useSWR(
-    `${process.env.API_ROUTE}/api/category/total-movie`,
-    fetcher
-  );
-  const { data: countries, error: errorCountries } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data: actors, error: errorActors } = useActorData();
+  const { data: directors, error: errorDirectors } = useDirectorData();
+  const { data: studios, error: errorStudios } = useStudioData();
+  const { data: categories, error: errorCategories } = useCategoryTotalData();
+  const { data: countries, error: errorCountries } = useCountryData();
 
   if (errorMovies || errorActors || errorDirectors || errorStudios || errorCategories || errorCountries) {
     return (
