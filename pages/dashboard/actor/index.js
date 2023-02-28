@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useActorData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import ActorGridItem from '@components/dashboard/ActorGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Actors() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
+  const { data, error } = useActorData();
   const [query, setQuery] = useState('');
 
   const filtered =

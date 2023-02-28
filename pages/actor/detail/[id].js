@@ -1,7 +1,6 @@
 import { useState, useRef, useMemo } from 'react';
 import Image from 'next/image';
-import useSWR from 'swr';
-import axios from 'axios';
+import { useActorData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -32,10 +31,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Actor({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
+  const { data, error } = useActorData(id);
   const [isLoading, setLoading] = useState(true);
 
   const column = useMemo(

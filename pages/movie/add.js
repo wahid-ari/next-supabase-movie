@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useActorData, useCategoryData, useDirectorData, useStudioData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import Layout from '@components/layout/Layout';
@@ -29,14 +30,12 @@ import Select from 'react-select';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Movie() {
   const router = useRouter();
-  const { data: category, error: errorCategory } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher);
-  const { data: actor, error: errorActor } = useSWR(`${process.env.API_ROUTE}/api/actor`, fetcher);
-  const { data: director, error: errorDirector } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
-  const { data: studio, error: errorStudio } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
+  const { data: category, error: errorCategory } = useCategoryData();
+  const { data: actor, error: errorActor } = useActorData();
+  const { data: director, error: errorDirector } = useDirectorData();
+  const { data: studio, error: errorStudio } = useStudioData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',

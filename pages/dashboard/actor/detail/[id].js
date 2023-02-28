@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { useActorData } from '@libs/swr';
 import axios from 'axios';
 import { UserIcon } from '@heroicons/react/outline';
 import moment from 'moment';
@@ -38,7 +39,7 @@ export default function Actor({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
+  const { data, error } = useActorData(id);
   const [isLoading, setLoading] = useState(true);
 
   if (error) {

@@ -1,5 +1,12 @@
 import Link from 'next/link';
-import { useActorData, useCategoryTotalData, useCountryData, useDirectorData, useMovieData, useStudioData } from '@libs/swr';
+import {
+  useActorData,
+  useCategoryTotalData,
+  useCountryData,
+  useDirectorData,
+  useMovieData,
+  useStudioData,
+} from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
