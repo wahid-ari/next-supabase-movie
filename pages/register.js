@@ -83,7 +83,7 @@ export default function Register() {
 
       <div className='min-h-screen w-screen sm:grid sm:grid-cols-12'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
-          <div className="flex items-center gap-4 mb-2">
+          <div className='mb-2 flex items-center gap-4'>
             <Image alt='Logo' src='/icon.jpg' width={50} height={50} className='rounded-[17px]' />
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
@@ -93,7 +93,7 @@ export default function Register() {
           </p>
         </div>
 
-        <div className='flex w-full items-center justify-center px-8 py-16 md:px-16 md:py-0 sm:col-span-6 md:col-span-5'>
+        <div className='flex w-full items-center justify-center px-8 py-16 sm:col-span-6 md:col-span-5 md:px-16 md:py-0'>
           <div className='w-full sm:max-w-md'>
             <Image alt='Logo' src='/icon.jpg' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
 
@@ -177,7 +177,7 @@ export default function Register() {
           </div>
         </div>
 
-        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:flex sm:col-span-6 md:col-span-7'>
+        <div className='banner hidden flex-col justify-between gap-2 px-8 py-12 sm:col-span-6 sm:flex md:col-span-7'>
           <div>
             <h1 className='font-bold text-white sm:text-4xl md:text-5xl'>MyMovie</h1>
             <br />
