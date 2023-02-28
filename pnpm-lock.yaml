@@ -16,7 +16,7 @@ specifiers:
   chart.js: ^4.1.1
   clsx: ^1.2.1
   eslint: 8.5.0
-  eslint-config-next: ^13.0.0
+  eslint-config-next: ^13.1.6
   eslint-config-prettier: ^8.6.0
   jsonwebtoken: ^9.0.0
   moment: ^2.29.4
@@ -79,7 +79,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   autoprefixer: 10.4.13_postcss@8.4.21
   eslint: 8.5.0
-  eslint-config-next: 13.1.2_eslint@8.5.0
+  eslint-config-next: 13.2.1_eslint@8.5.0
   eslint-config-prettier: 8.6.0_eslint@8.5.0
   postcss: 8.4.21
   prettier: 2.8.4
@@ -342,9 +342,9 @@ packages:
       { integrity: sha512-s+W9Fdqh5MFk6ECrbnVmmAOwxKQuhGMT7xXHrkYIBMBcTiOqNWhv5KbJIboKR5STXxNXl32hllnvKaffzFaWQg== }
     dev: false
 
-  /@next/eslint-plugin-next/13.1.2:
+  /@next/eslint-plugin-next/13.2.1:
     resolution:
-      { integrity: sha512-WGaNVvIYphdriesP6r7jq/8l7u38tzotnVQuxc1RYKLqYYApSsrebti3OCPoT3Gx0pw2smPIFHH98RzcsgW5GQ== }
+      { integrity: sha512-r0i5rcO6SMAZtqiGarUVMr3k256X0R0j6pEkKg4PxqUW+hG0qgMxRVAJsuoRG5OBFkCOlSfWZJ0mP9fQdCcyNg== }
     dependencies:
       glob: 7.1.7
     dev: true
@@ -1772,9 +1772,9 @@ packages:
       { integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA== }
     engines: { node: '>=10' }
 
-  /eslint-config-next/13.1.2_eslint@8.5.0:
+  /eslint-config-next/13.2.1_eslint@8.5.0:
     resolution:
-      { integrity: sha512-zdRAQOr8v69ZwJRtBrGqAqm160ONqKxU/pV1FB1KlgfyqveGsLZmlQ7l31otwtw763901J7xdiTVkj2y3YxXZA== }
+      { integrity: sha512-2GAx7EjSiCzJN6H2L/v1kbYrNiwQxzkyjy6eWSjuhAKt+P6d3nVNHGy9mON8ZcYd72w/M8kyMjm4UB9cvijgrw== }
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -1782,7 +1782,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.1.2
+      '@next/eslint-plugin-next': 13.2.1
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.48.1_eslint@8.5.0
       eslint: 8.5.0

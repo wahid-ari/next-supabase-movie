@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  // directly redirect to '/' when user clicking 'dashborad in breadcrumb link
+  // when user clicking 'dashborad in breadcrumb link, directly redirect to '/'
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     if (request.nextUrl.pathname == '/dashboard') {
       return NextResponse.redirect(new URL('/', request.url));
