@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { useDirectorData } from '@libs/swr';
 import axios from 'axios';
 import { UserIcon } from '@heroicons/react/outline';
 import Layout from '@components/layout/Layout';
@@ -37,7 +38,7 @@ export default function Director({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director?id=${id}`, fetcher);
+  const { data, error } = useDirectorData(id);
   const [isLoading, setLoading] = useState(true);
 
   if (error) {

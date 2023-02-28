@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useCountryData, useDirectorData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import { PlusSmIcon } from '@heroicons/react/outline';
@@ -31,11 +32,9 @@ import ReactTable from '@components/systems/ReactTable';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Director() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
-  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data, error } = useDirectorData();
+  const { data: country, error: errorCountry } = useCountryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);

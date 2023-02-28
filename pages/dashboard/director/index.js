@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useDirectorData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Director() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/director`, fetcher);
+  const { data, error } = useDirectorData();
   const [query, setQuery] = useState('');
 
   const filtered =
