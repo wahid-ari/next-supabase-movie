@@ -24,6 +24,11 @@ export function useCategoryData(id) {
   return { data, error, isLoading };
 }
 
+export function useCategoryTotalData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/category/total-movie`, fetcher);
+  return { data, error, isLoading };
+}
+
 export function useCountryData(id) {
   const { data, error, isLoading } = useSWR(id ? `${API_URL}/country?id=${id}` : `${API_URL}/country`, fetcher);
   return { data, error, isLoading };
