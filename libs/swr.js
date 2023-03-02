@@ -38,3 +38,38 @@ export function useStudioData(id) {
   const { data, error, isLoading } = useSWR(id ? `${API_URL}/studio?id=${id}` : `${API_URL}/studio`, fetcher);
   return { data, error, isLoading };
 }
+
+export function useActorByCountryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/actor-by-country`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useDirectorByCountryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/director-by-country`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useStudioByCountryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/studio-by-country`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useMovieByActorData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/movie-by-actor`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useMovieByCategoryData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/movie-by-category`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useMovieByStudioData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/movie-by-studio`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useMovieByDirectorData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/statistics/movie-by-director`, fetcher);
+  return { data, error, isLoading };
+}
