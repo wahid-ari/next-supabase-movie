@@ -1,5 +1,5 @@
 import { SWRConfig } from 'swr';
-import axios from 'axios';
+import { useCountryData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -7,15 +7,12 @@ import ActorGridItem from '@components/dashboard/ActorGridItem';
 import Heading from '@components/systems/Heading';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import StudioGridItem from '@components/dashboard/StudioGridItem';
-import { useCountryData } from '@libs/swr';
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export async function getServerSideProps(context) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
-  const res = await fetcher(`${process.env.API_ROUTE}/api/country?id=${id}`);
+  const res = await fetch(`${process.env.API_ROUTE}/api/country?id=${id}`).then((res) => res.json());
   return {
     props: {
       id: id,

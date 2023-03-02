@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { SWRConfig } from 'swr';
 import { useStudioData } from '@libs/swr';
-import axios from 'axios';
 import { PhotographIcon } from '@heroicons/react/outline';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
@@ -11,13 +10,11 @@ import Text from '@components/systems/Text';
 import Heading from '@components/systems/Heading';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export async function getServerSideProps(context) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
-  const res = await fetcher(`${process.env.API_ROUTE}/api/studio?id=${id}`);
+  const res = await fetch(`${process.env.API_ROUTE}/api/studio?id=${id}`).then((res) => res.json());
   return {
     props: {
       id: id,

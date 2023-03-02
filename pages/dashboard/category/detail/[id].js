@@ -1,18 +1,15 @@
 import { SWRConfig } from 'swr';
 import { useCategoryData } from '@libs/swr';
-import axios from 'axios';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export async function getServerSideProps(context) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
-  const res = await fetcher(`${process.env.API_ROUTE}/api/category?id=${id}`);
+  const res = await fetch(`${process.env.API_ROUTE}/api/category?id=${id}`).then((res) => res.json());
   return {
     props: {
       id: id,
