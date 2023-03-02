@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useCategoryData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import { PlusSmIcon } from '@heroicons/react/outline';
@@ -27,10 +28,8 @@ import nookies from 'nookies';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Category() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category`, fetcher);
+  const { data, error } = useCategoryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);

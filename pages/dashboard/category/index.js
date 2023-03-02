@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useCategoryTotalData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import Link from 'next/link';
 import InputDebounce from '@components/systems/InputDebounce';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Categories() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category/total-movie`, fetcher);
+  const { data, error } = useCategoryTotalData();
   const [query, setQuery] = useState('');
 
   const filtered =

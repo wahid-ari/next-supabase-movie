@@ -1,4 +1,5 @@
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { useCategoryData } from '@libs/swr';
 import axios from 'axios';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
@@ -31,7 +32,7 @@ export default function Category({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/category?id=${id}`, fetcher);
+  const { data, error } = useCategoryData(id);
 
   if (error) {
     return (
