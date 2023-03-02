@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useCountryData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import { PlusSmIcon } from '@heroicons/react/outline';
@@ -27,10 +28,8 @@ import nookies from 'nookies';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Country() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data, error } = useCountryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);

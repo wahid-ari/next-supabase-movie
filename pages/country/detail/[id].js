@@ -1,7 +1,6 @@
 import { useRef, useMemo } from 'react';
 import Link from 'next/link';
-import useSWR from 'swr';
-import axios from 'axios';
+import { useCountryData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -27,10 +26,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Country({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country?id=${id}`, fetcher);
+  const { data, error } = useCountryData(id);
 
   const columnActors = useMemo(
     () => [

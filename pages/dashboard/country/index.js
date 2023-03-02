@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useSWR from 'swr';
+import { useCountryData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import Link from 'next/link';
 import InputDebounce from '@components/systems/InputDebounce';
 
-const fetcher = (url) => fetch(url).then((result) => result.json());
-
 export default function Countries() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data, error } = useCountryData();
   const [query, setQuery] = useState('');
 
   const filtered =

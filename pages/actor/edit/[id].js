@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useActorData, useCountryData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import Layout from '@components/layout/Layout';
@@ -31,11 +32,9 @@ export async function getServerSideProps(context) {
   };
 }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Actor({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/actor?id=${id}`, fetcher);
-  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data, error } = useActorData(id);
+  const { data: country, error: errorCountry } = useCountryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     name: '',

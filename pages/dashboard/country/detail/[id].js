@@ -1,4 +1,4 @@
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
 import axios from 'axios';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
@@ -7,6 +7,7 @@ import ActorGridItem from '@components/dashboard/ActorGridItem';
 import Heading from '@components/systems/Heading';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import StudioGridItem from '@components/dashboard/StudioGridItem';
+import { useCountryData } from '@libs/swr';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -34,7 +35,7 @@ export default function Country({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/country?id=${id}`, fetcher);
+  const { data, error } = useCountryData(id);
 
   if (error) {
     return (

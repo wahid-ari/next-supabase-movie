@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useCountryData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import Layout from '@components/layout/Layout';
@@ -28,10 +29,8 @@ import Radio from '@components/systems/Radio';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Actor() {
-  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data: country, error: errorCountry } = useCountryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',
