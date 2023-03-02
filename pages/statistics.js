@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
-import useSWR from 'swr';
-import axios from 'axios';
+import {
+  useActorByCountryData,
+  useDirectorByCountryData,
+  useMovieByActorData,
+  useMovieByCategoryData,
+  useMovieByDirectorData,
+  useMovieByStudioData,
+  useStudioByCountryData,
+} from '@libs/swr';
 import { useTheme } from 'next-themes';
 import Layout from '@components/layout/Layout';
 import Shimer from '@components/systems/Shimer';
@@ -35,39 +42,8 @@ ChartJS.register(
   Legend
 );
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Statistics() {
   const { theme } = useTheme();
-  const { data: actorByCountry, error: errorActorByCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/actor-by-country`,
-    fetcher
-  );
-  const { data: directorByCountry, error: errorDirectorByCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/director-by-country`,
-    fetcher
-  );
-  const { data: studioByCountry, error: errorStudioByCountry } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/studio-by-country`,
-    fetcher
-  );
-  const { data: movieByActor, error: errorMovieByActor } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/movie-by-actor`,
-    fetcher
-  );
-  const { data: movieByCategory, error: errorMovieByCategory } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/movie-by-category`,
-    fetcher
-  );
-  const { data: movieByStudio, error: errorMovieByStudio } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/movie-by-studio`,
-    fetcher
-  );
-  const { data: movieByDirector, error: errorMovieByDirector } = useSWR(
-    `${process.env.API_ROUTE}/api/statistics/movie-by-director`,
-    fetcher
-  );
-
   const [dataActorByCountry, setDataActorByCountry] = useState();
   const [dataDirectorByCountry, setDataDirectorByCountry] = useState();
   const [dataStudioByCountry, setDataStudioByCountry] = useState();
@@ -76,10 +52,13 @@ export default function Statistics() {
   const [dataMovieByStudio, setDataMovieByStudio] = useState();
   const [dataMovieByDirector, setDataMovieByDirector] = useState();
 
-  const [windowWidth, setWindowWidth] = useState();
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-  }, [windowWidth]);
+  const { data: actorByCountry, error: errorActorByCountry } = useActorByCountryData();
+  const { data: directorByCountry, error: errorDirectorByCountry } = useDirectorByCountryData();
+  const { data: studioByCountry, error: errorStudioByCountry } = useStudioByCountryData();
+  const { data: movieByActor, error: errorMovieByActor } = useMovieByActorData();
+  const { data: movieByCategory, error: errorMovieByCategory } = useMovieByCategoryData();
+  const { data: movieByStudio, error: errorMovieByStudio } = useMovieByStudioData();
+  const { data: movieByDirector, error: errorMovieByDirector } = useMovieByDirectorData();
 
   useEffect(() => {
     if (actorByCountry !== undefined) setDataActorByCountry(populateData(actorByCountry, 'actor'));
@@ -98,6 +77,11 @@ export default function Statistics() {
     movieByStudio,
     movieByDirector,
   ]);
+
+  const [windowWidth, setWindowWidth] = useState();
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, [windowWidth]);
 
   if (
     errorActorByCountry ||
