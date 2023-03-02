@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { useStudioData } from '@libs/swr';
 import axios from 'axios';
 import { PhotographIcon } from '@heroicons/react/outline';
 import Layout from '@components/layout/Layout';
@@ -36,7 +37,7 @@ export default function Studio({ id, fallback }) {
 }
 
 function Page({ id }) {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio?id=${id}`, fetcher);
+  const { data, error } = useStudioData(id);
   const [isLoading, setLoading] = useState(true);
 
   if (error) {

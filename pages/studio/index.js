@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
+import { useCountryData, useStudioData } from '@libs/swr';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import { PhotographIcon, PlusSmIcon } from '@heroicons/react/outline';
@@ -29,11 +30,9 @@ import Image from 'next/image';
 //   }
 // }
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
-
 export default function Studio() {
-  const { data, error } = useSWR(`${process.env.API_ROUTE}/api/studio`, fetcher);
-  const { data: country, error: errorCountry } = useSWR(`${process.env.API_ROUTE}/api/country`, fetcher);
+  const { data, error } = useStudioData();
+  const { data: country, error: errorCountry } = useCountryData();
   const { updateToast, pushToast, dismissToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
