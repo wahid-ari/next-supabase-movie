@@ -367,7 +367,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Movie
             </h2>
-            <FilmIcon className='h-10 w-10 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <FilmIcon className='h-10 w-10 text-yellow-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -378,7 +378,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Actor
             </h2>
-            <UserGroupIcon className='h-10 w-10 text-cyan-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <UserGroupIcon className='h-10 w-10 text-purple-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -389,7 +389,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Director
             </h2>
-            <UsersIcon className='h-10 w-10 text-violet-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <UsersIcon className='h-10 w-10 text-pink-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -400,7 +400,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Studio
             </h2>
-            <LibraryIcon className='h-10 w-10 text-emerald-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <LibraryIcon className='h-10 w-10 text-blue-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -411,7 +411,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Category
             </h2>
-            <ColorSwatchIcon className='h-10 w-10 text-red-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <ColorSwatchIcon className='h-10 w-10 text-sky-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
         <Link
@@ -422,7 +422,7 @@ export default function Search() {
             <h2 className='bg-gradient-to-r from-orange-500 to-lime-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
               Country
             </h2>
-            <FlagIcon className='h-10 w-10 text-orange-500 transition-all duration-300 ease-in group-hover:text-white' />
+            <FlagIcon className='h-10 w-10 text-lime-500 transition-all duration-300 ease-in group-hover:text-white' />
           </div>
         </Link>
       </div>

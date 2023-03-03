@@ -67,7 +67,7 @@ export default function Sidebar() {
         showNav ? 'fixed lg:relative' : 'top-0 hidden lg:sticky lg:flex'
       } z-50 flex h-screen max-h-screen w-screen flex-col flex-nowrap border-r bg-white dark:border-neutral-800 dark:bg-neutral-900 lg:w-60`}
     >
-      <div className='flex items-center justify-between gap-2 px-5'>
+      <div className='flex items-center justify-between gap-2 px-4'>
         <button
           className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
           onClick={hideMenu}
@@ -160,12 +160,12 @@ export default function Sidebar() {
       </div>
 
       <hr className='mt-2 dark:border-neutral-800' />
-      <div className='px-3 py-2'>
+      <div className='px-4 py-2'>
         {mounted && admin.name ? (
           <button
             onClick={handleLogout}
             className={clsx(
-              'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
+              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring focus-visible:ring-red-500'
             )}
@@ -177,7 +177,7 @@ export default function Sidebar() {
           <Link
             href='/login'
             className={clsx(
-              'flex w-full items-center justify-start gap-2 px-4 py-2 text-sm font-semibold transition-all',
+              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
               'rounded text-emerald-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
             )}

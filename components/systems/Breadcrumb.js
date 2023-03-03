@@ -4,10 +4,13 @@ import { ChevronRightIcon } from '@heroicons/react/solid';
 
 export default function Breadcrumb() {
   const router = useRouter();
+  // Generate Breadcrumb link item
+  // '/dashboard/actor/detail/[id]' become ['dashboard', 'actor', 'detail']
   const paths = router.pathname
     .split('/')
     .slice(1)
     .filter((r) => {
+      // for [param_id].js or [id].js pages
       if (r.includes('_id') || r === '[id]') {
         return false;
       }
