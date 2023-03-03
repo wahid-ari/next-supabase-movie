@@ -53,7 +53,7 @@ export default function Categories() {
                 {item.total}
               </Link>
             ))
-          : [0, 1, 2, 3, 4].map((item) => <Shimer key={item} className='!h-16 w-full' />)}
+          : [...Array(5).keys()].map((item) => <Shimer key={item} className='!h-16 w-full' />)}
       </div>
     </Layout>
   );

@@ -73,7 +73,7 @@ function Page({ id }) {
         ) : null
       ) : (
         <div className='mt-10 grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8'>
-          {[0, 1, 2, 3, 4, 5, 6].map((item) => (
+          {[...Array(7).keys()].map((item) => (
             <Shimer key={item} className='!h-52 w-full' />
           ))}
         </div>

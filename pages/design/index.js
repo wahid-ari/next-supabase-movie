@@ -650,7 +650,7 @@ export default function Example() {
           onBlur={handleDropdownShow}
           onClick={handleDropdownShow}
         >
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((e, i) => {
+          {[...Array(10).keys()].map((e, i) => {
             return (
               <Dropdown.item key={i} value={`Item ${i}`} onClick={handleValueDropdown}>
                 Item {i}
@@ -872,7 +872,7 @@ export default function Example() {
             </>
           }
         >
-          {[0, 1, 2, 3, 4].map((e, index) => {
+          {[...Array(5).keys()].map((e, index) => {
             return (
               <Table.tr key={index}>
                 <Table.td shrink>{index + 1}</Table.td>

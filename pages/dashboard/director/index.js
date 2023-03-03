@@ -51,7 +51,7 @@ export default function Director() {
                 name={item.name}
               />
             ))
-          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map((item) => (
+          : [...Array(18).keys()].map((item) => (
               <div key={item} className='flex items-center justify-center'>
                 <Shimer className='!mx-8 !h-32 !w-32 !rounded-full' />
               </div>

@@ -51,9 +51,7 @@ export default function Actors() {
                 name={item.name}
               />
             ))
-          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((item) => (
-              <Shimer key={item} className='!h-52 w-full' />
-            ))}
+          : [...Array(14).keys()].map((item) => <Shimer key={item} className='!h-52 w-full' />)}
       </div>
     </Layout>
   );
