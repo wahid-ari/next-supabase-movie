@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
@@ -18,6 +18,8 @@ import { useSearchHistoryStore } from '@store/useStore';
 const fetcher = (url) => fetch(url).then((result) => result.json());
 
 export default function Search() {
+  // https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const search = router.query.q;
   const query = useRef(search);
@@ -110,6 +112,16 @@ export default function Search() {
     } else {
       router.push(`/search`);
     }
+  }
+
+  // https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
   }
 
   if (error) {
