@@ -1,15 +1,41 @@
+import { useState, Fragment } from 'react';
 import Link from 'next/link';
-import { Fragment } from 'react';
+import Image from 'next/image';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import ActiveLink from '@components/front/ActiveLink';
 import clsx from 'clsx';
-import Image from 'next/image';
 import ThemeChanger from './ThemeChanger';
 
-export default function Navbar() {
+function CustomActiveLink({ href, children }) {
   return (
-    <Popover as='nav' className='border-b shadow-sm dark:border-b-neutral-800'>
+    <ActiveLink
+      href={href}
+      activeClassName='!text-sky-500 dark:text-sky-500'
+      className={clsx(
+        'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
+        'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+      )}
+    >
+      {children}
+    </ActiveLink>
+  );
+}
+
+const activeCn = clsx(
+  'block rounded px-3 py-1.5 text-[15px] font-medium',
+  'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+);
+
+export default function Navbar() {
+  const [isShowMore, setIsShowMore] = useState(false);
+  return (
+    <Popover
+      as='nav'
+      className='sticky top-0 border-b bg-white shadow-sm dark:border-b-neutral-800 dark:bg-neutral-900'
+    >
       <>
         <div className='mx-auto max-w-7xl p-4'>
           <div className='flex items-center justify-between'>
@@ -21,56 +47,24 @@ export default function Navbar() {
             >
               <div className='flex items-center justify-center font-medium text-gray-900 md:justify-start'>
                 <Image alt='Logo' src='/icon.jpg' width={30} height={30} className='mr-2 rounded-lg' />
-                <span className='text-xl font-semibold text-neutral-700 dark:text-white'>MyMovie</span>
+                <span className='text-xl font-semibold text-neutral-700 dark:text-neutral-200'>MyMovie</span>
               </div>
             </Link>
             {/* web logo  */}
 
             {/* Nav Link  */}
             <div className='hidden md:block'>
-              <div className='flex items-center space-x-4'>
-                <ActiveLink
-                  href='/movies'
-                  activeClassName='!text-sky-500 dark:text-sky-500'
-                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  <span className='px-3 text-[15px] font-medium text-gray-700 transition-all duration-200 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'>
-                    Movies
-                  </span>
-                </ActiveLink>
-                <ActiveLink
-                  href='/actors'
-                  activeClassName='!text-sky-500 dark:text-sky-500'
-                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  <span className='px-3 text-[15px] font-medium text-gray-700 transition-all duration-200 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'>
-                    Actors
-                  </span>
-                </ActiveLink>
-                <ActiveLink
-                  href='/directors'
-                  activeClassName='!text-sky-500 dark:text-sky-500'
-                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  <span className='px-3 text-[15px] font-medium text-gray-700 transition-all duration-200 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'>
-                    Directors
-                  </span>
-                </ActiveLink>
-                <ActiveLink
-                  href='/studios'
-                  activeClassName='!text-sky-500 dark:text-sky-500'
-                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                >
-                  <span className='px-3 text-[15px] font-medium text-gray-700 transition-all duration-200 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'>
-                    Studios
-                  </span>
-                </ActiveLink>
-                <Popover className='relative'>
+              <div className='flex items-center space-x-8'>
+                <CustomActiveLink href='/movies'>Movies</CustomActiveLink>
+                <CustomActiveLink href='/actors'>Actors</CustomActiveLink>
+                <CustomActiveLink href='/directors'>Directors</CustomActiveLink>
+                <CustomActiveLink href='/studios'>Studios</CustomActiveLink>
+                {/* <Popover className='relative'>
                   {({ open }) => (
                     <>
                       <Popover.Button
                         className={clsx(
-                          'group flex items-center space-x-2 rounded px-3 text-[15px] font-medium transition-all duration-200',
+                          'group flex items-center space-x-2 rounded px-1 text-[15px] font-medium transition-all duration-200',
                           ' text-gray-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                         )}
@@ -78,8 +72,8 @@ export default function Navbar() {
                         <span>More</span>
                         <ChevronDownIcon
                           className={`${open
-                              ? 'rotate-180 transform transition-transform duration-300'
-                              : 'transition-transform duration-300'
+                            ? 'rotate-180 transform transition-transform duration-300'
+                            : 'transition-transform duration-300'
                             } h-4 w-4`}
                         />
                       </Popover.Button>
@@ -93,24 +87,50 @@ export default function Navbar() {
                         leaveTo='opacity-0 scale-95'
                       >
                         <Popover.Panel className='absolute top-8 z-10 flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
-                          <ActiveLink
-                            activeClassName='!text-sky-500 dark:text-sky-500'
-                            className='rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'
-                            href='/categories'
-                          >
-                            <span>Categories</span>
-                          </ActiveLink>
-                          <ActiveLink
-                            activeClassName='!text-sky-500 dark:text-sky-500'
-                            className='rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'
-                            href='/countries'
-                          >
-                            <span>Countries</span>
-                          </ActiveLink>
+                          <CustomActiveLink href='/categories'>Categories</CustomActiveLink>
+                          <CustomActiveLink href='/countries'>Countries</CustomActiveLink>
                         </Popover.Panel>
                       </Transition>
                     </>
                   )}
+                </Popover> */}
+
+                <Popover
+                  className='relative'
+                  onMouseEnter={() => setIsShowMore(true)}
+                  onMouseLeave={() => setIsShowMore(false)}
+                >
+                  <Popover.Button
+                    className={clsx(
+                      'group flex items-center space-x-2 rounded px-1 text-[15px] font-medium transition-all duration-200',
+                      ' text-gray-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    )}
+                  >
+                    <span>More</span>
+                    <ChevronDownIcon
+                      className={`${
+                        isShowMore
+                          ? 'rotate-180 transform transition-transform duration-300'
+                          : 'transition-transform duration-300'
+                      } h-4 w-4`}
+                    />
+                  </Popover.Button>
+                  <Transition
+                    as={Fragment}
+                    show={isShowMore}
+                    enter='duration-200 ease-out'
+                    enterFrom='opacity-0 scale-95'
+                    enterTo='opacity-100 scale-100'
+                    leave='duration-100 ease-in'
+                    leaveFrom='opacity-100 scale-100'
+                    leaveTo='opacity-0 scale-95'
+                  >
+                    <Popover.Panel className='absolute top-8 z-10 flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
+                      <CustomActiveLink href='/categories'>Categories</CustomActiveLink>
+                      <CustomActiveLink href='/countries'>Countries</CustomActiveLink>
+                    </Popover.Panel>
+                  </Transition>
                 </Popover>
               </div>
             </div>
@@ -120,7 +140,10 @@ export default function Navbar() {
               <ThemeChanger />
               <Link
                 href='/login'
-                className='rounded bg-sky-500 px-3.5 py-1.5 text-sm font-medium text-white transition-all duration-200 hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400'
+                className={clsx(
+                  'rounded bg-sky-500 px-3.5 py-1.5 text-sm font-medium text-white transition-all duration-200',
+                  'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400'
+                )}
                 passHref
               >
                 Login
@@ -129,7 +152,13 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <div className='flex md:hidden'>
-              <Popover.Button className='inline-flex items-center justify-center rounded text-gray-500 transition-all hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-neutral-100'>
+              <Popover.Button
+                className={clsx(
+                  'inline-flex items-center justify-center rounded transition-all',
+                  'text-gray-500 hover:text-gray-600 dark:text-neutral-300 dark:hover:text-neutral-100',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                )}
+              >
                 <span className='sr-only'>Open main menu</span>
                 <MenuIcon className='h-6 w-6' aria-hidden='true' />
               </Popover.Button>
@@ -164,9 +193,15 @@ export default function Navbar() {
                   </Link>
                 </div>
                 {/* CLose Mobile Menu Button  */}
-                <div className='mr-4 flex items-center gap-2'>
+                <div className='mr-3 flex items-center gap-2'>
                   <ThemeChanger />
-                  <Popover.Button className='rounded p-1 text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100'>
+                  <Popover.Button
+                    className={clsx(
+                      'rounded p-1 text-gray-700 transition-all dark:text-neutral-300',
+                      'hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
+                      'focus:outline-none focus:ring-2 focus:ring-sky-500'
+                    )}
+                  >
                     <span className='sr-only'>Close main menu</span>
                     <XIcon className='h-5 w-5' aria-hidden='true' />
                   </Popover.Button>
@@ -174,49 +209,17 @@ export default function Navbar() {
                 {/* EndCLose Mobile Menu Button  */}
               </div>
               <div className='my-4 flex flex-col space-y-1 px-4'>
-                <ActiveLink
-                  href='/movies'
-                  activeClassName='text-sky-500 dark:text-sky-500'
-                  className={clsx(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium',
-                    'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  )}
-                >
-                  <span>Movies</span>
+                <ActiveLink href='/movies' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Movies
                 </ActiveLink>
-                <ActiveLink
-                  href='/actors'
-                  activeClassName='text-sky-500 dark:text-sky-500'
-                  className={clsx(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium',
-                    'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  )}
-                >
-                  <span>Actors</span>
+                <ActiveLink href='/actors' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Actors
                 </ActiveLink>
-                <ActiveLink
-                  href='/directors'
-                  activeClassName='text-sky-500 dark:text-sky-500'
-                  className={clsx(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium',
-                    'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  )}
-                >
-                  <span>Directors</span>
+                <ActiveLink href='/directors' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Directors
                 </ActiveLink>
-                <ActiveLink
-                  href='/studios'
-                  activeClassName='text-sky-500 dark:text-sky-500'
-                  className={clsx(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium',
-                    'text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  )}
-                >
-                  <span>Studios</span>
+                <ActiveLink href='/studios' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Studios
                 </ActiveLink>
                 <Menu>
                   {({ open }) => (
@@ -225,26 +228,23 @@ export default function Navbar() {
                         <div className='flex items-center justify-between'>
                           <span>More</span>
                           <ChevronRightIcon
-                            className={`${open
+                            className={`${
+                              open
                                 ? 'rotate-90 transform transition-transform duration-200'
                                 : 'transition-transform duration-200'
-                              } h-5 w-5`}
+                            } h-5 w-5`}
                           />
                         </div>
                       </Menu.Button>
                       <Menu.Items className='space-y-1 px-3'>
                         <Menu.Item>
-                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/categories'>
-                            <span className='block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800'>
-                              Categories
-                            </span>
+                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/categories' className={activeCn}>
+                            Categories
                           </ActiveLink>
                         </Menu.Item>
                         <Menu.Item>
-                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/countries'>
-                            <span className='block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800'>
-                              Countries
-                            </span>
+                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/countries' className={activeCn}>
+                            Countries
                           </ActiveLink>
                         </Menu.Item>
                       </Menu.Items>
@@ -252,8 +252,12 @@ export default function Navbar() {
                   )}
                 </Menu>
                 <Link
-                  href='/nav-bar'
-                  className='block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'
+                  href='/login'
+                  className={clsx(
+                    'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
+                    'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                    'dark:text-neutral-200 dark:hover:bg-neutral-800'
+                  )}
                 >
                   Login
                 </Link>

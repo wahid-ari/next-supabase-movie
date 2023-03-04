@@ -2,15 +2,12 @@ import Navbar from './Navbar';
 import HeadSeo from '@components/layout/HeadSeo';
 
 export default function Layout({ children, title, description, className }) {
-
   return (
     <>
       <HeadSeo title={title} description={description} />
-      <div className='dark:bg-neutral-900'>
-      <Navbar />
-        <div className={`p-4 max-w-7xl mx-auto min-h-screen w-full ${className ? className : ''}`}>
-          {children}
-        </div>
+      <div className='relative dark:bg-neutral-900'>
+        <Navbar />
+        <div className={`mx-auto min-h-screen w-full max-w-7xl p-4 ${className ? className : ''}`}>{children}</div>
       </div>
     </>
   );

@@ -23,7 +23,7 @@ export default function ThemeChanger({ variant = 'icon' }) {
             'px-4': variant === 'labelled',
           }
         )}
-      ></button>
+      />
     );
   }
 
@@ -42,13 +42,13 @@ export default function ThemeChanger({ variant = 'icon' }) {
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-5 w-5'>
         <span
-          className='absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white'
+          className='absolute inset-0 rotate-90 transform text-black transition duration-500 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className='absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white'
+          className='absolute inset-0 rotate-0 transform text-black transition duration-500 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
