@@ -1,5 +1,6 @@
 module.exports = {
   // https://vercel.com/guides/how-to-enable-cors#enabling-cors-in-a-next.js-app
+  // https://stackoverflow.com/questions/70354024/handling-cors-with-next-js
   async headers() {
     return [
       {
