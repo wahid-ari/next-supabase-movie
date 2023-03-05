@@ -29,13 +29,10 @@ const activeCn = clsx(
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
 );
 
-export default function Navbar() {
+export default function Navbar({ className }) {
   const [isShowMore, setIsShowMore] = useState(false);
   return (
-    <Popover
-      as='nav'
-      className='sticky top-0 border-b bg-white shadow-sm dark:border-b-neutral-800 dark:bg-neutral-900'
-    >
+    <Popover as='nav' className={`sticky top-0 border-b shadow-sm dark:border-b-neutral-800 ${className && className}`}>
       <>
         <div className='mx-auto max-w-7xl p-4'>
           <div className='flex items-center justify-between'>
