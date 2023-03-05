@@ -19,7 +19,7 @@ export default function ThemeChanger({ variant = 'icon' }) {
           'rounded-full border-2 hover:border-neutral-400 focus:border-sky-500 focus:outline-none dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-sky-500',
           'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
           {
-            'w-12': variant === 'icon',
+            'w-8': variant === 'icon',
             'px-4': variant === 'labelled',
           }
         )}
@@ -34,7 +34,7 @@ export default function ThemeChanger({ variant = 'icon' }) {
         'rounded-full border-2 hover:border-neutral-400 focus:border-sky-500 focus:outline-none dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-sky-500',
         'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
         {
-          'w-12': variant === 'icon',
+          'w-8': variant === 'icon',
           'px-4': variant === 'labelled',
         }
       )}
