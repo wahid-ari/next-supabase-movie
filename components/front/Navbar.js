@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, Popover, Transition } from '@headlessui/react';
@@ -6,6 +6,7 @@ import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon } from '@heroicons/r
 import ActiveLink from '@components/front/ActiveLink';
 import clsx from 'clsx';
 import ThemeChanger from './ThemeChanger';
+import nookies from 'nookies';
 
 function CustomActiveLink({ href, children }) {
   return (
@@ -30,6 +31,12 @@ const activeCn = clsx(
 );
 
 export default function Navbar({ className }) {
+  const admin = nookies.get(null, 'name');
+  const [mounted, setMounted] = useState(false);
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const [isShowMore, setIsShowMore] = useState(false);
   return (
     <Popover
@@ -37,7 +44,7 @@ export default function Navbar({ className }) {
       className={`sticky top-0 border-b border-b-neutral-200/70 dark:border-b-neutral-800 ${className && className}`}
     >
       <>
-        <div className='mx-auto max-w-7xl p-4'>
+        <div className='mx-auto max-w-7xl px-4 py-3'>
           <div className='flex items-center justify-between'>
             {/* web logo  */}
             <Link
@@ -54,7 +61,7 @@ export default function Navbar({ className }) {
 
             {/* Nav Link  */}
             <div className='hidden md:block'>
-              <div className='flex items-center space-x-8'>
+              <div className='flex items-center md:space-x-6 lg:space-x-8'>
                 <CustomActiveLink href='/movies'>Movies</CustomActiveLink>
                 <CustomActiveLink href='/actors'>Actors</CustomActiveLink>
                 <CustomActiveLink href='/directors'>Directors</CustomActiveLink>
@@ -138,16 +145,34 @@ export default function Navbar({ className }) {
 
             <div className='hidden items-center gap-3 md:flex'>
               <ThemeChanger />
-              <Link
-                href='/login'
-                className={clsx(
-                  'rounded bg-sky-500 px-3.5 py-1.5 text-sm font-medium text-white transition-all duration-200',
-                  'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400'
-                )}
-                passHref
-              >
-                Login
-              </Link>
+              {mounted ? (
+                admin.name ? (
+                  <Link
+                    href='/dashboard'
+                    className={clsx(
+                      'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
+                      'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    )}
+                    passHref
+                  >
+                    Dashboard
+                  </Link>
+                ) : (
+                  <Link
+                    href='/login'
+                    className={clsx(
+                      'rounded bg-sky-500 px-3 py-1 text-sm font-medium text-white transition-all duration-200',
+                      'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400'
+                    )}
+                    passHref
+                  >
+                    Login
+                  </Link>
+                )
+              ) : (
+                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Dashboard</span>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -251,16 +276,18 @@ export default function Navbar({ className }) {
                     </>
                   )}
                 </Menu>
-                <Link
-                  href='/login'
-                  className={clsx(
-                    'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
-                    'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                    'dark:text-neutral-200 dark:hover:bg-neutral-800'
-                  )}
-                >
-                  Login
-                </Link>
+                {mounted && (
+                  <Link
+                    href={`${admin.name ? '/dashboard' : '/login'}`}
+                    className={clsx(
+                      'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
+                      'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                      'dark:text-neutral-200 dark:hover:bg-neutral-800'
+                    )}
+                  >
+                    {admin.name ? 'Dashboard' : 'Login'}
+                  </Link>
+                )}
               </div>
             </div>
           </Popover.Panel>
