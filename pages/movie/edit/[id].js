@@ -45,6 +45,7 @@ export default function Movie({ id }) {
     name: '',
     description: '',
     image_url: '',
+    backdrop_url: '',
     video_url: '',
     release_date: null,
     language: '',
@@ -59,6 +60,7 @@ export default function Movie({ id }) {
         name: data.name,
         description: data.description,
         image_url: data.image_url,
+        backdrop_url: data.backdrop_url,
         video_url: data.video_url,
         release_date: data.release_date,
         language: data.language,
@@ -184,6 +186,7 @@ export default function Movie({ id }) {
           name: '',
           description: '',
           image_url: '',
+          backdrop_url: '',
           video_url: '',
           release_date: null,
           language: '',
@@ -247,6 +250,15 @@ export default function Movie({ id }) {
             name='image'
             value={editItem.image_url}
             onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
+            placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
+          />
+          
+          <LabeledInput
+            label='Backdrop URL'
+            type='text'
+            name='backdrop'
+            value={editItem.backdrop_url}
+            onChange={(e) => setEditItem({ ...editItem, backdrop_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
 

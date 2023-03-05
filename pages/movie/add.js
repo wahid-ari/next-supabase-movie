@@ -41,6 +41,7 @@ export default function Movie() {
     name: '',
     description: '',
     image_url: '',
+    backdrop_url: '',
     video_url: '',
     release_date: null,
     language: 'English',
@@ -124,6 +125,7 @@ export default function Movie() {
           name: '',
           description: '',
           image_url: '',
+          backdrop_url: '',
           video_url: '',
           release_date: null,
           language: 'English',
@@ -186,6 +188,15 @@ export default function Movie() {
           name='image'
           value={createItem.image_url}
           onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
+          placeholder='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg'
+        />
+        
+        <LabeledInput
+          label='Backdrop URL'
+          type='text'
+          name='backdrop'
+          value={createItem.backdrop_url}
+          onChange={(e) => setCreateItem({ ...createItem, backdrop_url: e.target.value })}
           placeholder='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg'
         />
 
