@@ -8,13 +8,14 @@ import Heading from '@components/systems/Heading';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 import nookies from 'nookies';
 import HeadSeo from '@components/layout/HeadSeo';
+import Link from 'next/link';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
   if (cookies.token) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/dashboard',
       },
     };
   }
@@ -34,7 +35,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    Router.prefetch('/');
+    Router.prefetch('/dashboard');
   }, []);
 
   async function handleLogin(e) {
@@ -69,7 +70,7 @@ export default function Login() {
             message: 'Success Login',
             isError: false,
           });
-          Router.replace('/');
+          Router.replace('/dashboard');
         }
       } catch (error) {
         updateToast({
@@ -156,15 +157,15 @@ export default function Login() {
               {loading ? 'Logging in...' : 'Login'}
             </Button>
 
-            {/* <p className='mt-4 text-center font-normal dark:text-neutral-800'>
-              Dont have an account?{' '}
+            <p className='mt-4 text-center font-normal dark:text-neutral-800'>
+              Continue to{' '}
               <Link
-                href='/register'
+                href='/'
                 className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
               >
-                Register Now
+                Home
               </Link>
-            </p> */}
+            </p>
           </div>
         </div>
 

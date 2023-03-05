@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   if (cookies.token) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/dashboard',
       },
     };
   }
@@ -66,7 +66,7 @@ export default function Register() {
             message: 'Success Register',
             isError: false,
           });
-          Router.replace('/');
+          Router.replace('/dashboard');
         }
       }
     } catch (error) {
