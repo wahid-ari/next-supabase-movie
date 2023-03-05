@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { GlobalContext } from '@utils/GlobalContext';
 import {
   XIcon,
@@ -27,13 +26,7 @@ import nookies from 'nookies';
 
 export default function Sidebar() {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
   const { showNav, setShowNav } = useContext(GlobalContext);
-  const admin = nookies.get(null, 'type');
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true);
-  }, [admin]);
 
   const hideMenu = () => {
     setShowNav(false);
@@ -90,7 +83,7 @@ export default function Sidebar() {
           'scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
         )}
       >
-        <NavLink isHome href='/' icon={<ViewGridIcon className='h-4 w-4' />}>
+        <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-4 w-4' />}>
           Dashboard
         </NavLink>
 
@@ -102,33 +95,29 @@ export default function Sidebar() {
           Statistics
         </NavLink>
 
-        {mounted && admin.type == 'admin' ? (
-          <>
-            <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
-              Movie
-            </NavLink>
+        <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
+          Movie
+        </NavLink>
 
-            <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
-              Actor
-            </NavLink>
+        <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
+          Actor
+        </NavLink>
 
-            <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
-              Director
-            </NavLink>
+        <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
+          Director
+        </NavLink>
 
-            <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
-              Studio
-            </NavLink>
+        <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
+          Studio
+        </NavLink>
 
-            <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
-              Category
-            </NavLink>
+        <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
+          Category
+        </NavLink>
 
-            <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
-              Country
-            </NavLink>
-          </>
-        ) : null}
+        <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
+          Country
+        </NavLink>
 
         <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
           Settings
@@ -161,31 +150,17 @@ export default function Sidebar() {
 
       <hr className='mt-2 dark:border-neutral-800' />
       <div className='px-4 py-2'>
-        {mounted && admin.name ? (
-          <button
-            onClick={handleLogout}
-            className={clsx(
-              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
-              'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-red-500'
-            )}
-          >
-            <LogoutIcon className='h-4 w-4' />
-            Logout
-          </button>
-        ) : (
-          <Link
-            href='/login'
-            className={clsx(
-              'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
-              'rounded text-emerald-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
-            )}
-          >
-            <LoginIcon className='h-4 w-4' />
-            Login
-          </Link>
-        )}
+        <button
+          onClick={handleLogout}
+          className={clsx(
+            'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
+            'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
+            'focus-visible:outline-none focus-visible:ring focus-visible:ring-red-500'
+          )}
+        >
+          <LogoutIcon className='h-4 w-4' />
+          Logout
+        </button>
       </div>
     </div>
   );
