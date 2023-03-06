@@ -8,15 +8,12 @@ import { ArrowLeftIcon, ArrowRightIcon, ArrowSmRightIcon } from '@heroicons/reac
 import clsx from 'clsx';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import SwiperCore, { Autoplay } from 'swiper';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
 
 export default function Movies() {
@@ -111,20 +108,22 @@ export default function Movies() {
           )}
         >
           Movies
-          <ArrowSmRightIcon className='ml-1 h-6 w-6 transition-all duration-100 group-hover:h-7 group-hover:w-7 group-hover:translate-x-1' />
+          <ArrowSmRightIcon className='ml-1 h-6 w-6 text-neutral-600 transition-all duration-100 group-hover:h-7 group-hover:w-7 group-hover:translate-x-0.5 group-hover:text-sky-500 dark:text-neutral-300' />
         </Link>
         <div className='flex gap-2'>
           <button
+            aria-label='Prev'
             ref={prevRef}
             className='cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           >
-            <ArrowLeftIcon className='h-5 w-5 dark:text-white' />
+            <ArrowLeftIcon className='h-5 w-5 text-neutral-600 dark:text-neutral-300' />
           </button>
           <button
+            aria-label='Next'
             ref={nextRef}
             className='cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           >
-            <ArrowRightIcon className='h-5 w-5 dark:text-white' />
+            <ArrowRightIcon className='h-5 w-5 text-neutral-600 dark:text-neutral-300' />
           </button>
         </div>
       </div>
@@ -133,9 +132,9 @@ export default function Movies() {
           initialSlide={0}
           spaceBetween={20}
           slidesPerView='auto'
-          speed={500}
+          speed={300}
           loop={true}
-          slidesPerGroup={2}
+          // slidesPerGroup={2}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,

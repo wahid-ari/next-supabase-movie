@@ -10,7 +10,7 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
 
   return (
     <Link href={href} className='group' {...props}>
-      <div className='m-1 rounded border shadow dark:border-neutral-800 sm:h-[354px]'>
+      <div className='m-1 h-[320px] rounded border shadow dark:border-neutral-800 sm:h-[354px]'>
         <div className='relative h-56 w-full overflow-hidden sm:h-64'>
           {imageSrc ? (
             <Image
