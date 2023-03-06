@@ -81,7 +81,7 @@ export default function Movie({ id }) {
                     <Link
                       key={category.id}
                       href={`/category/detail/${category.id}`}
-                      className='truncate rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                      className='truncate rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     >
                       {category.name}
                       {index != data.categories.length - 1 ? ',' : ''}
@@ -128,7 +128,7 @@ export default function Movie({ id }) {
                   {data.studios ? (
                     <Link
                       href={`/studio/detail/${data.studios?.id}`}
-                      className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                      className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                     >
                       {data.studios?.name || '-'}
                     </Link>

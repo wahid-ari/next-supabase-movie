@@ -11,7 +11,7 @@ export default function MovieListItem({ href = '#', imageSrc, name, description,
   return (
     <Link
       href={href}
-      className='group flex gap-4 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:border-neutral-800'
+      className='group flex gap-4 rounded border shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
       {...props}
     >
       <div className='w-[88px]'>

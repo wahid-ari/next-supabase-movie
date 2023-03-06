@@ -11,7 +11,7 @@ export default function MovieGridItem({ href = '#', imageSrc, title, description
   return (
     <Link
       href={href}
-      className='group mx-auto w-40 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:border-neutral-800 sm:w-[12rem]'
+      className='group mx-auto w-40 rounded border shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 sm:w-[12rem]'
       {...props}
     >
       <div className='relative h-56 w-full overflow-hidden sm:h-64'>

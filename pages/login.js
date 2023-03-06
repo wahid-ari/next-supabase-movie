@@ -161,7 +161,7 @@ export default function Login() {
               Continue to{' '}
               <Link
                 href='/'
-                className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 Home
               </Link>

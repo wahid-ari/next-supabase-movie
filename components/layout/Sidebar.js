@@ -62,7 +62,7 @@ export default function Sidebar() {
     >
       <div className='flex items-center justify-between gap-2 px-4'>
         <button
-          className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
+          className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 lg:hidden'
           onClick={hideMenu}
           id='closemenu'
           aria-label='Close Menu'
@@ -129,7 +129,7 @@ export default function Sidebar() {
             'mt-1 mb-1 flex w-full items-center justify-start gap-2 px-3 py-2 transition-all',
             'rounded text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-neutral-300',
             'hover:bg-gray-100 dark:hover:bg-neutral-800 dark:hover:text-sky-500',
-            'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           )}
           target='_blank'
           rel='noopener noreferrer'
@@ -155,7 +155,7 @@ export default function Sidebar() {
           className={clsx(
             'flex w-full items-center justify-start gap-2 px-3 py-2 text-sm font-semibold transition-all',
             'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-            'focus-visible:outline-none focus-visible:ring focus-visible:ring-red-500'
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
           )}
         >
           <LogoutIcon className='h-4 w-4' />

@@ -53,7 +53,7 @@ export default function Director({ id }) {
           return (
             <Link
               href={`/movie/detail/${original.id}`}
-              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               {values.name}
             </Link>
@@ -125,7 +125,7 @@ export default function Director({ id }) {
             {data.countries ? (
               <Link
                 href={`/country/detail/${data.countries?.id}`}
-                className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 {data.countries?.name || '-'}
               </Link>

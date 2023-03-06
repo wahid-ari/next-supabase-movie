@@ -44,7 +44,7 @@ export default function Dashboard() {
         <Heading className=''>Movies</Heading>
         <Link
           href={`dashboard/movie`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -94,13 +94,13 @@ export default function Dashboard() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--prev !-mt-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next !-mt-8 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--next !-mt-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -151,7 +151,7 @@ export default function Dashboard() {
         <Heading className=''>Actors</Heading>
         <Link
           href={`dashboard/actor`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -199,13 +199,13 @@ export default function Dashboard() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -256,7 +256,7 @@ export default function Dashboard() {
         <Heading className=''>Directors</Heading>
         <Link
           href={`dashboard/director`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -304,13 +304,13 @@ export default function Dashboard() {
               <div className='splide__arrows'>
                 <button
                   title='Prev'
-                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--prev focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
                 <button
                   title='Next'
-                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+                  className='splide__arrow splide__arrow--next focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <ArrowRightIcon />
                 </button>
@@ -372,7 +372,7 @@ export default function Dashboard() {
         <Heading className=''>Studios</Heading>
         <Link
           href={`dashboard/studio`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -400,7 +400,7 @@ export default function Dashboard() {
         <Heading className=''>Categories</Heading>
         <Link
           href={`dashboard/category`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>
@@ -426,7 +426,7 @@ export default function Dashboard() {
         <Heading className=''>Countries</Heading>
         <Link
           href={`dashboard/country`}
-          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+          className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
         >
           View All
         </Link>

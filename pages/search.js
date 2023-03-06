@@ -249,7 +249,7 @@ export default function Search() {
                 <Heading h3>Recent Search</Heading>
                 <button
                   onClick={resetAllSearchHistory}
-                  className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+                  className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
                 >
                   Clear All
                 </button>
@@ -261,7 +261,7 @@ export default function Search() {
                     <Heading>Movies</Heading>
                     <button
                       onClick={resetMoviesHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
                     >
                       Clear
                     </button>
@@ -287,7 +287,7 @@ export default function Search() {
                     <Heading>Actors</Heading>
                     <button
                       onClick={resetActorsHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
                     >
                       Clear
                     </button>
@@ -311,7 +311,7 @@ export default function Search() {
                     <Heading>Directors</Heading>
                     <button
                       onClick={resetDirectorsHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
                     >
                       Clear
                     </button>
@@ -335,7 +335,7 @@ export default function Search() {
                     <Heading>Studios</Heading>
                     <button
                       onClick={resetStudiosHistory}
-                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+                      className='rounded text-[15px] font-medium text-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
                     >
                       Clear
                     </button>
@@ -361,7 +361,7 @@ export default function Search() {
       <div className='mt-2 grid grid-cols-1 gap-6 min-[400px]:grid-cols-2 sm:grid-cols-3'>
         <Link
           href='/dashboard/movie'
-          className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-yellow-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
@@ -372,7 +372,7 @@ export default function Search() {
         </Link>
         <Link
           href='/dashboard/actor'
-          className='group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
@@ -383,7 +383,7 @@ export default function Search() {
         </Link>
         <Link
           href='/dashboard/director'
-          className='group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-pink-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-violet-500 to-pink-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
@@ -394,7 +394,7 @@ export default function Search() {
         </Link>
         <Link
           href='/dashboard/studio'
-          className='group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
@@ -405,7 +405,7 @@ export default function Search() {
         </Link>
         <Link
           href='/dashboard/category'
-          className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-sky-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-red-500 to-sky-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>
@@ -416,7 +416,7 @@ export default function Search() {
         </Link>
         <Link
           href='/dashboard/country'
-          className='group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-lime-500 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500'
+          className='group h-20 rounded-lg bg-gradient-to-br from-orange-500 to-lime-500 p-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
         >
           <div className='flex h-full w-full items-center justify-between gap-2 rounded-md bg-white px-4 py-2 transition-all duration-300 ease-in group-hover:bg-opacity-0 dark:bg-neutral-900'>
             <h2 className='bg-gradient-to-r from-orange-500 to-lime-500 bg-clip-text text-xl font-bold text-transparent transition-all duration-300 ease-in group-hover:text-white'>

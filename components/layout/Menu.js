@@ -21,7 +21,7 @@ export default function Akun({ className }) {
             className={clsx(
               'inline-flex w-full items-center justify-center rounded',
               'text-gray-700 hover:text-gray-900 focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
-              'focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500'
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             )}
           >
             {mounted && admin?.name}

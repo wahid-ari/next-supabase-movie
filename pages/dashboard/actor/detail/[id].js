@@ -85,7 +85,7 @@ function Page({ id }) {
                 {data.countries ? (
                   <Link
                     href={`/dashboard/country/detail/${data.countries?.id}`}
-                    className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                    className='rounded text-[15px] font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                   >
                     {data.countries?.name || '-'}
                   </Link>
@@ -114,7 +114,7 @@ function Page({ id }) {
                         href={data.instagram_url}
                         target='_blank'
                         rel='noreferrer'
-                        className='rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                        className='rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                       >
                         Instagram
                       </a>
@@ -124,7 +124,7 @@ function Page({ id }) {
                         href={data.twitter_url}
                         target='_blank'
                         rel='noreferrer'
-                        className='rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+                        className='rounded text-[15px] font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                       >
                         Twitter
                       </a>

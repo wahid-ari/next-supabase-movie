@@ -11,7 +11,7 @@ export default function MovieListItem({ href = '#', imageSrc, name, ...props }) 
   return (
     <Link
       href={href}
-      className='group mx-auto w-32 rounded border shadow focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 dark:border-neutral-800'
+      className='group mx-auto w-32 rounded border shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
       {...props}
     >
       <div className='relative h-[180px] overflow-hidden'>
