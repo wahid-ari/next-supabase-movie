@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 export default function MovieHeaderItem({ href = '#', imageSrc, name, description, date, language, ...props }) {
   // src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg"
@@ -9,7 +10,10 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
     <Link
       {...props}
       href='#'
-      className='group relative flex h-64 cursor-pointer rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500 sm:h-96 md:h-[500px]'
+      className={clsx(
+        'group relative flex h-64 cursor-pointer rounded-md sm:h-80 md:h-[420px] lg:h-[500px]',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+      )}
     >
       <Image alt='Image' src={imageSrcReplace} className='rounded-md object-cover object-right-top' fill />
       <div className='z-[1] flex h-full w-full items-center rounded-md bg-gradient-to-r from-black via-black/80 to-black/10'>

@@ -90,6 +90,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-bottom: 8px !important;
 }
 
+.splide__pagination__page.is-active {
+  background: #0bf !important;
+  transform: scale(1.2) !important;
+}
+
 /* REACT MULTI SELECT  */
 html[class='dark'] {
   --bg-react-select-control: #171717;
