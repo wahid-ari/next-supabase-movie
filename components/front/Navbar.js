@@ -41,7 +41,9 @@ export default function Navbar({ className }) {
   return (
     <Popover
       as='nav'
-      className={`sticky z-10 top-0 border-b border-b-neutral-200/70 dark:border-b-neutral-800 ${className && className}`}
+      className={`sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800 ${
+        className && className
+      }`}
     >
       <>
         <div className='mx-auto max-w-7xl px-4 py-3'>

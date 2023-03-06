@@ -252,7 +252,7 @@ export default function Movie({ id }) {
             onChange={(e) => setEditItem({ ...editItem, image_url: e.target.value })}
             placeholder='https://www.themoviedb.org/t/p/w220_and_h330_face/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg'
           />
-          
+
           <LabeledInput
             label='Backdrop URL'
             type='text'

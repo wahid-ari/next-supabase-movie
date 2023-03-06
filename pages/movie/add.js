@@ -190,7 +190,7 @@ export default function Movie() {
           onChange={(e) => setCreateItem({ ...createItem, image_url: e.target.value })}
           placeholder='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg'
         />
-        
+
         <LabeledInput
           label='Backdrop URL'
           type='text'
