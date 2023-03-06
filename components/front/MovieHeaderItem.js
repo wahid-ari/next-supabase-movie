@@ -12,7 +12,7 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
       href='#'
       className={clsx(
         'group relative flex h-64 cursor-pointer rounded-md sm:h-80 md:h-[420px] lg:h-[500px]',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       )}
     >
       <Image alt='Image' src={imageSrcReplace} className='rounded-md object-cover object-right-top' fill />
