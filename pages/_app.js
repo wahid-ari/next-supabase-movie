@@ -21,10 +21,16 @@ const inter = Inter({ subsets: ['latin'] });
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
+  function isNumeric(value) {
+    return /^-?\d+$/.test(value);
+  }
+
   function handleStart(url) {
     let splitUrl = url.split('/');
-    // Show progress only in Detail Pages
-    if (splitUrl.includes('detail')) {
+    let lastUrl = splitUrl.slice(-1)[0];
+    // Show progress only in Detail Pages with keyword 'detail'
+    // Show progress in url that contain number
+    if (splitUrl.includes('detail') || isNumeric(lastUrl)) {
       NProgress.start();
     }
   }
