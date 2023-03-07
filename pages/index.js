@@ -4,6 +4,7 @@ import { useMovieData } from '@libs/swr';
 import Layout from '@components/front/Layout';
 import MovieHeaderItem from '@components/front/MovieHeaderItem';
 import MovieSliderItem from '@components/front/MovieSliderItem';
+import Shimer from '@components/systems/Shimer';
 import { ArrowLeftIcon, ArrowRightIcon, ArrowSmRightIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
@@ -17,7 +18,7 @@ import 'swiper/css/pagination';
 SwiperCore.use([Navigation, Pagination]);
 
 export default function Movies() {
-  const { data, error } = useMovieData();
+  const { data, error, isLoading } = useMovieData();
   const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');
   const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
   // const shuffledMovie = movieWithBackdrop.sort(() => 0.5 - Math.random());
@@ -28,24 +29,39 @@ export default function Movies() {
 
   const breakpointsMovie = {
     320: {
-      slidesPerView: 1,
+      slidesPerView: 1.5,
     },
-    450: {
+    400: {
       slidesPerView: 2,
     },
+    450: {
+      slidesPerView: 2.3,
+    },
     550: {
-      slidesPerView: 3,
+      slidesPerView: 3.3,
     },
     850: {
-      slidesPerView: 4,
+      slidesPerView: 4.3,
     },
     1024: {
-      slidesPerView: 5,
+      slidesPerView: 5.3,
     },
     1208: {
-      slidesPerView: 6,
+      slidesPerView: 6.3,
     },
   };
+
+  if (error) {
+    return (
+      <Layout
+        title='Home - MyMovie'
+        description="With MyMovie, it's easy to find Information and statistics about movies, TV shows as well as actors,
+            directors and other film industry professionals."
+      >
+        <div className='flex h-[36rem] items-center justify-center text-base'>Failed to load</div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout
@@ -53,7 +69,8 @@ export default function Movies() {
       description="With MyMovie, it's easy to find Information and statistics about movies, TV shows as well as actors,
             directors and other film industry professionals."
     >
-      {fiveMovieWithBackdrop && (
+      {/* Movie Header Slider Start */}
+      {!isLoading && fiveMovieWithBackdrop ? (
         <Splide
           aria-label='Movies'
           options={{
@@ -70,6 +87,7 @@ export default function Movies() {
               {fiveMovieWithBackdrop.map((item) => (
                 <SplideSlide key={item.id} className='p-1'>
                   <MovieHeaderItem
+                    href={`/movies/${item.id}`}
                     name={item.name}
                     description={item.description}
                     date={item.release_date}
@@ -95,7 +113,10 @@ export default function Movies() {
             </div>
           </div>
         </Splide>
+      ) : (
+        <Shimer className='!mx-1 h-64 rounded-md sm:h-80 md:h-[420px] lg:h-[500px]' />
       )}
+      {/* Movie Header Slider End */}
 
       {/* Movies Start*/}
       <div className='mt-10 flex items-center justify-between p-1'>
@@ -114,48 +135,61 @@ export default function Movies() {
           <button
             aria-label='Prev'
             ref={prevRef}
-            className='cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            className='group cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           >
-            <ArrowLeftIcon className='h-5 w-5 text-neutral-600 dark:text-neutral-300' />
+            <ArrowLeftIcon className='h-5 w-5 text-neutral-600 transition-all group-hover:text-sky-500 dark:text-neutral-300' />
           </button>
           <button
             aria-label='Next'
             ref={nextRef}
-            className='cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            className='group cursor-pointer rounded-full p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
           >
-            <ArrowRightIcon className='h-5 w-5 text-neutral-600 dark:text-neutral-300' />
+            <ArrowRightIcon className='h-5 w-5 text-neutral-600 transition-all group-hover:text-sky-500 dark:text-neutral-300' />
           </button>
         </div>
       </div>
       <div className='mt-4 cursor-move'>
-        <Swiper
-          initialSlide={0}
-          spaceBetween={20}
-          slidesPerView='auto'
-          speed={300}
-          loop={true}
-          // slidesPerGroup={2}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          breakpoints={breakpointsMovie}
-        >
-          {data?.slice(0, 18).map((item) => (
-            <SwiperSlide key={item.id}>
-              <MovieSliderItem
-                href={`/movies/detail/${item.id}`}
-                imageSrc={item.image_url}
-                title={item.name}
-                date={item.release_date}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {data ? (
+          <Swiper
+            initialSlide={0}
+            spaceBetween={12}
+            slidesPerView='auto'
+            // slidesPerView={6.5}
+            speed={300}
+            loop={true}
+            // slidesPerGroup={2}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            breakpoints={breakpointsMovie}
+          >
+            {data?.slice(0, 18).map((item) => (
+              <SwiperSlide key={item.id}>
+                <MovieSliderItem
+                  href={`/movies/${item.id}`}
+                  imageSrc={item.image_url}
+                  title={item.name}
+                  date={item.release_date}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className='flex gap-5 overflow-hidden px-1'>
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+            <Shimer className='!h-64 !w-[180px]' />
+          </div>
+        )}
       </div>
       {/* Movies End */}
     </Layout>
