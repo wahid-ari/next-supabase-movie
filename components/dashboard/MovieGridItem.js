@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import clsx from 'clsx';
 import Text from '@components/systems/Text';
 import { PhotographIcon } from '@heroicons/react/outline';
 
-export default function MovieGridItem({ href = '#', imageSrc, title, description, date, ...props }) {
+export default function MovieGridItem({ href = '#', className, imageSrc, title, description, date, ...props }) {
   const [isLoading, setLoading] = useState(true);
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 
   return (
     <Link
       href={href}
-      className='group mx-auto w-40 rounded border shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 sm:w-[12rem]'
+      className={clsx('group mx-auto w-40 rounded border shadow dark:border-neutral-800 sm:w-[12rem]',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        className
+      )}
       {...props}
     >
       <div className='relative h-56 w-full overflow-hidden sm:h-64'>
