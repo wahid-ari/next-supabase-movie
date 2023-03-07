@@ -12,7 +12,8 @@ export default function MovieGridItem({ href = '#', className, imageSrc, title, 
   return (
     <Link
       href={href}
-      className={clsx('group mx-auto w-40 rounded border shadow dark:border-neutral-800 sm:w-[12rem]',
+      className={clsx(
+        'group mx-auto w-40 rounded border shadow dark:border-neutral-800 sm:w-[12rem]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         className
       )}
