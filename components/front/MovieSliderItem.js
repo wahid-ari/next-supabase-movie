@@ -9,7 +9,7 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 
   return (
-    <Link href={href} className='group' {...props}>
+    <Link href={href} className='group rounded focus-visible:outline-none' {...props}>
       <div className='m-1 h-[320px] rounded border shadow dark:border-neutral-800 sm:h-[354px]'>
         <div className='relative h-56 w-full overflow-hidden sm:h-64'>
           {imageSrc ? (
@@ -28,11 +28,11 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
             </div>
           )}
         </div>
-        <div className='p-3.5'>
-          <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+        <div className='px-2.5 py-3'>
+          <Text.semibold className='rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
             {title}
           </Text.semibold>
-          <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
+          <span className='px-1 text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
         </div>
       </div>
     </Link>
