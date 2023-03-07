@@ -165,6 +165,8 @@ export default function Movies() {
             onInit={(swiper) => {
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
             }}
             breakpoints={breakpointsMovie}
           >
