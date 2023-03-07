@@ -9,7 +9,7 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
   return (
     <Link
       {...props}
-      href='#'
+      href={href}
       className={clsx(
         'group relative flex h-64 cursor-pointer rounded-md sm:h-80 md:h-[420px] lg:h-[500px]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
@@ -29,10 +29,6 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
           <p className='text-sm text-neutral-200 line-clamp-2 sm:text-base sm:line-clamp-3 md:line-clamp-4 lg:line-clamp-none'>
             {description}
           </p>
-          <div className='mt-3 flex flex-wrap gap-x-2 text-sm text-white sm:text-base'>
-            <span className='text-neutral-300'>Starring: </span>
-            <span>Tom Cruise</span>
-          </div>
         </div>
       </div>
     </Link>
