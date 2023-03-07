@@ -118,13 +118,13 @@ export default function Actor({ id }) {
             </div>
           )}
           <div className='sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5'>
-            <Heading className='-mt-1 mb-2'>Biography</Heading>
+            <Heading className='-mt-1 mb-1.5'>Biography</Heading>
             <Text className='!text-[15px]'>{data.biography || '-'}</Text>
             <div className='flex flex-wrap gap-x-12'>
               <div>
-                <Heading className='mt-4 mb-2'>Gender</Heading>
+                <Heading className='mt-4 mb-1.5'>Gender</Heading>
                 <Text className='!text-[15px]'>{data.gender == 1 ? 'Male' : 'Female'}</Text>
-                <Heading className='mt-4 mb-2'>Country</Heading>
+                <Heading className='mt-4 mb-1.5'>Country</Heading>
                 {data.countries ? (
                   <Link
                     href={`/country/detail/${data.countries?.id}`}
@@ -137,7 +137,7 @@ export default function Actor({ id }) {
                 )}
               </div>
               <div>
-                <Heading className='mt-4 mb-2'>Birthday</Heading>
+                <Heading className='mt-4 mb-1.5'>Birthday</Heading>
                 <Text className='!text-[15px]'>
                   {data.birthday ? (
                     <>
@@ -147,7 +147,7 @@ export default function Actor({ id }) {
                     <span>-</span>
                   )}
                 </Text>
-                <Heading className='mt-4 mb-2'>Social Media</Heading>
+                <Heading className='mt-4 mb-1.5'>Social Media</Heading>
                 {data.instagram_url == '' && data.twitter_url == '' ? (
                   <span>-</span>
                 ) : (

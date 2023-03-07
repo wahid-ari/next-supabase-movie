@@ -83,9 +83,9 @@ function Page({ id }) {
               </div>
             )}
             <div className='sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5'>
-              <Heading className='-mt-1 mb-2'>Overview</Heading>
+              <Heading className='-mt-1 mb-1.5'>Overview</Heading>
               <Text className='!text-[15px]'>{data.description || '-'}</Text>
-              <Heading className='mt-4 mb-2'>Categories</Heading>
+              <Heading className='mt-4 mb-1.5'>Categories</Heading>
               {data.categories.length > 0 ? (
                 <div className='flex flex-wrap gap-2'>
                   {data.categories?.map((category, index) => (
@@ -133,9 +133,9 @@ function Page({ id }) {
 
               <div className='flex flex-wrap gap-x-12'>
                 <div>
-                  <Heading className='mt-4 mb-2'>Release Date</Heading>
+                  <Heading className='mt-4 mb-1.5'>Release Date</Heading>
                   <Text className='!text-[15px]'>{data.release_date || '-'}</Text>
-                  <Heading className='mt-4 mb-2'>Studio</Heading>
+                  <Heading className='mt-4 mb-1.5'>Studio</Heading>
                   {data.studios ? (
                     <Link
                       href={`/dashboard/studio/detail/${data.studios?.id}`}
@@ -148,9 +148,9 @@ function Page({ id }) {
                   )}
                 </div>
                 <div>
-                  <Heading className='mt-4 mb-2'>Language</Heading>
+                  <Heading className='mt-4 mb-1.5'>Language</Heading>
                   <Text className='!text-[15px]'>{data.language || '-'}</Text>
-                  <Heading className='mt-4 mb-2'>Status</Heading>
+                  <Heading className='mt-4 mb-1.5'>Status</Heading>
                   <Text className='!text-[15px]'>{data.status == 1 ? 'Production' : 'Released'}</Text>
                 </div>
               </div>
