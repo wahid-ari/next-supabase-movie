@@ -3,18 +3,23 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Text from '@components/systems/Text';
 import { PhotographIcon } from '@heroicons/react/outline';
+import clsx from 'clsx';
 
-export default function MovieListItem({ href = '#', imageSrc, name, ...props }) {
+export default function ActorGridItem({ href = '#', imageSrc, name, front, ...props }) {
   const [isLoading, setLoading] = useState(true);
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 
   return (
     <Link
       href={href}
-      className='group mx-auto w-32 rounded border shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
+      className={clsx(
+        'group mx-auto w-32 rounded border shadow dark:border-neutral-800',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        front ? 'w-40' : 'w-32'
+      )}
       {...props}
     >
-      <div className='relative h-[180px] overflow-hidden'>
+      <div className={`relative overflow-hidden ${front ? 'h-[220px]' : 'h-[180px]'}`}>
         {imageSrc ? (
           <Image
             alt={name}

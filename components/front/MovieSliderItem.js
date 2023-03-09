@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Text from '@components/systems/Text';
 import { PhotographIcon } from '@heroicons/react/outline';
+import clsx from 'clsx';
 
 export default function MovieSliderItem({ href = '#', imageSrc, title, description, date, ...props }) {
   const [isLoading, setLoading] = useState(true);
@@ -16,8 +17,11 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
             <Image
               alt={title}
               src={imageSrc}
-              className={`transform rounded-t brightness-90 transition duration-500 ease-in-out will-change-auto group-hover:brightness-110
-          ${isLoading ? 'blur-2xl' : 'blur-0'}`}
+              className={clsx(
+                'rounded-t brightness-90 group-hover:brightness-110',
+                'transform transition duration-500 ease-in-out will-change-auto',
+                isLoading ? 'blur-2xl' : 'blur-0'
+              )}
               fill
               sizes={sizes}
               onLoadingComplete={() => setLoading(false)}
@@ -29,7 +33,12 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
           )}
         </div>
         <div className='px-2.5 py-3'>
-          <Text.semibold className='rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
+          <Text.semibold
+            className={clsx(
+              'rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2',
+              'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500'
+            )}
+          >
             {title}
           </Text.semibold>
           <span className='px-1 text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
