@@ -7,13 +7,14 @@ import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import TrailerSection from '@components/front/home/TrailerSection';
 import MovieSection from '@components/front/home/MovieSection';
+import ActorSection from '@components/front/home/ActorSection';
 
-export default function Movies() {
+export default function Home() {
   const { data, error, isLoading } = useMovieData();
   const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');
   const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
   // const shuffledMovie = movieWithBackdrop.sort(() => 0.5 - Math.random());
-  // const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5)
+  // const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5);
 
   if (error) {
     return (
@@ -85,6 +86,8 @@ export default function Movies() {
       <MovieSection />
 
       <TrailerSection />
+
+      <ActorSection />
     </Layout>
   );
 }
