@@ -17,8 +17,8 @@ export default function Actors() {
     query === ''
       ? data
       : data.filter((item) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-        );
+        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+      );
 
   if (error) {
     return (
@@ -45,20 +45,20 @@ export default function Actors() {
       </div>
 
       {data ? (
-        <div className='mt-4 grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
+        <div className='mt-4 grid grid-cols-2 gap-8 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
           {filtered.slice(0, page * 21).map((item, index) => (
             <ActorGridItem key={index} href={`/actors/${item.id}`} imageSrc={item.image_url} name={item.name} front />
           ))}
         </div>
       ) : (
-        <div className='mt-8 grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
-          {[...Array(16).keys()].map((item) => (
-            <Shimer key={item} className='!h-60 w-full' />
-          ))}
-        </div>
+          <div className='mt-4 grid grid-cols-2 gap-5 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
+            {[...Array(21).keys()].map((item) => (
+              <Shimer key={item} className='!h-60 w-full' />
+            ))}
+          </div>
       )}
 
-      {query === '' && !lastPage && (
+      {data && query === '' && !lastPage && (
         <div className='mt-8 flex justify-center'>
           <Button onClick={() => setPage(page + 1)}>Load More</Button>
         </div>

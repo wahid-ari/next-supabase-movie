@@ -59,13 +59,13 @@ export default function Movies() {
         </div>
       ) : (
         <div className='mt-4 grid grid-cols-2 gap-4 min-[500px]:grid-cols-3 md:gap-8 min-[800px]:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-          {[...Array(12).keys()].map((item) => (
+          {[...Array(18).keys()].map((item) => (
             <Shimer key={item} className='!h-72 w-full' />
           ))}
         </div>
       )}
 
-      {query === '' && !lastPage && (
+      {data && query === '' && !lastPage && (
         <div className='mt-8 flex justify-center'>
           <Button onClick={() => setPage(page + 1)}>Load More</Button>
         </div>
