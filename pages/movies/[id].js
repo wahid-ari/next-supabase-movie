@@ -65,7 +65,7 @@ function Page({ id }) {
         <div>
           <div className='mt-4 flex flex-wrap gap-5 sm:flex-nowrap'>
             {data?.image_url.startsWith('http') ? (
-              <div className='relative mx-auto h-80 w-60 overflow-hidden sm:mr-2 sm:h-96 sm:w-2/4 md:mr-4 md:w-2/5 xl:w-1/4 2xl:w-1/5'>
+              <div className='relative mx-auto h-80 w-60 overflow-hidden sm:mr-2 sm:h-96 sm:w-2/4 md:mr-4 md:w-[40%] lg:w-[27%] xl:w-[22%] 2xl:w-1/5'>
                 <Image
                   alt={data?.name}
                   title={data?.name}
