@@ -73,13 +73,19 @@ function Page({ id }) {
             </div>
           )}
           <div className='sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5'>
-            <Heading className='-mt-1 mb-1.5 !text-[19px]'>Biography</Heading>
+            <Heading h2 className='-mt-1 mb-1.5 !text-[19px]'>
+              Biography
+            </Heading>
             <Text className='!text-base'>{data.biography || '-'}</Text>
             <div className='flex flex-wrap gap-x-12'>
               <div>
-                <Heading className='mt-4 mb-1.5 !text-[19px]'>Gender</Heading>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Gender
+                </Heading>
                 <Text className='!text-base'>{data.gender == 1 ? 'Male' : 'Female'}</Text>
-                <Heading className='mt-4 mb-1.5 !text-[19px]'>Country</Heading>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Country
+                </Heading>
                 {data.countries ? (
                   <Link
                     href={`/countries/${data.countries?.id}`}
@@ -92,7 +98,9 @@ function Page({ id }) {
                 )}
               </div>
               <div>
-                <Heading className='mt-4 mb-1.5 !text-[19px]'>Birthday</Heading>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Birthday
+                </Heading>
                 <Text className='!text-base'>
                   {data.birthday ? (
                     <>
@@ -102,7 +110,9 @@ function Page({ id }) {
                     <span>-</span>
                   )}
                 </Text>
-                <Heading className='mt-4 mb-1.5 !text-[19px]'>Social Media</Heading>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Social Media
+                </Heading>
                 {data.instagram_url == '' && data.twitter_url == '' ? (
                   <span>-</span>
                 ) : (
