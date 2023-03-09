@@ -62,50 +62,49 @@ function Page({ id }) {
       <div className='py-2'>{data ? <Title>{data?.name}</Title> : <Title>Movie Detail</Title>}</div>
 
       {data ? (
-        <div>
-          <div className='mt-4 flex flex-wrap gap-5 sm:flex-nowrap'>
-            {data?.image_url.startsWith('http') ? (
-              <div className='relative mx-auto h-80 w-60 overflow-hidden sm:mr-2 sm:h-96 sm:w-2/4 md:mr-4 md:w-[40%] lg:w-[27%] xl:w-[22%] 2xl:w-1/5'>
-                <Image
-                  alt={data?.name}
-                  title={data?.name}
-                  src={data?.image_url}
-                  fill
-                  className={`rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}
-                  onLoadingComplete={() => setLoading(false)}
-                />
+        <div className='mt-4 flex flex-wrap gap-5 sm:flex-nowrap'>
+          {data?.image_url.startsWith('http') ? (
+            <div className='relative mx-auto h-80 w-60 overflow-hidden sm:mr-2 sm:h-96 sm:w-2/4 md:mr-4 md:w-[40%] lg:w-[27%] xl:w-[22%] 2xl:w-1/5'>
+              <Image
+                alt={data?.name}
+                title={data?.name}
+                src={data?.image_url}
+                fill
+                className={`rounded ${isLoading ? 'blur-2xl' : 'blur-0'}`}
+                onLoadingComplete={() => setLoading(false)}
+              />
+            </div>
+          ) : (
+            <div className='relative mx-auto flex h-72 w-52 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800 sm:w-1/3 md:w-1/4 xl:h-96'>
+              <PhotographIcon className='h-32 w-32' />
+            </div>
+          )}
+          <div className='sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5'>
+            <Heading h2 className='-mt-1 mb-1.5 !text-[19px]'>
+              Overview
+            </Heading>
+            <Text className='!text-base'>{data.description || '-'}</Text>
+            <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+              Categories
+            </Heading>
+            {data.categories.length > 0 ? (
+              <div className='flex flex-wrap gap-2'>
+                {data.categories?.map((category, index) => (
+                  <Link
+                    key={category.id}
+                    href={`/categories/${category.id}`}
+                    className='truncate rounded text-base font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                  >
+                    {category.name}
+                    {index != data.categories.length - 1 ? ',' : ''}
+                  </Link>
+                ))}
               </div>
             ) : (
-              <div className='relative mx-auto flex h-72 w-52 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800 sm:w-1/3 md:w-1/4 xl:h-96'>
-                <PhotographIcon className='h-32 w-32' />
-              </div>
+              <span>-</span>
             )}
-            <div className='sm:w-2/3 md:w-3/4 xl:w-3/4 2xl:w-4/5'>
-              <Heading h2 className='-mt-1 mb-1.5 !text-[19px]'>
-                Overview
-              </Heading>
-              <Text className='!text-base'>{data.description || '-'}</Text>
-              <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
-                Categories
-              </Heading>
-              {data.categories.length > 0 ? (
-                <div className='flex flex-wrap gap-2'>
-                  {data.categories?.map((category, index) => (
-                    <Link
-                      key={category.id}
-                      href={`/category/${category.id}`}
-                      className='truncate rounded text-base font-medium text-sky-500 transition-all duration-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                    >
-                      {category.name}
-                      {index != data.categories.length - 1 ? ',' : ''}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <span>-</span>
-              )}
 
-              {/* <Heading className="mt-4 mb-2">Actors</Heading>
+            {/* <Heading className="mt-4 mb-2">Actors</Heading>
               {data.actors.length > 0 ?
                 <div className="flex flex-wrap gap-2">
                   {data.actors?.map((actor, index) =>
@@ -121,7 +120,7 @@ function Page({ id }) {
                 <span>-</span>
               } */}
 
-              {/* <Heading className="mt-4 mb-2">Director</Heading>
+            {/* <Heading className="mt-4 mb-2">Director</Heading>
               {data.directors?.id ?
                 <Link
                   href={`/director/${data.directors?.id}`}
@@ -133,36 +132,35 @@ function Page({ id }) {
                 <span>-</span>
               } */}
 
-              <div className='flex flex-wrap gap-x-12'>
-                <div>
-                  <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
-                    Release Date
-                  </Heading>
-                  <Text className='!text-base'>{data.release_date || '-'}</Text>
-                  <Heading h2 className='mt-5 mb-1.5 !text-[19px]'>
-                    Studio
-                  </Heading>
-                  {data.studios ? (
-                    <Link
-                      href={`/studio/${data.studios?.id}`}
-                      className='rounded text-base font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                    >
-                      {data.studios?.name || '-'}
-                    </Link>
-                  ) : (
-                    '-'
-                  )}
-                </div>
-                <div>
-                  <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
-                    Language
-                  </Heading>
-                  <Text className='!text-base'>{data.language || '-'}</Text>
-                  <Heading h2 className='mt-5 mb-1.5 !text-[19px]'>
-                    Status
-                  </Heading>
-                  <Text className='!text-base'>{data.status == 1 ? 'Production' : 'Released'}</Text>
-                </div>
+            <div className='flex flex-wrap gap-x-12'>
+              <div>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Release Date
+                </Heading>
+                <Text className='!text-base'>{data.release_date || '-'}</Text>
+                <Heading h2 className='mt-5 mb-1.5 !text-[19px]'>
+                  Studio
+                </Heading>
+                {data.studios ? (
+                  <Link
+                    href={`/studios/${data.studios?.id}`}
+                    className='rounded text-base font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                  >
+                    {data.studios?.name || '-'}
+                  </Link>
+                ) : (
+                  '-'
+                )}
+              </div>
+              <div>
+                <Heading h2 className='mt-4 mb-1.5 !text-[19px]'>
+                  Language
+                </Heading>
+                <Text className='!text-base'>{data.language || '-'}</Text>
+                <Heading h2 className='mt-5 mb-1.5 !text-[19px]'>
+                  Status
+                </Heading>
+                <Text className='!text-base'>{data.status == 1 ? 'Production' : 'Released'}</Text>
               </div>
             </div>
           </div>
@@ -191,11 +189,11 @@ function Page({ id }) {
             {data.actors.length > 0 ? (
               data.actors?.map((actor, index) => (
                 <Link
-                  href={`/actor/${actor.id}`}
+                  href={`/actors/${actor.id}`}
                   key={index}
-                  className='group mt-1 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
+                  className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
                 >
-                  <div className='relative h-[180px] w-32 overflow-hidden'>
+                  <div className='relative h-[180px] overflow-hidden'>
                     <Image
                       alt={actor.name}
                       src={actor.image_url}
@@ -229,7 +227,7 @@ function Page({ id }) {
           </Heading>
           <div className='flex px-0.5 pb-4'>
             <Link
-              href={`/director/${data.directors?.id}`}
+              href={`/directors/${data.directors?.id}`}
               className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
             >
               <div className='relative h-[180px] overflow-hidden'>
