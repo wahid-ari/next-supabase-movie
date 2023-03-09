@@ -67,7 +67,7 @@ export default function TrailerSection({}) {
             spaceBetween={12}
             slidesPerView='auto'
             // slidesPerView={6.5}
-            speed={300}
+            speed={500}
             loop={true}
             // slidesPerGroup={2}
             navigation={{

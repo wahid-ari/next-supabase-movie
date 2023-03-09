@@ -22,7 +22,7 @@ export default function MovieSection({}) {
 
   const breakpoints = {
     320: {
-      slidesPerView: 1.5,
+      slidesPerView: 1.7,
     },
     400: {
       slidesPerView: 2,
