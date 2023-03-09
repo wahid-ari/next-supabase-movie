@@ -112,7 +112,7 @@ export default function ActorSection({}) {
             }}
             breakpoints={breakpoints}
           >
-            {data?.slice(0, 18).map((item) => (
+            {data?.slice(0, 21).map((item) => (
               <SwiperSlide key={item.id}>
                 <ActorSliderItem href={`/actors/${item.id}`} imageSrc={item.image_url} name={item.name} />
               </SwiperSlide>
