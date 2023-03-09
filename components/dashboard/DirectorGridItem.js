@@ -31,7 +31,7 @@ export default function DirectorGridItem({ href = '#', imageSrc, name, ...props 
           </div>
         )}
       </div>
-      <Text.medium className='transition-all duration-500 group-hover:text-sky-500'>{name}</Text.medium>
+      <Text.medium className='!text-[15px] transition-all duration-500 group-hover:text-sky-500'>{name}</Text.medium>
     </Link>
   );
 }
