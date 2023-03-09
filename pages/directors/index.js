@@ -49,7 +49,7 @@ export default function Director() {
           {filtered.slice(0, page * 21).map((item, index) => (
             <DirectorGridItem
               key={index}
-              href={`/dashboard/director/detail/${item.id}`}
+              href={`/directors/${item.id}`}
               imageSrc={item.image_url}
               name={item.name}
             />

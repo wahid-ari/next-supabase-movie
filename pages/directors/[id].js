@@ -79,7 +79,7 @@ function Page({ id }) {
             <Heading className='mt-4 mb-1.5 !text-[19px]'>Country</Heading>
             {data.countries ? (
               <Link
-                href={`/dashboard/country/detail/${data.countries?.id}`}
+                href={`/countries/${data.countries?.id}`}
                 className='rounded text-base font-medium text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 {data.countries?.name || '-'}
@@ -110,7 +110,7 @@ function Page({ id }) {
               {data.movies.map((item, index) => (
                 <MovieGridItem
                   key={index}
-                  href={`/dashboard/movie/detail/${item.id}`}
+                  href={`/movies/${item.id}`}
                   imageSrc={item.image_url}
                   title={item.name}
                   date={item.release_date}
