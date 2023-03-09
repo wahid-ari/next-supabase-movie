@@ -411,7 +411,7 @@ export default function Dashboard() {
               <Link
                 key={index}
                 href={`/dashboard/category/detail/${item.id}`}
-                className='flex items-center justify-between rounded border p-4 text-base font-medium text-neutral-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 dark:text-neutral-200 dark:hover:text-white'
+                className='flex items-center justify-between rounded border p-4 text-[15px] font-medium text-neutral-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 dark:text-neutral-200 dark:hover:text-white'
               >
                 <span>{item.name}</span>
                 {item.total}
