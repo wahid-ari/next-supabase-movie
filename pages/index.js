@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css';
 import TrailerSection from '@components/front/home/TrailerSection';
 import MovieSection from '@components/front/home/MovieSection';
 import ActorSection from '@components/front/home/ActorSection';
+import DirectorSection from '@components/front/home/DirectorSection';
 
 export default function Home() {
   const { data, error, isLoading } = useMovieData();
@@ -88,6 +89,8 @@ export default function Home() {
       <TrailerSection />
 
       <ActorSection />
+
+      <DirectorSection />
     </Layout>
   );
 }
