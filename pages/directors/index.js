@@ -47,12 +47,7 @@ export default function Director() {
       {data ? (
         <div className='mt-4 grid grid-cols-2 gap-8 gap-y-10 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
           {filtered.slice(0, page * 21).map((item, index) => (
-            <DirectorGridItem
-              key={index}
-              href={`/directors/${item.id}`}
-              imageSrc={item.image_url}
-              name={item.name}
-            />
+            <DirectorGridItem key={index} href={`/directors/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}
         </div>
       ) : (
