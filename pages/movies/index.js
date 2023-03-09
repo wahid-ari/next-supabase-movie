@@ -11,7 +11,7 @@ export default function Movies() {
   const { data, error } = useMovieData();
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  let lastPage = page > data?.length / 24;
+  let lastPage = page > data?.length / 18;
 
   const filtered =
     query === ''
@@ -46,7 +46,7 @@ export default function Movies() {
 
       {data ? (
         <div className='mt-4 grid grid-cols-2 gap-4 min-[500px]:grid-cols-3 md:gap-8 min-[800px]:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-          {filtered.slice(0, page * 24).map((item, index) => (
+          {filtered.slice(0, page * 18).map((item, index) => (
             <MovieGridItem
               className='!w-full'
               key={index}
