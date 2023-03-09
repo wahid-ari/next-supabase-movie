@@ -65,7 +65,7 @@ export default function Actors() {
       )}
 
       {query !== '' && filtered?.length < 1 && (
-        <p className='py-32 text-center'>There are no movies with title &quot;{query}&quot;</p>
+        <p className='py-32 text-center'>There are no actors with name &quot;{query}&quot;</p>
       )}
     </Layout>
   );
