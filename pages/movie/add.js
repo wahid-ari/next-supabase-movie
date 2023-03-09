@@ -119,7 +119,7 @@ export default function Movie() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/movie`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie`, createItem);
       if (res.status == 200) {
         setCreateItem({
           name: '',
@@ -144,7 +144,7 @@ export default function Movie() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/movie`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie`);
     }
   }
 

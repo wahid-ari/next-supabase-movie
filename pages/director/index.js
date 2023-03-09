@@ -93,7 +93,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/director`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director`, createItem);
       if (res.status == 200) {
         setOpenCreateDialog(false);
         setCreateItem({
@@ -114,7 +114,7 @@ export default function Director() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/director`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director`);
     }
   }
 
@@ -124,7 +124,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.API_ROUTE}/api/director?id=${editItem.id}`, editItem);
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({
@@ -144,7 +144,7 @@ export default function Director() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/director`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director`);
     }
   }
 
@@ -154,7 +154,7 @@ export default function Director() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(`${process.env.API_ROUTE}/api/director?id=${deleteItem.id}`);
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({
@@ -174,7 +174,7 @@ export default function Director() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/director`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director`);
     }
   }
 

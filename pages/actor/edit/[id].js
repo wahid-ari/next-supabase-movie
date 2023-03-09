@@ -86,7 +86,7 @@ export default function Actor({ id }) {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.API_ROUTE}/api/actor?id=${id}`, editItem);
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor?id=${id}`, editItem);
       if (res.status == 201) {
         setEditItem({
           name: '',
@@ -109,7 +109,7 @@ export default function Actor({ id }) {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/actor`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor`);
     }
   }
 

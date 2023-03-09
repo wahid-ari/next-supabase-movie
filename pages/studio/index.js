@@ -96,7 +96,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/studio`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio`, createItem);
       if (res.status == 200) {
         setOpenCreateDialog(false);
         setCreateItem({ name: '', image_url: '', city: '', country_id: null });
@@ -111,7 +111,7 @@ export default function Studio() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/studio`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio`);
     }
   }
 
@@ -121,7 +121,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.API_ROUTE}/api/studio?id=${editItem.id}`, editItem);
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({ name: '', image_url: '', city: '', country_id: null });
@@ -135,7 +135,7 @@ export default function Studio() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/studio`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio`);
     }
   }
 
@@ -145,7 +145,7 @@ export default function Studio() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(`${process.env.API_ROUTE}/api/studio?id=${deleteItem.id}`);
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ name: '', image_url: '', city: '', country_id: null });
@@ -159,7 +159,7 @@ export default function Studio() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/studio`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio`);
     }
   }
 

@@ -180,7 +180,7 @@ export default function Movie({ id }) {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.API_ROUTE}/api/movie?id=${id}`, editItem);
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie?id=${id}`, editItem);
       if (res.status == 201) {
         setEditItem({
           name: '',
@@ -205,7 +205,7 @@ export default function Movie({ id }) {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/movie`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie`);
     }
   }
 

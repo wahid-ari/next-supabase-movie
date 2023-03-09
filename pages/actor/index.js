@@ -44,7 +44,7 @@ export default function Actor() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(`${process.env.API_ROUTE}/api/actor?id=${deleteItem.id}`);
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -58,7 +58,7 @@ export default function Actor() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/actor`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor`);
     }
   }
 

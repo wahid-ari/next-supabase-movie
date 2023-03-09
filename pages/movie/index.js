@@ -42,7 +42,7 @@ export default function Movie() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(`${process.env.API_ROUTE}/api/movie?id=${deleteItem.id}`);
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -56,7 +56,7 @@ export default function Movie() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/movie`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie`);
     }
   }
 

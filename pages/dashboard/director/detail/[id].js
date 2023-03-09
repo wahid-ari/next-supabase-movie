@@ -15,12 +15,12 @@ export async function getServerSideProps(context) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   const { id } = context.params;
-  const res = await fetch(`${process.env.API_ROUTE}/api/director?id=${id}`).then((res) => res.json());
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director?id=${id}`).then((res) => res.json());
   return {
     props: {
       id: id,
       fallback: {
-        [`${process.env.API_ROUTE}/api/director?id=${id}`]: res,
+        [`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director?id=${id}`]: res,
       },
     }, // will be passed to the page component as props
   };

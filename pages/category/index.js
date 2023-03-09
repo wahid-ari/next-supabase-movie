@@ -52,7 +52,7 @@ export default function Category() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/category`, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`, {
         name: name,
       });
       if (res.status == 200) {
@@ -68,7 +68,7 @@ export default function Category() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/category`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
     }
   }
 
@@ -78,7 +78,7 @@ export default function Category() {
       isLoading: true,
     });
     try {
-      const res = await axios.put(`${process.env.API_ROUTE}/api/category?id=${editItem.id}`, editItem);
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category?id=${editItem.id}`, editItem);
       if (res.status == 201) {
         setOpenEditDialog(false);
         setEditItem({ id: null, name: '' });
@@ -92,7 +92,7 @@ export default function Category() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/category`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
     }
   }
 
@@ -102,7 +102,7 @@ export default function Category() {
       isLoading: true,
     });
     try {
-      const res = await axios.delete(`${process.env.API_ROUTE}/api/category?id=${deleteItem.id}`);
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category?id=${deleteItem.id}`);
       if (res.status == 200) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
@@ -116,7 +116,7 @@ export default function Category() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/category`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
     }
   }
 

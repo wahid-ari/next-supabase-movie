@@ -63,7 +63,7 @@ export default function Actor() {
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.API_ROUTE}/api/actor`, createItem);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor`, createItem);
       if (res.status == 200) {
         setCreateItem({
           name: '',
@@ -86,7 +86,7 @@ export default function Actor() {
         isError: true,
       });
     } finally {
-      mutate(`${process.env.API_ROUTE}/api/actor`);
+      mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor`);
     }
   }
 
