@@ -170,9 +170,9 @@ export default function Movie({ id }) {
                 <Link
                   href={`/actor/detail/${actor.id}`}
                   key={index}
-                  className='group mt-1 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
+                  className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
                 >
-                  <div className='relative h-[180px] w-32 overflow-hidden'>
+                  <div className='relative h-[180px] overflow-hidden'>
                     <Image
                       alt={actor.name}
                       src={actor.image_url}
