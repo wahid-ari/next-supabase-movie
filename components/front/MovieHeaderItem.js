@@ -15,7 +15,7 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       )}
     >
-      <Image alt='Image' src={imageSrcReplace} className='rounded-md object-cover object-right-top' fill />
+      <Image alt='Image' src={imageSrcReplace} className='rounded-md object-cover object-right-top' fill priority />
       <div className='z-[1] flex h-full w-full items-center rounded-md bg-gradient-to-r from-black via-black/80 to-black/10'>
         <div className='max-w-2xl p-8'>
           <p className='mb-4 text-xl font-medium text-white transition-all duration-300 group-hover:text-sky-500 dark:text-white sm:text-2xl md:text-3xl'>
