@@ -56,7 +56,7 @@ export default function Navbar({ className }) {
             >
               <div className='flex items-center justify-center font-medium text-gray-900 md:justify-start'>
                 <Image alt='Logo' src='/icon.jpg' width={30} height={30} className='mr-2 rounded-lg' />
-                <span className='text-xl font-semibold text-neutral-700 dark:text-neutral-200'>MyMovie</span>
+                <span className='text-xl font-semibold text-neutral-800 dark:text-neutral-100'>MyMovie</span>
               </div>
             </Link>
             {/* web logo  */}
