@@ -17,8 +17,8 @@ export default function Actors() {
     query === ''
       ? data
       : data.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -51,11 +51,11 @@ export default function Actors() {
           ))}
         </div>
       ) : (
-          <div className='mt-4 grid grid-cols-2 gap-5 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
-            {[...Array(21).keys()].map((item) => (
-              <Shimer key={item} className='!h-60 w-full' />
-            ))}
-          </div>
+        <div className='mt-4 grid grid-cols-2 gap-5 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
+          {[...Array(21).keys()].map((item) => (
+            <Shimer key={item} className='!h-60 w-full' />
+          ))}
+        </div>
       )}
 
       {data && query === '' && !lastPage && (
