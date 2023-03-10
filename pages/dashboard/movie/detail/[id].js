@@ -174,7 +174,7 @@ function Page({ id }) {
           <div
             className={`${
               data.actors.length > 8 && 'mb-4'
-            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800`}
+            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800`}
           >
             {data.actors.length > 0 ? (
               data.actors?.map((actor, index) => (
@@ -183,7 +183,7 @@ function Page({ id }) {
                   key={index}
                   className='group mt-1 w-32 rounded border border-transparent shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
                 >
-                  <div className='relative h-[180px] overflow-hidden'>
+                  <div className='relative h-[180px] w-32 overflow-hidden'>
                     <Image
                       alt={actor.name}
                       src={actor.image_url}
