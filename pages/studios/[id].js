@@ -61,6 +61,8 @@ function Page({ id }) {
                 title={data?.name}
                 src={data?.image_url}
                 fill
+                priority
+                sizes={`(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`}
                 className={`rounded object-contain ${isLoading ? 'blur-2xl' : 'blur-0'}`}
                 onLoadingComplete={() => setLoading(false)}
               />
