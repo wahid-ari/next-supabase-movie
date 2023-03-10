@@ -115,19 +115,20 @@ export default function Home() {
           />
         </Link>
       </div>
-      {data ? (
-        <div className='mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-          {studios.slice(0, 5).map((item, index) => (
+      {studios ? (
+        <div className='mt-8 flex gap-4 overflow-auto pb-2 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800'>
+          {studios.slice(0, 12).map((item, index) => (
             <StudioImageGridItem key={index} href={`/studios/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}
         </div>
       ) : (
-        <div className='mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-          {[...Array(5).keys()].map((item) => (
-            <Shimer key={item} className='!h-36 w-full' />
+        <div className='mt-8 flex gap-4 overflow-hidden'>
+          {[...Array(6).keys()].map((item) => (
+            <Shimer key={item} className='!h-36 !w-52' />
           ))}
         </div>
       )}
+
       {/* Studios End */}
     </Layout>
   );
