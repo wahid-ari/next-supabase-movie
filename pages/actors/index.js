@@ -59,7 +59,7 @@ export default function Actors() {
       )}
 
       {data && query === '' && !lastPage && (
-        <div className='mt-8 flex justify-center'>
+        <div className='mt-10 flex justify-center'>
           <Button onClick={() => setPage(page + 1)}>Load More</Button>
         </div>
       )}
