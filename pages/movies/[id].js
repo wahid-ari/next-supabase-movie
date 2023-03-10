@@ -186,7 +186,7 @@ function Page({ id }) {
           <div
             className={`${
               data.actors.length > 8 && 'mb-4'
-            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800`}
+            } flex gap-3 overflow-auto px-0.5 pb-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thumb-gray-200 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-800 dark:scrollbar-track-custom-dark`}
           >
             {data.actors.length > 0 ? (
               data.actors?.map((actor, index) => (

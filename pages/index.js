@@ -118,7 +118,7 @@ export default function Home() {
         </Link>
       </div>
       {studios ? (
-        <div className='mt-5 flex gap-4 overflow-auto px-0.5 pb-2.5 pt-1 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800'>
+        <div className='mt-5 flex gap-4 overflow-auto px-0.5 pb-2.5 pt-1 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thumb-gray-200 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-800 dark:scrollbar-track-custom-dark'>
           {studios.slice(0, 12).map((item, index) => (
             <StudioImageGridItem key={index} href={`/studios/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}

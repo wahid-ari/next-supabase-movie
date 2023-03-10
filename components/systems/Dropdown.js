@@ -42,7 +42,7 @@ export default function Dropdown({ id, name, label, show, value, onClick, onBlur
       <div
         className={`${
           show ? 'max-h-64 border dark:border-neutral-800' : 'max-h-0 border-transparent'
-        } absolute z-50 w-full overflow-y-auto rounded-md bg-white shadow-sm transition-all scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-800`}
+        } absolute z-50 w-full overflow-y-auto rounded-md bg-white shadow-sm transition-all scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-800`}
       >
         {children}
       </div>

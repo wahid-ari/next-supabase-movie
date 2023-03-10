@@ -33,7 +33,7 @@ export default function Layout({ children, title, description, className }) {
             className={clsx(
               'flex items-center justify-between gap-x-4 border-b px-4 py-3 dark:border-neutral-800 lg:hidden',
               'overflow-x-auto bg-white/95 dark:bg-neutral-900/90',
-              'scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
+              'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
             )}
           >
             <Breadcrumb />

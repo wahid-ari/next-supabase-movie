@@ -9,6 +9,11 @@ module.exports = {
       transitionProperty: {
         'max-height': 'max-height',
       },
+      colors: {
+        custom: {
+          dark: '#1c1c1c',
+        },
+      },
     },
   },
   variants: {
