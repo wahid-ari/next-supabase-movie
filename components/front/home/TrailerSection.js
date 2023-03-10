@@ -60,7 +60,7 @@ export default function TrailerSection({}) {
           </button>
         </div>
       </div>
-      <div className='mt-4 cursor-move'>
+      <div className='mt-5 cursor-move'>
         {movieWithVideo ? (
           <Swiper
             initialSlide={0}

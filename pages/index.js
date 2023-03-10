@@ -118,13 +118,13 @@ export default function Home() {
         </Link>
       </div>
       {studios ? (
-        <div className='mt-8 flex gap-4 overflow-auto pb-2 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800'>
+        <div className='mt-5 flex gap-4 overflow-auto px-0.5 pb-2.5 pt-1 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800'>
           {studios.slice(0, 12).map((item, index) => (
             <StudioImageGridItem key={index} href={`/studios/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}
         </div>
       ) : (
-        <div className='mt-8 flex gap-4 overflow-hidden'>
+        <div className='mt-5 flex gap-4 overflow-hidden'>
           {[...Array(6).keys()].map((item) => (
             <Shimer key={item} className='!h-36 !w-52' />
           ))}
@@ -152,7 +152,7 @@ export default function Home() {
         </Link>
       </div>
       {categories ? (
-        <div className='mt-8 grid grid-cols-2 gap-4 min-[560px]:grid-cols-3 sm:gap-6 md:grid-cols-4 xl:grid-cols-6'>
+        <div className='mt-5 grid grid-cols-2 gap-4 min-[560px]:grid-cols-3 sm:gap-6 md:grid-cols-4 xl:grid-cols-6'>
           {categories.slice(0, 12).map((item, index) => (
             <Link
               key={index}
@@ -170,7 +170,7 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className='mt-8 grid grid-cols-2 gap-x-4 gap-y-1 min-[560px]:grid-cols-3 sm:gap-x-6 sm:gap-y-4 md:grid-cols-4 xl:grid-cols-6'>
+        <div className='mt-5 grid grid-cols-2 gap-x-4 gap-y-1 min-[560px]:grid-cols-3 sm:gap-x-6 sm:gap-y-4 md:grid-cols-4 xl:grid-cols-6'>
           {[...Array(12).keys()].map((item) => (
             <Shimer key={item} className='!h-14 w-full' />
           ))}

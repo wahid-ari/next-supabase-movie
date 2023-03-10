@@ -10,7 +10,7 @@ export default function DirectorSliderItem({ href = '#', imageSrc, name, ...prop
   const sizes = `(max-width: 360px) 100vw, (max-width: 480px) 50vw, 33vw`;
 
   return (
-    <Link href={href} className='group m-1 rounded focus-visible:outline-none' {...props}>
+    <Link href={href} className='group rounded focus-visible:outline-none' {...props}>
       <div className='relative mx-auto h-32 w-32 max-w-[8rem] overflow-hidden'>
         {imageSrc ? (
           <Image
@@ -31,7 +31,7 @@ export default function DirectorSliderItem({ href = '#', imageSrc, name, ...prop
           </div>
         )}
       </div>
-      <div className='px-2.5 py-3'>
+      <div className='px-2.5 pt-3'>
         <Text.medium
           className={clsx(
             'rounded px-1 py-0.5 text-center !text-[15px] transition-all duration-500 line-clamp-2',

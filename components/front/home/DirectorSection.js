@@ -90,7 +90,7 @@ export default function DirectorSection({}) {
           </button>
         </div>
       </div>
-      <div className='cursor-move'>
+      <div className='mt-6'>
         {data ? (
           <Swiper
             initialSlide={0}
