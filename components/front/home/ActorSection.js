@@ -56,7 +56,7 @@ export default function ActorSection({}) {
   return (
     <>
       {/* Actors Start*/}
-      <div className='mt-10 flex items-center justify-between p-1'>
+      <div className='mt-16 flex items-center justify-between p-1'>
         <Link
           href={`/actors`}
           className={clsx(

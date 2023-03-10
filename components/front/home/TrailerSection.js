@@ -39,7 +39,7 @@ export default function TrailerSection({}) {
   return (
     <>
       {/* Movies Video Start*/}
-      <div className='mt-10 flex items-center justify-between p-1'>
+      <div className='mt-16 flex items-center justify-between p-1'>
         <Heading h3 className='mb-0'>
           Trailers
         </Heading>

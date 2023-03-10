@@ -47,7 +47,7 @@ export default function MovieSection({}) {
   return (
     <>
       {/* Movies Start*/}
-      <div className='mt-10 flex items-center justify-between p-1'>
+      <div className='mt-16 flex items-center justify-between p-1'>
         <Link
           href={`/movies`}
           className={clsx(

@@ -133,7 +133,7 @@ export default function Home() {
       {/* Studios End */}
 
       {/* Categories Start */}
-      <div className='mt-10 flex items-center justify-between p-1'>
+      <div className='mt-16 flex items-center justify-between p-1'>
         <Link
           href={`/categories`}
           className={clsx(
@@ -176,6 +176,7 @@ export default function Home() {
           ))}
         </div>
       )}
+      <div className='py-8' />
       {/* Categories End */}
     </Layout>
   );
