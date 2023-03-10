@@ -13,7 +13,7 @@ export default function ActorGridItem({ href = '#', imageSrc, name, front, ...pr
     <Link
       href={href}
       className={clsx(
-        'group mx-auto w-32 rounded border shadow dark:border-neutral-800',
+        'group mx-auto rounded border shadow dark:border-neutral-800',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
         front ? 'w-40' : 'w-32'
       )}
