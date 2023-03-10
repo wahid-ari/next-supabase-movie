@@ -1,5 +1,6 @@
-import { useMovieData, useStudioData } from '@libs/swr';
 import Link from 'next/link';
+import { useMovieData, useStudioData, useCategoryTotalData } from '@libs/swr';
+import clsx from 'clsx';
 import Layout from '@components/front/Layout';
 import MovieHeaderItem from '@components/front/MovieHeaderItem';
 import Shimer from '@components/systems/Shimer';
@@ -10,18 +11,18 @@ import TrailerSection from '@components/front/home/TrailerSection';
 import MovieSection from '@components/front/home/MovieSection';
 import ActorSection from '@components/front/home/ActorSection';
 import DirectorSection from '@components/front/home/DirectorSection';
-import clsx from 'clsx';
 import StudioImageGridItem from '@components/front/StudioImageGridItem';
 
 export default function Home() {
   const { data, error, isLoading } = useMovieData();
   const { data: studios, error: errorStudios } = useStudioData();
+  const { data: categories, error: errorCategories } = useCategoryTotalData();
   const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');
   const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
   // const shuffledMovie = movieWithBackdrop.sort(() => 0.5 - Math.random());
   // const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5);
 
-  if (error || errorStudios) {
+  if (error || errorStudios || errorCategories) {
     return (
       <Layout
         title='Home - MyMovie'
@@ -128,8 +129,53 @@ export default function Home() {
           ))}
         </div>
       )}
-
       {/* Studios End */}
+
+      {/* Categories Start */}
+      <div className='mt-10 flex items-center justify-between p-1'>
+        <Link
+          href={`/categories`}
+          className={clsx(
+            'group flex items-center rounded text-xl font-medium',
+            'text-neutral-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+            'transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+          )}
+        >
+          Categories
+          <ArrowSmRightIcon
+            className={clsx(
+              'ml-1 h-6 w-6 text-neutral-600 transition-all duration-100',
+              'group-hover:h-7 group-hover:w-7 group-hover:translate-x-0.5 group-hover:text-sky-500 dark:text-neutral-300'
+            )}
+          />
+        </Link>
+      </div>
+      {categories ? (
+        <div className='mt-8 grid grid-cols-2 gap-4 min-[560px]:grid-cols-3 sm:gap-6 md:grid-cols-4 xl:grid-cols-6'>
+          {categories.slice(0, 12).map((item, index) => (
+            <Link
+              key={index}
+              href={`/categories/${item.id}`}
+              className={clsx(
+                'flex flex-wrap items-center justify-between rounded border p-4 text-[15px] font-medium',
+                'transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800',
+                'text-neutral-600 hover:text-white dark:text-neutral-200 dark:hover:text-white'
+              )}
+            >
+              <span>{item.name}</span>
+              {item.total}
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className='mt-8 grid grid-cols-2 gap-x-4 gap-y-1 min-[560px]:grid-cols-3 sm:gap-x-6 sm:gap-y-4 md:grid-cols-4 xl:grid-cols-6'>
+          {[...Array(12).keys()].map((item) => (
+            <Shimer key={item} className='!h-14 w-full' />
+          ))}
+        </div>
+      )}
+      {/* Categories End */}
     </Layout>
   );
 }
