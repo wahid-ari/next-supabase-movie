@@ -55,7 +55,7 @@ export default function Home() {
         >
           <div>
             <SplideTrack>
-              {fiveMovieWithBackdrop.map((item) => (
+              {fiveMovieWithBackdrop.map((item, index) => (
                 <SplideSlide key={item.id} className='p-1'>
                   <MovieHeaderItem
                     href={`/movies/${item.id}`}
@@ -64,6 +64,7 @@ export default function Home() {
                     date={item.release_date}
                     imageSrc={item.backdrop_url}
                     language={item.language}
+                    priority={index}
                   />
                 </SplideSlide>
               ))}

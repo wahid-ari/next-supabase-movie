@@ -2,10 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-export default function MovieHeaderItem({ href = '#', imageSrc, name, description, date, language, ...props }) {
+export default function MovieHeaderItem({
+  href = '#',
+  imageSrc,
+  name,
+  description,
+  date,
+  priority,
+  language,
+  ...props
+}) {
   // src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg"
   // src="https://www.themoviedb.org/t/p/w1280_and_h720_bestv2/AaV1YIdWKnjAIAOe8UUKBFm327v.jpg"
   let imageSrcReplace = imageSrc.replace('w533_and_h300', 'w1280_and_h720');
+
   return (
     <Link
       {...props}
@@ -15,7 +25,13 @@ export default function MovieHeaderItem({ href = '#', imageSrc, name, descriptio
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       )}
     >
-      <Image alt='Image' src={imageSrcReplace} className='rounded-md object-cover object-right-top' fill priority />
+      <Image
+        alt='Image'
+        src={imageSrcReplace}
+        className='rounded-md object-cover object-right-top'
+        fill
+        priority={priority == 0 ? true : false}
+      />
       <div className='z-[1] flex h-full w-full items-center rounded-md bg-gradient-to-r from-black via-black/80 to-black/10'>
         <div className='max-w-2xl p-8'>
           <p className='mb-4 text-xl font-medium text-white transition-all duration-300 group-hover:text-sky-500 dark:text-white sm:text-2xl md:text-3xl'>
