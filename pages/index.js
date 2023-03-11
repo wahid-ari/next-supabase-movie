@@ -178,7 +178,7 @@ export default function Home() {
         </div>
       )}
       {/* Categories End */}
-      
+
       {/* Countries Start */}
       <div className='mt-16 flex items-center justify-between p-1'>
         <Link
@@ -211,7 +211,7 @@ export default function Home() {
           ))}
         </div>
       ) : (
-          <div className='mt-5 grid grid-cols-2 gap-x-8 gap-y-5 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-5 grid grid-cols-2 gap-x-8 gap-y-5 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
           {[...Array(10).keys()].map((item) => (
             <Shimer key={item} className='!h-12 w-full' />
           ))}

@@ -15,8 +15,8 @@ export default function Countries() {
     query === ''
       ? data
       : data.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -55,13 +55,12 @@ export default function Countries() {
           ))}
         </div>
       ) : (
-          <div className='mt-4 grid grid-cols-2 gap-x-8 gap-y-5 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
-            {[...Array(15).keys()].map((item) => (
-              <Shimer key={item} className='!h-12 w-full' />
-            ))}
-          </div>
+        <div className='mt-4 grid grid-cols-2 gap-x-8 gap-y-5 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+          {[...Array(15).keys()].map((item) => (
+            <Shimer key={item} className='!h-12 w-full' />
+          ))}
+        </div>
       )}
-        
     </Layout>
   );
 }
