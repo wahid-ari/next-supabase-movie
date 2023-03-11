@@ -21,44 +21,60 @@ export default function Footer({ className }) {
           </div>
           <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 md:w-2/4 md:grid-cols-3'>
             <div>
-              <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Resources</h2>
+              <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Sitemap</h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <a
-                    href='https://flowbite.com/'
+                  <Link
+                    href='/movies'
                     className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
-                    Flowbite
-                  </a>
+                    Movies
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link
+                    href='/actors'
+                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                  >
+                    Actors
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='https://tailwindcss.com/'
+                  <Link
+                    href='/directors'
                     className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
-                    Tailwind CSS
-                  </a>
+                    Directors
+                  </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Follow us</h2>
+              <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Sitemap</h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
-                  <a
-                    href='https://github.com/themesberg/flowbite'
+                  <Link
+                    href='/studios'
                     className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
-                    Github
-                  </a>
+                    Studios
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link
+                    href='/categories'
+                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                  >
+                    Categories
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href='https://discord.gg/4eeurUVvTy'
+                  <Link
+                    href='/countries'
                     className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
-                    Discord
-                  </a>
+                    Countries
+                  </Link>
                 </li>
               </ul>
             </div>

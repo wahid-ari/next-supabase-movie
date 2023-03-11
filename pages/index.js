@@ -99,7 +99,7 @@ export default function Home() {
       <DirectorSection />
 
       {/* Studios Start*/}
-      <div className='mt-10 flex items-center justify-between p-1'>
+      <div className='mt-16 flex items-center justify-between p-1'>
         <Link
           href={`/studios`}
           className={clsx(
