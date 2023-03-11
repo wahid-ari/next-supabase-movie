@@ -6,6 +6,7 @@ import ActorGridItem from '@components/dashboard/ActorGridItem';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import StudioGridItem from '@components/dashboard/StudioGridItem';
 import FrontTabs from '@components/front/FrontTabs';
+import Text from '@components/systems/Text';
 
 export async function getServerSideProps(context) {
   // https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#caching-with-server-side-rendering-ssr
@@ -48,7 +49,10 @@ function Page({ id }) {
         data ? 'Browse Actors, Directors and Studio from ' + data?.name + ' - MyMovie' : 'Country Detail - MyMovie'
       }`}
     >
-      <div className='py-2'>{data ? <Title>{data?.name}</Title> : <Title>Country Detail</Title>}</div>
+      <div className='py-2'>
+        {data ? <Title>{data?.name}</Title> : <Title>Country Detail</Title>}
+        <Text className='mt-1 !text-base'>Browse actors, directors and studios from {data?.name}</Text>
+      </div>
 
       <FrontTabs
         items={[
@@ -56,7 +60,7 @@ function Page({ id }) {
           `Directors (${data.directors.length})`,
           `Studios (${data.studios.length})`,
         ]}
-        className='mt-5'
+        className='mt-3'
       >
         <FrontTabs.panel>
           {data.actors.length > 0 ? (
