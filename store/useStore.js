@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 export const useSearchHistoryStore = create(
   persist(
@@ -42,7 +42,7 @@ export const useSearchHistoryStore = create(
     }),
     {
       name: 'mymovie-storage',
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
