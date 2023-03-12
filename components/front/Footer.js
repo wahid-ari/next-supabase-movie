@@ -26,7 +26,7 @@ export default function Footer({ className }) {
                 <li className='mb-2'>
                   <Link
                     href='/movies'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Movies
                   </Link>
@@ -34,7 +34,7 @@ export default function Footer({ className }) {
                 <li className='mb-2'>
                   <Link
                     href='/actors'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Actors
                   </Link>
@@ -42,7 +42,7 @@ export default function Footer({ className }) {
                 <li>
                   <Link
                     href='/directors'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Directors
                   </Link>
@@ -55,7 +55,7 @@ export default function Footer({ className }) {
                 <li className='mb-2'>
                   <Link
                     href='/studios'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Studios
                   </Link>
@@ -63,7 +63,7 @@ export default function Footer({ className }) {
                 <li className='mb-2'>
                   <Link
                     href='/categories'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Categories
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer({ className }) {
                 <li>
                   <Link
                     href='/countries'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Countries
                   </Link>
@@ -85,7 +85,7 @@ export default function Footer({ className }) {
                   <a
                     href='https://github.com'
                     target='_blank'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Github
                   </a>
@@ -94,7 +94,7 @@ export default function Footer({ className }) {
                   <a
                     href='https://github.com'
                     target='_blank'
-                    className='rounded text-[15px] hover:text-neutral-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     API Docs
                   </a>
@@ -109,7 +109,7 @@ export default function Footer({ className }) {
             © 2023{' '}
             <Link
               href='/'
-              className='rounded transition-all duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+              className='hover-underline-animation rounded transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               MyMovie™
             </Link>

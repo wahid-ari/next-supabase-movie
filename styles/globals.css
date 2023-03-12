@@ -187,3 +187,27 @@ html[class='dark'] {
 #nprogress .spinner-icon {
   display: none;
 }
+
+/* Footer Link Hover Animation */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+  @apply bg-neutral-500 dark:bg-neutral-300;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
