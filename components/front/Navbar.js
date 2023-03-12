@@ -2,11 +2,12 @@ import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline';
 import ActiveLink from '@components/front/ActiveLink';
 import clsx from 'clsx';
 import ThemeChanger from './ThemeChanger';
 import nookies from 'nookies';
+import NavbarSearch from './NavbarSearch';
 
 function CustomActiveLink({ href, children }) {
   return (
@@ -135,11 +136,42 @@ export default function Navbar({ className }) {
                     leaveFrom='opacity-100 scale-100'
                     leaveTo='opacity-0 scale-95'
                   >
-                    <Popover.Panel className='absolute top-8 z-10 flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
+                    <Popover.Panel className='absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded bg-white px-4 py-4 shadow dark:bg-[#1a1a1a]'>
                       <CustomActiveLink href='/categories'>Categories</CustomActiveLink>
                       <CustomActiveLink href='/countries'>Countries</CustomActiveLink>
                     </Popover.Panel>
                   </Transition>
+                </Popover>
+
+                <Popover className=''>
+                  {({ open }) => (
+                    <>
+                      <Popover.Button
+                        aria-label='Search'
+                        className={clsx(
+                          'group flex items-center space-x-2 rounded px-1 text-[15px] font-medium transition-all duration-200',
+                          ' text-gray-700 hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                        )}
+                      >
+                        {/* <span className="sr-only">Search</span> */}
+                        <SearchIcon className='h-5 w-5' />
+                      </Popover.Button>
+                      <Transition
+                        as={Fragment}
+                        enter='duration-200 ease-out'
+                        enterFrom='opacity-0 scale-95'
+                        enterTo='opacity-100 scale-100'
+                        leave='duration-100 ease-in'
+                        leaveFrom='opacity-100 scale-100'
+                        leaveTo='opacity-0 scale-95'
+                      >
+                        <Popover.Panel className='absolute top-16 left-1/2 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                          <NavbarSearch />
+                        </Popover.Panel>
+                      </Transition>
+                    </>
+                  )}
                 </Popover>
               </div>
             </div>
