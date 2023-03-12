@@ -193,7 +193,7 @@ export default function Search() {
                 {data?.actors?.map((item, index) => (
                   <ActorGridItem
                     key={index}
-                    href={`dashboard/album/detail/${item.id}`}
+                    href={`dashboard/actor/detail/${item.id}`}
                     imageSrc={item.image_url}
                     name={item.name}
                   />
@@ -211,7 +211,7 @@ export default function Search() {
                 {data?.directors?.map((item, index) => (
                   <DirectorGridItem
                     key={index}
-                    href={`dashboard/artist/detail/${item.id}`}
+                    href={`dashboard/director/detail/${item.id}`}
                     imageSrc={item.image_url}
                     name={item.name}
                   />
@@ -230,7 +230,7 @@ export default function Search() {
                   <StudioGridItem
                     key={index}
                     index={index}
-                    href={`/dashboard/playlist/detail/${item.id}`}
+                    href={`/dashboard/studio/detail/${item.id}`}
                     name={item.name}
                   />
                 ))}
