@@ -8,6 +8,9 @@ import { Inter } from '@next/font/google';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import { MenuProvider } from 'kmenu';
+import '@styles/kmenu.css';
+import CommandsMenu from '@components/dashboard/CommandMenu';
 
 // Show progress on All Pages
 // import Router from 'next/router';
@@ -57,10 +60,13 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider attribute='class' storageKey='theme'>
       <GlobalProvider>
         {/* <AxiosConfigProvider> */}
-        <main className={inter.className}>
-          <Toaster />
-          <Component {...pageProps} />
-        </main>
+        <MenuProvider>
+          <CommandsMenu />
+          <main className={inter.className}>
+            <Toaster />
+            <Component {...pageProps} />
+          </main>
+        </MenuProvider>
         {/* </AxiosConfigProvider> */}
       </GlobalProvider>
     </ThemeProvider>

@@ -6,8 +6,11 @@ import Menu from './Menu';
 import clsx from 'clsx';
 import ThemeChanger from './ThemeChanger';
 import nookies from 'nookies';
+import { useKmenu } from 'kmenu';
+import Button from '@components/systems/Button';
 
 export default function Navbar() {
+  const { toggle } = useKmenu();
   const { setShowNav } = useContext(GlobalContext);
   const admin = nookies.get(null, 'name');
   const [mounted, setMounted] = useState(false);
@@ -46,6 +49,20 @@ export default function Navbar() {
         >
           MyMovie
         </Link>
+      </div>
+
+      <div className='hidden min-[480px]:block'>
+        <Button.secondary onClick={toggle} className='flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px]'>
+          Command Menu
+          <div className='flex items-center gap-1'>
+            <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
+              ⌘
+            </kbd>
+            <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
+              K
+            </kbd>
+          </div>
+        </Button.secondary>
       </div>
 
       <div className='flex items-center gap-3'>
