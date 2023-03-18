@@ -43,6 +43,10 @@
   cursor: pointer;
 }
 
+.crumbs > .breadcrumb:empty {
+  display: none;
+}
+
 .searchbar {
   @apply px-[10px] pt-5 pb-2 text-base dark:!border-b-neutral-700 dark:!text-white;
   border: none;

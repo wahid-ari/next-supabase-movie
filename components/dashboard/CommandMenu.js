@@ -58,7 +58,7 @@ export default function CommandsMenu() {
   // https://github.com/harshhhdev/kmenu#adding-commands
   const main = [
     {
-      category: 'Navigation',
+      category: 'Page',
       commands: [
         {
           icon: <HomeIcon className='h-5 w-5' />,
@@ -179,7 +179,7 @@ export default function CommandsMenu() {
 
   const dashboard = [
     {
-      category: 'Dashboard',
+      category: 'Page',
       commands: [
         {
           icon: <ViewGridIcon className='h-4 w-4' />,
@@ -229,49 +229,12 @@ export default function CommandsMenu() {
 
   const documentation = [
     {
-      category: 'Movie API',
       commands: [
         {
-          icon: <FilmIcon className='h-4 w-4' />,
-          text: 'Movie Playground',
-          href: '/movie',
-          newTab: true,
-          keywords: 'movie playground',
-        },
-        {
-          icon: <ArrowSmRightIcon className='h-4 w-4' />,
-          text: 'Get All Movie',
-          href: '/movie/list',
-          newTab: true,
-          keywords: 'get all movie',
-        },
-        {
-          icon: <ArrowSmRightIcon className='h-4 w-4' />,
-          text: 'Get Detail Movie',
-          href: '/movie/detail',
-          newTab: true,
-          keywords: 'get detail movie',
-        },
-        {
-          icon: <ArrowSmRightIcon className='h-4 w-4' />,
-          text: 'Create Movie',
-          href: '/movie/create',
-          newTab: true,
-          keywords: 'create movie',
-        },
-        {
-          icon: <ArrowSmRightIcon className='h-4 w-4' />,
-          text: 'Edit Movie',
-          href: '/movie/edit',
-          newTab: true,
-          keywords: 'edit movie',
-        },
-        {
-          icon: <ArrowSmRightIcon className='h-4 w-4' />,
-          text: 'Delete Movie',
-          href: '/movie/delete',
-          newTab: true,
-          keywords: 'delete movie',
+          icon: <FilmIcon className='h-5 w-5' />,
+          text: 'Movie API',
+          keywords: 'movie api',
+          perform: () => setOpen(4),
         },
       ],
     },
@@ -512,17 +475,70 @@ export default function CommandsMenu() {
     },
   ];
 
+  const movie = [
+    {
+      category: 'Movie API',
+      commands: [
+        {
+          icon: <FilmIcon className='h-4 w-4' />,
+          text: 'Movie Playground',
+          href: '/movie',
+          newTab: true,
+          keywords: 'movie playground',
+        },
+        {
+          icon: <ArrowSmRightIcon className='h-4 w-4' />,
+          text: 'Get All Movie',
+          href: '/movie/list',
+          newTab: true,
+          keywords: 'get all movie',
+        },
+        {
+          icon: <ArrowSmRightIcon className='h-4 w-4' />,
+          text: 'Get Detail Movie',
+          href: '/movie/detail',
+          newTab: true,
+          keywords: 'get detail movie',
+        },
+        {
+          icon: <ArrowSmRightIcon className='h-4 w-4' />,
+          text: 'Create Movie',
+          href: '/movie/create',
+          newTab: true,
+          keywords: 'create movie',
+        },
+        {
+          icon: <ArrowSmRightIcon className='h-4 w-4' />,
+          text: 'Edit Movie',
+          href: '/movie/edit',
+          newTab: true,
+          keywords: 'edit movie',
+        },
+        {
+          icon: <ArrowSmRightIcon className='h-4 w-4' />,
+          text: 'Delete Movie',
+          href: '/movie/delete',
+          newTab: true,
+          keywords: 'delete movie',
+        },
+      ],
+    }
+  ];
+
   const [mainCommands] = useCommands(main);
   const [dashboardCommands] = useCommands(dashboard);
   const [documentationCommands] = useCommands(documentation);
+  const [movieCommands] = useCommands(movie);
 
   return (
     <CommandWrapper>
-      <CommandMenu commands={mainCommands} crumbs={['Home']} index={1} placeholder='What do you need?' />
+      <CommandMenu commands={mainCommands} crumbs={['Home']} index={1} placeholder='What do you need?' main />
 
       <CommandMenu commands={dashboardCommands} crumbs={['Home', 'Dashboard']} index={2} />
 
-      <CommandMenu commands={documentationCommands} crumbs={['Home', 'Documentation']} index={3} />
+      <CommandMenu commands={documentationCommands} crumbs={['Home', '', 'Documentation']} index={3} />
+
+      <CommandMenu commands={movieCommands} crumbs={['Home', '', 'Documentation', 'Movie']} index={4} />
 
       <div className='mt-4 hidden justify-end border-t pt-4 dark:border-t-neutral-700 sm:flex'>
         <div className='flex gap-4'>
