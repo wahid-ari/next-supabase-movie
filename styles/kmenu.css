@@ -119,6 +119,10 @@
   margin: 10px 0 10px 10px;
 }
 
+.category_header:empty {
+  display: none;
+}
+
 .command:has(.selected) > .info_wrapper {
   @apply !text-neutral-900 transition-all duration-300 dark:!text-neutral-100;
 }
