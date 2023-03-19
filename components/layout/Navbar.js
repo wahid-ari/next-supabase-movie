@@ -52,7 +52,10 @@ export default function Navbar() {
       </div>
 
       <div className='hidden min-[480px]:block'>
-        <Button.secondary onClick={toggle} className='flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px]'>
+        <Button.secondary
+          onClick={toggle}
+          className='flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        >
           Command Menu
           <div className='flex items-center gap-1'>
             <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>

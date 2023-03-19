@@ -56,7 +56,7 @@ export default function Layout({ children, title, description, className }) {
             <div className='flex gap-4'>
               <Button.secondary
                 onClick={toggle}
-                className='mr-2 flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px]'
+                className='mr-2 flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 Command Menu
                 <div className='flex items-center gap-1'>
