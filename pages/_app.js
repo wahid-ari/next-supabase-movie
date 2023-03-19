@@ -10,7 +10,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { MenuProvider } from 'kmenu';
 import '@styles/kmenu.css';
-import CommandsMenu from '@components/dashboard/CommandMenu';
+import CommandMenu from '@components/dashboard/CommandMenu';
 
 // Show progress on All Pages
 // import Router from 'next/router';
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalProvider>
         {/* <AxiosConfigProvider> */}
         <MenuProvider>
-          <CommandsMenu />
+          <CommandMenu />
           <main className={inter.className}>
             <Toaster />
             <Component {...pageProps} />
