@@ -56,14 +56,14 @@ export default function Layout({ children, title, description, className }) {
             <div className='flex gap-4'>
               <Button.secondary
                 onClick={toggle}
-                className='mr-2 flex items-center gap-2 truncate !px-1.5 !py-0.5 text-[13px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                className='mr-2 flex items-center gap-2 truncate !bg-transparent !px-1.5 !py-0.5 text-[13px] hover:!bg-neutral-100/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:!bg-neutral-800/70'
               >
                 Command Menu
-                <div className='flex items-center gap-1'>
-                  <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
+                <div className='flex items-center gap-0.5'>
+                  <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-300'>
                     ⌘
                   </kbd>
-                  <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
+                  <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-900 dark:bg-neutral-700 dark:text-neutral-300'>
                     K
                   </kbd>
                 </div>
