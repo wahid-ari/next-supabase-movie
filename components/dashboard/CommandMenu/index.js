@@ -32,16 +32,16 @@ export default function CommandsMenu() {
   // Toggle the menu when ⌘ K || ⌘ k is pressed
   useEffect(() => {
     const down = (e) => {
-      if (e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey)) {
+      if (e.key?.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         toggle();
       }
-      if (e.key.toLowerCase() === 'd' && e.shiftKey) {
+      if (e.key?.toLowerCase() === 'd' && e.shiftKey) {
         e.preventDefault();
         toggle();
         setOpen(2);
       }
-      if (e.key.toLowerCase() === 'a' && e.shiftKey) {
+      if (e.key?.toLowerCase() === 'a' && e.shiftKey) {
         e.preventDefault();
         toggle();
         setOpen(3);
