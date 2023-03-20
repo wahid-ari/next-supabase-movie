@@ -21,7 +21,7 @@ export default function ThemeChanger() {
       aria-label='Light'
       className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
     >
-      <SunIcon className='h-5 w-5 text-neutral-400 transition-all hover:text-neutral-200' />
+      <SunIcon className='h-5 w-5 text-neutral-300 transition-all hover:text-neutral-100' />
     </button>
   ) : (
     <button
@@ -29,7 +29,7 @@ export default function ThemeChanger() {
       aria-label='Dark'
       className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
     >
-      <MoonIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700' />
+      <MoonIcon className='h-5 w-5 text-gray-600 transition-all hover:text-gray-800' />
     </button>
   );
 }
