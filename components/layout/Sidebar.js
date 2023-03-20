@@ -83,43 +83,43 @@ export default function Sidebar() {
           'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800'
         )}
       >
-        <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-4 w-4' />}>
+        <NavLink isHome href='/dashboard' icon={<ViewGridIcon className='h-[18px] w-[18px]' />}>
           Dashboard
         </NavLink>
 
-        <NavLink href='/search' icon={<SearchIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/search' icon={<SearchIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Search
         </NavLink>
 
-        <NavLink href='/statistics' icon={<ChartPieIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/statistics' icon={<ChartPieIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Statistics
         </NavLink>
 
-        <NavLink href='/movie' icon={<FilmIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/movie' icon={<FilmIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Movie
         </NavLink>
 
-        <NavLink href='/actor' icon={<UserGroupIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/actor' icon={<UserGroupIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Actor
         </NavLink>
 
-        <NavLink href='/director' icon={<UsersIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/director' icon={<UsersIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Director
         </NavLink>
 
-        <NavLink href='/studio' icon={<LibraryIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/studio' icon={<LibraryIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Studio
         </NavLink>
 
-        <NavLink href='/category' icon={<ColorSwatchIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/category' icon={<ColorSwatchIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Category
         </NavLink>
 
-        <NavLink href='/country' icon={<FlagIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/country' icon={<FlagIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Country
         </NavLink>
 
-        <NavLink href='/settings' icon={<CogIcon className='h-4 w-4' />} className='mt-1'>
+        <NavLink href='/settings' icon={<CogIcon className='h-[18px] w-[18px]' />} className='mt-1'>
           Settings
         </NavLink>
 
@@ -134,7 +134,7 @@ export default function Sidebar() {
           target='_blank'
           rel='noopener noreferrer'
         >
-          <ExternalLinkIcon className='h-4 w-4' />
+          <ExternalLinkIcon className='h-[18px] w-[18px]' />
           Docs
         </a>
 
@@ -158,7 +158,7 @@ export default function Sidebar() {
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'
           )}
         >
-          <LogoutIcon className='h-4 w-4' />
+          <LogoutIcon className='h-[18px] w-[18px]' />
           Logout
         </button>
       </div>
