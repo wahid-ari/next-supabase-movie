@@ -18,10 +18,15 @@ import {
   ClipboardCopyIcon,
   LogoutIcon,
   ClipboardListIcon,
+  MoonIcon,
+  SunIcon,
+  DesktopComputerIcon,
 } from '@heroicons/react/outline';
+import { useTheme } from 'next-themes';
 
 export default function CommandsMenu() {
   const router = useRouter();
+  const { setTheme } = useTheme();
   const { setOpen, toggle } = useKmenu();
 
   // Toggle the menu when ⌘ K || ⌘ k is pressed
@@ -85,6 +90,12 @@ export default function CommandsMenu() {
           href: '/statistics',
           keywords: 'statistic',
         },
+        {
+          icon: <CogIcon className='h-5 w-5' />,
+          text: 'Setting',
+          href: '/settings',
+          keywords: 'setting',
+        },
       ],
     },
     {
@@ -144,10 +155,10 @@ export default function CommandsMenu() {
       category: 'General',
       commands: [
         {
-          icon: <CogIcon className='h-5 w-5' />,
-          text: 'Setting',
-          href: '/settings',
-          keywords: 'setting',
+          icon: <DesktopComputerIcon className='h-5 w-5' />,
+          text: 'Change Theme',
+          keywords: 'change theme',
+          perform: () => setOpen(10),
         },
         {
           icon: <ClipboardCopyIcon className='h-5 w-5' />,
@@ -172,6 +183,26 @@ export default function CommandsMenu() {
           shortcuts: { keys: ['⇧', 'A'] },
           keywords: 'api documentation',
           perform: () => setOpen(3),
+        },
+      ],
+    },
+  ];
+
+  const theme = [
+    {
+      category: 'Change Theme',
+      commands: [
+        {
+          icon: <MoonIcon className='h-5 w-5' />,
+          text: 'Change Theme to Dark',
+          keywords: 'change theme to dark',
+          perform: () => setTheme('dark'),
+        },
+        {
+          icon: <SunIcon className='h-5 w-5' />,
+          text: 'Change Theme to Light',
+          keywords: 'change theme to light',
+          perform: () => setTheme('light'),
         },
       ],
     },
@@ -249,6 +280,7 @@ export default function CommandsMenu() {
   const [studioCommands] = useCommands(studio);
   const [categoryCommands] = useCommands(category);
   const [countryCommands] = useCommands(country);
+  const [themeCommands] = useCommands(theme);
 
   return (
     <CommandWrapper>
@@ -277,6 +309,8 @@ export default function CommandsMenu() {
         crumbs={['Home', '', 'Documentation', '', '', '', '', '', 'Country']}
         index={9}
       />
+
+      <CommandMenu commands={themeCommands} crumbs={['Home', '', '', '', '', '', '', '', '', 'Theme']} index={10} />
 
       <div className='mt-4 hidden justify-end border-t pt-4 dark:border-t-neutral-700 sm:flex'>
         <div className='flex gap-4'>
