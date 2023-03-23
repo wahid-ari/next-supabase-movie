@@ -14,6 +14,21 @@ import MovieListItem from '@components/dashboard/MovieListItem';
 import ActorGridItem from '@components/dashboard/ActorGridItem';
 import { ColorSwatchIcon, FilmIcon, FlagIcon, LibraryIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/outline';
 import { useSearchHistoryStore } from '@store/useStore';
+import nookies from 'nookies';
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 const fetcher = (url) => fetch(url).then((result) => result.json());
 

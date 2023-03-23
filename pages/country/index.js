@@ -14,19 +14,19 @@ import LabeledInput from '@components/systems/LabeledInput';
 import ReactTable from '@components/systems/ReactTable';
 import nookies from 'nookies';
 
-// export async function getServerSideProps(context) {
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {}
-//   }
-// }
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Country() {
   const { data, error } = useCountryData();

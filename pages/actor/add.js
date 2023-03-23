@@ -15,19 +15,19 @@ import SearchBox from '@components/systems/SearchBox';
 import TextArea from '@components/systems/TextArea';
 import Radio from '@components/systems/Radio';
 
-// export async function getServerSideProps(context) {
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {}
-//   }
-// }
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Actor() {
   const { data: country, error: errorCountry } = useCountryData();

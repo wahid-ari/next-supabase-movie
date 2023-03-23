@@ -16,19 +16,19 @@ import nookies from 'nookies';
 import SearchBox from '@components/systems/SearchBox';
 import Image from 'next/image';
 
-// export async function getServerSideProps(context) {
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {}
-//   }
-// }
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Studio() {
   const { data, error } = useStudioData();

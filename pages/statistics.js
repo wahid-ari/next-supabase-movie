@@ -13,6 +13,7 @@ import Layout from '@components/layout/Layout';
 import Shimer from '@components/systems/Shimer';
 import Text from '@components/systems/Text';
 import Titles from '@components/systems/Title';
+import nookies from 'nookies';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -41,6 +42,20 @@ ChartJS.register(
   Filler,
   Legend
 );
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Statistics() {
   const { theme } = useTheme();

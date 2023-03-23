@@ -1,6 +1,8 @@
 // https://nextjs.org/docs/advanced-features/middleware
 import { NextResponse } from 'next/server';
 
+// this not working in case like:
+// after logout and clicking back on browser button still can open auth page
 export function middleware(request) {
   // when user clicking 'dashborad in breadcrumb link, directly redirect to '/'
   // if (request.nextUrl.pathname.startsWith('/dashboard')) {

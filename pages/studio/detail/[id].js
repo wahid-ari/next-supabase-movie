@@ -14,14 +14,14 @@ import { PhotographIcon } from '@heroicons/react/outline';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  // const cookies = nookies.get(context)
-  // if (!cookies.token) {
-  //   return {
-  //     redirect: {
-  //       destination: "/login"
-  //     }
-  //   }
-  // }
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
   return {
     props: {
       id: id,

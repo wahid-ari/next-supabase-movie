@@ -16,21 +16,19 @@ import LinkButton from '@components/systems/LinkButton';
 import nookies from 'nookies';
 import moment from 'moment';
 
-// export async function getServerSideProps(context) {
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {}
-//   }
-// }
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Actor() {
   const { data, error } = useActorData();

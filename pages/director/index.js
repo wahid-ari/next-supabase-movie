@@ -18,19 +18,19 @@ import Label from '@components/systems/Label';
 import TextArea from '@components/systems/TextArea';
 import ReactTable from '@components/systems/ReactTable';
 
-// export async function getServerSideProps(context) {
-//   const cookies = nookies.get(context)
-//   if (!cookies.token) {
-//     return {
-//       redirect: {
-//         destination: "/login"
-//       }
-//     }
-//   }
-//   return {
-//     props: {}
-//   }
-// }
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Director() {
   const { data, error } = useDirectorData();

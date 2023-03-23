@@ -5,6 +5,21 @@ import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
+import nookies from 'nookies';
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Movies() {
   const { data, error } = useMovieData();

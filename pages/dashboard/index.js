@@ -18,6 +18,21 @@ import StudioGridItem from '@components/dashboard/StudioGridItem';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import nookies from 'nookies';
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Dashboard() {
   const { data: movies, error: errorMovies } = useMovieData();

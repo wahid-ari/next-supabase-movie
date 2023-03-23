@@ -2,6 +2,21 @@ import Layout from '@components/layout/Layout';
 import Text from '@components/systems/Text';
 import Title from '@components/systems/Title';
 import { useTheme } from 'next-themes';
+import nookies from 'nookies';
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/login',
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Settings() {
   const { theme, setTheme } = useTheme();
