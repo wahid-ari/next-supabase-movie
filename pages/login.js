@@ -30,14 +30,17 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
   const router = useRouter();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    Router.prefetch('/dashboard');
-  }, []);
+    if (loggedIn) {
+      router.push('/dashboard');
+    }
+  }, [loggedIn]);
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -71,6 +74,7 @@ export default function Login() {
             message: 'Success Login',
             isError: false,
           });
+          setLoggedIn(true);
           router.replace('/dashboard');
           router.push('/dashboard');
         }
