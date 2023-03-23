@@ -75,8 +75,6 @@ export default function Login() {
             isError: false,
           });
           setLoggedIn(true);
-          router.replace('/dashboard');
-          router.push('/dashboard');
         }
       } catch (error) {
         updateToast({
