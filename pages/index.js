@@ -19,9 +19,9 @@ export default function Home() {
   const { data: categories, error: errorCategories } = useCategoryTotalData();
   const { data: countries, error: errorCountries } = useCountryData();
   const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');
-  const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
-  // const shuffledMovie = movieWithBackdrop.sort(() => 0.5 - Math.random());
-  // const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5);
+  // const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
+  const shuffledMovie = movieWithBackdrop.sort(() => 0.5 - Math.random());
+  const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5);
 
   if (error || errorStudios || errorCategories || errorCountries) {
     return (
