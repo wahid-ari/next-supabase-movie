@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import useToast from '@utils/useToast';
 import Button from '@components/systems/Button';
@@ -29,6 +29,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
+  const router = useRouter();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -71,6 +72,9 @@ export default function Login() {
             isError: false,
           });
           Router.replace('/dashboard');
+          Router.push('/dashboard');
+          router.replace('/dashboard');
+          router.push('/dashboard');
         }
       } catch (error) {
         updateToast({
