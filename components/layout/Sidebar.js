@@ -124,7 +124,7 @@ export default function Sidebar() {
         </NavLink>
 
         <a
-          href='https://my-movie-docs.vercel.app'
+          href={process.env.NEXT_PUBLIC_API_DOCS}
           className={clsx(
             'mt-1 mb-1 flex w-full items-center justify-start gap-2 px-3 py-2 transition-all',
             'rounded text-sm font-medium text-gray-600 hover:text-sky-600 dark:text-neutral-300',
