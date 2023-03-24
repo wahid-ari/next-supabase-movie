@@ -66,22 +66,22 @@ export default function Studio() {
     query === ''
       ? data
       : data.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   const filteredCountry =
     queryCountry === ''
       ? country
       : country.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+        );
 
   const filteredCountryEdit =
     queryCountryEdit === ''
       ? country
       : country.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
+        );
 
   useEffect(() => {
     if (selectedCountry) setCreateItem({ ...createItem, country_id: selectedCountry.id });
@@ -196,24 +196,20 @@ export default function Studio() {
         },
       },
       {
-        Header: () => (
-          <div className="mx-auto">Center</div>
-        ),
+        Header: () => <div className='mx-auto'>Logo</div>,
         accessor: 'logo',
         disableSortBy: true,
         width: 300,
         Cell: (row) => {
           const { values, original } = row.cell.row;
-          return (
-            original.image_url ? (
-              <div className='relative h-8 overflow-hidden'>
-                <Image alt={original?.name} src={original?.image_url} fill className={`rounded object-contain`} />
-              </div>
-            ) : (
-              <div className='relative mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800'>
-                <PhotographIcon className='h-8 w-8 text-neutral-500' />
-              </div>
-            )
+          return original.image_url ? (
+            <div className='relative h-8 overflow-hidden'>
+              <Image alt={original?.name} src={original?.image_url} fill className={`rounded object-contain`} />
+            </div>
+          ) : (
+            <div className='relative mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800'>
+              <PhotographIcon className='h-8 w-8 text-neutral-500' />
+            </div>
           );
         },
       },
@@ -264,8 +260,15 @@ export default function Studio() {
             <div>
               <Button
                 className='mr-2 !py-[2px] !px-[6px]'
-                onClick={() => handleShowEditModal(original.id, original.name, original.image_url, original.city, original.countries?.id)}
-
+                onClick={() =>
+                  handleShowEditModal(
+                    original.id,
+                    original.name,
+                    original.image_url,
+                    original.city,
+                    original.countries?.id
+                  )
+                }
               >
                 Edit
               </Button>
