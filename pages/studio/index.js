@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { mutate } from 'swr';
 import { useCountryData, useStudioData } from '@libs/swr';
@@ -15,6 +15,7 @@ import LabeledInput from '@components/systems/LabeledInput';
 import nookies from 'nookies';
 import SearchBox from '@components/systems/SearchBox';
 import Image from 'next/image';
+import ReactTable from '@components/systems/ReactTable';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -65,22 +66,22 @@ export default function Studio() {
     query === ''
       ? data
       : data.filter((item) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-        );
+        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+      );
 
   const filteredCountry =
     queryCountry === ''
       ? country
       : country.filter((item) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
-        );
+        item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountry.toLowerCase().replace(/\s+/g, ''))
+      );
 
   const filteredCountryEdit =
     queryCountryEdit === ''
       ? country
       : country.filter((item) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
-        );
+        item.name.toLowerCase().replace(/\s+/g, '').includes(queryCountryEdit.toLowerCase().replace(/\s+/g, ''))
+      );
 
   useEffect(() => {
     if (selectedCountry) setCreateItem({ ...createItem, country_id: selectedCountry.id });
@@ -183,6 +184,107 @@ export default function Studio() {
     setDeleteItem({ id: id, name: name });
     setOpenDeleteDialog(true);
   }
+
+  const column = useMemo(
+    () => [
+      {
+        Header: 'No',
+        accessor: 'id',
+        width: 300,
+        Cell: (row) => {
+          return row.cell.row.index + 1;
+        },
+      },
+      {
+        Header: () => (
+          <div className="mx-auto">Center</div>
+        ),
+        accessor: 'logo',
+        disableSortBy: true,
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            original.image_url ? (
+              <div className='relative h-8 overflow-hidden'>
+                <Image alt={original?.name} src={original?.image_url} fill className={`rounded object-contain`} />
+              </div>
+            ) : (
+              <div className='relative mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800'>
+                <PhotographIcon className='h-8 w-8 text-neutral-500' />
+              </div>
+            )
+          );
+        },
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link
+              href={`/studio/detail/${values.id}`}
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              {values.name}
+            </Link>
+          );
+        },
+      },
+      {
+        Header: 'City',
+        accessor: 'city',
+        width: 300,
+      },
+      {
+        Header: 'Country',
+        accessor: 'countries.name',
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link
+              href={`/country/detail/${original.countries?.id}`}
+              className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+            >
+              {original.countries?.name}
+            </Link>
+          );
+        },
+      },
+      {
+        Header: 'Action',
+        disableSortBy: true,
+        width: 300,
+        Cell: (row) => {
+          const { values, original } = row.cell.row;
+          return (
+            <div>
+              <Button
+                className='mr-2 !py-[2px] !px-[6px]'
+                onClick={() => handleShowEditModal(original.id, original.name, original.image_url, original.city, original.countries?.id)}
+
+              >
+                Edit
+              </Button>
+              <Button.danger
+                className='!py-[2px] !px-[6px]'
+                onClick={() => handleShowDeleteModal(original.id, original.name)}
+              >
+                Delete
+              </Button.danger>
+            </div>
+          );
+        },
+        width: 200,
+      },
+    ],
+    []
+  );
+
+  const tableInstance = useRef(null);
 
   if (error || errorCountry) {
     return (
@@ -307,80 +409,27 @@ export default function Studio() {
         </div>
       </Dialog>
 
-      <LabeledInput
-        label='Search Data'
-        id='caridata'
-        name='caridata'
-        placeholder='Keyword'
-        className='max-w-xs !py-2'
-        onChange={(e) => setQuery(e.target.value)}
-      />
-
       {data ? (
-        <TableSimple
-          head={
-            <>
-              <TableSimple.td small>No</TableSimple.td>
-              <TableSimple.td>Logo</TableSimple.td>
-              <TableSimple.td>Name</TableSimple.td>
-              <TableSimple.td>City</TableSimple.td>
-              <TableSimple.td>Country</TableSimple.td>
-              <TableSimple.td small>Action</TableSimple.td>
-            </>
-          }
-        >
-          {filtered.map((item, index) => {
-            return (
-              <TableSimple.tr key={index}>
-                <TableSimple.td small>{index + 1}</TableSimple.td>
-                <TableSimple.td>
-                  {item.image_url ? (
-                    <div className='relative h-8 overflow-hidden'>
-                      <Image alt={item?.name} src={item?.image_url} fill className={`rounded object-contain`} />
-                    </div>
-                  ) : (
-                    <div className='relative mx-auto flex h-10 w-10 items-center justify-center overflow-hidden rounded bg-neutral-200 dark:bg-neutral-800'>
-                      <PhotographIcon className='h-8 w-8 text-neutral-500' />
-                    </div>
-                  )}
-                </TableSimple.td>
-                <TableSimple.td>
-                  <Link
-                    href={`studio/detail/${item.id}`}
-                    className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  >
-                    {item.name}
-                  </Link>
-                </TableSimple.td>
-                <TableSimple.td>{item.city}</TableSimple.td>
-                <TableSimple.td>
-                  <Link
-                    href={`/country/detail/${item.countries?.id}`}
-                    className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
-                  >
-                    {item.countries?.name}
-                  </Link>
-                </TableSimple.td>
-                <TableSimple.td>
-                  <Button
-                    className='mr-2 !py-[2px] !px-[6px]'
-                    onClick={() =>
-                      handleShowEditModal(item.id, item.name, item.image_url, item.city, item.countries?.id)
-                    }
-                  >
-                    Edit
-                  </Button>
-                  <Button.danger
-                    className='!py-[2px] !px-[6px]'
-                    onClick={() => handleShowDeleteModal(item.id, item.name)}
-                  >
-                    Delete
-                  </Button.danger>
-                </TableSimple.td>
-              </TableSimple.tr>
-            );
-          })}
-        </TableSimple>
+        <>
+          <LabeledInput
+            label='Search Data'
+            id='caridata'
+            name='caridata'
+            placeholder='Keyword'
+            className='max-w-xs !py-2'
+            onChange={(e) => {
+              tableInstance.current.setGlobalFilter(e.target.value);
+            }}
+          />
+
+          <ReactTable
+            columns={column}
+            data={data}
+            ref={tableInstance}
+            page_size={20}
+            itemPerPage={[5, 10, 20, 50, 100]}
+          />
+        </>
       ) : (
         <Shimer className='!h-60' />
       )}
