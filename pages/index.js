@@ -199,7 +199,7 @@ export default function Home() {
         </Link>
       </div>
       {countries ? (
-        <div className='mt-5 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-5 grid grid-cols-2 gap-4 min-[560px]:grid-cols-3 sm:gap-6 md:grid-cols-4 xl:grid-cols-5'>
           {countries.slice(0, 10).map((item, index) => (
             <Link
               key={index}
@@ -211,7 +211,7 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className='mt-5 grid grid-cols-2 gap-x-8 gap-y-5 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-5 grid grid-cols-2 gap-x-4 gap-y-2 min-[560px]:grid-cols-3 sm:gap-x-6 sm:gap-y-3 md:grid-cols-4 xl:grid-cols-5'>
           {[...Array(10).keys()].map((item) => (
             <Shimer key={item} className='!h-12 w-full' />
           ))}

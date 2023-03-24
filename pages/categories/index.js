@@ -35,7 +35,7 @@ export default function Categories() {
           name='search'
           wrapperClassName='pt-2'
           placeholder='Search Category'
-          className='max-w-xs !py-2'
+          className='w-48 !py-2 sm:max-w-xs'
           debounce={500}
           value={query}
           onChange={(value) => setQuery(value)}

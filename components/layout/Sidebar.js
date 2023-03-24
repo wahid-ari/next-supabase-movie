@@ -32,6 +32,12 @@ export default function Sidebar() {
     setShowNav(false);
   };
 
+  // https://stackoverflow.com/questions/54989513/react-prevent-scroll-when-modal-is-open
+  useEffect(() => {
+    if (showNav) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'visible';
+  }, [showNav]);
+
   useEffect(() => {
     setShowNav(false);
   }, [router.pathname, setShowNav]);
@@ -67,7 +73,7 @@ export default function Sidebar() {
           id='closemenu'
           aria-label='Close Menu'
         >
-          <XIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
+          <XIcon className='h-5 w-5 text-gray-600 transition-all hover:text-gray-800 dark:text-neutral-300 dark:hover:text-neutral-100' />
         </button>
         <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
           MyMovie

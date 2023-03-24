@@ -22,13 +22,16 @@ export default function ActorSection({}) {
 
   const breakpoints = {
     320: {
-      slidesPerView: 1.7,
+      slidesPerView: 1.5,
+    },
+    370: {
+      slidesPerView: 1.8,
     },
     400: {
-      slidesPerView: 2,
+      slidesPerView: 2.3,
     },
     450: {
-      slidesPerView: 2.3,
+      slidesPerView: 2.6,
     },
     500: {
       slidesPerView: 3,

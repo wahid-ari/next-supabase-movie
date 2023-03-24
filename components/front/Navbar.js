@@ -64,7 +64,8 @@ export default function Navbar({ className }) {
 
             {/* Nav Link  */}
             <div className='hidden md:block'>
-              <div className='flex items-center md:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
+              <div className='flex items-center md:space-x-2 min-[800px]:space-x-4 min-[900px]:space-x-6 lg:space-x-8'>
+                <CustomActiveLink href='/'>Home</CustomActiveLink>
                 <CustomActiveLink href='/movies'>Movies</CustomActiveLink>
                 <CustomActiveLink href='/actors'>Actors</CustomActiveLink>
                 <CustomActiveLink href='/directors'>Directors</CustomActiveLink>
@@ -219,7 +220,7 @@ export default function Navbar({ className }) {
                   <Link
                     href='/'
                     passHref
-                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400'
+                    className='flex w-full items-center rounded focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent'
                   >
                     <span className='text-xl font-semibold dark:text-white'>MyMovie</span>
                   </Link>
@@ -241,6 +242,9 @@ export default function Navbar({ className }) {
                 {/* EndCLose Mobile Menu Button  */}
               </div>
               <div className='my-4 flex flex-col space-y-1 px-4'>
+                <ActiveLink href='/' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Home
+                </ActiveLink>
                 <ActiveLink href='/movies' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
                   Movies
                 </ActiveLink>
@@ -270,12 +274,20 @@ export default function Navbar({ className }) {
                       </Menu.Button>
                       <Menu.Items className='space-y-1 px-3'>
                         <Menu.Item>
-                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/categories' className={activeCn}>
+                          <ActiveLink
+                            activeClassName='text-sky-500 dark:text-sky-500'
+                            href='/categories'
+                            className={activeCn}
+                          >
                             Categories
                           </ActiveLink>
                         </Menu.Item>
                         <Menu.Item>
-                          <ActiveLink activeClassName='bg-blue-500 text-white' href='/countries' className={activeCn}>
+                          <ActiveLink
+                            activeClassName='text-sky-500 dark:text-sky-500'
+                            href='/countries'
+                            className={activeCn}
+                          >
                             Countries
                           </ActiveLink>
                         </Menu.Item>
