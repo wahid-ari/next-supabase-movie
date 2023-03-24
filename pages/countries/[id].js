@@ -131,7 +131,7 @@ function Page({ id }) {
               </Button>
             </div>
           )}
-          {query !== '' && filteredActor?.length < 1 && (
+          {data.actors.length > 0 && query !== '' && filteredActor?.length < 1 && (
             <p className='py-32 text-center'>There are no actors with name &quot;{query}&quot;</p>
           )}
         </FrontTabs.panel>
@@ -167,7 +167,7 @@ function Page({ id }) {
               </Button>
             </div>
           )}
-          {query !== '' && filteredDirector?.length < 1 && (
+          {data.directors.length > 0 && query !== '' && filteredDirector?.length < 1 && (
             <p className='py-32 text-center'>There are no directors with name &quot;{query}&quot;</p>
           )}
         </FrontTabs.panel>
@@ -184,7 +184,7 @@ function Page({ id }) {
               <p className='text-red-500'>There are no Studios from &quot;{data?.name}&quot; </p>
             </div>
           )}
-          {query !== '' && filteredStudio?.length < 1 && (
+          {data.studios.length > 0 && query !== '' && filteredStudio?.length < 1 && (
             <p className='py-32 text-center'>There are no studios with name &quot;{query}&quot;</p>
           )}
         </FrontTabs.panel>
