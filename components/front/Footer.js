@@ -19,7 +19,7 @@ export default function Footer({ className }) {
               Find Information and statistics about movies, actors, directors and other film industry professionals.
             </p>
           </div>
-          <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 md:w-2/4 md:grid-cols-3'>
+          <div className='grid grid-cols-2 gap-8 min-[500px]:grid-cols-3 sm:gap-6 md:w-2/4'>
             <div>
               <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Sitemap</h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
