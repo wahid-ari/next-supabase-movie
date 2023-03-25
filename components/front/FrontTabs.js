@@ -7,7 +7,7 @@ export default function FrontTabs({ items, children, className }) {
       <Tab.List
         className={`flex whitespace-nowrap border-b border-neutral-200 font-medium dark:border-neutral-800 ${className}`}
       >
-        <div className='flex gap-x-4 overflow-x-auto px-1 py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800 sm:gap-x-8'>
+        <div className='flex gap-x-6 overflow-x-auto px-1 py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800 sm:gap-x-8'>
           {items.map((item, index) => (
             <Tab
               key={index + 1}

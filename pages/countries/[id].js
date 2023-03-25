@@ -103,7 +103,7 @@ function Page({ id }) {
           `Directors (${filteredDirector.length})`,
           `Studios (${filteredStudio.length})`,
         ]}
-        className='mt-3'
+        className='md:mt-3'
       >
         <FrontTabs.panel>
           {data.actors.length > 0 ? (

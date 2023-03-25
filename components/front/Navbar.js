@@ -242,19 +242,19 @@ export default function Navbar({ className }) {
                 {/* EndCLose Mobile Menu Button  */}
               </div>
               <div className='my-4 flex flex-col space-y-1 px-4'>
-                <ActiveLink href='/' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Home
                 </ActiveLink>
-                <ActiveLink href='/movies' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/movies' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Movies
                 </ActiveLink>
-                <ActiveLink href='/actors' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/actors' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Actors
                 </ActiveLink>
-                <ActiveLink href='/directors' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/directors' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Directors
                 </ActiveLink>
-                <ActiveLink href='/studios' activeClassName='text-sky-500 dark:text-sky-500' className={activeCn}>
+                <ActiveLink href='/studios' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Studios
                 </ActiveLink>
                 <Menu>
@@ -275,7 +275,7 @@ export default function Navbar({ className }) {
                       <Menu.Items className='space-y-1 px-3'>
                         <Menu.Item>
                           <ActiveLink
-                            activeClassName='text-sky-500 dark:text-sky-500'
+                            activeClassName='!text-sky-500 dark:text-sky-500'
                             href='/categories'
                             className={activeCn}
                           >
@@ -284,7 +284,7 @@ export default function Navbar({ className }) {
                         </Menu.Item>
                         <Menu.Item>
                           <ActiveLink
-                            activeClassName='text-sky-500 dark:text-sky-500'
+                            activeClassName='!text-sky-500 dark:text-sky-500'
                             href='/countries'
                             className={activeCn}
                           >
