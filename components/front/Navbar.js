@@ -295,6 +295,9 @@ export default function Navbar({ className }) {
                     </>
                   )}
                 </Menu>
+                <ActiveLink href='/browse' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
+                  Browse
+                </ActiveLink>
                 {mounted && (
                   <Link
                     href={`${admin.name ? '/dashboard' : '/login'}`}
