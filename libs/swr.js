@@ -4,13 +4,28 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const API_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}/api`;
 
+export function useMoviesData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/movies`, fetcher);
+  return { data, error, isLoading };
+}
+
 export function useMovieData(id) {
   const { data, error, isLoading } = useSWR(id ? `${API_URL}/movie?id=${id}` : `${API_URL}/movie`, fetcher);
   return { data, error, isLoading };
 }
 
+export function useActorsData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/actors`, fetcher);
+  return { data, error, isLoading };
+}
+
 export function useActorData(id) {
   const { data, error, isLoading } = useSWR(id ? `${API_URL}/actor?id=${id}` : `${API_URL}/actor`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useDirectorsData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/directors`, fetcher);
   return { data, error, isLoading };
 }
 
@@ -31,6 +46,11 @@ export function useCategoryTotalData() {
 
 export function useCountryData(id) {
   const { data, error, isLoading } = useSWR(id ? `${API_URL}/country?id=${id}` : `${API_URL}/country`, fetcher);
+  return { data, error, isLoading };
+}
+
+export function useStudiosData() {
+  const { data, error, isLoading } = useSWR(`${API_URL}/studios`, fetcher);
   return { data, error, isLoading };
 }
 
