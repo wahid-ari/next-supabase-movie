@@ -162,9 +162,10 @@ function Page({ id }) {
             <Heading h2 className='mt-8 !text-[19px]'>
               {data?.name} Movies
             </Heading>
-            <div className='grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
+            <div className='grid grid-cols-2 gap-4 min-[500px]:grid-cols-3 md:gap-8 min-[800px]:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
               {data.movies.map((item, index) => (
                 <MovieGridItem
+                  className='!w-full'
                   key={index}
                   href={`/movies/${item.id}`}
                   imageSrc={item.image_url}

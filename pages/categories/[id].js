@@ -77,6 +77,7 @@ function Page({ id }) {
             <div className='mt-4 grid grid-cols-2 gap-4 min-[500px]:grid-cols-3 md:gap-8 min-[800px]:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
               {filtered.slice(0, page * 18).map((item, index) => (
                 <MovieGridItem
+                  className='!w-full'
                   key={index}
                   href={`/movies/${item.id}`}
                   imageSrc={item.image_url}

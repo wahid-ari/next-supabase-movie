@@ -63,6 +63,7 @@ function Page({ id }) {
             <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
               {data.movies.map((item, index) => (
                 <MovieGridItem
+                  className='!w-full'
                   key={index}
                   href={`/dashboard/movie/detail/${item.id}`}
                   imageSrc={item.image_url}

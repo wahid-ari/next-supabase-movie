@@ -60,6 +60,7 @@ export default function Movies() {
         {data
           ? filtered.map((item, index) => (
               <MovieGridItem
+                className='!w-full'
                 key={index}
                 href={`/dashboard/movie/detail/${item.id}`}
                 imageSrc={item.image_url}
