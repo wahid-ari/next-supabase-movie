@@ -37,9 +37,9 @@ export default function MovieGridItem({ href = '#', className, imageSrc, title, 
         )}
       </div>
       <div className='p-3.5'>
-        <Text.semibold className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+        <Text.medium className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
           {title}
-        </Text.semibold>
+        </Text.medium>
         <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
       </div>
     </Link>

@@ -33,14 +33,14 @@ export default function MovieSliderItem({ href = '#', imageSrc, title, descripti
           )}
         </div>
         <div className='px-2.5 py-3'>
-          <Text.semibold
+          <Text.medium
             className={clsx(
               'rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2',
               'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500'
             )}
           >
             {title}
-          </Text.semibold>
+          </Text.medium>
           <span className='px-1 text-[13px] text-neutral-600 dark:text-neutral-400'>{date}</span>
         </div>
       </div>
