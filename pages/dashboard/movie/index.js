@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMovieData } from '@libs/swr';
+import { useMoviesData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Movies() {
-  const { data, error } = useMovieData();
+  const { data, error } = useMoviesData();
   const [query, setQuery] = useState('');
 
   const filtered =

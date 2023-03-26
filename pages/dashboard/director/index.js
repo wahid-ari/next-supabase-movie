@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDirectorData } from '@libs/swr';
+import { useDirectorsData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Director() {
-  const { data, error } = useDirectorData();
+  const { data, error } = useDirectorsData();
   const [query, setQuery] = useState('');
 
   const filtered =

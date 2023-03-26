@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useActorData } from '@libs/swr';
+import { useActorsData } from '@libs/swr';
 import Layout from '@components/front/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -8,7 +8,7 @@ import InputDebounce from '@components/systems/InputDebounce';
 import Button from '@components/systems/Button';
 
 export default function Actors() {
-  const { data, error } = useActorData();
+  const { data, error } = useActorsData();
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   let lastPage = page > data?.length / 21;

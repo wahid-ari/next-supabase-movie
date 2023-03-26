@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import {
-  useActorData,
+  useActorsData,
   useCategoryTotalData,
   useCountryData,
-  useDirectorData,
-  useMovieData,
-  useStudioData,
+  useDirectorsData,
+  useMoviesData,
+  useStudiosData,
 } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
@@ -35,10 +35,10 @@ export async function getServerSideProps(context) {
 }
 
 export default function Dashboard() {
-  const { data: movies, error: errorMovies } = useMovieData();
-  const { data: actors, error: errorActors } = useActorData();
-  const { data: directors, error: errorDirectors } = useDirectorData();
-  const { data: studios, error: errorStudios } = useStudioData();
+  const { data: movies, error: errorMovies } = useMoviesData();
+  const { data: actors, error: errorActors } = useActorsData();
+  const { data: directors, error: errorDirectors } = useDirectorsData();
+  const { data: studios, error: errorStudios } = useStudiosData();
   const { data: categories, error: errorCategories } = useCategoryTotalData();
   const { data: countries, error: errorCountries } = useCountryData();
 

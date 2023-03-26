@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMovieData } from '@libs/swr';
+import { useMoviesData } from '@libs/swr';
 import Layout from '@components/front/Layout';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 import Shimer from '@components/systems/Shimer';
@@ -8,7 +8,7 @@ import InputDebounce from '@components/systems/InputDebounce';
 import Button from '@components/systems/Button';
 
 export default function Movies() {
-  const { data, error } = useMovieData();
+  const { data, error } = useMoviesData();
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   let lastPage = page > data?.length / 18;

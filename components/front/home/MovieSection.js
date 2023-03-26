@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useMovieData } from '@libs/swr';
+import { useMoviesData } from '@libs/swr';
 import clsx from 'clsx';
 import { ArrowLeftIcon, ArrowSmRightIcon } from '@heroicons/react/outline';
 import { ArrowRightIcon } from '@heroicons/react/solid';
@@ -15,7 +15,7 @@ import MovieSliderItem from '@components/front/MovieSliderItem';
 SwiperCore.use([Navigation, Pagination]);
 
 export default function MovieSection({}) {
-  const { data } = useMovieData();
+  const { data } = useMoviesData();
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);

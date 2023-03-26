@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStudioData } from '@libs/swr';
+import { useStudiosData } from '@libs/swr';
 import Layout from '@components/front/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -8,7 +8,7 @@ import Button from '@components/systems/Button';
 import StudioImageGridItem from '@components/front/StudioImageGridItem';
 
 export default function Actors() {
-  const { data, error } = useStudioData();
+  const { data, error } = useStudiosData();
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   let lastPage = page > data?.length / 15;

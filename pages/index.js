@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useMovieData, useStudioData, useCategoryTotalData, useCountryData } from '@libs/swr';
+import { useMoviesData, useStudiosData, useCategoryTotalData, useCountryData } from '@libs/swr';
 import clsx from 'clsx';
 import Layout from '@components/front/Layout';
 import MovieHeaderItem from '@components/front/MovieHeaderItem';
@@ -14,8 +14,8 @@ import DirectorSection from '@components/front/home/DirectorSection';
 import StudioImageGridItem from '@components/front/StudioImageGridItem';
 
 export default function Home() {
-  const { data, error, isLoading } = useMovieData();
-  const { data: studios, error: errorStudios } = useStudioData();
+  const { data, error, isLoading } = useMoviesData();
+  const { data: studios, error: errorStudios } = useStudiosData();
   const { data: categories, error: errorCategories } = useCategoryTotalData();
   const { data: countries, error: errorCountries } = useCountryData();
   const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');

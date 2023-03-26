@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStudioData } from '@libs/swr';
+import { useStudiosData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Studios() {
-  const { data, error } = useStudioData();
+  const { data, error } = useStudiosData();
   const [query, setQuery] = useState('');
 
   const filtered =

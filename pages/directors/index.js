@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDirectorData } from '@libs/swr';
+import { useDirectorsData } from '@libs/swr';
 import Layout from '@components/front/Layout';
 import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
@@ -8,7 +8,7 @@ import InputDebounce from '@components/systems/InputDebounce';
 import Button from '@components/systems/Button';
 
 export default function Director() {
-  const { data, error } = useDirectorData();
+  const { data, error } = useDirectorsData();
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   let lastPage = page > data?.length / 21;

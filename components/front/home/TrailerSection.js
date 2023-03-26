@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useMovieData } from '@libs/swr';
+import { useMoviesData } from '@libs/swr';
 import Heading from '@components/systems/Heading';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -16,7 +16,7 @@ import Shimer from '@components/systems/Shimer';
 SwiperCore.use([Navigation, Pagination]);
 
 export default function TrailerSection({}) {
-  const { data } = useMovieData();
+  const { data } = useMoviesData();
   const movieWithVideo = data?.filter(
     (item) => item.video_url != null && item.video_url != '' && item.video_url.startsWith('https')
   );
@@ -91,7 +91,7 @@ export default function TrailerSection({}) {
               return (
                 <SwiperSlide key={item.id}>
                   <LiteYouTubeEmbed id={youtube_url} title='Youtube Video' wrapperClass='yt-lite rounded mx-1' />
-                  <Text className='mt-2 text-center !text-base'>{item.name}</Text>
+                  <Text.medium className='mt-2 text-center !text-base'>{item.name}</Text.medium>
                 </SwiperSlide>
               );
             })}

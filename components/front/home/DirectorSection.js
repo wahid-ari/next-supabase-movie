@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useDirectorData } from '@libs/swr';
+import { useDirectorsData } from '@libs/swr';
 import clsx from 'clsx';
 import { ArrowLeftIcon, ArrowSmRightIcon } from '@heroicons/react/outline';
 import { ArrowRightIcon } from '@heroicons/react/solid';
@@ -15,7 +15,7 @@ import DirectorSliderItem from '@components/front/DirectorSliderItem';
 SwiperCore.use([Navigation, Pagination]);
 
 export default function DirectorSection({}) {
-  const { data } = useDirectorData();
+  const { data } = useDirectorsData();
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);

@@ -136,13 +136,13 @@ export default function SiteMap() {
 
 export async function getServerSideProps({ res }) {
   // We make an API call to gather the URLs for our site
-  const getAllMovies = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movie`);
+  const getAllMovies = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/movies`);
   const movies = await getAllMovies.json();
-  const getAllActors = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actor`);
+  const getAllActors = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/actors`);
   const actors = await getAllActors.json();
-  const getAllDirectors = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/director`);
+  const getAllDirectors = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/directors`);
   const directors = await getAllDirectors.json();
-  const getAllStudios = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studio`);
+  const getAllStudios = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/studios`);
   const studios = await getAllStudios.json();
   const getAllCategories = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/category`);
   const categories = await getAllCategories.json();

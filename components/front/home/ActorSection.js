@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useActorData } from '@libs/swr';
+import { useActorsData } from '@libs/swr';
 import clsx from 'clsx';
 import { ArrowLeftIcon, ArrowSmRightIcon } from '@heroicons/react/outline';
 import { ArrowRightIcon } from '@heroicons/react/solid';
@@ -15,7 +15,7 @@ import ActorSliderItem from '@components/front/ActorSliderItem';
 SwiperCore.use([Navigation, Pagination]);
 
 export default function ActorSection({}) {
-  const { data } = useActorData();
+  const { data } = useActorsData();
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
