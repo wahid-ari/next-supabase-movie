@@ -17,8 +17,8 @@ export default function Actors() {
     query === ''
       ? data
       : data.filter((item) =>
-        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
-      );
+          item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
 
   if (error) {
     return (
@@ -45,15 +45,15 @@ export default function Actors() {
       </div>
 
       {data ? (
-        <div className='mt-6 grid grid-cols-1 gap-8 sm:mt-4 min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-6 grid grid-cols-1 gap-8 min-[550px]:grid-cols-2 sm:mt-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {filtered.slice(0, page * 15).map((item, index) => (
             <StudioImageGridItem key={index} href={`/studios/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}
         </div>
       ) : (
-        <div className='mt-6 grid grid-cols-1 gap-x-8 gap-y-2 sm:mt-4 min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+        <div className='mt-6 grid grid-cols-1 gap-x-8 gap-y-2 min-[550px]:grid-cols-2 sm:mt-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
           {[...Array(15).keys()].map((item) => (
-            <Shimer key={item} className='!h-32 !w-56 !mx-auto !flex sm:w-full' />
+            <Shimer key={item} className='!mx-auto !flex !h-32 !w-56 sm:w-full' />
           ))}
         </div>
       )}

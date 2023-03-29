@@ -155,6 +155,10 @@ html {
   color: white;
 }
 
+.react-select__option--is-focused {
+  color: white !important;
+}
+
 /* React Lite youtube embed play button */
 .yt-lite > .lty-playbtn {
   transition: all 0.4s !important;

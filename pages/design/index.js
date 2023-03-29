@@ -451,7 +451,11 @@ export default function Example() {
           'theme',
         ]}
       >
+        <label htmlFor='category' className='mb-2 block text-sm text-neutral-800 dark:text-gray-200'>
+          Category
+        </label>
         <Select
+          aria-label='React Select'
           options={reactSelectData}
           isMulti
           noOptionsMessage={() => 'Not Found'}

@@ -119,7 +119,14 @@ export default function Home() {
         </Link>
       </div>
       {studios ? (
-        <div className='mt-5 flex gap-4 overflow-auto px-0.5 pb-2.5 pt-1 scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thumb-gray-200 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-800 dark:scrollbar-track-custom-dark'>
+        <div
+          className={clsx(
+            'mt-5 flex gap-4 overflow-auto px-0.5 pb-2.5 pt-1',
+            'scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded',
+            'scrollbar-thumb-gray-200 scrollbar-track-neutral-100',
+            'dark:scrollbar-thumb-neutral-800 dark:scrollbar-track-custom-dark'
+          )}
+        >
           {studios.slice(0, 12).map((item, index) => (
             <StudioImageGridItem key={index} href={`/studios/${item.id}`} imageSrc={item.image_url} name={item.name} />
           ))}
@@ -204,7 +211,12 @@ export default function Home() {
             <Link
               key={index}
               href={`/countries/${item.id}`}
-              className='flex items-center justify-between rounded border p-3 text-[15px] font-medium text-neutral-600 shadow transition-all duration-300 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800 dark:bg-[#1a1919] dark:text-neutral-200 dark:hover:text-sky-500'
+              className={clsx(
+                'flex items-center justify-between rounded border p-3 text-[15px] font-medium',
+                'text-neutral-600 shadow transition-all duration-300 hover:text-sky-500',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                'dark:border-neutral-800 dark:bg-[#1a1919] dark:text-neutral-200 dark:hover:text-sky-500'
+              )}
             >
               {item.name}
             </Link>
