@@ -254,9 +254,6 @@ export default function Navbar({ className }) {
                 <ActiveLink href='/directors' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Directors
                 </ActiveLink>
-                <ActiveLink href='/studios' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
-                  Studios
-                </ActiveLink>
                 <Menu>
                   {({ open }) => (
                     <>
@@ -273,6 +270,15 @@ export default function Navbar({ className }) {
                         </div>
                       </Menu.Button>
                       <Menu.Items className='space-y-1 px-3'>
+                        <Menu.Item>
+                          <ActiveLink
+                            activeClassName='!text-sky-500 dark:text-sky-500'
+                            href='/studios'
+                            className={activeCn}
+                          >
+                            Studios
+                          </ActiveLink>
+                        </Menu.Item>
                         <Menu.Item>
                           <ActiveLink
                             activeClassName='!text-sky-500 dark:text-sky-500'
