@@ -107,9 +107,9 @@ function Page({ id }) {
       >
         <FrontTabs.panel>
           {data.actors.length > 0 ? (
-            <div className='grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 min-[620px]:grid-cols-4 min-[800px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8'>
+            <div className='grid grid-cols-2 gap-8 min-[500px]:grid-cols-3 min-[670px]:grid-cols-4 min-[850px]:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7'>
               {filteredActor?.slice(0, page.actor * 24).map((item, index) => (
-                <ActorGridItem key={index} href={`/actors/${item.id}`} imageSrc={item.image_url} name={item.name} />
+                <ActorGridItem key={index} href={`/actors/${item.id}`} imageSrc={item.image_url} name={item.name} front />
               ))}
             </div>
           ) : (
