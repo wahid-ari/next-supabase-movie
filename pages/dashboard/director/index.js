@@ -6,6 +6,7 @@ import Shimer from '@components/systems/Shimer';
 import DirectorGridItem from '@components/dashboard/DirectorGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
 import nookies from 'nookies';
+import Button from '@components/systems/Button';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -24,6 +25,8 @@ export async function getServerSideProps(context) {
 export default function Director() {
   const { data, error } = useDirectorsData();
   const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  let lastPage = page > data?.length / 18;
 
   const filtered =
     query === ''
@@ -58,7 +61,7 @@ export default function Director() {
 
       <div className='mt-8 grid grid-cols-2 gap-6 gap-y-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-6'>
         {data
-          ? filtered.map((item, index) => (
+          ? filtered.slice(0, page * 18).map((item, index) => (
               <DirectorGridItem
                 key={index}
                 href={`/dashboard/director/detail/${item.id}`}
@@ -72,6 +75,16 @@ export default function Director() {
               </div>
             ))}
       </div>
+
+      {data && query === '' && !lastPage && (
+        <div className='mt-8 mb-2 flex justify-center'>
+          <Button onClick={() => setPage(page + 1)}>Load More</Button>
+        </div>
+      )}
+
+      {query !== '' && filtered?.length < 1 && (
+        <p className='py-32 text-center'>There are no movies with name &quot;{query}&quot;</p>
+      )}
     </Layout>
   );
 }

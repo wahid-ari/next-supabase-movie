@@ -6,6 +6,7 @@ import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 import InputDebounce from '@components/systems/InputDebounce';
 import nookies from 'nookies';
+import Button from '@components/systems/Button';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -24,6 +25,8 @@ export async function getServerSideProps(context) {
 export default function Movies() {
   const { data, error } = useMoviesData();
   const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  let lastPage = page > data?.length / 15;
 
   const filtered =
     query === ''
@@ -58,7 +61,7 @@ export default function Movies() {
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
         {data
-          ? filtered.map((item, index) => (
+          ? filtered.slice(0, page * 15).map((item, index) => (
               <MovieGridItem
                 className='!w-full'
                 key={index}
@@ -70,6 +73,16 @@ export default function Movies() {
             ))
           : [...Array(10).keys()].map((item) => <Shimer key={item} className='!h-64 w-full' />)}
       </div>
+
+      {data && query === '' && !lastPage && (
+        <div className='mt-8 mb-2 flex justify-center'>
+          <Button onClick={() => setPage(page + 1)}>Load More</Button>
+        </div>
+      )}
+
+      {query !== '' && filtered?.length < 1 && (
+        <p className='py-32 text-center'>There are no movies with name &quot;{query}&quot;</p>
+      )}
     </Layout>
   );
 }

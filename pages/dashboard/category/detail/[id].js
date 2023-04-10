@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SWRConfig } from 'swr';
 import { useCategoryData } from '@libs/swr';
 import Layout from '@components/layout/Layout';
@@ -5,6 +6,8 @@ import Title from '@components/systems/Title';
 import Shimer from '@components/systems/Shimer';
 import MovieGridItem from '@components/dashboard/MovieGridItem';
 import nookies from 'nookies';
+import InputDebounce from '@components/systems/InputDebounce';
+import Button from '@components/systems/Button';
 
 export async function getServerSideProps(context) {
   const cookies = nookies.get(context);
@@ -39,6 +42,16 @@ export default function Category({ id, fallback }) {
 
 function Page({ id }) {
   const { data, error } = useCategoryData(id);
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  let lastPage = page > data?.movies?.length / 15;
+
+  const filtered =
+    query === ''
+      ? data.movies
+      : data.movies.filter((item) =>
+        item.name.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
+      );
 
   if (error) {
     return (
@@ -57,11 +70,23 @@ function Page({ id }) {
         {data ? <Title>{data?.name} Movies</Title> : <Title>Category Detail</Title>}
       </div>
 
+      <InputDebounce
+        label='Search Movie'
+        id='search'
+        name='search'
+        placeholder='Movie Name'
+        className='max-w-xs !py-2'
+        wrapperClassName='mt-6'
+        debounce={500}
+        value={query}
+        onChange={(value) => setQuery(value)}
+      />
+
       {data ? (
         data?.movies.length > 0 ? (
           <>
             <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
-              {data.movies.map((item, index) => (
+              {filtered.slice(0, page * 15).map((item, index) => (
                 <MovieGridItem
                   className='!w-full'
                   key={index}
@@ -84,6 +109,16 @@ function Page({ id }) {
             <Shimer key={item} className='!h-64 w-full' />
           ))}
         </div>
+      )}
+
+      {data && query === '' && !lastPage && (
+        <div className='mt-8 mb-2 flex justify-center'>
+          <Button onClick={() => setPage(page + 1)}>Load More</Button>
+        </div>
+      )}
+
+      {query !== '' && filtered?.length < 1 && (
+        <p className='py-32 text-center'>There are no movies with name &quot;{query}&quot;</p>
       )}
     </Layout>
   );
