@@ -61,14 +61,16 @@ export default function Director() {
 
       <div className='mt-8 grid grid-cols-2 gap-6 gap-y-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-6'>
         {data
-          ? filtered.slice(0, page * 18).map((item, index) => (
-              <DirectorGridItem
-                key={index}
-                href={`/dashboard/director/detail/${item.id}`}
-                imageSrc={item.image_url}
-                name={item.name}
-              />
-            ))
+          ? filtered
+              .slice(0, page * 18)
+              .map((item, index) => (
+                <DirectorGridItem
+                  key={index}
+                  href={`/dashboard/director/detail/${item.id}`}
+                  imageSrc={item.image_url}
+                  name={item.name}
+                />
+              ))
           : [...Array(18).keys()].map((item) => (
               <div key={item} className='flex items-center justify-center'>
                 <Shimer className='!mx-8 !h-32 !w-32 !rounded-full' />

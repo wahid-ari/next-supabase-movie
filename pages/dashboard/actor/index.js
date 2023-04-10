@@ -61,14 +61,16 @@ export default function Actors() {
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[450px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8'>
         {data
-          ? filtered.slice(0, page * 21).map((item, index) => (
-              <ActorGridItem
-                key={index}
-                href={`/dashboard/actor/detail/${item.id}`}
-                imageSrc={item.image_url}
-                name={item.name}
-              />
-            ))
+          ? filtered
+              .slice(0, page * 21)
+              .map((item, index) => (
+                <ActorGridItem
+                  key={index}
+                  href={`/dashboard/actor/detail/${item.id}`}
+                  imageSrc={item.image_url}
+                  name={item.name}
+                />
+              ))
           : [...Array(14).keys()].map((item) => <Shimer key={item} className='!h-52 w-full' />)}
       </div>
 

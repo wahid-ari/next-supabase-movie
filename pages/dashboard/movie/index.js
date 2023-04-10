@@ -61,16 +61,18 @@ export default function Movies() {
 
       <div className='mt-8 grid grid-cols-2 gap-8 min-[560px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'>
         {data
-          ? filtered.slice(0, page * 15).map((item, index) => (
-              <MovieGridItem
-                className='!w-full'
-                key={index}
-                href={`/dashboard/movie/detail/${item.id}`}
-                imageSrc={item.image_url}
-                title={item.name}
-                date={item.release_date}
-              />
-            ))
+          ? filtered
+              .slice(0, page * 15)
+              .map((item, index) => (
+                <MovieGridItem
+                  className='!w-full'
+                  key={index}
+                  href={`/dashboard/movie/detail/${item.id}`}
+                  imageSrc={item.image_url}
+                  title={item.name}
+                  date={item.release_date}
+                />
+              ))
           : [...Array(10).keys()].map((item) => <Shimer key={item} className='!h-64 w-full' />)}
       </div>
 
