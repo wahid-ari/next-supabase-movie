@@ -25,6 +25,14 @@ export default function Footer({ className }) {
               <ul className='text-neutral-700 dark:text-neutral-300'>
                 <li className='mb-2'>
                   <Link
+                    href='/'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className='mb-2'>
+                  <Link
                     href='/movies'
                     className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
@@ -68,7 +76,7 @@ export default function Footer({ className }) {
                     Categories
                   </Link>
                 </li>
-                <li>
+                <li className='mb-2'>
                   <Link
                     href='/countries'
                     className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
@@ -76,12 +84,20 @@ export default function Footer({ className }) {
                     Countries
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href='/browse'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                  >
+                    Browse
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h2 className='mb-4 text-sm font-semibold uppercase text-neutral-800 dark:text-neutral-200'>Resources</h2>
               <ul className='text-neutral-700 dark:text-neutral-300'>
-                <li>
+                <li className='mb-2'>
                   <a
                     href='https://my-movie-docs.vercel.app'
                     target='_blank'
@@ -89,6 +105,14 @@ export default function Footer({ className }) {
                   >
                     API Docs
                   </a>
+                </li>
+                <li>
+                  <Link
+                    href='/sitemap.xml'
+                    className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
+                  >
+                    Countries
+                  </Link>
                 </li>
               </ul>
             </div>
