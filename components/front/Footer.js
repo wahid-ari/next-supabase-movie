@@ -108,7 +108,7 @@ export default function Footer({ className }) {
                 </li>
                 <li>
                   <a
-                    href={`${NEXT_PUBLIC_API_ROUTE}/sitemap.xml`}
+                    href={`${process.env.NEXT_PUBLIC_API_ROUTE}/sitemap.xml`}
                     className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
                     Sitemap.xml
