@@ -5,7 +5,7 @@ export default function Footer({ className }) {
   return (
     <footer className={`border-t dark:border-neutral-800 ${className && className}`}>
       <div className='mx-auto max-w-7xl px-4 pt-10 pb-6 '>
-        <div className='gap-16 md:flex md:justify-between'>
+        <div className='gap-16 md:flex md:justify-between mb-2'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>
@@ -111,7 +111,7 @@ export default function Footer({ className }) {
                     href='/sitemap.xml'
                     className='hover-underline-animation rounded text-[15px] hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-neutral-100'
                   >
-                    Countries
+                    Sitemap.xml
                   </Link>
                 </li>
               </ul>
