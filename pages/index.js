@@ -54,7 +54,7 @@ export default function Home() {
           }}
           hasTrack={false}
         >
-          <div>
+          <div className='group'>
             <SplideTrack>
               {fiveMovieWithBackdrop.map((item, index) => (
                 <SplideSlide key={item.id} className='p-1'>
@@ -73,13 +73,21 @@ export default function Home() {
             <div className='splide__arrows'>
               <button
                 title='Prev'
-                className='splide__arrow splide__arrow--prev -ml-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                className={clsx(
+                  'splide__arrow splide__arrow--prev -ml-8',
+                  'transform-cpu transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-5',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                )}
               >
                 <ArrowRightIcon />
               </button>
               <button
                 title='Next'
-                className='splide__arrow splide__arrow--next -mr-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                className={clsx(
+                  'splide__arrow splide__arrow--next -mr-8',
+                  'transform-cpu transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-5',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                )}
               >
                 <ArrowRightIcon />
               </button>
