@@ -5,7 +5,7 @@ export default function Footer({ className }) {
   return (
     <footer className={`border-t dark:border-neutral-800 ${className && className}`}>
       <div className='mx-auto max-w-7xl px-4 pt-10 pb-6 '>
-        <div className='gap-16 md:flex md:justify-between pb-2'>
+        <div className='gap-16 pb-2 md:flex md:justify-between'>
           <div className='mb-6 md:mb-0 md:w-2/5'>
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>

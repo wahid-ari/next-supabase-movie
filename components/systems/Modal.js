@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
 import Button from '@components/systems/Button';
 
-export default function Modal({ open, title, children, isDanger, onClose, onConfirm, showIcon }) {
+export default function Modal({ open, title, children, isDanger, onClose, onConfirm, showIcon, confirmText }) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as='div' className='fixed inset-0 z-50 overflow-y-auto' open={open} onClose={onClose}>
@@ -64,7 +64,7 @@ export default function Modal({ open, title, children, isDanger, onClose, onConf
 
                 {isDanger ? (
                   <Button.danger className='w-full sm:w-auto' onClick={onConfirm}>
-                    Delete
+                    {confirmText || 'Delete'}
                   </Button.danger>
                 ) : (
                   <Button className='w-full sm:w-auto' onClick={onConfirm}>
