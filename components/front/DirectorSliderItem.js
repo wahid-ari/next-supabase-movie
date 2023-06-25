@@ -26,7 +26,7 @@ export default function DirectorSliderItem({ href = '#', imageSrc, name, ...prop
             onLoadingComplete={() => setLoading(false)}
           />
         ) : (
-          <div className='flex h-full w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-800'>
+          <div className='flex h-full w-full items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
             <PhotographIcon className='h-16 w-16 text-neutral-500' />
           </div>
         )}
