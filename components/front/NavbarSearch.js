@@ -30,9 +30,10 @@ export default function NavbarSearch() {
           type='search'
           id='search'
           className={clsx(
-            'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-gray-900  ',
+            'block w-full rounded border border-neutral-200 p-2.5 pl-10 text-sm text-gray-900',
             'bg-gray-50 focus:border-sky-500 focus:ring-sky-500 dark:border-neutral-800 dark:bg-neutral-800',
-            'dark:text-white dark:placeholder-gray-400 dark:focus:border-sky-500 dark:focus:ring-sky-500'
+            'dark:text-white dark:placeholder-gray-400 dark:focus:border-sky-500 dark:focus:ring-sky-500',
+            '!pr-20'
           )}
           placeholder='Search Movie, Actors...'
           required
