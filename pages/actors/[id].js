@@ -176,7 +176,7 @@ function Page({ id }) {
             </div>
           </>
         ) : (
-          <div className='rounded border border-red-500 p-3'>
+          <div className='mt-8 rounded border border-red-500 p-3'>
             <p className='text-red-500'>No Movies From &quot;{data?.name}&quot; </p>
           </div>
         )
