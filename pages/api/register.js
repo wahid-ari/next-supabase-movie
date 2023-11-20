@@ -28,10 +28,13 @@ export default async function handler(req, res) {
     case 'POST':
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
+        return;
       } else if (!body.username) {
         res.status(422).json({ error: 'Username required' });
+        return;
       } else if (!body.password) {
         res.status(422).json({ error: 'Password required' });
+        return;
       } else {
         const { data: userNameExist } = await supabase
           .from('admin')
@@ -68,9 +71,11 @@ export default async function handler(req, res) {
             const { id, type } = user;
             const { username, name } = body;
             res.status(200).json({ id, type, username, name, token });
+            return;
           }
         } else {
           res.status(422).json({ error: 'Username already exist' });
+          return;
         }
       }
       break;

@@ -11,6 +11,7 @@ export default async function handler(req, res) {
           .select(`*, directors (*), studios (*), movie_categories (*), movie_actors (*)`)
           .order('id');
         res.status(200).json(data);
+        return;
       } else {
         const { data } = await supabase
           .from('movies')
@@ -53,6 +54,7 @@ export default async function handler(req, res) {
     case 'POST':
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
+        return;
       } else {
         // insert a movie
         const { data, error } = await supabase
@@ -74,6 +76,7 @@ export default async function handler(req, res) {
           .select();
         if (error) {
           res.status(422).json({ error: error.message });
+          return;
         }
         // get movie id after inserting
         const movieId = data[0].id;
@@ -92,6 +95,7 @@ export default async function handler(req, res) {
           const { error } = await supabase.from('movie_categories').insert(categories);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
         }
 
@@ -109,6 +113,7 @@ export default async function handler(req, res) {
           const { error } = await supabase.from('movie_actors').insert(actors);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
         }
 
@@ -119,6 +124,7 @@ export default async function handler(req, res) {
     case 'PUT':
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
+        return;
       } else {
         // edit a movie
         const { error } = await supabase
@@ -138,12 +144,14 @@ export default async function handler(req, res) {
           .eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
+          return;
         }
 
         // delete categories related to edited movie
         const { error: errorMovieCategory } = await supabase.from('movie_categories').delete().eq('movie_id', query.id);
         if (errorMovieCategory) {
           res.status(422).json({ error: errorMovieCategory.message });
+          return;
         }
 
         // if edited movie have categories
@@ -160,6 +168,7 @@ export default async function handler(req, res) {
           const { error } = await supabase.from('movie_categories').insert(categories);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
         }
 
@@ -167,6 +176,7 @@ export default async function handler(req, res) {
         const { error: errorMovieActor } = await supabase.from('movie_actors').delete().eq('movie_id', query.id);
         if (errorMovieActor) {
           res.status(422).json({ error: errorMovieActor.message });
+          return;
         }
 
         // if edited movie have actors
@@ -183,6 +193,7 @@ export default async function handler(req, res) {
           const { error } = await supabase.from('movie_actors').insert(actors);
           if (error) {
             res.status(422).json({ error: error.message });
+            return;
           }
         }
 
@@ -193,6 +204,7 @@ export default async function handler(req, res) {
     case 'DELETE':
       if (!query.id) {
         res.status(422).json({ error: 'Id required' });
+        return;
       } else {
         // delete categories related to movie in movie_categories table
         const { error: errorMovieCategory } = await supabase.from('movie_categories').delete().eq('movie_id', query.id);
@@ -202,6 +214,7 @@ export default async function handler(req, res) {
         const { error } = await supabase.from('movies').delete().eq('id', query.id);
         if (error || errorMovieCategory || errorMovieActor) {
           res.status(422).json({ error: error.message });
+          return;
         }
         res.status(200).json({ message: 'Success delete movies' });
       }

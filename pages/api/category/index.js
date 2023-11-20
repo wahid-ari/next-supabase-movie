@@ -8,6 +8,7 @@ export default async function handler(req, res) {
       if (!query.id) {
         const { data } = await supabase.from('categories').select(`*`).order('id');
         res.status(200).json(data);
+        return;
       } else {
         const { data: categories } = await supabase.from('categories').select(`*`).eq('id', query.id).order('id');
         const { data: movie_categories } = await supabase
@@ -37,10 +38,12 @@ export default async function handler(req, res) {
     case 'POST':
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
+        return;
       } else {
         const { error } = await supabase.from('categories').insert([{ name: body.name }]);
         if (error) {
           res.status(422).json({ error: error.message });
+          return;
         }
         res.status(200).json({ message: 'Success add categories' });
       }
@@ -49,10 +52,12 @@ export default async function handler(req, res) {
     case 'PUT':
       if (!body.name) {
         res.status(422).json({ error: 'Name required' });
+        return;
       } else {
         const { error } = await supabase.from('categories').update({ name: body.name }).eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
+          return;
         }
         res.status(201).json({ message: 'Success update categories' });
       }
@@ -61,10 +66,12 @@ export default async function handler(req, res) {
     case 'DELETE':
       if (!query.id) {
         res.status(422).json({ error: 'Id required' });
+        return;
       } else {
         const { error } = await supabase.from('categories').delete().eq('id', query.id);
         if (error) {
           res.status(422).json({ error: error.message });
+          return;
         }
         res.status(200).json({ message: 'Success delete categories' });
       }
