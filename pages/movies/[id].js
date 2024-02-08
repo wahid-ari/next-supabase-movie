@@ -265,7 +265,7 @@ function Page({ id }) {
                 className='h-64 w-full rounded sm:h-72 md:h-80 md:w-3/4 xl:w-1/2'
                 src={`https://www.youtube.com/embed/${youtube_url}`}
                 title='YouTube video player'
-                frameborder='0'
+                frameborder='0' 
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowfullscreen
               ></iframe> */}

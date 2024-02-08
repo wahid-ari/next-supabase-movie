@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Link from 'next/link';
 import { useMoviesData, useStudiosData, useCategoryTotalData, useCountryData } from '@libs/swr';
 import clsx from 'clsx';
@@ -18,10 +19,13 @@ export default function Home() {
   const { data: studios, error: errorStudios } = useStudiosData();
   const { data: categories, error: errorCategories } = useCategoryTotalData();
   const { data: countries, error: errorCountries } = useCountryData();
-  const movieWithBackdrop = data?.filter((item) => item.backdrop_url != null && item.backdrop_url != '');
+  const movieWithBackdrop = useMemo(
+    () => data?.filter((item) => item.backdrop_url != null && item.backdrop_url != ''),
+    [data]
+  );
   // const fiveMovieWithBackdrop = movieWithBackdrop?.slice(0, 5);
-  const shuffledMovie = movieWithBackdrop?.sort(() => 0.5 - Math.random());
-  const fiveMovieWithBackdrop = shuffledMovie?.slice(0, 5);
+  const shuffledMovie = useMemo(() => movieWithBackdrop?.sort(() => 0.5 - Math.random()), [movieWithBackdrop]);
+  const fiveMovieWithBackdrop = useMemo(() => shuffledMovie?.slice(0, 5), [shuffledMovie]);
 
   if (error || errorStudios || errorCategories || errorCountries) {
     return (
