@@ -95,7 +95,7 @@ export default function Login() {
       <div className='min-h-screen w-screen sm:grid sm:grid-cols-12'>
         <div className='banner flex flex-col justify-between gap-2 p-8 sm:hidden'>
           <div className='mb-2 flex items-center gap-4'>
-            <Image alt='Logo' src='/icon.jpg' width={50} height={50} className='rounded-[17px]' />
+            <Image alt='Logo' src='/icon.png' width={50} height={50} className='rounded-[17px]' />
             <h1 className='text-4xl font-bold text-white'>MyMovie</h1>
           </div>
           <p className='text-base font-normal text-white'>
@@ -106,7 +106,7 @@ export default function Login() {
 
         <div className='flex w-full items-center justify-center px-8 py-16 sm:col-span-6 md:col-span-5 md:px-16 md:py-0'>
           <div className='w-full sm:max-w-md'>
-            <Image alt='Logo' src='/icon.jpg' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
+            <Image alt='Logo' src='/icon.png' width={100} height={100} className='mx-auto mb-16 hidden sm:block' />
 
             <Heading h1 className='mb-6 font-semibold !text-neutral-800'>
               Login

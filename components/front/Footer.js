@@ -10,7 +10,7 @@ export default function Footer({ className }) {
             {/* web logo  */}
             <Link href='/' passHref className='group inline-flex rounded focus-visible:outline-none'>
               <div className='flex items-center rounded font-medium text-neutral-900 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
-                <Image alt='Logo' src='/icon.jpg' width={30} height={30} className='mr-2 rounded-lg' />
+                <Image alt='Logo' src='/icon.png' width={30} height={30} className='mr-2 rounded-lg' />
                 <span className='text-xl font-semibold text-neutral-800 dark:text-neutral-200'>MyMovie</span>
               </div>
             </Link>
